@@ -1,0 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.fold-n-go-duffel.json",
+  "context": {
+    "market": "uae"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "custom_text_txGBTp": {
+          "settings": {
+            "custom_text": "Black Friday Sale: BUY ONE, GET ONE 50% OFF"
+          }
+        },
+        "toggle_buttons_imm4kb": {
+          "disabled": true,
+          "settings": {}
+        },
+        "gaurantee_free_gift_Lb6jnM": {
+          "settings": {
+            "bold_text": "Black Friday Sale"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "text": "Free Shipping",
+          }
+        },
+         "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "content": "<h4>Shipping</h4><p>3-Day Shipping for all bag orders. </p><h4>Returns</h4><p>We want you to love everything about getting Nobl, which is why we offe returns and exchanges on unused items for the first 100 days. </p><h4>Lifetime Warranty</h4><p>Our products are guaranteed by a lifetime warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage. </p>",
+          }
+        },
+      }
+    }
+  }
+}

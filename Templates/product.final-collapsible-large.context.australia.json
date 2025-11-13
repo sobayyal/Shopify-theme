@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.final-collapsible-large.json",
+  "context": {
+    "market": "australia"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "gaurantee_free_gift_Lb6jnM": {
+          "settings": {
+            "bold_text": "Black Friday Sale"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "content": "<h4>Shipping</h4><p>Free Shipping for all suitcase orders. U.S Shipping is 3 business days.</p><h4>Returns</h4><p>We want you to love everything about getting Nobl, which is why we offer free returns and exchanges on unused items for the first 100 days. We can only accept returns on unused items, so please gently test them out at home before traveling with them. </p><h4>Lifetime Warranty</h4><p>Our suitcases are guaranteed by a limited warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage. </p>",
+          }
+        },
+      }
+    }
+  }
+}

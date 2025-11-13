@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.july-9-28-inch-aio.json",
+  "context": {
+    "market": "canada"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "sizing_buttons_dPxewP": {
+          "disabled": true,
+          "settings": {}
+        },
+        "gaurantee_free_gift_Lb6jnM": {
+          "settings": {
+            "bold_text": "Black Friday Sale"
+          }
+        },
+         "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "text": "Free 3-Day Shipping",
+            
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "content": "<p><strong>Shipping - </strong>Free 3-Day Shipping for all suitcase orders.</p><p>We want you to love everything about getting Nobl, which is why we offer returns and exchanges for the first 100 days. </p><p>Our suitcases are guaranteed by a warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage. </p>",
+          }
+        }
+      }
+    }
+  }
+}

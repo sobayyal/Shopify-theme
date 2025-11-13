@@ -1,0 +1,1077 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "contentSize": 12,
+            "pattern": "4.8/5 - [count] Verified Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_value_in_price": false,
+            "total_value_text": "Total Value"
+          }
+        },
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84": {
+          "type": "badges",
+          "settings": {}
+        },
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "color_selector_type": "color"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "toggle_buttons_jBHKFN": {
+          "type": "toggle_buttons",
+          "settings": {
+            "section_title": "Select: Size",
+            "margin_bottom": 20,
+            "product_one_title": "Trunk Suitcase 20\"",
+            "product_one_url": "shopify://products/carry-on-trunk-suitcase-20",
+            "product_two_title": "Trunk Suitcase 30\"",
+            "product_two_url": "shopify://products/check-in-trunk-suitcase-30"
+          }
+        },
+        "sizing_buttons_dPxewP": {
+          "type": "sizing_buttons",
+          "disabled": true,
+          "settings": {
+            "margin_bottom": 0,
+            "variant_title": "Size:",
+            "compare_size_text": "",
+            "compare_size_link": "",
+            "item_one": "Carry-on",
+            "item_one_url": "shopify://products/carry-on-all-in-one",
+            "item_two": "Check-In",
+            "item_two_url": "shopify://products/check-in-all-in-one-28",
+            "item_three": "Carry-on + Check-in",
+            "item_three_url": "shopify://products/carry-on-check-in",
+            "item_four": "Ultimate Travel Set",
+            "item_four_url": "shopify://products/ultimate-travel-set"
+          }
+        },
+        "gaurantee_free_gift_Lb6jnM": {
+          "type": "gaurantee-free-gift",
+          "settings": {
+            "order_by_text": "Order by",
+            "pre_order_days": "0",
+            "order_by_text_after": "for guaranteed FREE Gifts",
+            "bold_text": "Black Friday Sale",
+            "salename_text": "$170 in Free Gifts!",
+            "sale_heading_image": "shopify://shop_images/Untitled-1.svg",
+            "cards_bg": "#ebebed",
+            "label_bg": "#054b48",
+            "label_text": "#ffffff",
+            "gift_img_one": "shopify://shop_images/1_7.webp",
+            "gift_heading_one": "Luggage Cover",
+            "gift_one_price": "$45",
+            "gift_img_two": "shopify://shop_images/Nobl-carry-on-all-in-one-gift-card.png",
+            "gift_heading_two": "$25 e-Gift Card",
+            "gift_two_price": "$25",
+            "gift_img_three": "shopify://shop_images/2_7.webp",
+            "gift_heading_three": "Lifetime Warranty",
+            "gift_three_price": "$100",
+            "gift_img_four": "",
+            "gift_heading_four": "Luggage Scale",
+            "gift_four_price": "$39"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "Payments of $22.11/month with"
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g": {
+          "type": "inventory",
+          "settings": {
+            "show_delivery_date": true,
+            "show_return_text": false,
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "buy_buttons_default_UC3qM3": {
+          "type": "buy-buttons-default",
+          "disabled": true,
+          "settings": {
+            "default_payment_button": true,
+            "default_show_icon_price": false,
+            "default_show_gift_card_recipient": true,
+            "default_atc_button_background": "",
+            "default_atc_button_text_color": "",
+            "default_payment_button_background": "",
+            "default_payment_button_text_color": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_icon_price": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#000000",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/Untitled_design_87.svg",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "360° Smooth Wheels",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Packs for 5-7 day trips",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/numberdays.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "81d66082-de22-4e38-9a78-f63819d3d0d4": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Interior compression",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/compression-pad.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Unbreakable polycarbonate shell",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/shell_1.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Triple TSA combination locks",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/lock.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Made to last with anti-stain materials",
+            "link": "",
+            "icon": "none",
+            "icon_width": 24,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "complementary_products": {
+          "type": "complementary_products",
+          "disabled": true,
+          "settings": {
+            "title": "Bundle and Save",
+            "products_count": 1,
+            "show_below_gallery": false,
+            "stack_products": false,
+            "show_quick_buy": true
+          }
+        },
+        "4429c250-ff29-4e33-a9b7-440abad3e095": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Fits all international flights including European budget carriers",
+            "link": "",
+            "icon": "picto-plane",
+            "icon_width": 32,
+            "background": "#f6f6f6",
+            "text_color": "#3b6aed",
+            "border_color": ""
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "novel_shoppable_video_novel_product_riaGhD": {
+          "type": "shopify://apps/novel-shoppable-video/blocks/novel-product/67e3531b-60c1-40d3-83d1-8f5aba7081ef",
+          "disabled": true,
+          "settings": {
+            "journeyid": "678178f30840100008e55430"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "show_below_gallery": false
+          }
+        },
+        "4c14dcc3-c016-4055-8b44-46147a8c86be": {
+          "type": "description_mobile",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Details + Dimensions",
+            "content": "<h4><strong>Carry-On Luggage</strong></h4><ul><li>Unbreakable Polycarbonate Shell and Aluminum Frame</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system and clip-in pocketed panel to help pack more in</li><li>Meets the airline requirements for most major airlines as carry-on luggage</li></ul><p><strong>Exterior measurements</strong> 20.5\" x 15.5\" x 10\"<br/><strong>Interior measurements</strong> 19\" x 13.8\" x 8\"<br/><strong>Weight</strong> 8.15 lbs<br/><strong>Capacity</strong> 35L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>",
+            "page": ""
+          }
+        },
+        "product_measurements_bCHkRQ": {
+          "type": "product-measurements",
+          "settings": {
+            "variant_id": "51875227730220",
+            "variant_name": "",
+            "is_default": true,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<ul><li>Exterior measurements: 14.96\" x 9.84\" x 22.83\"</li><li>Interior measurements: 13.39\" × 8.66\" × 19.29\"</li><li>Weight: 10.80 lbs</li><li>Capacity: 36.6L</li><li>Material: Aluminum frame + Polycarbonate shell</li></ul><p><i>Measurements include wheels.</i></p>"
+          }
+        },
+        "product_measurements_qwBeTE": {
+          "type": "product-measurements",
+          "disabled": true,
+          "settings": {
+            "variant_id": "51875227795756",
+            "variant_name": "",
+            "is_default": false,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Unbreakable Polycarbonate Shell and Aluminum Frame</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system and clip-in pocketed panel to help pack more in</li><li>Meets the airline requirements for most major airlines as carry-on luggage</li></ul><p><strong>Exterior measurements</strong> 20.5\" x 15.5\" x 10\"<br/><strong>Interior measurements</strong> 19\" x 13.8\" x 8\"<br/><strong>Weight</strong> 11.6 lbs<br/><strong>Capacity</strong> 38L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_Gy6KNt": {
+          "type": "product-measurements",
+          "disabled": true,
+          "settings": {
+            "variant_id": "51875227828524",
+            "variant_name": "",
+            "is_default": false,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Unbreakable Polycarbonate Shell and Aluminum Frame</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system and clip-in pocketed panel to help pack more in</li><li>Meets the airline requirements for most major airlines as carry-on luggage</li></ul><p><strong>Exterior measurements</strong> 20.5\" x 15.5\" x 10\"<br/><strong>Interior measurements</strong> 19\" x 13.8\" x 8\"<br/><strong>Weight</strong> 11.85 lbs<br/><strong>Capacity</strong> 38L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_YtBjX4": {
+          "type": "product-measurements",
+          "disabled": true,
+          "settings": {
+            "variant_id": "51875227894060",
+            "variant_name": "",
+            "is_default": false,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Unbreakable Polycarbonate Shell and Aluminum Frame</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system and clip-in pocketed panel to help pack more in</li><li>Meets the airline requirements for most major airlines as carry-on luggage</li></ul><p><strong>Exterior measurements</strong> 20.5\" x 15.5\" x 10\"<br/><strong>Interior measurements</strong> 19\" x 13.8\" x 8\"<br/><strong>Weight</strong> 11.65 lbs<br/><strong>Capacity</strong> 38L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_jpgWYM": {
+          "type": "product-measurements",
+          "disabled": true,
+          "settings": {
+            "variant_id": "51875227926828",
+            "variant_name": "",
+            "is_default": false,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Unbreakable Polycarbonate Shell and Aluminum Frame</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system and clip-in pocketed panel to help pack more in</li><li>Meets the airline requirements for most major airlines as carry-on luggage</li></ul><p><strong>Exterior measurements</strong> 20.5\" x 15.5\" x 10\"<br/><strong>Interior measurements</strong> 19\" x 13.8\" x 8\"<br/><strong>Weight</strong> 11.6 lbs<br/><strong>Capacity</strong> 38L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_k7tcKA": {
+          "type": "product-measurements",
+          "disabled": true,
+          "settings": {
+            "variant_id": "51875227861292",
+            "variant_name": "",
+            "is_default": false,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Unbreakable Polycarbonate Shell and Aluminum Frame</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system and clip-in pocketed panel to help pack more in</li><li>Meets the airline requirements for most major airlines as carry-on luggage</li></ul><p><strong>Exterior measurements</strong> 20.5\" x 15.5\" x 10\"<br/><strong>Interior measurements</strong> 19\" x 13.8\" x 8\"<br/><strong>Weight</strong> 11.75 lbs<br/><strong>Capacity</strong> 38L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Shipping & Warranty",
+            "content": "<p>Free 3-Day Shipping, 100-day return policy, and NOBL’s lifetime warranty for lasting confidence.</p>",
+            "page": ""
+          }
+        },
+        "accordion_fATTXN": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "What's Included?",
+            "content": "<ul><li>NOBL Trunk 20” Suitcase</li><li>Protective luggage cover</li><li>TSA-approved combination lock system</li><li>Adjustable telescopic handle</li></ul>",
+            "page": ""
+          }
+        },
+        "77375662-08de-4be2-9771-d610d6220f48": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<div class=\"custom_link\" style=\"margin-top: -1.5rem\">\n\n\n<div class=\"product-info__block-item\" data-block-type=\"accordion\"><details class=\"accordion  group \" is=\"accordion-disclosure\" aria-expanded=\"false\" style=\"border-top: 0;\">\n  <summary style=\"opacity: 1;\"><span class=\"scroll_a accordion__toggle h6\">\n<div goto=\"reviews\"><span>Reviews →</span></div></span>\n  </summary>\n\n</details></div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "3233bcd4-14c7-4996-bc19-537ab342b394",
+        "vendor",
+        "title",
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d",
+        "price",
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84",
+        "693b040d-a148-49a2-9a93-76e011406d76",
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c",
+        "variant_picker",
+        "toggle_buttons_jBHKFN",
+        "sizing_buttons_dPxewP",
+        "gaurantee_free_gift_Lb6jnM",
+        "payment_terms",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g",
+        "buy_buttons_default_UC3qM3",
+        "buy_buttons",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e",
+        "cb61f319-3e20-4814-8957-9ba6572cf837",
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e",
+        "81d66082-de22-4e38-9a78-f63819d3d0d4",
+        "a72f67a9-3657-444b-9cf4-d63c98705164",
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8",
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef",
+        "complementary_products",
+        "4429c250-ff29-4e33-a9b7-440abad3e095",
+        "separator",
+        "quantity_selector",
+        "novel_shoppable_video_novel_product_riaGhD",
+        "description",
+        "4c14dcc3-c016-4055-8b44-46147a8c86be",
+        "739f0039-d761-4e17-9e07-a6f64e029bee",
+        "product_measurements_bCHkRQ",
+        "product_measurements_qwBeTE",
+        "product_measurements_Gy6KNt",
+        "product_measurements_YtBjX4",
+        "product_measurements_jpgWYM",
+        "product_measurements_k7tcKA",
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743",
+        "accordion_fATTXN",
+        "77375662-08de-4be2-9771-d610d6220f48"
+      ],
+      "custom_css": [
+        ".product-info__block-item:is( [data-block-type=\"inventory\"], [data-block-type=\"buy-buttons\"], [data-block-type=\"pickup-availability\"], [data-block-type=\"more-information\"], [data-block-type=\"offers\"] ) {--product-info-gap: 0.7rem;}",
+        ".text-success {color: black;}",
+        ".custom_link summary {opacity: 1 !important;}",
+        "@media screen and (max-width: 699px) {.feature-badge-list .feature-badge {padding: 0; font-size: 0.9rem; }}",
+        ".feature-badge-list {display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; width: 100%;}"
+      ],
+      "settings": {
+        "enable_badge": false,
+        "badge_text": "NEW!",
+        "enable_warranty_icon": true,
+        "show_breadcrumbs": false,
+        "enable_variant_tabs": false,
+        "container_size": "lg",
+        "product_info_size": 45,
+        "show_sticky_add_to_cart": true,
+        "custom_buy_button_text": "Add to Cart",
+        "custom_soldout_button_text": "Sold Out",
+        "pre_order_button_text": "PRE-ORDER",
+        "custom_loadmore_gallery_button_text": "Load More Images",
+        "custom_loadless_gallery_button_text": "Show Less",
+        "read_more_text": "Read more...",
+        "read_less_text": "Read less...",
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x",
+        "desktop_media_grid_gap": 10,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3.5,
+        "enable_featured_review": false,
+        "content": "<p>I seriously can't get over the top-notch quality of this luggage! 🙌 I've tried so many brands, but this one is legit the first choice for any travel-savvy peep like me. Even after months of hardcore use and my nephew's luggage-throwing antics, these bags are still looking fresh. 100% would recommend Nobl – it's a total game-changer! </p>",
+        "author": "Jennifer P."
+      }
+    },
+    "featured_shots_section_qrPc8i": {
+      "type": "featured-shots-section",
+      "blocks": {
+        "variant_slider_bk6pkb": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "OUR 5-STAR FUNCTIONS",
+            "variant_id": "52030871208236",
+            "is_default": true,
+            "feature_1_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Closeup_Black_03.webp",
+            "feature_1_title": "Aluminum Frame Strength",
+            "feature_1_description": "Premium durability and structure.",
+            "feature_2_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Closeup_Black_02.webp",
+            "feature_2_title": "TSA Locks",
+            "feature_2_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_3_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Closeup_Black_04.webp",
+            "feature_3_title": "Ergonomic Handles",
+            "feature_3_description": "Comfortable lifts, every trip.",
+            "feature_4_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Closeup_Black_05.webp",
+            "feature_4_title": "Bag Hooks",
+            "feature_4_description": "Hands free built-in hooks to hold your bags securely",
+            "feature_5_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Closeup_Black_06.webp",
+            "feature_5_title": "Cup Holder",
+            "feature_5_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_6_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Closeup_Black_01.webp",
+            "feature_6_title": " 360° Silent Wheels",
+            "feature_6_description": "Glide smoothly in any direction",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_W9ULDt": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "OUR 5-STAR FUNCTIONS",
+            "variant_id": "52030871339308",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_Carry-on-Trunk_Beige_03_734ed6b1-1492-4ebe-bcdd-6fd33b791dcd.webp",
+            "feature_1_title": "Aluminum Frame Strength",
+            "feature_1_description": "Premium durability and structure.",
+            "feature_2_image": "shopify://shop_images/nobl_Carry-on-Trunk_Beige_02_7a1421e7-6822-4800-8abf-6e4300970ec6.webp",
+            "feature_2_title": "TSA Locks",
+            "feature_2_description": "Keep your suitcase secure with TSA-approved locks for peace of mind",
+            "feature_3_image": "shopify://shop_images/nobl_Carry-on-Trunk_Beige_04_dbe1b508-2654-4104-bf61-6dfe43930e0e.webp",
+            "feature_3_title": "Ergonomic Handles",
+            "feature_3_description": "Comfortable lifts, every trip.",
+            "feature_4_image": "shopify://shop_images/nobl_Carry-on-Trunk_Beige_05_bb60a4d2-9d45-4eac-a1c9-17b9fcccd446.webp",
+            "feature_4_title": "Bag Hooks",
+            "feature_4_description": "Hands free built-in hooks to hold your bags securely",
+            "feature_5_image": "shopify://shop_images/nobl_Carry-on-Trunk_Beige_06_e9394838-9a35-4b5e-9656-00c162a35d18.webp",
+            "feature_5_title": "Cup Holder",
+            "feature_5_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_6_image": "shopify://shop_images/nobl_Carry-on-Trunk_Beige_01_c48fff59-f2bd-4117-bfc9-d8361d5ec64f.webp",
+            "feature_6_title": "360° Silent Wheels",
+            "feature_6_description": "Glide smoothly in any direction.",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_yrn6UD": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "OUR 5-STAR FUNCTIONS",
+            "variant_id": "52030871241004",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_Closeup_03_1.webp",
+            "feature_1_title": "Aluminum Frame Strength",
+            "feature_1_description": "Premium durability and structure.",
+            "feature_2_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_Closeup_02_1.webp",
+            "feature_2_title": "TSA Locks",
+            "feature_2_description": "Keep your suitcase secure with TSA-approved locks for peace of mind",
+            "feature_3_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_Closeup_04_1.webp",
+            "feature_3_title": "Ergonomic Handles",
+            "feature_3_description": "Comfortable lifts, every trip.",
+            "feature_4_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_Closeup_05_1.webp",
+            "feature_4_title": "Bag Hooks",
+            "feature_4_description": "Hands free built-in hooks to hold your bags securely",
+            "feature_5_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_Closeup_06_1_a48b581d-dbcc-480e-8bcf-72dba49aa32d.webp",
+            "feature_5_title": "Cup Holder",
+            "feature_5_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_6_image": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_Closeup_01_1.webp",
+            "feature_6_title": "360° Silent Wheel",
+            "feature_6_description": "Glide smoothly in any direction.",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_nHpczU": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "OUR 5-STAR FUNCTIONS",
+            "variant_id": "52030871306540",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_Carry-on-Trunk_Lavender_03_4a7ea898-2afa-4d78-bc90-3989f4b74f11.webp",
+            "feature_1_title": "Aluminum Frame Strength",
+            "feature_1_description": "Premium durability and structure.",
+            "feature_2_image": "shopify://shop_images/nobl_Carry-on-Trunk_Lavender_02_59d5966a-8ae1-4f8b-bb05-25e4b9448b32.webp",
+            "feature_2_title": "TSA Locks",
+            "feature_2_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_3_image": "shopify://shop_images/nobl_Carry-on-Trunk_Lavender_04_ac4a5a06-534d-40fb-8a9f-b5235bc71e27.webp",
+            "feature_3_title": "Ergonomic Handles",
+            "feature_3_description": "Comfortable lifts, every trip.",
+            "feature_4_image": "shopify://shop_images/nobl_Carry-on-Trunk_Lavender_05_f54d47de-db7e-457c-b78d-d0731d4e5ac1.webp",
+            "feature_4_title": "Bag Hooks",
+            "feature_4_description": "Hands free built-in hooks to hold your bags securely",
+            "feature_5_image": "shopify://shop_images/nobl_Carry-on-Trunk_Lavender_06_b806898e-c069-4119-9444-9d75bd9171e8.webp",
+            "feature_5_title": "Cup Holder",
+            "feature_5_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_6_image": "shopify://shop_images/nobl_Carry-on-Trunk_Lavender_01_7fd6b260-cbf2-4279-9b19-29969872b6d4.webp",
+            "feature_6_title": " 360° Silent Wheels ",
+            "feature_6_description": "Glide smoothly in any direction.",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_TGcwE6": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "OUR 5-STAR FUNCTIONS",
+            "variant_id": "52030871372076",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_Carry-on-Trunk_Red_03_0693d031-a3e0-41e1-ac1b-6ec37dfd1596.webp",
+            "feature_1_title": "Aluminum Frame Strength",
+            "feature_1_description": "Premium durability and structure",
+            "feature_2_image": "shopify://shop_images/nobl_Carry-on-Trunk_Red_02_1d4419c3-7077-47a2-beac-8229e74f6e11.webp",
+            "feature_2_title": "TSA Locks",
+            "feature_2_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_3_image": "shopify://shop_images/nobl_Carry-on-Trunk_Red_04_563c012d-88de-4dcf-9056-078097c8290f.webp",
+            "feature_3_title": "Ergonomic Handles",
+            "feature_3_description": "Comfortable lifts, every trip.",
+            "feature_4_image": "shopify://shop_images/nobl_Carry-on-Trunk_Red_05_395ab292-072f-44ba-b7af-2645d50b6de2.webp",
+            "feature_4_title": "Bag Hooks",
+            "feature_4_description": "Hands free built-in hooks to hold your bags securely",
+            "feature_5_image": "shopify://shop_images/nobl_Carry-on-Trunk_Red_06_2931934e-9d75-4f7b-8c7e-37aae661ec12.webp",
+            "feature_5_title": "Cup Holder",
+            "feature_5_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_6_image": "shopify://shop_images/nobl_Carry-on-Trunk_Red_01_5a3f61b9-f465-4422-9bc9-1f867ddd1dd0.webp",
+            "feature_6_title": "360° Silent Wheels",
+            "feature_6_description": "Glide smoothly in any direction.",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_pxY7n6": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "OUR 5-STAR FUNCTIONS",
+            "variant_id": "52030871273772",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_Carry-on-Trunk_Silver__3.webp",
+            "feature_1_title": "Aluminum Frame Strength",
+            "feature_1_description": "Premium durability and structure.",
+            "feature_2_image": "shopify://shop_images/nobl_Carry-on-Trunk_Silver__2.webp",
+            "feature_2_title": "TSA Locks",
+            "feature_2_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_3_image": "shopify://shop_images/nobl_Carry-on-Trunk_Silver__4.webp",
+            "feature_3_title": "Ergonomic Handles",
+            "feature_3_description": "Comfortable lifts, every trip.",
+            "feature_4_image": "shopify://shop_images/nobl_Carry-on-Trunk_Silver__5.webp",
+            "feature_4_title": "Bag Hooks",
+            "feature_4_description": "Hands free built-in hooks to hold your bags securely",
+            "feature_5_image": "shopify://shop_images/nobl_Carry-on-Trunk_Silver__6.webp",
+            "feature_5_title": "Cup Holder",
+            "feature_5_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_6_image": "shopify://shop_images/nobl_Carry-on-Trunk_Silver__1.webp",
+            "feature_6_title": "360° Silent Wheels",
+            "feature_6_description": "Glide smoothly in any direction.",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "variant_slider_bk6pkb",
+        "variant_slider_W9ULDt",
+        "variant_slider_yrn6UD",
+        "variant_slider_nHpczU",
+        "variant_slider_TGcwE6",
+        "variant_slider_pxY7n6"
+      ],
+      "name": "Product Features",
+      "settings": {}
+    },
+    "image_based_on_variants_XTX7tQ": {
+      "type": "Image-based-on-variants",
+      "blocks": {
+        "block_VH6mjV": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Trunk_Carry-On_Comparison_Banner-05_1.webp",
+            "mobile_image": "shopify://shop_images/Mobile_Version-11_b57d17d3-d88b-42a2-a421-4cd0f7d7e115.webp",
+            "block_id": "52030871208236",
+            "is_default": true
+          }
+        },
+        "block_9jVPmq": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Trunk_Carry-On_Comparison_Banner-02_1.webp",
+            "mobile_image": "shopify://shop_images/Mobile_Version-08_a770c4a1-cf97-4acc-acc6-d3abae20653f.webp",
+            "block_id": "52030871339308",
+            "is_default": false
+          }
+        },
+        "block_CfEMRM": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/02_Trunk_Carry-On_Comparison_Banner-04.webp",
+            "mobile_image": "shopify://shop_images/02_Trunk_Carry-On_Comparison_Banner-10.webp",
+            "block_id": "52030871241004",
+            "is_default": false
+          }
+        },
+        "block_6Kemf3": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Trunk_Carry-On_Comparison_Banner-03_1.webp",
+            "mobile_image": "shopify://shop_images/Mobile_Version-09_aa056ebf-c824-49c8-b6eb-4afa55d65039.webp",
+            "block_id": "52030871306540",
+            "is_default": false
+          }
+        },
+        "block_yyffqV": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Trunk_Carry-On_Comparison_Banner-01_1.webp",
+            "mobile_image": "shopify://shop_images/Mobile_Version-07_78374640-9a24-4b31-a7de-b3562638d6d2.webp",
+            "block_id": "52030871372076",
+            "is_default": false
+          }
+        },
+        "block_FnJBUV": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Trunk_Carry-On_Comparison_Banner-06_1.webp",
+            "mobile_image": "shopify://shop_images/Mobile_Version-12_8b051917-dbf4-496b-8f6d-7cb2ffebcebe.webp",
+            "block_id": "52030871273772",
+            "is_default": false
+          }
+        }
+      },
+      "block_order": [
+        "block_VH6mjV",
+        "block_9jVPmq",
+        "block_CfEMRM",
+        "block_6Kemf3",
+        "block_yyffqV",
+        "block_FnJBUV"
+      ],
+      "settings": {}
+    },
+    "comparison_image_W8DMyV": {
+      "type": "comparison-image",
+      "disabled": true,
+      "name": "Comparison Image",
+      "settings": {
+        "title": "The Only Carry-On  That Checks Every Box",
+        "title_color": "#282828",
+        "title_alignment": "center",
+        "title_font_weight": "500",
+        "title_font_size_desktop": 28,
+        "title_font_size_mobile": 22,
+        "title_margin_bottom": 20,
+        "image_desktop": "shopify://shop_images/nobl-vs-others-compare-table.png",
+        "image_max_width_desktop": 900,
+        "image_mobile": "shopify://shop_images/nobl-vs-others-compare-table.png",
+        "image_max_width_mobile": 400,
+        "text_content": "<p>* Ratings based on publicly available Trustpilot customer reviews as of October 2025. Trustpilot is an independent review platform and does not endorse any brand featured.</p>",
+        "text_color": "#282828",
+        "text_font_size_desktop": 12,
+        "text_font_size_mobile": 10
+      }
+    },
+    "featured_in_UGcLkt": {
+      "type": "featured-in",
+      "blocks": {
+        "logo_bg7GeX": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/travel-leisure-seeklogo.svg",
+            "logo_alt": "Travel Leisure",
+            "logo_link": ""
+          }
+        },
+        "logo_bM8UEh": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue-seeklogo.png",
+            "logo_alt": "Vogue",
+            "logo_link": ""
+          }
+        },
+        "logo_4tJ66M": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/forbes-seeklogo.svg",
+            "logo_alt": "Forbes",
+            "logo_link": ""
+          }
+        },
+        "logo_7Utzx7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gq-seeklogo_2c152b89-ab76-47ff-b5db-6af4e7f54659.svg",
+            "logo_alt": "GQ",
+            "logo_link": ""
+          }
+        },
+        "logo_jRLqyq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/cnn-seeklogo.png",
+            "logo_alt": "GQ",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_bg7GeX",
+        "logo_bM8UEh",
+        "logo_4tJ66M",
+        "logo_7Utzx7",
+        "logo_jRLqyq"
+      ],
+      "name": "Featured In",
+      "settings": {
+        "heading": "Featured In",
+        "heading_size": 18,
+        "heading_color": "#282828",
+        "background_color": "#faf7f3",
+        "logo_max_width": 150,
+        "logo_spacing": 20,
+        "logo_opacity": 100,
+        "hover_opacity": 100,
+        "grayscale_amount": 100,
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "faq_FNg776": {
+      "type": "faq",
+      "blocks": {
+        "category_Dg9dqF": {
+          "type": "category",
+          "disabled": true,
+          "settings": {
+            "title": "FAQ",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_gzM6qX": {
+          "type": "question",
+          "settings": {
+            "question": "Is the 20” carry-on approved?",
+            "answer": "<p>Yes, it fits most overhead compartments.</p>",
+            "html_code": ""
+          }
+        },
+        "question_mKwTmL": {
+          "type": "question",
+          "settings": {
+            "question": "Why choose trunk style?",
+            "answer": "<p>The upright design creates deeper, more organized storage.</p>",
+            "html_code": ""
+          }
+        },
+        "question_L4CPYQ": {
+          "type": "question",
+          "settings": {
+            "question": "Does it roll quietly?",
+            "answer": "<p>Yes, silent spinner wheels glide without noise</p>",
+            "html_code": ""
+          }
+        },
+        "question_QGt9df": {
+          "type": "question",
+          "settings": {
+            "question": "Is it water-resistant?",
+            "answer": "<p>The shell resists water, stains, and scratches.</p>",
+            "html_code": ""
+          }
+        },
+        "question_QFi7VH": {
+          "type": "question",
+          "settings": {
+            "question": "Does it come with a warranty?",
+            "answer": "<p>Yes, every trunk includes our lifetime warranty.</p>",
+            "html_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_Dg9dqF",
+        "question_gzM6qX",
+        "question_mKwTmL",
+        "question_L4CPYQ",
+        "question_QGt9df",
+        "question_QFi7VH"
+      ],
+      "custom_css": [
+        ".section-header.justify-self-center.text-center {display: block !important;}"
+      ],
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "separate_section_with_border": true,
+        "custom_class": "",
+        "show_categories": false,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "help_text": "",
+        "help_email": ""
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/Untitled_design_9.jpg",
+            "icon_width": 104,
+            "mobile_icon_width": 104,
+            "title": "Lifetime Warranty",
+            "content": "<p>We stand by the quality of every Nobl product with unmatched warranty commitments. On any manufacturing fault, anywhere you are in the world, Nobl will repair or replace your product for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1"
+      ],
+      "custom_css": [
+        ".bordered-section {background-color: #faf7f3; padding: 24px 0;}",
+        "@media only screen and (min-width: 768px) {.text-with-icons__inner {display: flex; align-items: flex-end; -webkit-justify-content: space-evenly; justify-content: space-evenly; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 80%; margin-left: auto; margin-right: auto; }}",
+        ".text-with-icons > :only-child {flex-basis: 100rem; color: black;}",
+        ".h4,:where(.prose h4) {font-size: var(--text-h1); line-height: 1.6; color: #000;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": true,
+        "testimonial_area": false,
+        "text": "",
+        "heading_tag": "h1",
+        "stack_on_mobile": false,
+        "icon_color": "",
+        "text_color": "#ffffff",
+        "text_alignment": "start"
+      }
+    },
+    "1699895646caa378cc": {
+      "type": "apps",
+      "blocks": {
+        "c9faf366-919b-416f-bd62-169e865af2e5": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "c9faf366-919b-416f-bd62-169e865af2e5"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_shots_section_qrPc8i",
+    "image_based_on_variants_XTX7tQ",
+    "comparison_image_W8DMyV",
+    "featured_in_UGcLkt",
+    "faq_FNg776",
+    "fea502b0-0599-4675-b29d-ccac92668b06",
+    "1699895646caa378cc"
+  ]
+}

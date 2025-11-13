@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.packing-cubes-alter.json",
+  "context": {
+    "market": "uae"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "custom_text_QwnMm7": {
+          "settings": {
+            "custom_text": "Black Friday Sale: BUY ONE, GET ONE 50% OFF"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "text": "Free Shipping"
+          }
+        },
+        "accordion_gEMjhr": {
+          "settings": {
+            "content": "<p></p><h4>Shipping</h4><p>3-Day Shipping within the USA for all orders.</p><h4>Returns</h4><p>We want you to love everything about getting Nobl, which is why we offer free returns and exchanges on unused items for the first 100 days.</p><h4>Guarantee</h4><p>Our packing cubes are backed by a quality guarantee that covers any defects in materials or craftsmanship, including zippers, seams, and fabric durability.</p><p></p>"
+          }
+        }
+      }
+    }
+  }
+}

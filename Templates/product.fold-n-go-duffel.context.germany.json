@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.fold-n-go-duffel.json",
+  "context": {
+    "market": "germany"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "Zum Warenkorb",
+        "custom_loadmore_gallery_button_text": "MEHR BILDER LADEN",
+        "custom_loadless_gallery_button_text": "WENIGER ANZEIGEN",
+        "read_more_text": "Mehr lesen...",
+        "read_less_text": "Weniger lesen..."
+      },
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "settings": {
+            "pattern": " 4.8/5 300 Verifizierte Bewertungen"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "settings": {
+            "content": "Zahlungen von €22,11/Monat mit"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "default_instock_text": "Auf Lager",
+            "default_out_of_stock_text": "Ausverkauft",
+            "default_low_stock_text": "Niedriger Bestand",
+            "text": "Kostenloser Versand"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "Veganes Leder"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Für 3-7 Tage Reisen packen"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Mehrere Taschen"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Geräumiges Schuhfach"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Details + Abmessungen",
+            "content": "<h3><strong>Duffel Bag</strong></h3><ul><li>2-in-1: flach ausbreiten für eine Kleiderhülle und zusammenfalten für eine Reisetasche.</li><li>5 Taschen: 1 oberer Reißverschluss, 2 kleine Reißverschlüsse, 2 Seitentaschen</li><li>2-Wege-Tragen: Handgriff und abnehmbarer Schulterriemen</li><li>Perfekte Größe für Reisen von 3-7 Tagen</li><li>Kompakt und leicht, aber geräumig<br/></li></ul><p><strong>Material:</strong> Veganes Leder</p><p><strong>Kapazität:</strong> 27L</p><p><strong>Maße:</strong> 55,9 cm x 25,9 cm x 78,7 cm</p><p><strong>Gewicht:</strong> 0,54 kg<strong> </strong>2,5 lbs</p>"
+
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Garantie auf Lebenszeit + Rückgaberecht",
+            "content": "<p><strong>Versand -</strong> Kostenloser Versand für alle Taschenbestellungen.<br/><br/>Wir möchten, dass Sie alles an Nobl lieben – deshalb bieten wir Rückgaben und Umtausch für ungenutzte Artikel innerhalb der ersten 100 Tage an.<br/><br/>Unsere Produkte sind durch eine lebenslange Garantie abgesichert, die alle Schäden an der Hülle, Rädern, Griffen, Reißverschlüssen und vielen weiteren funktionalen Elementen unseres Gepäcks abdeckt.</p>"
+          }
+        },
+        "accordion_fATTXN": {
+          "settings": {
+            "title": "Was ist enthalten?",
+            "content": "<ul><li>1x Fold-n-Go Duffel Bag<br/></li><li>1x Abnehmbarer Schultergurt<br/></li><li>1x Garantie auf Lebenszeit<br/>1x 100-Tage-Geld-zurück-Garantie</li></ul>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>2-in-1 Funktionalität</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Garantie auf Lebenszeit</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Mehrere Taschen</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>Schulterriemen</p>"
+          }
+        }
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "settings": {
+            "subheading": "EINE INNOVATIVE ART ZU PACKEN",
+            "title": "Zusammenfalten in 30 Sekunden",
+            "content": "<p>Legen Sie Ihr Fold-n-Go flach aus, um Anzüge oder Kleider ordentlich mit Kleiderbügeln unterzubringen und sie knitterfrei zu halten. Falten Sie es zu einer eleganten Reisetasche, um alle anderen Sachen zu verstauen. Packen war noch nie so einfach!</p>"
+          }
+        }
+      }
+    },
+    "17e76379-0707-484b-a043-185459017736": {
+      "settings": {},
+      "blocks": {
+        "bba11919-2003-4852-969c-e3524df4f954": {
+          "settings": {
+            "subheading": "EFFIZIENT ORGANISIEREN",
+            "title": "Ein Fach für alles",
+            "content": "<p>Nutzen Sie die zusätzlichen Taschen, um alle Ihre Essentials zu organisieren: ein oberer Reißverschluss für Ihr Telefon, 2 kleine Reißverschlüsse für Ihre Reisedokumente und Ladegeräte, 2 Seitentaschen für Ihre Toilettenartikel und Schuhe – ein separates Fach für alles!</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "SMART PACKEN, LEICHT REISEN",
+            "title": "Packen leicht gemacht",
+            "content": "<p>Die perfekte Größe für eine 3-7 Tage Reise: Geschäftstermin oder Wochenendausflug. Packen Sie alle Ihre Essentials in eine Tasche für eine kurze Reise mit dem cleveren Design der Fold-n-Go Duffel und zahlen Sie nie wieder extra für eingechecktes Gepäck!</p>"
+          }
+        }
+      }
+    },
+    "ec7705e7-9cbd-4b72-9f69-64bf369eee6e": {
+      "settings": {},
+      "blocks": {
+        "8023898e-3db7-400b-9639-4791527c5a50": {
+          "settings": {
+            "subheading": "IHRE RETTUNG BEIM ZWISCHENSTOPP",
+            "title": "Schuhfach",
+            "content": "<p>Verbessern Sie Ihre Reise mit unserer Tasche, die mit einem integrierten Schuhfach ausgestattet ist, damit Ihre Schuhe den Rest Ihrer Kleidung nicht beschmutzen.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Garantie auf Lebenszeit",
+            "content": "<p>Wir stehen hinter der Qualität jedes Nobl-Produkts mit unübertroffenen Garantieverpflichtungen. Bei jedem Herstellungsfehler, wo auch immer Sie sich befinden, wird Nobl Ihr Produkt für Sie reparieren oder ersetzen.</p>"
+          }
+        }
+      }
+    }
+  }
+}

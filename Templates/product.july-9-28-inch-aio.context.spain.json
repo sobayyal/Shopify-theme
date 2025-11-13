@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.july-9-28-inch-aio.json",
+  "context": {
+    "market": "spain"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "Agregar al carrito",
+        "custom_loadmore_gallery_button_text": "Cargar Más Imágenes",
+        "custom_loadless_gallery_button_text": "Mostrar Menos",
+        "read_more_text": "Leer más...",
+        "read_less_text": "Leer menos..."
+      },
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "settings": {
+            "pattern": " 4.9/5 - [count] Reseñas Verificadas"
+          }
+        },
+        "shoppay_payment_BkJ6cL": {
+          "settings": {
+            "content": "Pagos desde €22.11/mes con"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "all_in_one_black_inventory_text": "Poco stock",
+            "all_in_one_white_inventory_text": "8 unidades disponibles",
+            "all_in_one_forest_green_inventory_text": "5 unidades disponibles",
+            "all_in_one_baby_blue_inventory_text": "En stock",
+            "all_in_one_pink_inventory_text": "Poco stock",
+            "check_in_all_in_one_inventory_text": "En stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Poco stock",
+            "check_in_all_in_one_default_inventory_text": "En stock",
+            "default_instock_text": "En stock",
+            "default_out_of_stock_text": "Agotado",
+            "default_low_stock_text": "Poco stock",
+            "text": "Envío Gratuito"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "Ruedas Suaves De 360°"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Garantía De Por Vida"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Carcasa Irrompible De Policarbonato"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Candados Doble TSA De Combinación"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Detalles + Dimensiones",
+            "content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 28,3\" x 16,5\" x 10,5\"<br/><strong>Interiores</strong> 25,3\" x 15,2\"<br/><strong>Peso</strong> 10,6 lbs<br/><strong>Capacidad</strong> 99,1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_KpnBWp": {
+          "settings": {
+            "measurement_title": "Detalles + Dimensiones",
+            "measurement_content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 30.5\" x 20\" x 12\"<br/><strong>Interiores</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Peso</strong> 15.35 lbs<br/><strong>Capacidad</strong> 99.1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_rUTf6a": {
+          "settings": {
+            "measurement_title": "Detalles + Dimensiones",
+            "measurement_content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 30.5\" x 20\" x 12\"<br/><strong>Interiores</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Peso</strong> 15.35 lbs<br/><strong>Capacidad</strong> 99.1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_wpN7JH": {
+          "settings": {
+            "measurement_title": "Detalles + Dimensiones",
+            "measurement_content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 30.5\" x 20\" x 12\"<br/><strong>Interiores</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Peso</strong> 15.75 lbs<br/><strong>Capacidad</strong> 99.1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_KDrE4b": {
+          "settings": {
+            "measurement_title": "Detalles + Dimensiones",
+            "measurement_content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 30.5\" x 20\" x 12\"<br/><strong>Interiores</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Peso</strong> 15.3 lbs<br/><strong>Capacidad</strong> 99.1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_AqiVYq": {
+          "settings": {
+            "measurement_title": "Detalles + Dimensiones",
+            "measurement_content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 30.5\" x 20\" x 12\"<br/><strong>Interiores</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Peso</strong> 15.75 lbs<br/><strong>Capacidad</strong> 99.1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_bzBLKz": {
+          "settings": {
+            "measurement_content": "<h3><strong>Equipaje Facturado</strong></h3><ul><li>Carcasa irrompible de policarbonato y marco de aluminio. </li><li>Doble candado de combinación aprobado por la TSA para mayor seguridad. </li><li>Ruedas giratorias de 360° que aseguran un desplazamiento suave. </li><li>Asas de liberación lenta para facilitar el transporte. </li><li>Sistema de compresión interno y panel con bolsillos para ayudar a empacar más.</li></ul><p><strong>Medidas exteriores</strong> 30.5\" x 20\" x 12\"<br/><strong>Interiores</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Peso</strong> 15.75 lbs<br/><strong>Capacidad</strong> 99.1L<br/><em>Las medidas incluyen las ruedas</em></p><h4>Candado de combinación TSA </h4><p>Usar este candado Travel Sentry® permite que las autoridades de seguridad abran, inspeccionen y cierren tu equipaje sin causar daños. Para más información, visita: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Garantía De Por Vida + Política De Devoluciones",
+            "content": "<p><strong>Envío -</strong> Envío gratuito en 3 días para todas las órdenes de maletas.  <br/><br/>Queremos que ames todo sobre obtener Nobl, por lo que ofrecemos devoluciones de artículos no usados en los primeros 100 días. <br/><br/>Nuestras maletas están garantizadas por una cobertura que abarca cualquier daño en la carcasa, ruedas, asas, cremalleras y muchos otros elementos funcionales de nuestro equipaje.</p>"
+          }
+        },
+        "accordion_6XpeUa": {
+          "settings": {
+            "title": "¿Qué está incluido?",
+            "content": "<ul><li>1x Maleta Todo-en-Uno </li><li>1x Funda de equipaje (evita arañazos) </li><li>1x Garantía de por vida</li><li>1x Garantía de devolución de dinero de 100 días</li></ul>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>Carcasa de Policarbonato</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Garantía de Por Vida</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Almohadilla de Compresión</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>Ruedas 360°</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "TAMBIÉN PERFECTO POR DENTRO",
+            "title": "Empaque Simplificado",
+            "content": "<p>Hemos hecho que empacar más en tu viaje sea fácil. Nuestro sistema de compresión Y-Strap Nobl incluye una correa resistente que baja para crear más espacio en tu maleta. Todo nuestro forro es resistente a las manchas, lo que facilita la limpieza de cualquier accidente.</p>"
+          }
+        }
+      }
+    },
+    "134df837-4c6e-4cf9-b9f6-0fd246c0112f": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-subheading-1": {
+          "settings": {
+            "text": "¡A RODAR!"
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-heading-1": {
+          "settings": {
+            "text": "Las mejores ruedas que nunca has visto."
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-richtext-1": {
+          "settings": {
+            "content": "<p>Cuando no encontramos las ruedas perfectas, solo hubo una solución: diseñarlas nosotros mismos. Presentamos las ruedas giratorias SilentMove 360°. Extremadamente silenciosas, pueden manejar los adoquines de Europa y tienen garantía de por vida.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Garantía De Por Vida",
+            "content": "<p>Respaldamos la calidad de cada producto Nobl con compromisos de garantía incomparables. En caso de cualquier defecto de fabricación, dondequiera que estés en el mundo, Nobl reparará o reemplazará tu producto.</p>"
+          }
+        }
+      }
+    }
+  }
+}

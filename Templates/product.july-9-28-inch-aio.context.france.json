@@ -1,0 +1,197 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.july-9-28-inch-aio.json",
+  "context": {
+    "market": "france"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "Ajouter au panier",
+        "custom_loadmore_gallery_button_text": "PLUS D'IMAGES",
+        "custom_loadless_gallery_button_text": "MONTRER MOINS",
+        "read_more_text": "Lire plus...",
+        "read_less_text": "Lire moins..."
+      },
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "settings": {
+            "pattern": " 4.9/5 - [count] Avis vérifiés"
+          }
+        },
+        "shoppay_payment_BkJ6cL": {
+          "settings": {
+            "content": "Paiements à partir de 22,11 €/mois avec"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "all_in_one_black_inventory_text": "Stock Limité",
+            "all_in_one_white_inventory_text": "8 Restants en stock",
+            "all_in_one_forest_green_inventory_text": "5 Restants en stock",
+            "all_in_one_beige_inventory_text": "6 Restants en stock",
+            "all_in_one_baby_blue_inventory_text": "En stock",
+            "all_in_one_pink_inventory_text": "Stock Limité",
+            "check_in_all_in_one_inventory_text": "En stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Stock Limité",
+            "check_in_all_in_one_default_inventory_text": "En stock",
+            "default_instock_text": "En stock",
+            "default_out_of_stock_text": "En rupture de stock",
+            "default_low_stock_text": "Stock Limité",
+            "default_in__coming_stock_text": "En stock à venir",
+            "text": "Livraison gratuite"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "Roues pivotantes à 360°"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Garantie à vie"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Coque incassable en polycarbonate"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Double cadenas TSA à combinaison"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Détails + Dimensions",
+            "content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids</strong> 10,6 lbs <br/><strong>Capacité</strong> 99,1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+         "product_measurements_KpnBWp": {
+          "settings": {
+            "measurement_title": "Détails + Dimensions",
+            "measurement_content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids </strong>15.35 lbs <br/><strong>Capacité</strong> 99.1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_rUTf6a": {
+          "settings": {
+            "measurement_title": "Détails + Dimensions",
+            "measurement_content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids</strong> 15.35 lbs <br/><strong>Capacité</strong> 99.1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_wpN7JH": {
+          "settings": {
+            "measurement_content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids</strong> 15.75 lbs <br/><strong>Capacité</strong> 99.1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_KDrE4b": {
+          "settings": {
+            "measurement_content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids </strong>15.3 lbs <br/><strong>Capacité</strong> 99.1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_AqiVYq": {
+          "settings": {
+            "measurement_title": "Détails + Dimensions",
+            "measurement_content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids</strong> 15.75 lbs <br/><strong>Capacité</strong> 99.1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_bzBLKz": {
+          "settings": {
+            "measurement_content": "<h3><strong>Bagage Enregistré </strong></h3><ul><li>Coque incassable en polycarbonate et cadre en aluminium </li><li>Double cadenas TSA approuvé pour plus de sécurité </li><li>Roues pivotantes à 360° pour un déplacement fluide </li><li>Poignées à relâchement lent pour un transport facile </li><li>Système de compression intérieur et panneau avec poches pour maximiser le rangement <br/></li></ul><p><strong>Dimensions extérieures</strong> 30.5\" x 20\" x 12\" <br/><strong>Dimensions intérieures</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Poids</strong> 15.75 lbs <br/><strong>Capacité</strong> 99.1L <br/><em>Dimensions incluant les roues. <br/></em></p><h4>Cadenas TSA Approuvé </h4><p>Ce cadenas Travel Sentry® permet aux autorités de sécurité d'ouvrir, d'inspecter et de refermer votre bagage sans l'endommager. Pour plus d'informations, visitez: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Garantie à Vie + Politique de Retour",
+            "content": "<p><strong>Expédition -</strong> Livraison gratuite pour toutes les commandes de valises. <br/><br/>Nous voulons que vous aimiez tout dans Nobl, c'est pourquoi nous offrons des retours pour les articles non utilisés dans les 100 premiers jours. <br/><br/>Nos valises sont garanties par une garantie couvrant tout dommage à la coque, aux roues, aux poignées, aux fermetures éclair et à de nombreux autres éléments fonctionnels de notre bagage.</p>"
+          }
+        },
+        "accordion_6XpeUa": {
+          "settings": {
+            "title": "Qu'est-ce qui est inclus?",
+            "content": "<ul><li>1x Valise Tout-en-Un </li><li>1x Housse de protection (préserve des rayures) </li><li>1x Garantie à vie </li><li>1x Garantie de remboursement de 100 jour</li></ul>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {
+        "text": "Check-in : Tout-en-Un"
+      },
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>Coque en Polycarbonate</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Garantie à Vie</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Coussin de Compression</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>Roues 360°</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "PARFAIT À L'INTÉRIEUR AUSSI",
+            "title": "Emballage Simplifié",
+            "content": "<p>Nous avons rendu facile de mettre plus dans votre valise. Notre système de compression Y-Strap Nobl offre une sangle robuste qui compresse pour créer plus d'espace dans votre valise. Notre doublure est résistante aux taches, ce qui rend tout accident facile à nettoyer.</p>"
+          }
+        }
+      }
+    },
+    "134df837-4c6e-4cf9-b9f6-0fd246c0112f": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-subheading-1": {
+          "settings": {
+            "text": "PARTONS"
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-heading-1": {
+          "settings": {
+            "text": "Les Meilleures Roues Jamais Vues."
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-richtext-1": {
+          "settings": {
+            "content": "<p>Quand nous n'avons pas trouvé les roues parfaites, la solution était de les concevoir nous-mêmes. Voici les roues SilentMove 360°. Extrêmement silencieuses, elles supportent les pavés d'Europe et bénéficient d'une garantie à vie.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Garantie à Vie",
+            "content": "<p>Nous garantissons la qualité de chaque produit Nobl avec des engagements de garantie inégalés. En cas de défaut de fabrication, où que vous soyez dans le monde, Nobl réparera ou remplacera votre produit.</p>"
+          }
+        }
+      }
+    }
+  }
+}

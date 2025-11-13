@@ -1,0 +1,168 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.fold-n-go-duffel.json",
+  "context": {
+    "market": "netherlands"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "IN WINKELWAGEN",
+        "custom_loadmore_gallery_button_text": "MEER AFBEELDINGEN LADEN",
+        "custom_loadless_gallery_button_text": "MINDER WEERGEVEN",
+        "read_more_text": "Lees meer...",
+        "read_less_text": "Lees minder..."
+      },
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "settings": {
+            "pattern": " 4.8/5 300 Gecontroleerde beoordelingen"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "settings": {
+            "content": "Betalingen van 22,11/maand met"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "default_instock_text": "Op voorraad",
+            "default_out_of_stock_text": "Uitverkocht",
+            "default_low_stock_text": "Lage voorraad",
+            "text": "Gratis Verzending"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "Vegan Leer"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Geschikt voor reizen van 3-7 dagen"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Meerdere vakken"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Ruim schoenencompartiment"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Details + Afmetingen",
+             "content": "<h3><strong>Duffel Bag</strong></h3><ul><li>2-in-1: leg het plat neer als kledingzak en vouw het op als een duffel bag.<br/></li><li>5 vakken: 1 bovenrits, 2 kleine ritsen, 2 zijvakken<br/></li><li>2 draagopties: handvat en afneembare schouderriem<br/></li><li>Perfecte maat voor reizen van 3-7 dagen</li><li>Compact en lichtgewicht, maar ruim</li></ul><p><strong>Materiaal:</strong> Vegan Leer<br/><strong>Capaciteit:</strong> 27L<br/><strong>Afmetingen:</strong> 55,9 cm x 25,9 cm x 78,7 cm<br/><strong>Gewicht:</strong> 2,5 kg</p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Levenslange Garantie + Retourbeleid",
+            "content": "<p><strong>Verzending -</strong> Gratis verzending binnen 3 dagen voor alle tasbestellingen.<br/><br/>Wij willen dat u van alles aan Nobl houdt - daarom bieden wij gratis retouren en omruilingen van ongebruikte artikelen binnen de eerste 100 dagen.<br/><br/>Onze producten zijn gegarandeerd met een levenslange garantie die schade dekt aan de schaal, wielen, handgrepen, ritsen en vele andere functionele elementen van onze bagage.</p>"
+          }
+        },
+        "accordion_fATTXN": {
+          "settings": {
+            "title": "Wat is inbegrepen?",
+            "content": "<ul><li>1x Fold-n-Go Duffel Bag<br/></li><li>1x Afneembare Schouderriem<br/></li><li>1x Levenslange Garantie<br/></li><li>1x 100-Dagen Geld-Terug-Garantie</li></ul>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>2-in-1 Functionaliteit</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Levenslange Garantie</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Meerdere vakken</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>Schouderriem</p>"
+          }
+        }
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "settings": {
+            "subheading": "EEN INNOVATIEVE MANIER VAN INPAKKEN",
+            "title": "Opvouwen in 30 seconden",
+            "content": "<p>Vouw uw Fold-n-Go plat om uw pakken of jurken met hangers netjes te leggen en kreukvrij te houden. Vouw het op tot een strakke duffel om al uw andere spullen in te pakken. Inpakken is nog nooit zo eenvoudig geweest!</p>"
+          }
+        }
+      }
+    },
+    "17e76379-0707-484b-a043-185459017736": {
+      "settings": {},
+      "blocks": {
+        "bba11919-2003-4852-969c-e3524df4f954": {
+          "settings": {
+            "subheading": "EFFICIËNT ORGANISEREN",
+            "title": "Een vak voor alles",
+            "content": "<p>Gebruik de extra vakken om al uw benodigdheden te organiseren: een bovenrits voor uw telefoon, 2 kleine ritsen voor uw reisdocumenten en opladers, 2 zijvakken voor uw toiletartikelen en schoenen - een apart compartiment voor alles!</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "SLIM INPAKKEN, LICHT REIZEN",
+            "title": "Eenvoudig inpakken",
+            "content": "<p>De perfecte maat om in te pakken voor een reis van 3-7 dagen: zakelijke vergadering of weekenduitje. Pak al uw benodigdheden in één tas voor een korte trip met het slimme ontwerp van de Fold-n-Go Duffel en betaal nooit extra voor het inchecken van bagage!</p>"
+          }
+        }
+      }
+    },
+    "ec7705e7-9cbd-4b72-9f69-64bf369eee6e": {
+      "settings": {},
+      "blocks": {
+        "8023898e-3db7-400b-9639-4791527c5a50": {
+          "settings": {
+            "subheading": "UW OVERSTAPLIFELIJN",
+            "title": "Schoenencompartiment",
+            "content": "<p>Upgrade uw reiservaring met onze tas die is uitgerust met een ingebouwd schoenencompartiment, zodat uw schoenen de rest van uw outfit niet vuil maken.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Levenslange Garantie",
+            "content": "<p>Wij staan achter de kwaliteit van elk Nobl-product met ongeëvenaarde garantieverbintenissen. Bij een fabricagefout, waar u zich ook bevindt, zal Nobl uw product voor u repareren of vervangen.</p>"
+          }
+        }
+      }
+    }
+  }
+}

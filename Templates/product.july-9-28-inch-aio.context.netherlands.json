@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.july-9-28-inch-aio.json",
+  "context": {
+    "market": "netherlands"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "IN WINKELWAGEN",
+        "custom_loadmore_gallery_button_text": "MEER AFBEELDINGEN LADEN",
+        "custom_loadless_gallery_button_text": "MINDER WEERGEVEN",
+        "read_more_text": "Lees meer...",
+        "read_less_text": "Lees minder..."
+      },
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "settings": {
+            "pattern": " 4.9/5 - [count] Bevestigde Beoordelingen"
+          }
+        },
+        "shoppay_payment_BkJ6cL": {
+          "settings": {
+            "content": "Betalingen van 22,11/maand met"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "all_in_one_black_inventory_text": "Beperkte Voorraad",
+            "all_in_one_white_inventory_text": "8 Op Voorraad",
+            "all_in_one_forest_green_inventory_text": "5 Op Voorraad",
+            "all_in_one_beige_inventory_text": "6 Op Voorraad",
+            "all_in_one_baby_blue_inventory_text": "Op Voorraad",
+            "all_in_one_pink_inventory_text": "Beperkte Voorraad",
+            "check_in_all_in_one_inventory_text": "Op Voorraad",
+            "check_in_all_in_one_forest_green_inventory_text": "Beperkte Voorraad",
+            "default_instock_text": "Op Voorraad",
+            "default_out_of_stock_text": "Uitverkocht",
+            "default_low_stock_text": "Beperkte Voorraad",
+            "text": "Gratis Verzending",
+            "check_in_all_in_one_default_inventory_text": "Op voorraad"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "360° Soepele Wielen"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Levenslange Garantie"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Onbreekbare polycarbonaat behuizing"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Dubbele TSA-combinatiesloten"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Details + Afmetingen",
+            "content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 10.6 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_KpnBWp": {
+          "settings": {
+            "measurement_content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 15.35 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_rUTf6a": {
+          "settings": {
+            "measurement_title": "Details + Afmetingen",
+            "measurement_content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 15.35 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_wpN7JH": {
+          "settings": {
+            "measurement_content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 15.75 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_KDrE4b": {
+          "settings": {
+            "measurement_title": "Details + Afmetingen",
+            "measurement_content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 15.3 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_AqiVYq": {
+          "settings": {
+            "measurement_title": "Details + Afmetingen",
+            "measurement_content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 15.75 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_bzBLKz": {
+          "settings": {
+            "measurement_content": "<h3>Ingecheckte Bagage<br/></h3><ul><li>Onbreekbare polycarbonaat behuizing en aluminium frame<br/></li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid<br/></li><li>360° draaibare wielen die een soepele rit garanderen<br/></li><li>Slow-release handgrepen voor eenvoudig dragen<br/></li><li>Interieurcompressiesysteem en een clip-in paneel met zakken om meer in te pakken</li></ul><p><strong>Exterieurafmetingen</strong> 30.5\" x 20\" x 12\"<br/><strong>Interieurafmetingen</strong> 27.3\" x 18.5\" x 11\"<br/><strong>Gewicht</strong> 15.75 lbs<br/><strong>Capaciteit</strong> 99.1L<br/><em>Afmetingen inclusief wielen.</em></p><h4>TSA-goedgekeurd combinatieslot<br/></h4><p>Met dit Travel Sentry® slot kan uw bagage worden geopend, geïnspecteerd en opnieuw vergrendeld door de beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Levenslange Garantie + Retourbeleid",
+            "content": "<p>Verzending - Gratis 3-Daagse Verzending voor alle kofferbestellingen.<br/><br/>We willen dat u alles aan Nobl geweldig vindt – daarom bieden we retouren op ongebruikte items binnen de eerste 100 dagen.<br/><br/>Onze koffers zijn gedekt door een garantie die schade aan de behuizing, wielen, handvatten, ritsen en vele andere functionele elementen van onze bagage dekt.</p>"
+          }
+        },
+        "accordion_6XpeUa": {
+          "settings": {
+            "title": "Wat Is Inbegrepen?",
+            "content": "<ul><li>1x All-in-One Koffer<br/></li><li>1x Kofferhoes (Voorkomt krassen)<br/></li><li>1x Levenslange Garantie<br/></li><li>1x 100-Dagen Niet-goed-geld-terug-garantie</li></ul>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>Polycarbonaat Behuizing</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Levenslange Garantie</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Compressiepad</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>360° Wielen</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "PERFECT VAN BINNEN",
+            "title": "Inpakken moet makkelijk en leuk zijn.",
+            "content": "<p>We hebben het eenvoudig gemaakt om meer in je reis te passen. Ons Nobl Y-Strap compressiesysteem biedt een stevige band die naar beneden trekt om meer ruimte in je koffer te creëren. Al onze voeringen zijn vlekbestendig, waardoor ongelukken gemakkelijk schoon te maken zijn.</p>"
+          }
+        }
+      }
+    },
+    "134df837-4c6e-4cf9-b9f6-0fd246c0112f": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-subheading-1": {
+          "settings": {
+            "text": "Laten We Rollen"
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-heading-1": {
+          "settings": {
+            "text": "De beste wielen die je nooit hebt gezien."
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-richtext-1": {
+          "settings": {
+            "content": "<p>Toen we de perfecte wielen niet konden vinden, was er maar één oplossing – ze zelf ontwerpen. Maak kennis met SilentMove 360° draaibare wielen. Zeer stil, kunnen ze de kasseien van Europa aan en hebben een levenslange garantie.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Levenslange Garantie",
+            "content": "<p>Wij staan achter de kwaliteit van elk Nobl-product met ongeëvenaarde garantiebelangen. Bij een fabricagefout, waar u ook bent ter wereld, zal Nobl uw product voor u repareren of vervangen.</p>"
+          }
+        }
+      }
+    }
+  }
+}

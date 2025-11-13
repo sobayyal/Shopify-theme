@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.luggage-cover.json",
+  "context": {
+    "market": "rest-of-world"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "custom_text_wVtGQE": {
+          "settings": {
+            "custom_text": "Black Friday Sale: BUY ONE, GET ONE 25% OFF"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "text": "Free Shipping"
+          }
+        },
+        "accordion_aWqC3Y": {
+          "settings": {
+            "content": "<p>3-Day Shipping on all U.S. orders.<br/>30-Day risk-free returns.</p>"
+          }
+        }
+      }
+    }
+  }
+}

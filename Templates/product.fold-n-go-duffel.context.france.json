@@ -1,0 +1,169 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.fold-n-go-duffel.json",
+  "context": {
+    "market": "france"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "AJOUTER AU PANIER",
+        "custom_loadmore_gallery_button_text": "CHARGER PLUS D'IMAGES",
+        "custom_loadless_gallery_button_text": "MONTRER MOINS",
+        "read_more_text": "Lire plus...",
+        "read_less_text": "Lire moins..."
+      },
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "settings": {
+            "pattern": " 4.8/5 300 Avis Vérifiés"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "settings": {
+            "content": "Paiements à partir de 22,11 €/mois avec"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "default_instock_text": "En stock",
+            "default_out_of_stock_text": "Rupture de stock",
+            "default_low_stock_text": "Stock Limité",
+            "text": "Livraison gratuite"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "Cuir Vegan"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Range Pour des Voyages de 3 à 7 Jours"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Poches Multiples"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Compartiment Spacieux Pour Chaussures"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Détails + Dimensions",
+             "content": "<h3><strong>Sac de Sport </strong></h3><ul><li>2-en-1: étalez-le à plat pour un sac à vêtements et pliez-le pour un sac de sport. </li><li>5 poches: 1 fermeture éclair supérieure, 2 petites fermetures, 2 poches latérales </li><li>Transport 2-en-1: port à la main et bandoulière détachable </li><li>Taille parfaite pour des voyages de 3 à 7 jours </li><li>Compact et léger, mais spacieux  </li></ul><p></p><p><strong>Matériau:</strong> Cuir vegan  <br/><strong>Capacité:</strong> 27L  <br/><strong>Dimensions</strong> 22” x 10,2\" x 31\"  <br/><strong>Poids</strong> 2,5 lb</p>"
+
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Garantie à vie + Politique de retour",
+            "content": "<p>Expédition - Livraison gratuite pour toutes les commandes de sacs.  </p><p>Nous voulons que vous aimiez tout de Nobl, c'est pourquoi nous proposons des retours et échanges sur les articles non utilisés pendant les 100 premiers jours.  <br/><br/>Nos produits sont garantis par une garantie à vie qui couvre tout dommage à la coque, aux roues, aux poignées, aux fermetures éclair, et bien d'autres éléments fonctionnels de nos bagages.</p>"
+          }
+        },
+        "accordion_fATTXN": {
+          "settings": {
+            "title": "Ce qui est inclus",
+            "content": "<ul><li>1x Sac de sport Fold-n-Go </li><li>1x Bandoulière détachable </li><li>1x Garantie à vie </li><li>1x Garantie de remboursement sous 100 jours</li></ul>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>Fonctionnalité 2-en-1</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Garantie à Vie</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Poches Multiples</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>Bandoulière</p>"
+          }
+        }
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "settings": {
+            "subheading": "UNE FAÇON INNOVANTE DE FAIRE SES BAGAGES",
+            "title": "Repliez en 30 Secondes",
+            "content": "<p>Étalez votre Fold-n-Go à plat pour disposer vos costumes ou robes sur cintres et les garder sans plis. Repliez-le en un sac de sport élégant pour y ranger toutes vos autres affaires. Faire ses bagages n’a jamais été aussi facile!</p>"
+          }
+        }
+      }
+    },
+    "17e76379-0707-484b-a043-185459017736": {
+      "settings": {},
+      "blocks": {
+        "bba11919-2003-4852-969c-e3524df4f954": {
+          "settings": {
+            "subheading": "ORGANISEZ EFFICACEMENT",
+            "title": "Une Poche Pour Chaque Chose",
+            "content": "<p>Utilisez les poches supplémentaires pour organiser tous vos essentiels : une fermeture éclair supérieure pour votre téléphone, 2 petites fermetures pour vos documents de voyage et chargeurs, 2 poches latérales pour vos articles de toilette et chaussures - un compartiment séparé pour chaque chose!</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "FAITES VOS BAGAGES INTELLIGEMMENT, VOYAGEZ LÉGER",
+            "title": "Faire Ses Bagages en Toute Simplicité",
+            "content": "<p>La taille parfaite pour un voyage de 3 à 7 jours : appel d'affaires ou escapade de week-end. Rangez tous vos essentiels dans un seul sac pour un court voyage avec le sac de sport Fold-n-Go et ne payez plus jamais de supplément pour enregistrer des bagages !</p>"
+          }
+        }
+      }
+    },
+    "ec7705e7-9cbd-4b72-9f69-64bf369eee6e": {
+      "settings": {},
+      "blocks": {
+        "8023898e-3db7-400b-9639-4791527c5a50": {
+          "settings": {
+            "subheading": "VOTRE ALLIÉ EN CAS D’ESCALE",
+            "title": "Compartiment à Chaussures",
+            "content": "<p>Améliorez votre expérience de voyage avec notre sac équipé d'un compartiment à chaussures intégré pour garantir que vos chaussures ne salissent pas le reste de vos vêtements.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Garantie à Vie",
+            "content": "<p>Nous garantissons la qualité de chaque produit Nobl avec des engagements de garantie inégalés. En cas de défaut de fabrication, où que vous soyez dans le monde, Nobl réparera ou remplacera votre produit pour vous.</p>"
+          }
+        }
+      }
+    }
+  }
+}

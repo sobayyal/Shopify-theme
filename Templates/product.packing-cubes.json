@@ -1,0 +1,491 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_bGQkqW": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h1"
+          }
+        },
+        "loox_reviews_loox_rating_bzE6p3": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "[count] Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
+        },
+        "variant_picker_JBfyPn": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "tabs_zJVWDU": {
+          "type": "tabs",
+          "settings": {
+            "separate_section_with_border": true,
+            "subheading": "",
+            "heading": "",
+            "text_alignment": "start",
+            "open_on_mobile": false,
+            "title1": "OVERVIEW",
+            "content1": "<p>Say Goodbye to over-stuffed suitcases with the Nobl Compressible Packing Cubes.<br/><br/>Our compressible packing cubes save you 18% more space while keeping your clothes neatly organized. Designed to save space and made to fit perfectly in your Nobl luggage.<br/><br/>Our compression packing cubes are made to last with all-premium materials. The exterior is constructed with tear-resistant nylon twill and interior is made with ultra-soft cotton blend that will protect your garments. <br/><br/>A breathable mesh top panel lets you easily see what’s inside without unpacking, while the anti-catch zippers ensure your packing is always snag-free.<br/><br/><strong>SIX PACK:</strong> 2 X SMALL, 2 X MEDIUM, 1 X LARGE, 1 X EXTRA LARGE<br/></p>",
+            "title2": "FEATURES",
+            "content2": "<ul><li>Premium soft-touch nylon and a heavy thread mesh top</li><li>Side carry handles on each cell</li><li>100% stain-proof and machine washable</li><li>Four sizes for all your packing needs</li><li>100% nylon with weighted mesh. Machine washable</li></ul>",
+            "title3": "SPECS",
+            "content3": "<p>Small: 10.2\" x 3\" x 6.7\"<br/><br/>Medium: 14.5\" x 5\" x 6.7\"<br/><br/>Large: 14.5\" x 4\" x 10\"<br/><br/>X-Large: 17\" x 4.3\" x 13\"</p>",
+            "title4": "SHIPPING + 100-DAY RETURNS",
+            "content4": "<p>Shipping<strong> </strong>-<strong> </strong>Free Shipping for all suitcase orders.<br/><br/>Returns - We want you to love everything about getting Nobl, which is why we offer free returns and exchanges on unused items for the first 100 days.<br/><br/>Guarantee - Our suitcases are guaranteed by a warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage. </p>",
+            "title5": "",
+            "content5": ""
+          }
+        },
+        "buy_buttons_Jqxwyp": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_icon_price": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "shoppay_payment_YcJC7m": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "or 4 installments of $13.75with"
+          }
+        }
+      },
+      "block_order": [
+        "title_bGQkqW",
+        "loox_reviews_loox_rating_bzE6p3",
+        "variant_picker_JBfyPn",
+        "tabs_zJVWDU",
+        "buy_buttons_Jqxwyp",
+        "shoppay_payment_YcJC7m"
+      ],
+      "settings": {
+        "show_breadcrumbs": true,
+        "container_size": "full",
+        "product_info_size": 30,
+        "show_sticky_add_to_cart": true,
+        "center_basic_info": false,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "desktop_media_grid_gap": 30,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "enable_featured_review": false,
+        "content": "",
+        "author": ""
+      }
+    },
+    "text_with_icons_pXrxP4": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_MnTYqj": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/11111.png",
+            "icon_width": 184,
+            "mobile_icon_width": 172,
+            "title": "Compact for your socks, cosmetics, underwear, and toiletries",
+            "content": "<p>SMALL</p>"
+          }
+        },
+        "item_pBcM4f": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-customer-support",
+            "custom_icon": "shopify://shop_images/2222.png",
+            "icon_width": 192,
+            "mobile_icon_width": 176,
+            "title": "Perfect for shoes, socks, cosmetics, underwear and accessories",
+            "content": "<p>MEDIUM</p>"
+          }
+        },
+        "item_LaeBAD": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/3333fixed.png",
+            "icon_width": 192,
+            "mobile_icon_width": 176,
+            "title": "Daily essentials: t-shirts, jeans, and sweaters",
+            "content": "<p>LARGE</p>"
+          }
+        },
+        "item_rx6kjG": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "custom_icon": "shopify://shop_images/444444.png",
+            "icon_width": 200,
+            "mobile_icon_width": 200,
+            "title": "Easily fits entire outfits keeping them organized",
+            "content": "<p> EXTRA LARGE</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_MnTYqj",
+        "item_pBcM4f",
+        "item_LaeBAD",
+        "item_rx6kjG"
+      ],
+      "custom_css": [
+        ".section-spacing {background-color: #f6f3ef; padding: 0 0 32px 0;}",
+        ".prose p.h2 {padding: 24px; font-size: 38px; font-weight: 500; letter-spacing: -1.17px; color: #000; font-family: Objectivity, sans-serif;}",
+        ".h4 {font-size: 16px; line-height: 1.5; letter-spacing: 0.1px; padding: 16px 35px; color: #000000; font-weight: 500;}",
+        ".container {width: 1775px;}",
+        ".text-with-icons {gap: unset;}",
+        ".text-with-icons__item {flex-basis: 25%;}",
+        ".prose p {font-size: 15px; padding: 16px 0; color: #000000; line-height: 1.5; letter-spacing: 0.1px; font-weight: 500;}"
+      ],
+      "settings": {
+        "unique_class": "featured-sizes",
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "text": "Sizes That Fit Your Every Need",
+        "heading_tag": "h2",
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "center"
+      }
+    },
+    "image_with_text_block_UeXV9J": {
+      "type": "image-with-text-block",
+      "disabled": true,
+      "settings": {
+        "image_size": "auto",
+        "image": "shopify://shop_images/banner1black_a54d35e849_1.jpg",
+        "content_width": "sm",
+        "enable_parallax": false,
+        "remove_vertical_spacing": true,
+        "block_text_color": "",
+        "block_background": ""
+      }
+    },
+    "multi_column_Q7GRUp": {
+      "type": "multi-column",
+      "blocks": {
+        "video_with_text_mr44Vw": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/Untitled design (9).mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h2",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_zdVRTJ": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "SKIP THE MESS",
+            "title": "Find what you need, exactly when you need it.",
+            "heading_tag": "h2",
+            "content": "<p>Packing cubes simplify organizing your clothes and travel essentials. Designed for different needs, some cubes fit large items like jackets, others are perfect for shoes, and some are deeper for socks and underwear. No matter what you're packing, you'll find it with ease, wherever you are.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_with_text_mr44Vw",
+        "image_with_text_zdVRTJ"
+      ],
+      "custom_css": [
+        ".multi-column__item {align-content: center;}",
+        ".h6 {font-size: 12px; font-weight: 500; line-height: 2.25; letter-spacing: 0.71px; padding: 16px 0; margin: 0 !important;}",
+        ".h2 {font-size: 35px; font-weight: 500; letter-spacing: -1.39px; color: rgb(40, 40, 40); padding: 16px 0; margin: 0 !important;}",
+        "p {margin: 16px 0 !important; font-size: 21px; font-weight: normal; letter-spacing: 0.12px; color: rgb(40, 40, 40);}"
+      ],
+      "settings": {
+        "unique_class": "features-1",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "xs",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "multi_column_TPHaqy": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_nTfDa6": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "",
+            "title": "Maximize your travel potential",
+            "heading_tag": "h2",
+            "content": "<p>Our Packing Cubes are designed to fit seamlessly into every Nobl suitcase, optimizing your packing space for any journey.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "video_with_text_jQaifa": {
+          "type": "video_with_text",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Packing_Cells_2.mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h2",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_8LwDhV": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Add_a_heading_7_85c7360b-7e86-4665-a534-73bb5d88f528.jpg",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_nTfDa6",
+        "video_with_text_jQaifa",
+        "image_with_text_8LwDhV"
+      ],
+      "custom_css": [
+        ".multi-column__item {align-content: center;}",
+        ".h6 {font-size: 12px; font-weight: 600; line-height: 2.25; letter-spacing: 0.71px; padding: 16px 0; margin: 0 !important;}",
+        ".h2 {font-size: 35px; font-weight: 500; letter-spacing: -1.39px; color: rgb(40, 40, 40); padding: 16px 0; margin: 0 !important;}",
+        "p {margin: 16px 0 !important; font-size: 21px; font-weight: normal; letter-spacing: 0.12px; color: rgb(40, 40, 40);}"
+      ],
+      "settings": {
+        "unique_class": "features-2",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "start",
+        "text_alignment": "start",
+        "spacing": "xs",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "multi_column_QXFACC": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_7TDt3a": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_36.jpg",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_a9E3aw": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "COMPRESSIBLE DESIGN",
+            "title": "Save 18% more space",
+            "heading_tag": "h2",
+            "content": "<p>Save up to 18% more space in your suitcase with our innovative cubes. The compression system allows you to pack efficiently, keeping your clothes neatly folded and compact. With these cubes, you can fit more into your luggage, making travel easier and more organized.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_7TDt3a",
+        "image_with_text_a9E3aw"
+      ],
+      "custom_css": [
+        ".multi-column__item {align-content: center;}",
+        ".section-spacing {margin: 0 !important;}",
+        ".h6 {font-size: 12px; font-weight: 600; line-height: 2.25; letter-spacing: 0.71px; padding: 16px 0; margin: 0 !important;}",
+        ".h2 {font-size: 35px; font-weight: 500; letter-spacing: -1.39px; color: rgb(40, 40, 40); padding: 16px 0; margin: 0 !important;}",
+        "p {margin: 16px 0 !important; font-size: 21px; font-weight: normal; letter-spacing: 0.12px; color: rgb(40, 40, 40);}"
+      ],
+      "settings": {
+        "unique_class": "features-3",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "start",
+        "text_alignment": "start",
+        "spacing": "md",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "text_with_icons_JBFBf4": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_tUpLnW": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/download_9446482444.svg",
+            "icon_width": 160,
+            "mobile_icon_width": 92,
+            "title": "5 Year Warranty.",
+            "content": "<p>We stand by the quality of every July product with unmatched warranty commitments.</p><p>On any manufacturing fault, July will repair or replace your product for you. Our Packing Cells range has a 5 year quality guarantee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_tUpLnW"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-spacing {background-color: #000;}",
+        ".h4,.prose p {color: #fff;}",
+        ".text-with-icons__item {flex-basis: 1500px;}",
+        ".text-with-icons__inner {display: flex; align-items: center; justify-content: flex-start;}",
+        ".h4 {font-size: 42px; color: rgb(202, 122, 79); font-weight: 500; line-height: 2.18; letter-spacing: -1.11px; margin: 0 12px;}",
+        ".prose p {font-size: 21px; font-weight: 400; margin: 0 16px; margin-top: 0px; color: rgb(246, 243, 239); margin-top: 0 !important;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "text": "",
+        "heading_tag": "h2",
+        "stack_on_mobile": false,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "start"
+      }
+    },
+    "rich_text_bzQmgD": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_nCyypL": {
+          "type": "subheading",
+          "settings": {
+            "text": "REVIEWS"
+          }
+        },
+        "heading_A4CWhR": {
+          "type": "heading",
+          "settings": {
+            "text": "What our customers are saying.",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_rKctP3": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_nCyypL",
+        "heading_A4CWhR",
+        "richtext_rKctP3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".h6 {text-transform: uppercase; font-size: 13px; line-height: 60px; letter-spacing: 0.27px; text-align: center; color: #000000;}",
+        ".h2 {font-size: 32px; font-weight: 500; line-height: 1.1; letter-spacing: -1.17px; text-align: center; color: #000000; margin-top: 0 !important;}",
+        "@media only screen and (max-width: 767px) {.prose {padding: 0 32px; }}"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "172020961768c0bde5": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_KNHrGp": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_KNHrGp"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_with_icons_pXrxP4",
+    "image_with_text_block_UeXV9J",
+    "multi_column_Q7GRUp",
+    "multi_column_TPHaqy",
+    "multi_column_QXFACC",
+    "text_with_icons_JBFBf4",
+    "rich_text_bzQmgD",
+    "172020961768c0bde5"
+  ]
+}
