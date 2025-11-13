@@ -1,0 +1,163 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.aluminum-carry-on.json",
+  "context": {
+    "market": "netherlands"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "IN WINKELWAGEN",
+        "custom_loadmore_gallery_button_text": "Meer afbeeldingen laden",
+        "custom_loadless_gallery_button_text": "Minder weergeven",
+        "read_more_text": "Lees meer...",
+        "read_less_text": "Lees minder..."
+      },
+      "blocks": {
+        "0e69516f-8b2b-4355-b944-a339bfcfdb1b": {
+          "settings": {
+            "pattern": " 4.8/5 - [count] Beoordelingen Gecontroleerd"
+          }
+        },
+        "shoppay_payment_QWR9j8": {
+          "settings": {
+            "content": "Betalingen van €22,11/maand met"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "default_instock_text": "Op voorraad",
+            "default_out_of_stock_text": "Uitverkocht",
+            "default_low_stock_text": "Lage voorraad",
+            "text": "100-Dagen Retourneren"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Biedt ruimte voor 5-7 dagen reizen"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Duurzame Aluminium SCHAAL"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Dubbele TSA-combinatiesloten"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Details + Afmetingen",
+            "content": "<h3>Details + Afmetingen<br/>Handbagage</h3><ul><li>Duurzame aluminium harde schaal</li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid</li><li>360° zwenkwielen die zorgen voor een soepele rit<br/>Langzaam loslatende handgrepen voor gemakkelijk dragen</li><li>Interne compressiesysteem om meer in te pakken</li><li>Verborgen waszak om vuile kleding gescheiden te houden</li><li>Voldoet aan de luchtvaartvereisten voor alle luchtvaartmaatschappijen, inclusief Europese<br/><br/></li></ul><h4><br/>Buitenmaten 19.5\" x 15.5\" x 8.5\"<br/>Binnenmaten 18.5\" x 13.5\" x 13.5\"<br/>Gewicht 10.1 lbs<br/>Capaciteit 35L<br/>Maten zijn exclusief wielen.<br/></h4><h3>TSA-goedgekeurd combinatieslot</h3><p>Met dit Travel Sentry®-slot kan je bagage worden geopend, geïnspecteerd en opnieuw worden vergrendeld door beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"http://www.travelsentry.org/\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_FCiHb7": {
+          "settings": {
+            "measurement_title": "Details + Afmetingen",
+            "measurement_content": "<h3>Handbagage</h3><ul><li>Duurzame aluminium harde schaal</li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid</li><li>360° zwenkwielen die zorgen voor een soepele rit<br/>Langzaam loslatende handgrepen voor gemakkelijk dragen</li><li>Interne compressiesysteem om meer in te pakken</li><li>Verborgen waszak om vuile kleding gescheiden te houden</li><li>Voldoet aan de luchtvaartvereisten voor alle luchtvaartmaatschappijen, inclusief Europese<br/><br/></li></ul><h4><br/>Buitenmaten 19.5\" x 15.5\" x 8.5\"<br/>Binnenmaten 18.5\" x 13.5\" x 13.5\"<br/>Gewicht 12.3 lbs<br/>Capaciteit 35L<br/>Maten zijn exclusief wielen.<br/></h4><h3>TSA-goedgekeurd combinatieslot</h3><p>Met dit Travel Sentry®-slot kan je bagage worden geopend, geïnspecteerd en opnieuw worden vergrendeld door beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"http://www.travelsentry.org/\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_EVynrq": {
+          "settings": {
+            "measurement_content": "<h3>Handbagage</h3><ul><li>Duurzame aluminium harde schaal</li><li>Dubbele TSA-goedgekeurde combinatiesloten voor extra veiligheid</li><li>360° zwenkwielen die zorgen voor een soepele rit<br/>Langzaam loslatende handgrepen voor gemakkelijk dragen</li><li>Interne compressiesysteem om meer in te pakken</li><li>Verborgen waszak om vuile kleding gescheiden te houden</li><li>Voldoet aan de luchtvaartvereisten voor alle luchtvaartmaatschappijen, inclusief Europese<br/><br/></li></ul><h4><br/>Buitenmaten 19.5\" x 15.5\" x 8.5\"<br/>Binnenmaten 18.5\" x 13.5\" x 13.5\"<br/>Gewicht 12.35 lbs<br/>Capaciteit 35L<br/>Maten zijn exclusief wielen.<br/></h4><h3>TSA-goedgekeurd combinatieslot</h3><p>Met dit Travel Sentry®-slot kan je bagage worden geopend, geïnspecteerd en opnieuw worden vergrendeld door beveiligingsautoriteiten zonder schade. Voor meer informatie, bezoek: <a href=\"http://www.travelsentry.org/\">www.travelsentry.org</a></p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Levenslange Garantie + Retourbeleid",
+            "content": "<h3>Verzending</h3><p>Gratis verzending voor alle kofferbestellingen. Verzendtijd naar de VS is 3 werkdagen.<br/></p><h3><br/>Levenslange Garantie</h3><p>We willen dat je volledig tevreden bent met Nobl—daarom bieden we retouren aan binnen de eerste 100 dagen. Onze koffers worden gedekt door een levenslange garantie die eventuele schade aan de schaal, wielen, handgrepen, ritsen en vele andere functionele elementen van onze bagage dekt.<br/></p>"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "360° Wielen"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {
+        "text": "De Carry-On Roller"
+      },
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>Aluminium SCHAAL</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Levenslange Garantie</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Compressiepad</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>360° Wielen</p>"
+          }
+        }
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "settings": {
+            "subheading": "KWALITEIT WAAR JE OP KUNT VERTROUWEN",
+            "title": "Aluminium Staat Voor Zakelijk",
+            "content": "<p>Met twee TSA-goedgekeurde combinatiesloten, langzaam loslatende handgrepen en lederen details. Rollen met een groep? Geen probleem – onze handgrepen rijzen allemaal tot dezelfde hoogte, zodat je twee (of meer) koffers tegelijk kunt rollen.</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "LATEN WE ROLLEN",
+            "title": "De Beste Wielen Die Je Ooit Hebt Gezien",
+            "content": "<p>Toen we de perfecte wielen niet konden vinden, was er maar één oplossing – ze zelf ontwerpen. Maak kennis met de SilentMove 360° zwenkwielen. Extreem stil, ze kunnen de kasseien van Europa aan en hebben een levenslange garantie.</p>"
+          }
+        }
+      }
+    },
+    "multi_column_KraHrK": {
+      "settings": {},
+      "blocks": {
+        "image_with_text_jHTwTi": {
+          "settings": {
+            "subheading": "OOK PERFECT VAN BINNEN",
+            "title": "Gemakkelijk Inpakken",
+            "content": "<p>We hebben het eenvoudig gemaakt om meer in je reis te passen. Ons Nobl Y-Strap-compressiesysteem biedt een zware band die naar beneden trekt om meer ruimte in je koffer te creëren. Al onze voeringen zijn vlekbestendig, zodat ongelukjes eenvoudig schoon te maken zijn.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Levenslange Garantie",
+            "content": "<p>Wij staan achter de kwaliteit van elk Nobl-product met ongeëvenaarde garantieverbintenissen. Bij fabricagefouten, waar je je ook bevindt in de wereld, zal Nobl je product repareren of vervangen.</p>"
+          }
+        }
+      }
+    }
+  }
+}

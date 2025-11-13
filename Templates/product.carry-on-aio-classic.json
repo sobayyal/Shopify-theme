@@ -1,0 +1,1581 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "contentSize": 12,
+            "pattern": "4.5/5 - [count] Verified Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_value_in_price": false,
+            "total_value_text": "Total Value"
+          }
+        },
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84": {
+          "type": "badges",
+          "settings": {}
+        },
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "color_selector_type": "color"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "4429c250-ff29-4e33-a9b7-440abad3e095": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Fits all international carriers including European budget carriers",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/icons8-plane-50.png",
+            "icon_width": 32,
+            "background": "#f6f6f6",
+            "text_color": "#2273fd",
+            "border_color": ""
+          }
+        },
+        "gaurantee_free_gift_Lb6jnM": {
+          "type": "gaurantee-free-gift",
+          "settings": {
+            "order_by_text": "Order by",
+            "pre_order_days": "0",
+            "order_by_text_after": "for guaranteed FREE Gifts",
+            "bold_text": "Black Friday Sale",
+            "salename_text": "$170 in Free Gifts!",
+            "sale_heading_image": "shopify://shop_images/Untitled-1.svg",
+            "cards_bg": "#ebebed",
+            "label_bg": "#054b48",
+            "label_text": "#ffffff",
+            "gift_img_one": "shopify://shop_images/nobl-carry-on-all-in-one-classic-cover.webp",
+            "gift_heading_one": "Luggage Cover",
+            "gift_one_price": "$45",
+            "gift_img_two": "shopify://shop_images/nobl-carry-on-all-in-one-classic-gift-card.webp",
+            "gift_heading_two": "$25 e-Gift Card",
+            "gift_two_price": "$25",
+            "gift_img_three": "shopify://shop_images/Nobl_Carry-on_All_in_one_classic_warranty.webp",
+            "gift_heading_three": "Lifetime Warranty",
+            "gift_three_price": "$100",
+            "gift_img_four": "",
+            "gift_heading_four": "Luggage Scale",
+            "gift_four_price": "$39"
+          }
+        },
+        "shoppay_payment_jBxAwJ": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "Payments of $22.11/month with"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g": {
+          "type": "inventory",
+          "settings": {
+            "show_delivery_date": true,
+            "show_return_text": false,
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_icon_price": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#000000",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "8 Left in Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "Low Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free 3-Day Shipping",
+            "text_out_of_stock": "Free 3-Day Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "360° Wheels",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Packs for 6-9 day trips",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/numberdays.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "81d66082-de22-4e38-9a78-f63819d3d0d4": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Interior compression",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/compression-pad.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Unbreakable polycarbonate shell",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/shell_1.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Dual TSA combination locks",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/lock.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Made to last with anti-stain materials",
+            "link": "",
+            "icon": "none",
+            "icon_width": 24,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "complementary_products": {
+          "type": "complementary_products",
+          "disabled": true,
+          "settings": {
+            "title": "Bundle and Save",
+            "products_count": 1,
+            "show_below_gallery": false,
+            "stack_products": false,
+            "show_quick_buy": true
+          }
+        },
+        "4c14dcc3-c016-4055-8b44-46147a8c86be": {
+          "type": "description_mobile",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "show_below_gallery": false
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Details + Dimensions",
+            "content": "<ul><li>Product Size: 13.78\" × 9.06\" × 22.24\"</li><li>Weight: 9.26 lbs</li><li>Material: Polycarbonate</li></ul>",
+            "page": ""
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Shipping + Warranty + Returns",
+            "content": "<p>Enjoy Free 3-Day Shipping on every order. Each carry-on comes with Nobl’s 100-day return policy, giving you peace of mind to test it out on your own terms. Plus, it’s backed by our lifetime warranty—your carry-on is built to last as long as you travel.</p>",
+            "page": ""
+          }
+        },
+        "accordion_RrYaYU": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "What's Included?",
+            "content": "<ul><li>Classic All-in-One Carry-On</li><li>Removable luggage cover</li></ul>",
+            "page": ""
+          }
+        },
+        "77375662-08de-4be2-9771-d610d6220f48": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<div class=\"custom_link\" style=\"margin-top: -1.5rem\">\n\n\n<div class=\"product-info__block-item\" data-block-type=\"accordion\"><details class=\"accordion  group \" is=\"accordion-disclosure\" aria-expanded=\"false\" style=\"border-top: 0;\">\n  <summary style=\"opacity: 1;\"><span class=\"scroll_a accordion__toggle h6\">\n<div goto=\"reviews\"><span>Reviews →</span></div></span>\n  </summary>\n\n</details></div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "3233bcd4-14c7-4996-bc19-537ab342b394",
+        "title",
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d",
+        "price",
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84",
+        "shoppay_payment_jBxAwJ",
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c",
+        "variant_picker",
+        "4429c250-ff29-4e33-a9b7-440abad3e095",
+        "gaurantee_free_gift_Lb6jnM",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g",
+        "buy_buttons",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e",
+        "payment_terms",
+        "cb61f319-3e20-4814-8957-9ba6572cf837",
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e",
+        "81d66082-de22-4e38-9a78-f63819d3d0d4",
+        "a72f67a9-3657-444b-9cf4-d63c98705164",
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8",
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef",
+        "complementary_products",
+        "4c14dcc3-c016-4055-8b44-46147a8c86be",
+        "separator",
+        "quantity_selector",
+        "description",
+        "739f0039-d761-4e17-9e07-a6f64e029bee",
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743",
+        "accordion_RrYaYU",
+        "77375662-08de-4be2-9771-d610d6220f48"
+      ],
+      "custom_css": [
+        ".product-info__block-item:is( [data-block-type=\"inventory\"], [data-block-type=\"buy-buttons\"], [data-block-type=\"pickup-availability\"], [data-block-type=\"more-information\"], [data-block-type=\"offers\"] ) {--product-info-gap: 0.7rem;}",
+        ".text-success {color: black;}",
+        ".custom_link summary {opacity: 1 !important;}",
+        "@media screen and (max-width: 699px) {.feature-badge-list .feature-badge {padding: 0; font-size: 0.9rem; }}",
+        ".feature-badge-list {display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; width: 100%;}"
+      ],
+      "settings": {
+        "enable_badge": false,
+        "badge_text": "NEW!",
+        "enable_warranty_icon": true,
+        "show_breadcrumbs": false,
+        "enable_variant_tabs": false,
+        "container_size": "lg",
+        "product_info_size": 45,
+        "show_sticky_add_to_cart": true,
+        "custom_buy_button_text": "",
+        "custom_soldout_button_text": "Sold Out",
+        "pre_order_button_text": "PRE-ORDER",
+        "custom_loadmore_gallery_button_text": "Load More Images",
+        "custom_loadless_gallery_button_text": "Show Less",
+        "read_more_text": "Read more...",
+        "read_less_text": "Read less...",
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x",
+        "desktop_media_grid_gap": 10,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "enable_featured_review": false,
+        "content": "<p>I seriously can't get over the top-notch quality of this luggage! 🙌 I've tried so many brands, but this one is legit the first choice for any travel-savvy peep like me. Even after months of hardcore use and my nephew's luggage-throwing antics, these bags are still looking fresh. 100% would recommend Nobl – it's a total game-changer! </p>",
+        "author": "Jennifer P."
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 10,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "Related products",
+        "content": ""
+      }
+    },
+    "featured_shots_section_rFJYPx": {
+      "type": "featured-shots-section",
+      "blocks": {
+        "variant_slider_NtFKQn": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132049196",
+            "is_default": true,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_black_06_37d2ca53-e763-44bb-902e-05e46facea98.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_black_03_74d6c9bc-c8d2-45f3-956e-0eee42a49766.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_black_01.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_black_04_4df35b7a-7c0d-4857-ae59-d4f141718639.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_black_05_bdfa5a57-b683-4ad0-ba32-ddbb70d8f25f.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_black_02_b5a8d512-4d2d-429e-812d-9cc79a1f4182.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_wUKE4Y": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132376876",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_White_06_8a036c3b-48fc-45c1-a948-3f834fc207e4.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_White_01_dd2d9c1c-14e9-4396-b84a-75adfb55cfa6.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_White_05_70bfb0eb-77db-4642-be07-166c1420342a.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_White_03_a9bef04d-75c4-4fef-b6c5-5206dd8c7d91.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_White_04_9cb1d525-58e4-4642-b074-492cab6fd331.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_White_02_3e6c1de6-d71e-41e9-9eb5-415171f4f873.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_6eWXEt": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132081964",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_green_04_6801749f-b8e9-409c-9729-03213bd83c9d.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_green_05_b22e7bb9-d42f-4e50-91ec-786e582e7b53.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_green_03_2de972e2-ccbf-4080-8b31-3a0a125ebf14.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_green_02_697163ca-3b48-489f-8390-98b5d15f9a1c.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_green_06_6a21b003-44b2-46c7-b559-9bb3112b9eb7.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_green_01_0d186c35-6236-4a05-8171-35f855ad216d.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_fremm3": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132147500",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-blue_04_22e6a401-c2c7-472d-b59e-ec0e55d0c1ef.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-blue_05_3ebae755-02f3-4a49-bd4e-8165eed88248.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-blue_03_c208aaab-1a50-458e-871c-e0def4e49ba1.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-blue_01_4f44142a-36f2-473a-bbc3-c6b82b406312.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-blue_02_a7f41e05-448a-408c-8eb7-3c2d31f7f4ba.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-blue_06_f0ca627e-7219-42d8-9f36-1dbe7ed11db7.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_KnC7jC": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132180268",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-pink_02_30de0738-53f3-49c5-94b2-769bddf103e8.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-pink_05_49b40c54-1c35-4bab-9c25-c9bdb9752664.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-pink_01_156431f2-e35c-4a3a-99e1-08162c6cb07a.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-pink_06_aaa535ab-5781-409b-8875-6e60ed0a1016.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-pink_03_8d18e852-06af-4e5b-a397-d9c21bf3fac8.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_baby-pink_04_bfde5ee0-8037-4c78-89db-1ee7f680cfb0.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_UztVcC": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132114732",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_beige_02_a619dc2f-d4a7-4ec8-9876-f8dbc80d7693.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_beige_05_246d31fc-4ffa-4225-a28f-79cd465fda4c.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_beige_01_97c957a5-124f-496b-8763-0bfd2042ec83.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_beige_06_b5ee8436-8153-4b5f-9298-952b62fef706.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_beige_03_cd923ab2-d7a8-424f-bc55-2872b6652386.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_beige_04_15097679-4339-4f85-b02e-7f00a34ebc1d.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_GGQRw8": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132245804",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Lavender_04_4f81844b-7a11-4b8f-9dff-a94f20c3a29b.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Lavender_05_583c939c-f0d1-48ee-8703-44c9fadc5a81.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Lavender_03_65667179-c21c-42e7-804e-8f1bbb45a045.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Lavender_01_9f495015-4d7f-4e33-91d2-ac2bc014e0ee.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Lavender_02_c367a29e-4a41-4738-b392-d0c1db3b1a68.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Lavender_06_d6b75345-3902-42a3-893c-f8c28c9c4cef.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_VVMDfG": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132213036",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_pink_06_8cf0c7c0-2405-4992-ba65-462dabda8848.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_pink_04_39a4ce6e-980f-4217-a4c7-04290faa711a.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_pink_05_8346a158-ea64-44c4-84ae-4c5a505d7c30.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_pink_02_77afac6a-e6c6-4877-bdf2-3c753e0f7e3a.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_pink_01_42343a61-db52-4cb1-aa84-8773c0d17135.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_pink_03_aa93b371-8235-430f-8a2d-938625749e45.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_4cmdfa": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132278572",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_light-green_02_408e72b2-ab3b-465c-b2ea-efd357f913ef.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_light-green_06_bb12aa1a-8b00-4292-a348-04b37ca19efa.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_light-green_01_fd0e9e33-0af2-438a-a67e-6939506c8a13.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_light-green_04_7648c38d-68eb-4889-a169-99a4ea492422.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_light-green_03_4e461a09-2296-463a-8c9c-7a49f2318b96.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_light-green_05_17189ed5-4466-4fb3-bd1c-3bc7b125f7ce.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_cGKiJT": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132311340",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Red_05_b1ebb16c-3793-4450-9014-ee257e2c8289.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Red_02_30117e97-1fa3-4ff6-9b21-ca0a99a5a583.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Red_06_ba2fb004-2691-4d4f-a4dc-b3e64d9420cb.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Red_03_8bae4974-e9af-4a15-8d9d-fd034605954a.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Red_04_9b1ce8ac-b6e1-4279-a126-9734c7191c8e.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Red_01_5eec2260-ceaf-4c85-b969-cd6d2895398e.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_VkC7CA": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996144632108",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Navy-Blue_03_32cb1d3f-127f-47b1-b4ae-d7ee447279dd.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Navy-Blue_01_0e3510be-cdca-4613-ae71-1b449bb67d5e.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Navy-Blue_04_852a4c97-7ab0-4a66-81d8-ab83f4ab3cb3.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Navy-Blue_02_46568ff5-73fa-4974-aa1a-d3bcdbd86079.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Navy-Blue_06_ea8b505c-4773-49d5-81bd-9ef70cfff4ef.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Navy-Blue_05_7ccbed67-3642-46d6-9022-43b2d6e5d46b.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_N4rbUY": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132409644",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Yellow_01_604c636c-8422-46cd-81f1-5c386bf49555.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Yellow_06_ff2d07d5-a1fc-42e5-8925-13679014479a.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Yellow_02_71fbc702-46bc-4321-b37f-bd2de457be8a.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Yellow_04_0fd36a60-6139-410d-b72f-c82af9b26f2f.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Yellow_03_48da9879-25f9-4273-9a62-90f4b467e000.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Yellow_05_03977be0-ab58-4824-b548-99d47b9e4e2b.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        },
+        "variant_slider_V4pDqB": {
+          "type": "variant_slider",
+          "settings": {
+            "heading": "Our 5-Star Functions",
+            "variant_id": "51996132344108",
+            "is_default": false,
+            "feature_1_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Silver_06_90fb09bb-de51-4540-a816-1f553669cdce.webp",
+            "feature_1_title": "Cup Holder",
+            "feature_1_description": "Enjoy hands-free convenience with a built-in cup holder for your drink.",
+            "feature_2_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Silver_01_01928d4f-f17c-40c2-957b-a3977889e15f.webp",
+            "feature_2_title": "Charging Port",
+            "feature_2_description": "Stay powered with USB and USB-C ports by connecting your power bank.",
+            "feature_3_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Silver_05_78aaf767-7457-4795-9db2-dd361364ee39.webp",
+            "feature_3_title": "Phone Holder",
+            "feature_3_description": "Handle-mounted phone holder lets you scroll or watch hands-free",
+            "feature_4_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Silver_03_b2524ad0-1580-4e8e-9b39-01a34274dc18.webp",
+            "feature_4_title": "TSA Locks",
+            "feature_4_description": "Keep your suitcase secure with TSA-approved locks for peace of mind.",
+            "feature_5_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Silver_04_7f5a0563-ce00-4b9a-9f98-9ca2d7b120ec.webp",
+            "feature_5_title": "360° WHEELS",
+            "feature_5_description": "Smooth-rolling 360* wheels offer effortless mobility in any direction.",
+            "feature_6_image": "shopify://shop_images/nobl_classic-carry-on-all-in-one_Silver_02_bf1da69a-ebe0-408e-b49a-a6fc5fe47289.webp",
+            "feature_6_title": "Phone Mount Handle",
+            "feature_6_description": "Transforms your carry-on into a stable, hands-free phone viewing station",
+            "feature_7_title": "",
+            "feature_7_description": "",
+            "feature_8_title": "",
+            "feature_8_description": "",
+            "feature_9_title": "",
+            "feature_9_description": "",
+            "feature_10_title": "",
+            "feature_10_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "variant_slider_NtFKQn",
+        "variant_slider_wUKE4Y",
+        "variant_slider_6eWXEt",
+        "variant_slider_fremm3",
+        "variant_slider_KnC7jC",
+        "variant_slider_UztVcC",
+        "variant_slider_GGQRw8",
+        "variant_slider_VVMDfG",
+        "variant_slider_4cmdfa",
+        "variant_slider_cGKiJT",
+        "variant_slider_VkC7CA",
+        "variant_slider_N4rbUY",
+        "variant_slider_V4pDqB"
+      ],
+      "name": "Product Features",
+      "settings": {}
+    },
+    "image_based_on_variants_LLMrxC": {
+      "type": "Image-based-on-variants",
+      "blocks": {
+        "block_jaR64P": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/black_7210687a-cf67-4a39-9c1e-e00f4a0e7d33.webp",
+            "mobile_image": "shopify://shop_images/black_45fbb3b4-62d2-4b91-87da-d9fa5f806ce3.webp",
+            "block_id": "51996132049196",
+            "is_default": true
+          }
+        },
+        "block_prHNUn": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/white_3dc455be-9d40-4831-bac1-eac643c589df.webp",
+            "mobile_image": "shopify://shop_images/white_f48fdffe-ccb2-49ce-9e86-cacc44f6b1d5.webp",
+            "block_id": "51996132376876",
+            "is_default": false
+          }
+        },
+        "block_mqmk89": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/green_19277f89-e0ee-4929-bc2d-acf7e594383d.webp",
+            "mobile_image": "shopify://shop_images/green_0c654c3d-cddd-4b35-9b04-b76726349107.webp",
+            "block_id": "51996132081964",
+            "is_default": false
+          }
+        },
+        "block_awHpdQ": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/beige_8739ad43-340f-4634-98f7-ae4f921d5a8f.webp",
+            "mobile_image": "shopify://shop_images/beige_1_15ed9141-250c-45c0-9e84-21cf042d0c6f.webp",
+            "block_id": "51996132114732",
+            "is_default": false
+          }
+        },
+        "block_NyNXim": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/pink_39a15e4e-941f-4ac9-953c-55636e858aa2.webp",
+            "mobile_image": "shopify://shop_images/pink_64a06691-a899-41bd-8ed0-6aa84bf6871b.webp",
+            "block_id": "51996132180268",
+            "is_default": false
+          }
+        },
+        "block_YXqENf": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/blue_8c39aef9-c3ef-40ee-a91c-cfb4949ae835.webp",
+            "mobile_image": "shopify://shop_images/blue_c715b691-256f-4548-913b-a35ce0171c08.webp",
+            "block_id": "51996132147500",
+            "is_default": false
+          }
+        },
+        "block_fpjbh4": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/lavender_21aa3918-f492-4750-b5ca-797e0a388333.webp",
+            "mobile_image": "shopify://shop_images/lavender_12b6bc61-f7da-41e0-bb94-f50f0b7bf7c3.webp",
+            "block_id": "51996132245804",
+            "is_default": false
+          }
+        },
+        "block_hFi86W": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/red_9943be4d-1036-4690-a1f4-a80882398612.webp",
+            "mobile_image": "shopify://shop_images/red_fbc52234-dff8-495c-ad67-585de15a60f3.webp",
+            "block_id": "51996132311340",
+            "is_default": false
+          }
+        },
+        "block_CT94qK": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/hot_pink_bef39e14-45d4-4165-9374-e7accf673cee.webp",
+            "mobile_image": "shopify://shop_images/hot_pink_d24a6b56-915a-4985-8347-ba4e310d1283.webp",
+            "block_id": "51996132213036",
+            "is_default": false
+          }
+        },
+        "block_9a9GAq": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/light_green_c7389d38-e3b4-43ec-8e88-68752f67b26b.webp",
+            "mobile_image": "shopify://shop_images/light_green_feb3cd12-1d03-4974-b9f4-dbcfa6505d28.webp",
+            "block_id": "51996132278572",
+            "is_default": false
+          }
+        },
+        "block_bxaNGp": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/navy_blue.webp",
+            "mobile_image": "shopify://shop_images/navy_blue_cec9995a-4d90-464f-aab7-92ef5c87705e.webp",
+            "block_id": "51996144632108",
+            "is_default": false
+          }
+        },
+        "block_A7dF9E": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/silver_16b8ffe3-0705-439d-b6ae-cb8cc2ca8f50.webp",
+            "mobile_image": "shopify://shop_images/silver_5149ba70-7ce6-42d4-b104-9ac3a8b17c34.webp",
+            "block_id": "51996132344108",
+            "is_default": false
+          }
+        },
+        "block_QacECm": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/yellow_a7bcf7c0-065b-4542-a60f-1fbfca0fc072.webp",
+            "mobile_image": "shopify://shop_images/yellow_0b1eadab-aec2-4743-ac24-760a0dc98744.webp",
+            "block_id": "51996132409644",
+            "is_default": false
+          }
+        }
+      },
+      "block_order": [
+        "block_jaR64P",
+        "block_prHNUn",
+        "block_mqmk89",
+        "block_awHpdQ",
+        "block_NyNXim",
+        "block_YXqENf",
+        "block_fpjbh4",
+        "block_hFi86W",
+        "block_CT94qK",
+        "block_9a9GAq",
+        "block_bxaNGp",
+        "block_A7dF9E",
+        "block_QacECm"
+      ],
+      "name": "Dynamic Variant Blocks",
+      "settings": {}
+    },
+    "comparison_image_W8DMyV": {
+      "type": "comparison-image",
+      "disabled": true,
+      "name": "Comparison Image",
+      "settings": {
+        "title": "The Only Carry-On  That Checks Every Box",
+        "title_color": "#282828",
+        "title_alignment": "center",
+        "title_font_weight": "500",
+        "title_font_size_desktop": 28,
+        "title_font_size_mobile": 22,
+        "title_margin_bottom": 20,
+        "image_desktop": "shopify://shop_images/nobl-vs-others-compare-table.png",
+        "image_max_width_desktop": 900,
+        "image_mobile": "shopify://shop_images/nobl-vs-others-compare-table.png",
+        "image_max_width_mobile": 400,
+        "text_content": "<p>* Ratings based on publicly available Trustpilot customer reviews as of October 2025. Trustpilot is an independent review platform and does not endorse any brand featured.</p>",
+        "text_color": "#282828",
+        "text_font_size_desktop": 12,
+        "text_font_size_mobile": 10
+      }
+    },
+    "featured_in_UGcLkt": {
+      "type": "featured-in",
+      "blocks": {
+        "logo_bg7GeX": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/travel-leisure-seeklogo.svg",
+            "logo_alt": "Travel Leisure",
+            "logo_link": ""
+          }
+        },
+        "logo_bM8UEh": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue-seeklogo.png",
+            "logo_alt": "Vogue",
+            "logo_link": ""
+          }
+        },
+        "logo_4tJ66M": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/forbes-seeklogo.svg",
+            "logo_alt": "Forbes",
+            "logo_link": ""
+          }
+        },
+        "logo_7Utzx7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gq-seeklogo_2c152b89-ab76-47ff-b5db-6af4e7f54659.svg",
+            "logo_alt": "GQ",
+            "logo_link": ""
+          }
+        },
+        "logo_jRLqyq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/cnn-seeklogo.png",
+            "logo_alt": "GQ",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_bg7GeX",
+        "logo_bM8UEh",
+        "logo_4tJ66M",
+        "logo_7Utzx7",
+        "logo_jRLqyq"
+      ],
+      "name": "Featured In",
+      "settings": {
+        "heading": "Featured In",
+        "heading_size": 18,
+        "heading_color": "#282828",
+        "background_color": "#faf7f3",
+        "logo_max_width": 150,
+        "logo_spacing": 20,
+        "logo_opacity": 100,
+        "hover_opacity": 100,
+        "grayscale_amount": 100,
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "margin_top": 0
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/shell_1.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>Polycarbonate Shell</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-customer-support",
+            "custom_icon": "shopify://shop_images/numberdays.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>Lifetime Warranty</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/compression-pad.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>Compression Pad</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>360° Wheels</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1",
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2",
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3",
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".text-with-icons__inner.v-stack.gap-6.justify-items-center.sm\\:justify-items-start {gap: 8px; font-weight: 700; font-size: 12px; line-height: 12px; letter-spacing: 1px; text-transform: uppercase;}",
+        ".gap-6 {gap: 0.5rem;}",
+        ".h4,:where(.prose h4) {line-height: 1.6; font-size: 14px; text-align: center;}",
+        ".h2 {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "text": "Carry-On: Collapsible",
+        "heading_tag": "h2",
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "center"
+      }
+    },
+    "46631a25-6cb3-4cdd-9ca5-5b77ea346b63": {
+      "type": "multiple-media-with-text",
+      "blocks": {
+        "cf09bd3f-5868-4156-8380-9b0eb9c73eda": {
+          "type": "video",
+          "settings": {
+            "rotation": 0
+          }
+        },
+        "5be35f28-7187-450e-b4c4-9f3162a707e7": {
+          "type": "video",
+          "settings": {
+            "rotation": 0
+          }
+        }
+      },
+      "block_order": [
+        "cf09bd3f-5868-4156-8380-9b0eb9c73eda",
+        "5be35f28-7187-450e-b4c4-9f3162a707e7"
+      ],
+      "disabled": true,
+      "settings": {
+        "reveal_on_scroll": true,
+        "separate_section_with_border": true,
+        "media_position_desktop": "before_text",
+        "media_position_mobile": "before_text",
+        "media_layout": "overlap",
+        "media_alignment": "center",
+        "media_alignment_offset": 0,
+        "media_mobile_alignment_offset": 0,
+        "text_alignment": "center",
+        "subheading": "Ditch The Traditional Bulky Suitcase",
+        "title": "<strong>Built to save you space</strong>",
+        "content": "<p>Write some content about your products, collections or brand. Use image or video to create an impactful layout.</p>",
+        "button_1_text": "",
+        "button_1_link": "",
+        "button_1_style": "solid",
+        "button_2_text": "",
+        "button_2_link": "",
+        "button_2_style": "solid",
+        "background": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "type": "multi-column",
+      "blocks": {
+        "bc6e84f2-4897-462f-9d48-f6c2b3e3e59e": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/Need 1.mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "RECLAIM YOUR SPACE",
+            "title": "Stow away in practically any place",
+            "heading_tag": "h1",
+            "content": "<p>Folding effortlessly to slip into the tightest spaces. Its compact design means it can snugly reside under beds or in narrow closets, reclaiming precious space in your home.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "bc6e84f2-4897-462f-9d48-f6c2b3e3e59e",
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}",
+        ".button {max-width: 380px; width: 100%;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "loox-product-reviews-app-section": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "134df837-4c6e-4cf9-b9f6-0fd246c0112f": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-subheading-1": {
+          "type": "subheading",
+          "settings": {
+            "text": "LET’S ROLL"
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "The best wheels you’ve never seen.",
+            "heading_tag": "h1"
+          }
+        },
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-richtext-1": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>When we couldn't find the perfect wheels there was only one solution – design it ourselves. Introducing SilentMove 360° spinner wheels. Extremely quiet, they can handle the cobblestones of Europe, and have a lifetime guarantee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-subheading-1",
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-heading-1",
+        "template--20910772224300__134df837-4c6e-4cf9-b9f6-0fd246c0112f-richtext-1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".bordered-section {background: white;}"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "image": "shopify://shop_images/Untitled_design_-_2024-03-06T082750.679.jpg",
+        "reveal_on_scroll": false,
+        "image_position": "end",
+        "content_width": "lg",
+        "remove_vertical_spacing": true,
+        "class": ""
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "type": "multi-column",
+      "blocks": {
+        "b38f9c30-20ff-4bb6-b614-e7a63c044b93": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/Collapsible.mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "PERFECT ON THE INSIDE TOO",
+            "title": "Packing should be easy and enjoyable.",
+            "heading_tag": "h2",
+            "content": "<p>We've made it easy to pack more into your trip. Our Nobl Y-Strap Compression System provides a heavy-duty strap that pulls down to create more space in your case. All our lining is stain-resistant making any accidents easy to clean up too.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b38f9c30-20ff-4bb6-b614-e7a63c044b93",
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}",
+        ".button {max-width: 380px; width: 100%;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": true,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/Untitled_design_9.jpg",
+            "icon_width": 104,
+            "mobile_icon_width": 104,
+            "title": "Lifetime Warranty",
+            "content": "<p>We stand by the quality of every Nobl product with unmatched warranty commitments. On any manufacturing fault, anywhere you are in the world, Nobl will repair or replace your product for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".bordered-section {background-color: #faf7f3; padding: 24px 0;}",
+        "@media only screen and (min-width: 768px) {.text-with-icons__inner {display: flex; align-items: flex-end; -webkit-justify-content: space-evenly; justify-content: space-evenly; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 80%; margin-left: auto; margin-right: auto; }}",
+        ".text-with-icons > :only-child {flex-basis: 100rem; color: black;}",
+        ".h4,:where(.prose h4) {font-size: var(--text-h1); line-height: 1.6; color: #000;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": true,
+        "testimonial_area": false,
+        "text": "",
+        "heading_tag": "h1",
+        "stack_on_mobile": false,
+        "icon_color": "",
+        "text_color": "#ffffff",
+        "text_alignment": "start"
+      }
+    },
+    "1699895646caa378cc": {
+      "type": "apps",
+      "blocks": {
+        "c9faf366-919b-416f-bd62-169e865af2e5": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "c9faf366-919b-416f-bd62-169e865af2e5"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "faq_ActB7X": {
+      "type": "faq",
+      "blocks": {
+        "question_e38QHp": {
+          "type": "question",
+          "settings": {
+            "question": "What makes the Classic different from the All-in-One with front pocket?",
+            "answer": "<p>The Classic version skips the front compartment, giving you extra interior packing space while keeping all the smart features.</p>",
+            "html_code": ""
+          }
+        },
+        "question_DaapVK": {
+          "type": "question",
+          "settings": {
+            "question": "Is it approved for overhead bins?",
+            "answer": "<p>Yes, the Classic All-in-One Carry-On is designed to fit in overhead compartments on most major airlines.</p>",
+            "html_code": ""
+          }
+        },
+        "question_gmzrBD": {
+          "type": "question",
+          "settings": {
+            "question": "Does it come with a warranty?",
+            "answer": "<p>Yes, it’s covered by Nobl’s lifetime warranty for lasting reliability.</p>",
+            "html_code": ""
+          }
+        },
+        "question_4UEqEc": {
+          "type": "question",
+          "settings": {
+            "question": "Can I charge my phone while traveling?",
+            "answer": "<p>Yes, the built-in charging ports allow you to connect a power bank and charge devices on the go.</p>",
+            "html_code": ""
+          }
+        },
+        "question_CRfKGR": {
+          "type": "question",
+          "settings": {
+            "question": "How durable is the shell?",
+            "answer": "<p>It’s made from tough polycarbonate, resistant to scratches and built to handle frequent travel.</p>",
+            "html_code": ""
+          }
+        },
+        "question_KiDmCa": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "question": "Who is this bag best for?",
+            "answer": "<p>Frequent travelers, commuters, or anyone who needs a smaller, smarter carry-on for quick trips.</p>",
+            "html_code": ""
+          }
+        },
+        "question_MN6jRz": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "question": "Can it fit a tablet or laptop in the front pocket?",
+            "answer": "<p>Yes, the front gadget compartment is designed to fit devices up to 10\", making it perfect for tablets or smaller laptops.</p>",
+            "html_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "question_e38QHp",
+        "question_DaapVK",
+        "question_gmzrBD",
+        "question_4UEqEc",
+        "question_CRfKGR",
+        "question_KiDmCa",
+        "question_MN6jRz"
+      ],
+      "custom_css": [
+        ".section-header.justify-self-center.text-center {display: block !important;}"
+      ],
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "separate_section_with_border": true,
+        "custom_class": "",
+        "show_categories": false,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "help_text": "",
+        "help_email": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "featured_shots_section_rFJYPx",
+    "image_based_on_variants_LLMrxC",
+    "comparison_image_W8DMyV",
+    "featured_in_UGcLkt",
+    "0388a64b-96d9-43d1-918d-73dce18e3337",
+    "46631a25-6cb3-4cdd-9ca5-5b77ea346b63",
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff",
+    "loox-product-reviews-app-section",
+    "134df837-4c6e-4cf9-b9f6-0fd246c0112f",
+    "52e88a24-2cc8-4618-af70-db729dbddc4b",
+    "fea502b0-0599-4675-b29d-ccac92668b06",
+    "1699895646caa378cc",
+    "faq_ActB7X"
+  ]
+}

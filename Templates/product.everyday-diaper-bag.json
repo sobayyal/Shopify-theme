@@ -1,0 +1,677 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "contentSize": 12,
+            "pattern": " 4.7/5 - [count] Verified Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_value_in_price": false,
+            "total_value_text": "Total Value"
+          }
+        },
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84": {
+          "type": "badges",
+          "settings": {}
+        },
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "color_selector_type": "color"
+          }
+        },
+        "custom_text_txGBTp": {
+          "type": "custom_text",
+          "settings": {
+            "custom_text": "",
+            "font_weight": "500"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "gaurantee_free_gift_Lb6jnM": {
+          "type": "gaurantee-free-gift",
+          "disabled": true,
+          "settings": {
+            "order_by_text": "Order by",
+            "pre_order_days": "0",
+            "order_by_text_after": "for guaranteed FREE Gifts",
+            "bold_text": "Summer Sale",
+            "salename_text": "$170 in Free Gifts!",
+            "sale_heading_image": "shopify://shop_images/Untitled-1.svg",
+            "cards_bg": "#ebebed",
+            "label_bg": "#054b48",
+            "label_text": "#ffffff",
+            "gift_img_one": "shopify://shop_images/4_cd7acecb-10f5-48cb-b13d-4081a513b30a.webp",
+            "gift_heading_one": "Luggage Cover",
+            "gift_one_price": "$45",
+            "gift_img_two": "shopify://shop_images/5_5e93c97e-3aea-412b-9413-8ae926fb37c6.webp",
+            "gift_heading_two": "$25 e-Gift Card",
+            "gift_two_price": "$25",
+            "gift_img_three": "shopify://shop_images/6_0ac979d9-e631-4e6e-af20-682a26419b7c.webp",
+            "gift_heading_three": "Lifetime Warranty",
+            "gift_three_price": "$170",
+            "gift_heading_four": "",
+            "gift_four_price": ""
+          }
+        },
+        "kaching_bundles_app_block_BDdhP6": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "Payments of $22.11/month with"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g": {
+          "type": "inventory",
+          "settings": {
+            "show_delivery_date": true,
+            "show_return_text": false,
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "buy_buttons_default_UC3qM3": {
+          "type": "buy-buttons-default",
+          "disabled": true,
+          "settings": {
+            "default_payment_button": true,
+            "default_show_icon_price": false,
+            "default_show_gift_card_recipient": true,
+            "default_atc_button_background": "",
+            "default_atc_button_text_color": "",
+            "default_payment_button_background": "",
+            "default_payment_button_text_color": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_icon_price": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#000000",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "tolstoy_shoppable_video_quiz_stories_block_pkxxmz": {
+          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "acn1d4qqekdbk"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "show_below_gallery": false
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Details + Dimensions",
+            "content": "<ul><li>Material: Waterproof Neoprene Diving Fabric</li><li>Size: 11.75\" × 6.5\" × 12.75\"</li><li>Weight: 2.64 lbs</li><li>Colors: Black, Pink, Forest Green</li></ul>",
+            "page": ""
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Shipping + Warranty + Returns",
+            "content": "<ul><li>Free 3-Day Shipping on all U.S. orders</li><li>30-day hassle-free returns</li><li>1-year limited warranty for peace of mind</li></ul>",
+            "page": ""
+          }
+        },
+        "accordion_fATTXN": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "What's Included?",
+            "content": "<ul><li>Everyday Diaper Bag (neoprene, waterproof diving fabric)</li><li>Removable, wipe-clean changing pad</li><li>Two insulated bottle holders</li><li>Dedicated wipes pocket with water-resistant lining</li><li>Adjustable padded shoulder straps</li><li>Built-in stroller straps for hands-free carry</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "3233bcd4-14c7-4996-bc19-537ab342b394",
+        "vendor",
+        "title",
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d",
+        "price",
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84",
+        "693b040d-a148-49a2-9a93-76e011406d76",
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c",
+        "custom_text_txGBTp",
+        "variant_picker",
+        "gaurantee_free_gift_Lb6jnM",
+        "kaching_bundles_app_block_BDdhP6",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g",
+        "buy_buttons_default_UC3qM3",
+        "buy_buttons",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e",
+        "payment_terms",
+        "tolstoy_shoppable_video_quiz_stories_block_pkxxmz",
+        "description",
+        "739f0039-d761-4e17-9e07-a6f64e029bee",
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743",
+        "accordion_fATTXN"
+      ],
+      "custom_css": [
+        ".product-info__block-item:is( [data-block-type=\"inventory\"], [data-block-type=\"buy-buttons\"], [data-block-type=\"pickup-availability\"], [data-block-type=\"more-information\"], [data-block-type=\"offers\"] ) {--product-info-gap: 0.7rem;}",
+        ".text-success {color: black;}",
+        ".custom_link summary {opacity: 1 !important;}",
+        "@media screen and (max-width: 699px) {.feature-badge-list .feature-badge {padding: 0; font-size: 0.9rem; }}",
+        ".feature-badge-list {display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; width: 100%;}"
+      ],
+      "settings": {
+        "enable_badge": false,
+        "badge_text": "NEW!",
+        "enable_warranty_icon": false,
+        "show_breadcrumbs": false,
+        "enable_variant_tabs": false,
+        "container_size": "lg",
+        "product_info_size": 45,
+        "show_sticky_add_to_cart": true,
+        "custom_buy_button_text": "Add to Cart",
+        "custom_soldout_button_text": "Sold Out",
+        "pre_order_button_text": "PRE-ORDER",
+        "custom_loadmore_gallery_button_text": "Load More Images",
+        "custom_loadless_gallery_button_text": "Show Less",
+        "read_more_text": "Read more...",
+        "read_less_text": "Read less...",
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x",
+        "desktop_media_grid_gap": 10,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3.5,
+        "enable_featured_review": false,
+        "content": "<p>I seriously can't get over the top-notch quality of this luggage! 🙌 I've tried so many brands, but this one is legit the first choice for any travel-savvy peep like me. Even after months of hardcore use and my nephew's luggage-throwing antics, these bags are still looking fresh. 100% would recommend Nobl – it's a total game-changer! </p>",
+        "author": "Jennifer P."
+      }
+    },
+    "featured_shots_t6w3iT": {
+      "type": "featured-shots",
+      "blocks": {
+        "feature_yQg88j": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/cv5_pink.webp",
+            "title": "Hidden Phone Pocket",
+            "description": "Keep your essentials safe and close. A hidden, zippered back pocket keeps your phone secure yet instantly accessible when you need it."
+          }
+        },
+        "feature_wVHWeM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Cv4_pink.webp",
+            "title": "Spacious Main Compartment",
+            "description": "Everything has its place. A roomy main compartment with smart interior pockets makes bottles, wipes, and extras easy to grab on the go."
+          }
+        },
+        "feature_4z8hE9": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Cv3_pink.webp",
+            "title": "Foldable Changing Pad",
+            "description": "Be ready anywhere. A sleek, foldable changing pad slides out effortlessly for quick, clean changes—then tucks neatly back inside."
+          }
+        },
+        "feature_kqbPQL": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/c3.webp",
+            "title": "Built-In Wipe Dispenser Pocket",
+            "description": "Clean hands in seconds. The dedicated wipe-through pocket means no more digging—just pull, swipe, and you’re good to go."
+          }
+        },
+        "feature_xq3tL9": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/C_v2_pink.webp",
+            "title": "Stroller Attachment Straps",
+            "description": "Travel lighter. Sturdy clips attach your bag securely to any stroller, keeping your hands free and your essentials within reach."
+          }
+        },
+        "feature_tqYk9J": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Gadget_Compartment.webp",
+            "title": "Front Pocket",
+            "description": "Store your laptop and essentials securely with easy, quick access."
+          }
+        }
+      },
+      "block_order": [
+        "feature_yQg88j",
+        "feature_wVHWeM",
+        "feature_4z8hE9",
+        "feature_kqbPQL",
+        "feature_xq3tL9",
+        "feature_tqYk9J"
+      ],
+      "custom_css": [
+        "#dynamic-product-slider {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "Our 5-Star Functions",
+        "variant_id": "51814372671788",
+        "is_default": true
+      }
+    },
+    "featured_shots_RcfQd8": {
+      "type": "featured-shots",
+      "blocks": {
+        "feature_ayQLJt": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/cv5_green.webp",
+            "title": "Hidden Phone Pocket",
+            "description": "Keep your essentials safe and close. A hidden, zippered back pocket keeps your phone secure yet instantly accessible when you need it."
+          }
+        },
+        "feature_nfgEAU": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Cv4_green.webp",
+            "title": "Spacious Main Compartment",
+            "description": "Everything has its place. A roomy main compartment with smart interior pockets makes bottles, wipes, and extras easy to grab on the go."
+          }
+        },
+        "feature_FFUPV9": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Cv3_green.webp",
+            "title": "Foldable Changing Pad",
+            "description": "Be ready anywhere. A sleek, foldable changing pad slides out effortlessly for quick, clean changes—then tucks neatly back inside."
+          }
+        },
+        "feature_q66AeP": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/C2.webp",
+            "title": "Built-In Wipe Dispenser Pocket",
+            "description": "Clean hands in seconds. The dedicated wipe-through pocket means no more digging—just pull, swipe, and you’re good to go."
+          }
+        },
+        "feature_FpV6UQ": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/C_v2_green.webp",
+            "title": "Stroller Attachment Straps",
+            "description": "Travel lighter. Sturdy clips attach your bag securely to any stroller, keeping your hands free and your essentials within reach."
+          }
+        },
+        "feature_Xx7Ejr": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Gadget_Compartment_7877c346-b2e0-41f2-a358-f52c4ad42b4f.webp",
+            "title": "Front Pocket",
+            "description": "Store your laptop and essentials securely with easy, quick access."
+          }
+        }
+      },
+      "block_order": [
+        "feature_ayQLJt",
+        "feature_nfgEAU",
+        "feature_FFUPV9",
+        "feature_q66AeP",
+        "feature_FpV6UQ",
+        "feature_Xx7Ejr"
+      ],
+      "custom_css": [
+        "#dynamic-product-slider {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "Our 5-Star Functions",
+        "variant_id": "51814372704556",
+        "is_default": false
+      }
+    },
+    "featured_shots_RrPaT6": {
+      "type": "featured-shots",
+      "blocks": {
+        "feature_YjrMmc": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/cv5.webp",
+            "title": "Hidden Phone Pocket",
+            "description": "Keep your essentials safe and close. A hidden, zippered back pocket keeps your phone secure yet instantly accessible when you need it."
+          }
+        },
+        "feature_fqH84Y": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Cv4.webp",
+            "title": "Spacious Main Compartment",
+            "description": "Everything has its place. A roomy main compartment with smart interior pockets makes bottles, wipes, and extras easy to grab on the go."
+          }
+        },
+        "feature_hF7KpM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Cv3.webp",
+            "title": "Foldable Changing Pad",
+            "description": "Be ready anywhere. A sleek, foldable changing pad slides out effortlessly for quick, clean changes—then tucks neatly back inside."
+          }
+        },
+        "feature_3kqpQG": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/C1.webp",
+            "title": "Built-In Wipe Dispenser Pocket",
+            "description": "Clean hands in seconds. The dedicated wipe-through pocket means no more digging—just pull, swipe, and you’re good to go."
+          }
+        },
+        "feature_MKUNEW": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/C_v2.webp",
+            "title": "Stroller Attachment Straps",
+            "description": "Separate your items into upper and lower compartments for a clutter‑free packing experience. The lower elastic insert pocket adds storage flexibility for bottles, brushes, or grooming tools."
+          }
+        },
+        "feature_JCytRn": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Gadget_Compartment_2375603d-5c33-4c55-bd8e-51fdf75911bf.webp",
+            "title": "Front Pocket",
+            "description": "Store your laptop and essentials securely with easy, quick access."
+          }
+        }
+      },
+      "block_order": [
+        "feature_YjrMmc",
+        "feature_fqH84Y",
+        "feature_hF7KpM",
+        "feature_3kqpQG",
+        "feature_MKUNEW",
+        "feature_JCytRn"
+      ],
+      "custom_css": [
+        "#dynamic-product-slider {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "Our 5-Star Functions",
+        "variant_id": "51814372737324",
+        "is_default": false
+      }
+    },
+    "image_based_on_variants_XTX7tQ": {
+      "type": "Image-based-on-variants",
+      "blocks": {
+        "block_VH6mjV": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/Black_41e5511b-77d0-48b4-a047-51ef9e9a98cb.webp",
+            "mobile_image": "shopify://shop_images/Black_518448b6-3662-42a8-b1e5-aa803d480da6.webp",
+            "block_id": "51743045943596",
+            "is_default": false
+          }
+        },
+        "block_6Kemf3": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/Green_fda09309-4d9d-45f4-9424-ad4d789fc029.webp",
+            "mobile_image": "shopify://shop_images/Green_7542149f-6005-4faf-8061-1fe8ecac14ea.webp",
+            "block_id": "51743045976364",
+            "is_default": false
+          }
+        },
+        "block_yyffqV": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/Beige_6bf5e669-5270-4394-bd5d-d9e14b2d89a4.webp",
+            "mobile_image": "shopify://shop_images/Beige_663ba2ae-a481-4de2-9852-ec52995b5d5c.webp",
+            "block_id": "51743045910828",
+            "is_default": true
+          }
+        }
+      },
+      "block_order": [
+        "block_VH6mjV",
+        "block_6Kemf3",
+        "block_yyffqV"
+      ],
+      "settings": {}
+    },
+    "faq_icRNg8": {
+      "type": "faq",
+      "blocks": {
+        "question_eDncwg": {
+          "type": "question",
+          "settings": {
+            "question": "Is the backpack waterproof?",
+            "answer": "<p>Yes, it’s made from durable neoprene diving fabric that repels water and resists spills.</p>",
+            "html_code": ""
+          }
+        },
+        "question_P6PJUj": {
+          "type": "question",
+          "settings": {
+            "question": "Does it include a changing pad?",
+            "answer": "<p>Absolutely — each bag comes with a removable, wipe-clean changing pad for on-the-go convenience.</p>",
+            "html_code": ""
+          }
+        },
+        "question_PMU9KF": {
+          "type": "question",
+          "settings": {
+            "question": "How many bottles can it hold?",
+            "answer": "<p>The insulated side pockets fit up to two standard baby bottles and keep them warm or cool for hours.</p>",
+            "html_code": ""
+          }
+        },
+        "question_CUCcVe": {
+          "type": "question",
+          "settings": {
+            "question": "Can it be used beyond the baby stage?",
+            "answer": "<p>Definitely. The Everyday Diaper Bag doubles as a sleek, spacious backpack with plenty of compartments for travel or everyday use.</p>",
+            "html_code": ""
+          }
+        },
+        "question_8naD44": {
+          "type": "question",
+          "settings": {
+            "question": "Does it attach to strollers?",
+            "answer": "<p>Yes — it comes with built-in stroller straps for hands-free carrying.</p>",
+            "html_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "question_eDncwg",
+        "question_P6PJUj",
+        "question_PMU9KF",
+        "question_CUCcVe",
+        "question_8naD44"
+      ],
+      "custom_css": [
+        ".section-header.justify-self-center.text-center {display: block !important;}"
+      ],
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "separate_section_with_border": false,
+        "custom_class": "",
+        "show_categories": false,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "help_text": "",
+        "help_email": ""
+      }
+    },
+    "1699895646caa378cc": {
+      "type": "apps",
+      "blocks": {
+        "c9faf366-919b-416f-bd62-169e865af2e5": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "c9faf366-919b-416f-bd62-169e865af2e5"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_shots_t6w3iT",
+    "featured_shots_RcfQd8",
+    "featured_shots_RrPaT6",
+    "image_based_on_variants_XTX7tQ",
+    "faq_icRNg8",
+    "1699895646caa378cc"
+  ]
+}

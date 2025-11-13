@@ -1,0 +1,163 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.aluminum-carry-on.json",
+  "context": {
+    "market": "germany"
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "custom_buy_button_text": "Zum Warenkorb",
+        "custom_loadmore_gallery_button_text": "Mehr Bilder laden",
+        "custom_loadless_gallery_button_text": "Weniger anzeigen",
+        "read_more_text": "Mehr lesen...",
+        "read_less_text": "Weniger lesen..."
+      },
+      "blocks": {
+        "0e69516f-8b2b-4355-b944-a339bfcfdb1b": {
+          "settings": {
+            "pattern": " 4.8/5 - [count] Bewertungen"
+          }
+        },
+        "shoppay_payment_QWR9j8": {
+          "settings": {
+            "content": "Zahlungen von €22,11/Monat mit"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "default_instock_text": "Auf Lager",
+            "default_low_stock_text": "Niedriger Bestand",
+            "text": "100 Tage Rückgaberecht"
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "settings": {
+            "text": "360°-Räder"
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "settings": {
+            "text": "Packt für 5-7 Tage Reisen"
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "settings": {
+            "text": "Robuste Aluminium-Hülle"
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "settings": {
+            "text": "Doppelte TSA-Kombinationsschlösser"
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "settings": {
+            "title": "Details + Abmessungen",
+            "content": "<h3>Handgepäck</h3><ul><li>Robuste Aluminium-Hartschale</li><li>Doppelte TSA-zugelassene Kombinationsschlösser für zusätzliche Sicherheit</li><li>360°-Rollen für eine reibungslose Fahrt</li><li>Langsam ausfahrbare Griffe für einfaches Tragen</li><li>Innenkompressionssystem zur Optimierung des Packens</li><li>Versteckter Wäschesack, um schmutzige Kleidung getrennt zu halten</li><li>Erfüllt die Anforderungen der Fluggesellschaften für alle Fluglinien, einschließlich europäischer</li></ul><h4>Außenmaße 19.5\" x 15.5\" x 8.5\"<br/>Innenmaße 18.5\" x 13.5\" x 13.5\"<br/>Gewicht 10.1 lbs<br/>Kapazität 35L<br/>Abmessungen beinhalten keine Rollen.<br/></h4><h3>TSA-zugelassenes Kombinationsschloss</h3><p>Die Verwendung dieses Travel Sentry®-Schlosses ermöglicht es Sicherheitsbehörden, Ihr Gepäck zu öffnen, zu inspizieren und ohne Schäden wieder zu verschließen. Für weitere Informationen besuchen Sie: <a href=\"https://www.travelsentry.org\" title=\"https://www.travelsentry.org\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_FCiHb7": {
+          "settings": {
+            "measurement_title": "Details + Abmessungen",
+            "measurement_content": "<h3>Handgepäck</h3><ul><li>Robuste Aluminium-Hartschale</li><li>Doppelte TSA-zugelassene Kombinationsschlösser für zusätzliche Sicherheit</li><li>360°-Rollen für eine reibungslose Fahrt</li><li>Langsam ausfahrbare Griffe für einfaches Tragen</li><li>Innenkompressionssystem zur Optimierung des Packens</li><li>Versteckter Wäschesack, um schmutzige Kleidung getrennt zu halten</li><li>Erfüllt die Anforderungen der Fluggesellschaften für alle Fluglinien, einschließlich europäischer</li></ul><h4>Außenmaße 19.5\" x 15.5\" x 8.5\"<br/>Innenmaße 18.5\" x 13.5\" x 13.5\"<br/>Gewicht 12.3 lbs<br/>Kapazität 35L<br/>Abmessungen beinhalten keine Rollen.<br/></h4><h3>TSA-zugelassenes Kombinationsschloss</h3><p>Die Verwendung dieses Travel Sentry®-Schlosses ermöglicht es Sicherheitsbehörden, Ihr Gepäck zu öffnen, zu inspizieren und ohne Schäden wieder zu verschließen. Für weitere Informationen besuchen Sie: <a href=\"https://www.travelsentry.org\" title=\"https://www.travelsentry.org\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_EVynrq": {
+          "settings": {
+            "measurement_content": "<h3>Handgepäck</h3><ul><li>Robuste Aluminium-Hartschale</li><li>Doppelte TSA-zugelassene Kombinationsschlösser für zusätzliche Sicherheit</li><li>360°-Rollen für eine reibungslose Fahrt</li><li>Langsam ausfahrbare Griffe für einfaches Tragen</li><li>Innenkompressionssystem zur Optimierung des Packens</li><li>Versteckter Wäschesack, um schmutzige Kleidung getrennt zu halten</li><li>Erfüllt die Anforderungen der Fluggesellschaften für alle Fluglinien, einschließlich europäischer</li></ul><h4>Außenmaße 19.5\" x 15.5\" x 8.5\"<br/>Innenmaße 18.5\" x 13.5\" x 13.5\"<br/>Gewicht 12.35 lbs<br/>Kapazität 35L<br/>Abmessungen beinhalten keine Rollen.<br/></h4><h3>TSA-zugelassenes Kombinationsschloss</h3><p>Die Verwendung dieses Travel Sentry®-Schlosses ermöglicht es Sicherheitsbehörden, Ihr Gepäck zu öffnen, zu inspizieren und ohne Schäden wieder zu verschließen. Für weitere Informationen besuchen Sie: <a href=\"https://www.travelsentry.org\" title=\"https://www.travelsentry.org\">www.travelsentry.org</a></p>",
+            "measurement_title": "Details + Abmessungen"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "title": "Lebenslange Garantie + Rückgaberecht",
+            "content": "<h3>Versand</h3><p>Kostenloser Versand für alle Kofferbestellungen. Der Versand innerhalb der USA dauert 3 Werktage.</p><h3><br/>Lebenslange Garantie</h3><p>Wir möchten, dass Sie alles an Nobl lieben – deshalb bieten wir Rückgaben in den ersten 100 Tagen an. Unsere Koffer sind durch eine lebenslange Garantie abgedeckt, die Schäden an der Hülle, den Rädern, Griffen, Reißverschlüssen und vielen anderen funktionalen Elementen unseres Gepäcks umfasst.</p>"
+          }
+        }
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "settings": {
+        "text": "Der Carry-On-Roller"
+      },
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "settings": {
+            "content": "<p>Aluminium-Hülle</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "settings": {
+            "content": "<p>Lebenslange Garantie</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "settings": {
+            "content": "<p>Kompressionspolster</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "settings": {
+            "content": "<p>360°-Räder</p>"
+          }
+        }
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "settings": {
+            "subheading": "QUALITÄT, DER SIE VERTRAUEN KÖNNEN",
+            "title": "Aluminium bedeutet Geschäft",
+            "content": "<p>Mit zwei TSA-zugelassenen Kombinationsschlössern, langsam ausfahrbaren Griffen und Lederdetails. Mit einer Crew unterwegs? Kein Problem – unsere Griffe ragen alle auf die gleiche Höhe, sodass Sie zwei (oder mehr) gleichzeitig rollen können.</p>"
+          }
+        }
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "settings": {
+            "subheading": "LOS GEHT'S",
+            "title": "Die besten Räder, die Sie je gesehen haben",
+            "content": "<p>Als wir die perfekten Räder nicht finden konnten, gab es nur eine Lösung – wir entwarfen sie selbst. Einführung der SilentMove 360°-Räder. Extrem leise, sie meistern die Kopfsteinpflaster Europas und haben eine lebenslange Garantie.</p>"
+          }
+        }
+      }
+    },
+    "multi_column_KraHrK": {
+      "settings": {},
+      "blocks": {
+        "image_with_text_jHTwTi": {
+          "settings": {
+            "subheading": "AUCH IM INNEREN PERFEKT",
+            "title": "Einfaches Packen",
+            "content": "<p>Wir haben es Ihnen leicht gemacht, mehr auf Ihre Reise zu packen. Unser Nobl Y-Strap-Kompressionssystem bietet einen strapazierfähigen Gurt, der nach unten zieht, um mehr Platz in Ihrem Koffer zu schaffen. Unser gesamtes Futter ist fleckenabweisend, sodass sich Missgeschicke leicht beseitigen lassen.</p>"
+          }
+        }
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "settings": {},
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "settings": {
+            "title": "Lebenslange Garantie",
+            "content": "<p>Wir stehen hinter der Qualität jedes Nobl-Produkts mit unvergleichlichen Garantieverpflichtungen. Bei jedem Herstellungsfehler, egal wo Sie sich befinden, repariert oder ersetzt Nobl Ihr Produkt kostenlos für Sie.</p>"
+          }
+        }
+      }
+    }
+  }
+}

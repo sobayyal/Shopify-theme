@@ -1,0 +1,655 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "contentSize": 12,
+            "pattern": " 4.7/5 - [count] Verified Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_value_in_price": false,
+            "total_value_text": "Total Value"
+          }
+        },
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84": {
+          "type": "badges",
+          "settings": {}
+        },
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "color_selector_type": "color"
+          }
+        },
+        "custom_text_txGBTp": {
+          "type": "custom_text",
+          "disabled": true,
+          "settings": {
+            "custom_text": "Black Friday Sale: BUY ONE, GET ONE 25% OFF",
+            "font_weight": "500"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "gaurantee_free_gift_Lb6jnM": {
+          "type": "gaurantee-free-gift",
+          "disabled": true,
+          "settings": {
+            "order_by_text": "Order by",
+            "pre_order_days": "0",
+            "order_by_text_after": "for guaranteed FREE Gifts",
+            "bold_text": "Summer Sale",
+            "salename_text": "$170 in Free Gifts!",
+            "sale_heading_image": "shopify://shop_images/Untitled-1.svg",
+            "cards_bg": "#ebebed",
+            "label_bg": "#054b48",
+            "label_text": "#ffffff",
+            "gift_img_one": "shopify://shop_images/4_cd7acecb-10f5-48cb-b13d-4081a513b30a.webp",
+            "gift_heading_one": "Luggage Cover",
+            "gift_one_price": "$45",
+            "gift_img_two": "shopify://shop_images/5_5e93c97e-3aea-412b-9413-8ae926fb37c6.webp",
+            "gift_heading_two": "$25 e-Gift Card",
+            "gift_two_price": "$25",
+            "gift_img_three": "shopify://shop_images/6_0ac979d9-e631-4e6e-af20-682a26419b7c.webp",
+            "gift_heading_three": "Lifetime Warranty",
+            "gift_three_price": "$170",
+            "gift_heading_four": "",
+            "gift_four_price": ""
+          }
+        },
+        "kaching_bundles_app_block_BDdhP6": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "Payments of $22.11/month with"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g": {
+          "type": "inventory",
+          "settings": {
+            "show_delivery_date": true,
+            "show_return_text": false,
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+
+        "buy_buttons_default_UC3qM3": {
+          "type": "buy-buttons-default",
+          "disabled": true,
+          "settings": {
+            "default_payment_button": true,
+            "default_show_icon_price": false,
+            "default_show_gift_card_recipient": true,
+            "default_atc_button_background": "",
+            "default_atc_button_text_color": "",
+            "default_payment_button_background": "",
+            "default_payment_button_text_color": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_icon_price": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#000000",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "show_below_gallery": false
+          }
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Details + Dimensions",
+            "content": "<ul><li>Material: 230 twill lining fabric</li><li>Product Size: 19\" x 14.25\" x 9.5\"</li><li>Weight: 2.86 lbs</li><li>Colorways: Black, Forest Green, Pink</li></ul>",
+            "page": ""
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Shipping + Warranty + Returns",
+            "content": "<p>Ships within 3 days. <br/>Enjoy a 99‑day trial and a 1‑year warranty.</p>",
+            "page": ""
+          }
+        },
+        "accordion_fATTXN": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "What's Included?",
+            "content": "<ul><li>1x Cloud duffel</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "3233bcd4-14c7-4996-bc19-537ab342b394",
+        "vendor",
+        "title",
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d",
+        "price",
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84",
+        "693b040d-a148-49a2-9a93-76e011406d76",
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c",
+        "custom_text_txGBTp",
+        "variant_picker",
+        "gaurantee_free_gift_Lb6jnM",
+        "kaching_bundles_app_block_BDdhP6",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g",
+        "buy_buttons_default_UC3qM3",
+        "buy_buttons",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e",
+        "payment_terms",
+        "description",
+        "739f0039-d761-4e17-9e07-a6f64e029bee",
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743",
+        "accordion_fATTXN"
+      ],
+      "custom_css": [
+        ".product-info__block-item:is( [data-block-type=\"inventory\"], [data-block-type=\"buy-buttons\"], [data-block-type=\"pickup-availability\"], [data-block-type=\"more-information\"], [data-block-type=\"offers\"] ) {--product-info-gap: 0.7rem;}",
+        ".text-success {color: black;}",
+        ".custom_link summary {opacity: 1 !important;}",
+        "@media screen and (max-width: 699px) {.feature-badge-list .feature-badge {padding: 0; font-size: 0.9rem; }}",
+        ".feature-badge-list {display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; width: 100%;}"
+      ],
+      "settings": {
+        "enable_badge": false,
+        "badge_text": "NEW!",
+        "enable_warranty_icon": false,
+        "show_breadcrumbs": false,
+        "enable_variant_tabs": false,
+        "container_size": "lg",
+        "product_info_size": 45,
+        "show_sticky_add_to_cart": true,
+        "custom_buy_button_text": "Add to Cart",
+        "custom_soldout_button_text": "Sold Out",
+        "pre_order_button_text": "PRE-ORDER",
+        "custom_loadmore_gallery_button_text": "Load More Images",
+        "custom_loadless_gallery_button_text": "Show Less",
+        "read_more_text": "Read more...",
+        "read_less_text": "Read less...",
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x",
+        "desktop_media_grid_gap": 10,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3.5,
+        "enable_featured_review": false,
+        "content": "<p>I seriously can't get over the top-notch quality of this luggage! 🙌 I've tried so many brands, but this one is legit the first choice for any travel-savvy peep like me. Even after months of hardcore use and my nephew's luggage-throwing antics, these bags are still looking fresh. 100% would recommend Nobl – it's a total game-changer! </p>",
+        "author": "Jennifer P."
+      }
+    },
+    "featured_shots_t6w3iT": {
+      "type": "featured-shots",
+      "blocks": {
+        "feature_xq3tL9": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Nobl_Wheels.webp",
+            "title": "Dual‑Layer Organization",
+            "description": "Separate your items into upper and lower compartments for a clutter‑free packing experience. The lower elastic insert pocket adds storage flexibility for bottles, brushes, or grooming tools."
+          }
+        },
+        "feature_kqbPQL": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/beige_9f1f6a4e-bf3d-4e21-858b-2c8d04e950da.webp",
+            "title": "Travel‑Ready, Vanity‑Perfect",
+            "description": "Designed for both movement and display, this bag packs flat in your luggage and looks beautiful sitting on your bathroom counter."
+          }
+        },
+        "feature_4z8hE9": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/TSA_Locks.webp",
+            "title": "Easy‑Access Opening",
+            "description": "A unique top‑opening design provides a clear view and simple reach‑in access—no digging around required."
+          }
+        },
+        "feature_wVHWeM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Phone_Holder.webp",
+            "title": "Structured & Stable",
+            "description": "Its sturdy build ensures it stays upright whether empty or full, making it as functional as it is stylish."
+          }
+        },
+        "feature_yQg88j": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Charging_Port.webp",
+            "title": "Everyday Luxury",
+            "description": "Minimalist lines, versatile colors, and a refined texture give it a polished look that complements any travel set or home space."
+          }
+        },
+        "feature_tqYk9J": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Gadget_Compartment.webp",
+            "title": "Front Pocket",
+            "description": "Store your laptop and essentials securely with easy, quick access."
+          }
+        }
+      },
+      "block_order": [
+        "feature_xq3tL9",
+        "feature_kqbPQL",
+        "feature_4z8hE9",
+        "feature_wVHWeM",
+        "feature_yQg88j",
+        "feature_tqYk9J"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "#dynamic-product-slider {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "Our 5-Star Functions",
+        "variant_id": "51743045910828",
+        "is_default": true
+      }
+    },
+    "featured_shots_RcfQd8": {
+      "type": "featured-shots",
+      "blocks": {
+        "feature_FpV6UQ": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Nobl_Wheels_ec5547fe-c693-4598-b8dc-0669963da60d.webp",
+            "title": "Dual‑Layer Organization",
+            "description": "Separate your items into upper and lower compartments for a clutter‑free packing experience. The lower elastic insert pocket adds storage flexibility for bottles, brushes, or grooming tools."
+          }
+        },
+        "feature_q66AeP": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/black_a3e66d09-6806-43df-8da5-ff8e25543f1c.webp",
+            "title": "Travel‑Ready, Vanity‑Perfect",
+            "description": "Designed for both movement and display, this bag packs flat in your luggage and looks beautiful sitting on your bathroom counter."
+          }
+        },
+        "feature_FFUPV9": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/TSA_Locks_bb9a7148-2ca8-460c-9f5b-db0698bdde4e.webp",
+            "title": "Easy‑Access Opening",
+            "description": "A unique top‑opening design provides a clear view and simple reach‑in access—no digging around required."
+          }
+        },
+        "feature_nfgEAU": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Phone_Holder_e9e4e0b4-ee12-4303-beb4-47662d4201ed.webp",
+            "title": "Structured & Stable",
+            "description": "Its sturdy build ensures it stays upright whether empty or full, making it as functional as it is stylish."
+          }
+        },
+        "feature_ayQLJt": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Charging_Port_52c3f896-ae6b-4c03-aa85-54f1db5c9618.webp",
+            "title": "Everyday Luxury",
+            "description": "Minimalist lines, versatile colors, and a refined texture give it a polished look that complements any travel set or home space."
+          }
+        },
+        "feature_Xx7Ejr": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Gadget_Compartment_7877c346-b2e0-41f2-a358-f52c4ad42b4f.webp",
+            "title": "Front Pocket",
+            "description": "Store your laptop and essentials securely with easy, quick access."
+          }
+        }
+      },
+      "block_order": [
+        "feature_FpV6UQ",
+        "feature_q66AeP",
+        "feature_FFUPV9",
+        "feature_nfgEAU",
+        "feature_ayQLJt",
+        "feature_Xx7Ejr"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "#dynamic-product-slider {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "Our 5-Star Functions",
+        "variant_id": "51743045943596",
+        "is_default": false
+      }
+    },
+    "featured_shots_RrPaT6": {
+      "type": "featured-shots",
+      "blocks": {
+        "feature_MKUNEW": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Nobl_Wheels_18eaba4a-04b5-475f-9181-9f7823cf5481.webp",
+            "title": "Dual‑Layer Organization",
+            "description": "Separate your items into upper and lower compartments for a clutter‑free packing experience. The lower elastic insert pocket adds storage flexibility for bottles, brushes, or grooming tools."
+          }
+        },
+        "feature_3kqpQG": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/green_cc3a52a2-a041-436c-a60b-86aa0bd431ca.webp",
+            "title": "Travel‑Ready, Vanity‑Perfect",
+            "description": "Designed for both movement and display, this bag packs flat in your luggage and looks beautiful sitting on your bathroom counter."
+          }
+        },
+        "feature_hF7KpM": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/TSA_Locks_3479f6d3-cde1-4489-8c9f-fad6313c064d.webp",
+            "title": "Easy‑Access Opening",
+            "description": "A unique top‑opening design provides a clear view and simple reach‑in access—no digging around required."
+          }
+        },
+        "feature_fqH84Y": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Phone_Holder_7a133d2c-00a2-437c-a5ef-d2ab1b584183.webp",
+            "title": "Structured & Stable",
+            "description": "Its sturdy build ensures it stays upright whether empty or full, making it as functional as it is stylish."
+          }
+        },
+        "feature_YjrMmc": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/Charging_Port_da1611d1-cba9-4950-bee6-30e425cf38e5.webp",
+            "title": "Everyday Luxury",
+            "description": "Minimalist lines, versatile colors, and a refined texture give it a polished look that complements any travel set or home space."
+          }
+        },
+        "feature_JCytRn": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Gadget_Compartment_2375603d-5c33-4c55-bd8e-51fdf75911bf.webp",
+            "title": "Front Pocket",
+            "description": "Store your laptop and essentials securely with easy, quick access."
+          }
+        }
+      },
+      "block_order": [
+        "feature_MKUNEW",
+        "feature_3kqpQG",
+        "feature_hF7KpM",
+        "feature_fqH84Y",
+        "feature_YjrMmc",
+        "feature_JCytRn"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "#dynamic-product-slider {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "Our 5-Star Functions",
+        "variant_id": "51743045976364",
+        "is_default": false
+      }
+    },
+    "image_based_on_variants_XTX7tQ": {
+      "type": "Image-based-on-variants",
+      "blocks": {
+        "block_VH6mjV": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Black_41e5511b-77d0-48b4-a047-51ef9e9a98cb.webp",
+            "mobile_image": "shopify://shop_images/Black_518448b6-3662-42a8-b1e5-aa803d480da6.webp",
+            "block_id": "51743045943596",
+            "is_default": false
+          }
+        },
+        "block_6Kemf3": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Green_fda09309-4d9d-45f4-9424-ad4d789fc029.webp",
+            "mobile_image": "shopify://shop_images/Green_7542149f-6005-4faf-8061-1fe8ecac14ea.webp",
+            "block_id": "51743045976364",
+            "is_default": false
+          }
+        },
+        "block_yyffqV": {
+          "type": "block",
+          "settings": {
+            "desktop_image": "shopify://shop_images/Beige_6bf5e669-5270-4394-bd5d-d9e14b2d89a4.webp",
+            "mobile_image": "shopify://shop_images/Beige_663ba2ae-a481-4de2-9852-ec52995b5d5c.webp",
+            "block_id": "51743045910828",
+            "is_default": true
+          }
+        }
+      },
+      "block_order": [
+        "block_VH6mjV",
+        "block_6Kemf3",
+        "block_yyffqV"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "faq_icRNg8": {
+      "type": "faq",
+      "blocks": {
+        "question_eDncwg": {
+          "type": "question",
+          "settings": {
+            "question": "Is the Large Cloud Duffel suitable for air travel as a carry-on?",
+            "answer": "<p>Yes, its size fits most airline carry-on requirements, making it ideal for flights.</p>",
+            "html_code": ""
+          }
+        },
+        "question_P6PJUj": {
+          "type": "question",
+          "settings": {
+            "question": "How do I clean the Large Cloud Duffel?",
+            "answer": "<p>We recommend spot cleaning with a damp cloth and mild detergent to maintain its quality.</p>",
+            "html_code": ""
+          }
+        },
+        "question_PMU9KF": {
+          "type": "question",
+          "settings": {
+            "question": "Is the bag lightweight enough for everyday use?",
+            "answer": "<p>Yes, at only 2.86 lbs, it’s lightweight yet durable, perfect for daily activities or travel.</p>",
+            "html_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "question_eDncwg",
+        "question_P6PJUj",
+        "question_PMU9KF"
+      ],
+      "custom_css": [
+        ".section-header.justify-self-center.text-center {display: block !important;}"
+      ],
+      "name": "t:sections.faq.presets.faq.name",
+      "settings": {
+        "separate_section_with_border": false,
+        "custom_class": "",
+        "show_categories": false,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "help_text": "",
+        "help_email": ""
+      }
+    },
+    "1699895646caa378cc": {
+      "type": "apps",
+      "blocks": {
+        "c9faf366-919b-416f-bd62-169e865af2e5": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "c9faf366-919b-416f-bd62-169e865af2e5"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_shots_t6w3iT",
+    "featured_shots_RcfQd8",
+    "featured_shots_RrPaT6",
+    "image_based_on_variants_XTX7tQ",
+    "faq_icRNg8",
+    "1699895646caa378cc"
+  ]
+}

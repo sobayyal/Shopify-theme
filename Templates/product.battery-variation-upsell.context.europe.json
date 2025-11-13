@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.battery-variation-upsell.json",
+  "context": {
+    "market": "europe"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "content": "<p>Shipping<strong> - </strong>Free Shipping for all suitcase orders in the European Union.</p><p>We want you to love everything about getting Nobl, which is why we offer returns on unused items for the first 100 days. </p><p>Our suitcases are guaranteed by a warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage.</p>"
+          }
+        }
+      }
+    }
+  }
+}

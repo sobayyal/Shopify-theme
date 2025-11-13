@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.feb-23-aluminum-large.json",
+  "context": {
+    "market": "uae"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "gaurantee_free_gift_Lb6jnM": {
+          "settings": {
+            "bold_text": "Black Friday Sale"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "content": "<h4>Shipping</h4><p>Free Shipping for all suitcase orders. USA shipping is 3 business days.</p><h4>Lifetime Guarantee</h3><p>We want you to love everything about Nobl, which is why we offer returns for the first 100 days. Our suitcases are guaranteed by a lifetime warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage.</p>",
+          }
+        },
+      }
+    }
+  }
+}
