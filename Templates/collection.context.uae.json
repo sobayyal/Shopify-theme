@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "collection.json",
+  "context": {
+    "market": "uae"
+  },
+  "sections": {
+    "collection-banner": {
+      "settings": {
+        "image": "shopify://shop_images/5th_Annual_NOBL_Day_Sale_Green-03.webp",
+        "mobile_image": "shopify://shop_images/5th_Annual_NOBL_Day_Sale_Green-Hero-Mobile_234a243f-eca5-4065-b298-e2de88f00961.png",
+        "image_size": "auto",
+        "banner_subtitle": "Biggest Sale Of The Year",
+        "banner_title": "Black Friday Sale",
+        "title_font_size_desktop": 38,
+        "title_font_size_mobile": 18,
+        "title_font_weight": "500",
+        "subtitle_font_size_desktop": 16,
+        "subtitle_font_size_mobile": 10,
+        "text_position_desktop": "middle-left",
+        "text_position_mobile": "top-center",
+        "button_text": "",
+        "button_link": "#",
+        "button_background": "rgba(0,0,0,0)",
+        "button_text_color": "#ffffff",
+        "show_discount_codes": false,
+        "text_color": "#ffffff"
+      },
+      "blocks": {}
+    },
+    "featured_in_YKVaLP": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "main": {
+      "custom_css": [
+        ".description-text {display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}",
+        ".collection {gap: 5px; margin-bottom: 20px; margin-top: 20px;}",
+        ".collection .h2 {margin-top: 5px;}",
+        ".collection-description {margin-top: 0; margin-bottom: 10px;}",
+        "@media screen and (max-width: 767px) {.collection {gap: 0px; } .collection .h2 {margin-top: 0px; }}"
+      ],
+      "settings": {},
+      "blocks": {}
+    }
+  }
+}

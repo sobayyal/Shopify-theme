@@ -1,0 +1,386 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "category": {
+          "type": "category",
+          "settings": {
+            "title": "<strong>NOBL Travel – Frequently Asked Questions (FAQs)</strong>",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "What makes NOBL luggage different from other brands?",
+            "answer": "<p>NOBL luggage stands apart due to its innovative design, high-quality materials, and thoughtful features. Our products are built with durability in mind, using materials like polycarbonate, ballistic nylon, and aluminum. Our luggage is designed to offer ease of use, including features like TSA-approved locks, silent 360° spinner wheels, and expandable or collapsible compartments for optimal storage. We also provide a lifetime warranty to ensure our customers' satisfaction and peace of mind.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "What materials are used in NOBL luggage?",
+            "answer": "<p>NOBL luggage is constructed from premium, durable materials. We use polycarbonate shells, which offer strength and flexibility, as well as ballistic nylon for a lightweight yet robust design. Many of our products also feature an aluminum frame for added durability and security. These materials are chosen to withstand the rigors of travel while maintaining a sleek, modern appearance.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "Is NOBL luggage easy to maneuver?",
+            "answer": "<p>Yes! All of our luggage is equipped with 360° spinner wheels that glide effortlessly in any direction, ensuring smooth and easy maneuverability through crowded airports, rough terrain, or tight spaces. Whether you're navigating busy terminals or rolling over cobblestones, our wheels are designed to provide a quiet, smooth glide.</p>"
+          }
+        },
+        "question_TjDc87": {
+          "type": "question",
+          "settings": {
+            "question": "How durable is NOBL luggage?",
+            "answer": "<p>NOBL luggage is built to withstand the toughest travel conditions. Our suitcases are tested for impact resistance, stress, and durability, ensuring they hold up against baggage handling, rough terrains, and long journeys. We use premium materials like polycarbonate and ballistic nylon that are both lightweight and tough, giving you the perfect balance of durability and mobility. Plus, all NOBL products come with a lifetime warranty, so you can travel with confidence knowing your luggage is built to last.</p>"
+          }
+        },
+        "question_4W93px": {
+          "type": "question",
+          "settings": {
+            "question": "Can I expand my NOBL luggage?",
+            "answer": "<p>Yes, our <strong>Carry-On All-in-One Expandible</strong> suitcase offers expandable feature that lets you increase packing capacity when needed and compress it back to a slimmer size for easy storage. It’s the perfect solution for travelers who want flexibility without compromising on convenience or style.</p>"
+          }
+        },
+        "question_F96DzN": {
+          "type": "question",
+          "settings": {
+            "question": "Does NOBL luggage have a warranty?",
+            "answer": "<p>Yes! All NOBL luggage comes with a lifetime warranty. This means we stand behind the quality of our products and will repair or replace your luggage if there are any manufacturing defects, no matter where you are in the world. Our goal is to ensure you have a worry-free travel experience with luggage that lasts.</p>"
+          }
+        },
+        "question_bHH3AN": {
+          "type": "question",
+          "settings": {
+            "question": "Are NOBL bags secure for travel?",
+            "answer": "<p>Absolutely. Security is a priority at NOBL. Many of our products, including the <strong>Carry-On All-in-One</strong> and <strong>Check-In All-in-One</strong>, are equipped with dual TSA-approved combination locks to provide enhanced security during your travels. These locks allow TSA agents to inspect your bag without damaging the locks, giving you peace of mind while keeping your belongings safe.</p>"
+          }
+        },
+        "question_BrfFV7": {
+          "type": "question",
+          "settings": {
+            "question": "How do I care for my NOBL luggage?",
+            "answer": "<p>Caring for your NOBL luggage is simple. Wipe the exterior with a damp cloth to remove any dirt or debris. For the interior, use a soft brush or microfiber cloth to clean it. Be sure to avoid overstuffing your bag to maintain its structural integrity. Regular maintenance of the wheels, locks, and zippers will also ensure that your luggage lasts for many years.</p>"
+          }
+        },
+        "question_Q3mwjp": {
+          "type": "question",
+          "settings": {
+            "question": "How much does NOBL luggage weigh?",
+            "answer": "<p>NOBL luggage is designed to be lightweight without sacrificing strength. Our <strong>Carry-On All-in-One</strong> weighs approximately 8.75 pounds, offering a perfect balance between durability and ease of handling. It’s built to be sturdy yet easy to maneuver, ensuring reliable performance without compromising on functionality.</p>"
+          }
+        },
+        "question_bzaAdU": {
+          "type": "question",
+          "settings": {
+            "question": "Can I use the NOBL Carry-On for international travel?",
+            "answer": "<p>Yes, the NOBL Carry-On is designed to meet most international carry-on size requirements. It’s compact enough to fit into overhead bins on most airplanes while still offering ample packing space for shorter trips. However, it’s always a good idea to check the specific size requirements of the airline you're traveling with to ensure a smooth journey.</p>"
+          }
+        },
+        "question_fKMdQR": {
+          "type": "question",
+          "settings": {
+            "question": "How do I use the compression system in NOBL luggage?",
+            "answer": "<p>The compression system in NOBL luggage, such as the <strong>Y-Strap Compression System</strong> in the <strong>Carry-On All-in-One</strong>, helps you maximize packing space while keeping your belongings secure. Simply load your items into the suitcase, then tighten the straps to compress everything down, reducing the volume and helping to fit in more clothes or accessories without compromising the organization inside.</p>"
+          }
+        },
+        "question_3EWX3f": {
+          "type": "question",
+          "settings": {
+            "question": "What is the best way to store my NOBL luggage?",
+            "answer": "<p>When not in use, store your NOBL luggage in a cool, dry place away from extreme temperatures. For models with collapsible features, such as the <strong>Carry-On All-in-One Expandable</strong>, simply compress it down to its slimmer storage size. For non-collapsible models, keep the bag upright and avoid stacking heavy items on top to preserve its shape.</p>"
+          }
+        },
+        "category_Kx43G6": {
+          "type": "category",
+          "settings": {
+            "title": "<strong>NOBL Travel – FAQs about  Returns and Refunds Policy</strong>",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_zBrzUh": {
+          "type": "question",
+          "settings": {
+            "question": "What is NOBL Travel's return policy?",
+            "answer": "<p>We offer a 100-day return window on all purchases so you can try your luggage at home and decide if it’s the perfect fit. Returns must be requested via email or chat to receive an RMA; items sent back without approval will not be accepted.</p>"
+          }
+        },
+        "question_N4N9RK": {
+          "type": "question",
+          "settings": {
+            "question": "Are there any conditions for returning an item?",
+            "answer": "<p>Returned luggage must be in like-new condition with original packaging and tags. Proof of purchase may be required, and items must be returned within the 100-day window.</p>"
+          }
+        },
+        "question_EfYAQ7": {
+          "type": "question",
+          "settings": {
+            "question": "Who is responsible for return shipping costs?",
+            "answer": "<p>For U.S. orders with Package Protection + Free Returns, return shipping is free. All other U.S. and international customers are responsible for return shipping.</p>"
+          }
+        },
+        "question_zAhkTY": {
+          "type": "question",
+          "settings": {
+            "question": "What if my order arrives defective, damaged, or with missing items?",
+            "answer": "<p>Contact us within 7 days of delivery at hello@nobltravel.com or via chat with your order number, photos, and a brief description. We’ll arrange a replacement, repair, or refund at no additional cost.</p>"
+          }
+        },
+        "question_cLF3Ep": {
+          "type": "question",
+          "settings": {
+            "question": "Is there a restocking fee for returns?",
+            "answer": "<p>No. Eligible returns are refunded in full, provided the item passes inspection.</p>"
+          }
+        },
+        "question_biDFNU": {
+          "type": "question",
+          "settings": {
+            "question": "How will I receive my refund?",
+            "answer": "<p>Refunds are issued to your original payment method once the return is approved, typically within 7 business days. It may take up to 10 days for the funds to appear in your account depending on your bank.</p>"
+          }
+        },
+        "question_iKfGLb": {
+          "type": "question",
+          "settings": {
+            "question": "Does NOBL Travel offer a warranty on their products?",
+            "answer": "<p>Yes. NOBL luggage comes with a Lifetime Warranty covering defects in materials and workmanship for the product’s full useful life.</p>"
+          }
+        },
+        "question_7PBnFk": {
+          "type": "question",
+          "settings": {
+            "question": "What does the lifetime warranty cover?",
+            "answer": "<p>It covers functional defects that affect performance, including wheels, handles, zippers, locks, and structural issues.</p>"
+          }
+        },
+        "question_BQ8UJw": {
+          "type": "question",
+          "settings": {
+            "question": "What is not covered by the lifetime warranty?",
+            "answer": "<p>Normal wear and tear, cosmetic damage, misuse, airline damage, and unauthorized repairs are not covered.</p>"
+          }
+        },
+        "question_VphHyU": {
+          "type": "question",
+          "settings": {
+            "question": "How do I initiate a warranty claim?",
+            "answer": "<p>Email hello@nobltravel.com or use chat. Our team will confirm coverage and guide you through repair or replacement. A one-time $49 shipping and handling fee applies.</p>"
+          }
+        },
+        "question_JYhbWV": {
+          "type": "question",
+          "settings": {
+            "question": "Is the lifetime warranty transferable?",
+            "answer": "<p>No. The warranty applies only to the original purchaser and requires proof of purchase.</p>"
+          }
+        },
+        "question_YBTdJL": {
+          "type": "question",
+          "settings": {
+            "question": "How can I contact NOBL Travel for returns, refunds, or warranty claims?",
+            "answer": "<p>Reach our Customer Success Team at hello@nobltravel.com or via chat. They’re available Monday–Friday, 9 AM–5 PM EST.</p>"
+          }
+        },
+        "category_W7Gtmj": {
+          "type": "category",
+          "settings": {
+            "title": "<strong>NOBL Travel – FAQs about Shipping</strong>",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_HhTrD4": {
+          "type": "question",
+          "settings": {
+            "question": "What shipping carriers does NOBL Travel use?",
+            "answer": "<p>We ship via trusted partners including UPS, FedEx, and DHL, depending on your location.</p>"
+          }
+        },
+        "question_LeCfRz": {
+          "type": "question",
+          "settings": {
+            "question": "How long will it take for my order to ship?",
+            "answer": "<p>Orders are typically fulfilled within 24–48 hours and delivered in approximately 3–5 business days, depending on carrier availability and your location.</p>"
+          }
+        },
+        "question_taVxmn": {
+          "type": "question",
+          "settings": {
+            "question": "Where do you ship from?",
+            "answer": "<p>Orders ship from our U.S. warehouses for North America or the nearest international warehouse for other regions.</p>"
+          }
+        },
+        "question_8t7jBT": {
+          "type": "question",
+          "settings": {
+            "question": "How do I know the shipping time for my order?",
+            "answer": "<p>Estimated delivery times are displayed at checkout and confirmed in your shipping confirmation email, along with tracking details.</p>"
+          }
+        },
+        "question_yMwTmK": {
+          "type": "question",
+          "settings": {
+            "question": "Can I track my order once it’s shipped?",
+            "answer": "<p>Yes. You’ll receive a confirmation email with a tracking link as soon as your order leaves our facility.</p>"
+          }
+        },
+        "question_AwQVNW": {
+          "type": "question",
+          "settings": {
+            "question": "Can I get my order expedited?",
+            "answer": "<p>Yes. Expedited shipping options may be available at checkout.</p>"
+          }
+        },
+        "question_pJbbgf": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer international shipping?",
+            "answer": "<p>Yes. We ship globally. Shipping rates, thresholds for free shipping, and delivery times vary by region and are noted at checkout.</p>"
+          }
+        },
+        "question_RbjEBU": {
+          "type": "question",
+          "settings": {
+            "question": "What happens if my package is delayed?",
+            "answer": "<p>If a delay occurs, we’ll keep you informed and work with the carrier to ensure your order arrives as quickly as possible. Customers who purchased Package Protection receive priority support for lost or damaged shipments.</p>"
+          }
+        },
+        "question_jhBknk": {
+          "type": "question",
+          "settings": {
+            "question": "Can I change the shipping address after my order has been placed?",
+            "answer": "<p>Address changes are possible only before your order is fulfilled. Contact our Customer Success Team as soon as possible to update your shipping information.</p>"
+          }
+        },
+        "category_Um7mBj": {
+          "type": "category",
+          "settings": {
+            "title": "<strong>NOBL Travel – FAQs about Privacy Policy</strong>",
+            "icon": "none",
+            "icon_width": 16
+          }
+        },
+        "question_GhmDCq": {
+          "type": "question",
+          "settings": {
+            "question": "What personal data does NOBL Travel collect?",
+            "answer": "<p>NOBL Travel collects the following personal information:</p><ul><li>Name and surname</li><li>Email address</li><li>Physical address</li><li>Phone number</li><li>Browser and device data</li><li>Navigation behavior on the store</li></ul><p>This data is necessary to process orders, communicate with you, and improve your shopping experience.</p>"
+          }
+        },
+        "question_mbCB8e": {
+          "type": "question",
+          "settings": {
+            "question": "Why does NOBL Travel collect my data?",
+            "answer": "<p>We collect personal data to process your orders and ensure your packages are delivered. Additionally, we gather technical details and user behavior to enhance our store’s functionality and personalize your shopping experience, such as switching to the mobile version when necessary.</p>"
+          }
+        },
+        "question_UPxMd7": {
+          "type": "question",
+          "settings": {
+            "question": "Does NOBL Travel share my personal data with third parties?",
+            "answer": "<p>Yes, we collaborate with third-party service providers to improve our services. These third parties only access the personal data necessary for fulfilling their obligations and are not allowed to use your data for other purposes.</p>"
+          }
+        },
+        "question_94gUnm": {
+          "type": "question",
+          "settings": {
+            "question": "How does NOBL Travel protect my data?",
+            "answer": "<p>We take data protection seriously and comply with The General Data Protection Regulation (GDPR). Our systems and procedures are designed to keep your data secure while enabling us to offer better services.</p>"
+          }
+        },
+        "question_fYNJaP": {
+          "type": "question",
+          "settings": {
+            "question": "How can I unsubscribe from NOBL Travel’s marketing communications?",
+            "answer": "<p>You can unsubscribe at any time by clicking the unsubscribe link in our emails or by contacting us directly. You can also manage your email preferences through your account settings on our website.</p>"
+          }
+        },
+        "question_k4ibQf": {
+          "type": "question",
+          "settings": {
+            "question": "Does NOBL Travel share my data with any other companies?",
+            "answer": "<p>We only share your data with companies that help us fulfill services such as shipping, customer support, and payment processing. These companies are limited to accessing only the information needed to perform their tasks.</p>"
+          }
+        },
+        "question_qQj7xt": {
+          "type": "question",
+          "settings": {
+            "question": "How can I contact NOBL Travel regarding my privacy concerns?",
+            "answer": "<p>If you have any questions about our privacy policy or how your data is handled, you can reach out to us at hello@nobltravel.com.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "category",
+        "question-1",
+        "question-2",
+        "question-3",
+        "question_TjDc87",
+        "question_4W93px",
+        "question_F96DzN",
+        "question_bHH3AN",
+        "question_BrfFV7",
+        "question_Q3mwjp",
+        "question_bzaAdU",
+        "question_fKMdQR",
+        "question_3EWX3f",
+        "category_Kx43G6",
+        "question_zBrzUh",
+        "question_N4N9RK",
+        "question_EfYAQ7",
+        "question_zAhkTY",
+        "question_cLF3Ep",
+        "question_biDFNU",
+        "question_iKfGLb",
+        "question_7PBnFk",
+        "question_BQ8UJw",
+        "question_VphHyU",
+        "question_JYhbWV",
+        "question_YBTdJL",
+        "category_W7Gtmj",
+        "question_HhTrD4",
+        "question_LeCfRz",
+        "question_taVxmn",
+        "question_8t7jBT",
+        "question_yMwTmK",
+        "question_AwQVNW",
+        "question_pJbbgf",
+        "question_RbjEBU",
+        "question_jhBknk",
+        "category_Um7mBj",
+        "question_GhmDCq",
+        "question_mbCB8e",
+        "question_UPxMd7",
+        "question_94gUnm",
+        "question_fYNJaP",
+        "question_k4ibQf",
+        "question_qQj7xt"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "show_categories": false,
+        "subheading": "Need help?",
+        "title": "Frequently Asked Questions",
+        "content": ""
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

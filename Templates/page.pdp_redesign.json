@@ -1,0 +1,1596 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.pdp_redesign",
+  "sections": {
+    "richtext_lp_KVe47t": {
+      "type": "richtext_lp",
+      "blocks": {
+        "rating_hcYHE7": {
+          "type": "rating",
+          "settings": {
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"78\" height=\"14\" viewBox=\"0 0 78 14\" fill=\"none\">\n  <path d=\"M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z\" fill=\"#054B48\"/>\n  <path d=\"M23 0L24.5716 4.83688H29.6574L25.5429 7.82624L27.1145 12.6631L23 9.67376L18.8855 12.6631L20.4571 7.82624L16.3426 4.83688H21.4284L23 0Z\" fill=\"#054B48\"/>\n  <path d=\"M39 0L40.5716 4.83688H45.6574L41.5429 7.82624L43.1145 12.6631L39 9.67376L34.8855 12.6631L36.4571 7.82624L32.3426 4.83688H37.4284L39 0Z\" fill=\"#054B48\"/>\n  <path d=\"M55 0L56.5716 4.83688H61.6574L57.5429 7.82624L59.1145 12.6631L55 9.67376L50.8855 12.6631L52.4571 7.82624L48.3426 4.83688H53.4284L55 0Z\" fill=\"#054B48\"/>\n  <path d=\"M71 0L72.5716 4.83688H77.6574L73.5429 7.82624L75.1145 12.6631L71 9.67376L66.8855 12.6631L68.4571 7.82624L64.3426 4.83688H69.4284L71 0Z\" fill=\"#054B48\"/>\n</svg>",
+            "text": "4.7 / 5.0 | <strong>16,325 Reviews</strong>",
+            "custom_class": "pdt_lp_rating"
+          }
+        },
+        "heading_44zRQh": {
+          "type": "heading",
+          "settings": {
+            "text": "Carry-On: All-in-One",
+            "heading_size": "h1",
+            "h1": false,
+            "custom_class": "pdt_mobile_heading"
+          }
+        }
+      },
+      "block_order": [
+        "rating_hcYHE7",
+        "heading_44zRQh"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "pdt_section_top mobile_only",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "",
+        "bg_color2": "",
+        "color": "#000000",
+        "position": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 0,
+        "trigger_class": ""
+      }
+    },
+    "featured_product_pdp_WdnEgt": {
+      "type": "pdp_redesign",
+      "blocks": {
+        "reviews_AGRqQL": {
+          "type": "reviews",
+          "settings": {}
+        },
+        "title_aRc7Ln": {
+          "type": "title",
+          "settings": {}
+        },
+        "icons_with_text_TJr9AY": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n  <path d=\"M4.8748 13.9499L8.7748 16.8749L17.5498 6.1499\" stroke=\"#054B48\" stroke-width=\"2.6\"/>\n</svg>",
+            "text1": "Crush-tested with anti-pry latches",
+            "svg2": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n  <path d=\"M4.8748 13.9499L8.7748 16.8749L17.5498 6.1499\" stroke=\"#054B48\" stroke-width=\"2.6\"/>\n</svg>",
+            "text2": "Modular dividers included",
+            "svg3": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">\n  <path d=\"M4.8748 13.9499L8.7748 16.8749L17.5498 6.1499\" stroke=\"#054B48\" stroke-width=\"2.6\"/>\n</svg>",
+            "text3": "360° glide wheels for easy travel",
+            "custom_class": "product_des_lp_new"
+          }
+        },
+        "features_F6fVFL": {
+          "type": "features",
+          "disabled": true,
+          "settings": {
+            "icon_1": "shopify://shop_images/image_592.png",
+            "text_1": "Built for impact",
+            "icon_2": "shopify://shop_images/image_-_2025-06-26T212457.142.png",
+            "text_2": "Triple TSA Lock",
+            "icon_3": "shopify://shop_images/image_593.png",
+            "text_3": "5 Day Capacity",
+            "icon_4": "shopify://shop_images/image_595.png",
+            "text_4": "360° Glide"
+          }
+        },
+        "variations_qG4eqk": {
+          "type": "variations",
+          "settings": {}
+        },
+        "richtext_JLtq9G": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>LIMITED TIME | Free Gifts Included</p>",
+            "custom_class": "limited_time_lp_text"
+          }
+        },
+        "icons_with_text_84wci7": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "FREE <s>$45</s>",
+            "image1": "shopify://shop_images/free1.webp",
+            "text1": "Luggage  <strong>Cover</strong>",
+            "svg2": "FREE <s>$100</s>",
+            "image2": "shopify://shop_images/free2.webp",
+            "text2": "Lifetime <strong>Warranty</strong>",
+            "svg3": "",
+            "text3": "",
+            "custom_class": "free_gifts_lp"
+          }
+        },
+        "in_stock_Ykxezw": {
+          "type": "in_stock",
+          "settings": {
+            "stock": "<strong>In Stock</strong> - Available For Delivery:"
+          }
+        },
+        "add_to_cart_NEQQHW": {
+          "type": "add_to_cart",
+          "settings": {}
+        },
+        "shipping_AfpfkW": {
+          "type": "shipping",
+          "settings": {
+            "text": "<p><span><img src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/Line_1.svg?v=1750909742\"> Free Shipping</span> | <span><img src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/Line_1.svg?v=1750909742\">100-Day Returns</span></p>"
+          }
+        },
+        "payment_icons_hDHKBB": {
+          "type": "payment_icons",
+          "settings": {
+            "icon": "shopify://shop_images/Group_1484581719.svg"
+          }
+        },
+        "icons_with_text_BMV8kG": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/grauntee_icon_6b0831b9-bea2-412c-bcc0-82181dda59f9.webp",
+            "text1": "BACKED BY OUR <strong>LIFETIME GUARANTEE</strong>",
+            "svg2": "",
+            "image2": "shopify://shop_images/grauntee_img.webp",
+            "text2": "",
+            "svg3": "",
+            "text3": "",
+            "custom_class": "garuantee_lp_icon"
+          }
+        },
+        "faqs_q4PfXe": {
+          "type": "faqs",
+          "settings": {
+            "question": "<p>The All-In-One</p>",
+            "answer": "<p>The award winning All-in-One Carry-On. Built for the modern man who travels hard and packs smart:</p><ul><li>Laptop Pocket</li><li>Device Charging</li><li>TSA Locks</li><li>Phone Dock</li></ul>",
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": ""
+          }
+        },
+        "faqs_rCaGz6": {
+          "type": "faqs",
+          "settings": {
+            "question": "<p>Dimensions</p>",
+            "answer": "<p><strong>Exterior measurements:</strong> 20.5\" x 15.5\" x 10\"</p><p><strong>Interior measurements: </strong>19\" x 13.8\" x 8\"  </p><p><strong>Weight:</strong> 11.75 lbs  </p><p><strong>Capacity:</strong> 35L  </p><p><em>Measurements do not include wheels.</em></p>",
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": ""
+          }
+        },
+        "faqs_QkQ4eK": {
+          "type": "faqs",
+          "settings": {
+            "question": "<p>Shipping & Returns</p>",
+            "answer": "<p><strong>Shipping</strong> <br/>3-Day Shipping within the USA for all orders.</p><p><strong>Returns <br/></strong>We want you to love everything about getting Nobl - which is why we offer returns on unused items for the first 100 days.</p>",
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": ""
+          }
+        },
+        "faqs_Wp8fEe": {
+          "type": "faqs",
+          "settings": {
+            "question": "<p>What's Included?</p>",
+            "answer": "<p><strong>1x All-in-One Suitcase </strong></p><p><strong>1x Luggage Cover (Prevents scratches) </strong></p><p><strong>1x Lifetime Warranty </strong></p><p><strong>1x 100-Day Money Back Guarantee</strong></p>",
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
+            "text_4": ""
+          }
+        }
+      },
+      "block_order": [
+        "reviews_AGRqQL",
+        "title_aRc7Ln",
+        "icons_with_text_TJr9AY",
+        "features_F6fVFL",
+        "variations_qG4eqk",
+        "richtext_JLtq9G",
+        "icons_with_text_84wci7",
+        "in_stock_Ykxezw",
+        "add_to_cart_NEQQHW",
+        "shipping_AfpfkW",
+        "payment_icons_hDHKBB",
+        "icons_with_text_BMV8kG",
+        "faqs_q4PfXe",
+        "faqs_rCaGz6",
+        "faqs_QkQ4eK",
+        "faqs_Wp8fEe"
+      ],
+      "name": "Product LP Redesign",
+      "settings": {
+        "product": "carry-on-all-in-one",
+        "product_image0": "shopify://shop_images/black_pdp.webp",
+        "product_image1": "shopify://shop_images/pdp_img2.webp",
+        "product_image2": "shopify://shop_images/pdp_img3.webp",
+        "product_image3": "shopify://shop_images/pdp_img4.webp",
+        "product_image4": "shopify://shop_images/pdp_img5.webp",
+        "product_image5": "shopify://shop_images/pdp_img6.webp",
+        "product_image6": "shopify://shop_images/pdp_img7.webp",
+        "product_image7": "shopify://shop_images/pdp_img8.webp",
+        "product_image8": "shopify://shop_images/pdp_img9.webp",
+        "product_image9": "shopify://shop_images/pdp_img10.webp",
+        "image": "shopify://shop_images/Frame_50_4.svg",
+        "text2": "4.7 / 5.0 | <u>14,972 Reviews</u>",
+        "badge": "<strong>50+</strong> Bought Today",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "richtext_lp_MhNfnK": {
+      "type": "richtext_lp",
+      "blocks": {
+        "html_cM8KJ9": {
+          "type": "html",
+          "settings": {
+            "text": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet\">",
+            "custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "html_cM8KJ9"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "",
+        "bg_color2": "",
+        "color": "",
+        "position": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "trigger_class": ""
+      }
+    },
+    "richtext_lp_c3B7cG": {
+      "type": "richtext_lp",
+      "blocks": {
+        "heading_wKDfFg": {
+          "type": "heading",
+          "settings": {
+            "text": "Features",
+            "heading_size": "h1",
+            "h1": false,
+            "custom_class": "features_pdp_heading"
+          }
+        },
+        "icons_with_text_HVW8kn": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/feature_img_1.webp",
+            "title1": "Hands-Free Sips",
+            "text1": "Cup holder = no spills, no hassle.",
+            "svg2": "",
+            "image2": "shopify://shop_images/feature_img_2.webp",
+            "title2": "Phone Holder",
+            "text2": "Scroll or stream, hands-free, right from the handle.",
+            "svg3": "",
+            "image3": "shopify://shop_images/feature_img_3.webp",
+            "title3": "TSA-Approved Locks",
+            "text3": "Secure. Compliant. Stress-free travel.",
+            "svg4": "",
+            "image4": "shopify://shop_images/feature_img_4.webp",
+            "title4": "Glide Like Air",
+            "text4": "Roll smooth in any direction, zero drag.",
+            "svg5": "",
+            "image5": "shopify://shop_images/feature_img_5.webp",
+            "title5": "Charging Port",
+            "text5": "Power up on the go with USB + USB-C.",
+            "svg6": "",
+            "image6": "shopify://shop_images/feature_img_6.webp",
+            "title6": "Front Pocket",
+            "text6": "Quick-access storage for laptop and travel musts.",
+            "svg7": "",
+            "title7": "",
+            "text7": "",
+            "svg8": "",
+            "title8": "",
+            "text8": "",
+            "loading": "lazy",
+            "fetchpriority": "low",
+            "custom_class": "features_pdp_list"
+          }
+        },
+        "image_UjWfyD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/feature_img_mobile.png",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "custom_class": "mobile_only feature_img_mobile"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wKDfFg",
+        "icons_with_text_HVW8kn",
+        "image_UjWfyD"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "features_pdp_section",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "",
+        "bg_color2": "",
+        "color": "",
+        "position": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 0,
+        "trigger_class": ""
+      }
+    },
+    "richtext_lp_UXDEew": {
+      "type": "richtext_lp",
+      "blocks": {
+        "rating_U4HDVP": {
+          "type": "rating",
+          "settings": {
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"99\" height=\"18\" viewBox=\"0 0 99 18\" fill=\"none\">\n  <path d=\"M8.45 0.649414L10.3471 6.48822H16.4864L11.5196 10.0968L13.4168 15.9356L8.45 12.327L3.48321 15.9356L5.38036 10.0968L0.413572 6.48822H6.55286L8.45 0.649414Z\" fill=\"white\"/>\n  <path d=\"M29.2498 0.649414L31.1469 6.48822H37.2862L32.3194 10.0968L34.2166 15.9356L29.2498 12.327L24.283 15.9356L26.1802 10.0968L21.2134 6.48822H27.3527L29.2498 0.649414Z\" fill=\"white\"/>\n  <path d=\"M49.3996 1.2998L51.1508 6.68947H56.8179L52.2331 10.0205L53.9843 15.4101L49.3996 12.0791L44.8149 15.4101L46.5661 10.0205L41.9814 6.68947H47.6484L49.3996 1.2998Z\" fill=\"white\"/>\n  <path d=\"M69.5496 0.649414L71.4468 6.48822H77.586L72.6193 10.0968L74.5164 15.9356L69.5496 12.327L64.5828 15.9356L66.48 10.0968L61.5132 6.48822H67.6525L69.5496 0.649414Z\" fill=\"white\"/>\n  <path d=\"M90.3504 0.649414L92.2475 6.48822H98.3868L93.42 10.0968L95.3172 15.9356L90.3504 12.327L85.3836 15.9356L87.2807 10.0968L82.314 6.48822H88.4532L90.3504 0.649414Z\" fill=\"white\"/>\n</svg>",
+            "text": "<em>16,300+</em> Verified Reviews",
+            "custom_class": "outlast_rating_text"
+          }
+        }
+      },
+      "block_order": [
+        "rating_U4HDVP"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "outlast_pdp_rating",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "#054b48",
+        "bg_color2": "",
+        "color": "#ffffff",
+        "position": "center",
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10,
+        "trigger_class": ""
+      }
+    },
+    "two_layer_richtext_lp_anCbcF": {
+      "type": "two_layer_richtext_lp",
+      "blocks": {
+        "heading_r67E3A": {
+          "type": "heading",
+          "settings": {
+            "text": "Tested to the Edge. Built to Outlast.",
+            "heading_size": "h1",
+            "h1": false,
+            "position": "left",
+            "custom_class": "new_pdp_heading outlast_heading"
+          }
+        },
+        "richtext_TyiGey": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Drop shocks. Zipper tugs. Repeated handle slams.<em>Every bag goes through brutal real-world testing—so yours never quits when it matters.</em></p>",
+            "position": "left",
+            "custom_class": "outlast_text"
+          }
+        },
+        "image_xJheCt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/outlast_img_mobile.png",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "position": "left",
+            "custom_class": "outlast_pdp_img mobile_only"
+          }
+        },
+        "icons_with_text_RbXzLz": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/outlast_icon_1.webp",
+            "text1": "<p><strong>Drop-Tested for  Real Impacts</strong>Smashed on corners, wheels, and edges. Zero cracks. Zero dents. Just rugged resilience.</p>",
+            "svg2": "",
+            "image2": "shopify://shop_images/outlast_icon_2.webp",
+            "text2": "<p><strong>Handle Yank-Tested (Again and Again)</strong>We pull hard—hundreds of times.  No give. No wobble. No fail.</p>",
+            "svg3": "",
+            "text3": "",
+            "svg4": "",
+            "text4": "",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "position": "left",
+            "custom_class": "outlast_list"
+          }
+        },
+        "image_UwBkw7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/outlast_img.webp",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "position": "right",
+            "custom_class": "outlast_pdp_img desktop_only"
+          }
+        }
+      },
+      "block_order": [
+        "heading_r67E3A",
+        "richtext_TyiGey",
+        "image_xJheCt",
+        "icons_with_text_RbXzLz",
+        "image_UwBkw7"
+      ],
+      "name": "Two Richtext Lp",
+      "settings": {
+        "custom_class": "outlast_pdp_section",
+        "custom_id": "",
+        "bg_color": "#054b48",
+        "bg_color2": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "color": "#ffffff",
+        "position": "center",
+        "content_size": 50,
+        "rating": "",
+        "rating_mobile": "",
+        "heading": "",
+        "subheading": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 37
+      }
+    },
+    "two_layer_richtext_lp_PiQtB3": {
+      "type": "two_layer_richtext_lp",
+      "blocks": {
+        "heading_iCqfVX": {
+          "type": "heading",
+          "settings": {
+            "text": "4 Features Built for Real-World Travel",
+            "heading_size": "h1",
+            "h1": false,
+            "position": "left",
+            "custom_class": "new_pdp_heading real_heading"
+          }
+        },
+        "richtext_zFmHGT": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Every add-on is functional—from USB-C ports to load-tested hooks, all built for convenience.</p>",
+            "position": "left",
+            "custom_class": "real_text"
+          }
+        },
+        "icons_with_text_9d4dam": {
+          "type": "icons_with_text_slider",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/real_list_img1.webp",
+            "text1": "<p><strong>Magnetic Phone Mount</strong>Snaps your phone in place for hands-free use.</p>",
+            "svg2": "",
+            "image2": "shopify://shop_images/real_list_img2.webp",
+            "text2": "<p><strong>INTEGRATED CUP HOLDER</strong>Keeps drinks upright while rolling—fits bottles, folds flat when not in use.</p>",
+            "svg3": "",
+            "image3": "shopify://shop_images/real_list_img3.webp",
+            "text3": "<p><strong>USB & USB-C CHARGING PORTS</strong>Passthrough ports let you charge on the go using your power bank.</p>",
+            "svg4": "",
+            "image4": "shopify://shop_images/real_list_img4.webp",
+            "text4": "<p><strong>Laptop Pocket</strong>Zipperless, hard-shell slot fits up to 16\"—quick to grab, safe when closed.</p>",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "position": "left",
+            "custom_class": "real_list mobile_only"
+          }
+        },
+        "icons_with_text_9d4dam2": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/real_list_img1.webp",
+            "text1": "<p><strong>Magnetic Phone Mount</strong>Snaps your phone in place for hands-free use.</p>",
+            "svg2": "",
+            "image2": "shopify://shop_images/real_list_img2.webp",
+            "text2": "<p><strong>INTEGRATED CUP HOLDER</strong>Keeps drinks upright while rolling—fits bottles, folds flat when not in use.</p>",
+            "svg3": "",
+            "image3": "shopify://shop_images/real_list_img3.webp",
+            "text3": "<p><strong>USB & USB-C CHARGING PORTS</strong>Passthrough ports let you charge on the go using your power bank.</p>",
+            "svg4": "",
+            "image4": "shopify://shop_images/real_list_img4.webp",
+            "text4": "<p><strong>Laptop Pocket</strong>Zipperless, hard-shell slot fits up to 16\"—quick to grab, safe when closed.</p>",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "position": "left",
+            "custom_class": "real_list desktop_only"
+          }
+        },
+        "image_VbV6b7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/real_world_img.webp",
+            "image_mobile": "shopify://shop_images/real_world_imgmobile.png",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "position": "right",
+            "custom_class": "real_pdp_img"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iCqfVX",
+        "richtext_zFmHGT",
+        "icons_with_text_9d4dam",
+        "icons_with_text_9d4dam2",
+        "image_VbV6b7"
+      ],
+      "name": "Two Richtext Lp",
+      "settings": {
+        "custom_class": "real_pdp_section",
+        "custom_id": "",
+        "bg_color": "#ffffff",
+        "bg_color2": "rgba(0,0,0,0)",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "color": "#000000",
+        "position": "center",
+        "content_size": 50,
+        "rating": "",
+        "rating_mobile": "",
+        "heading": "",
+        "subheading": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_pdp_BPjMGP": {
+      "type": "product_pdp",
+      "blocks": {
+        "heading_UXfdce": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ section.settings.product.title }}",
+            "heading_size": "h1",
+            "custom_class": ""
+          }
+        },
+        "price_WBtcGK": {
+          "type": "price",
+          "settings": {
+            "text1": "Save"
+          }
+        },
+        "variants_p9PVUt": {
+          "type": "variants",
+          "settings": {
+            "loop": 1,
+            "title1": "",
+            "badge1": "",
+            "title2": "",
+            "badge2": "",
+            "title3": "",
+            "badge3": ""
+          }
+        },
+        "checkout_button_WLqcTr": {
+          "type": "checkout_button",
+          "settings": {
+            "text": "ORDER NOW"
+          }
+        },
+        "faq_Qn4AE3": {
+          "type": "faq",
+          "settings": {
+            "question": "",
+            "answer": "",
+            "custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_UXfdce",
+        "price_WBtcGK",
+        "variants_p9PVUt",
+        "checkout_button_WLqcTr",
+        "faq_Qn4AE3"
+      ],
+      "disabled": true,
+      "name": "Product LP",
+      "settings": {
+        "product": "carry-on-all-in-one",
+        "custom_class": "",
+        "custom_id": "",
+        "bg_color": "#ffffff",
+        "color": "#000000",
+        "bought": "<strong>100+</strong> Bought Today",
+        "heading": "",
+        "text": "",
+        "text2": "",
+        "custom_images": true,
+        "variant1_image": "shopify://shop_images/Frame_5.webp",
+        "product_image1": "shopify://shop_images/Frame_6.webp",
+        "product_image2": "shopify://shop_images/Frame_7.webp",
+        "product_image3": "shopify://shop_images/Frame_8.webp",
+        "product_image4": "shopify://shop_images/Frame_9.webp",
+        "product_image5": "shopify://shop_images/Frame_10.webp",
+        "product_image6": "shopify://shop_images/Frame_11.webp",
+        "product_image7": "shopify://shop_images/Group_39.webp",
+        "product_image8": "shopify://shop_images/Group_40.webp",
+        "product_image9": "shopify://shop_images/Group_41.webp",
+        "padding_top": 90,
+        "padding_bottom": 90,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "nbl_text_slider_E97Xeh": {
+      "type": "nbl_text_slider",
+      "blocks": {
+        "text_item_JrFQ6J": {
+          "type": "text_item",
+          "settings": {
+            "text": "ZIPPERLESS SECURITY"
+          }
+        },
+        "text_item_Qxgk3g": {
+          "type": "text_item",
+          "settings": {
+            "text": "USB + USB-C PORT CHARGING"
+          }
+        },
+        "text_item_htqpB3": {
+          "type": "text_item",
+          "settings": {
+            "text": "LIFETIME WARRANTY"
+          }
+        }
+      },
+      "block_order": [
+        "text_item_JrFQ6J",
+        "text_item_Qxgk3g",
+        "text_item_htqpB3"
+      ],
+      "custom_css": [
+        ".text-slider-section {background-color: #022524;}"
+      ],
+      "name": "Text Slider",
+      "settings": {}
+    },
+    "nbl_you_may_also_like_6zzXri": {
+      "type": "nbl_you_may_also_like",
+      "blocks": {
+        "product_card_eRitJJ": {
+          "type": "product_card",
+          "settings": {
+            "product": "check-in-all-in-one-28",
+            "product_image": "shopify://shop_images/Frame_12.webp",
+            "product_title": "Check-in: All-in-One 28\"",
+            "features": "<ul><li>Smooth-glide 360° wheels</li><li>Lifetime warranty</li><li>Unbreakable Shell</li></ul>",
+            "rating": "4.9 / 5.0",
+            "image1": "shopify://shop_images/pdp1_black.webp",
+            "variant1": 1,
+            "image2": "shopify://shop_images/pdp1_red.webp",
+            "variant2": 9,
+            "image3": "shopify://shop_images/pdp1_white.webp",
+            "variant3": 2,
+            "image4": "shopify://shop_images/pdp1_forest_green.webp",
+            "variant4": 3,
+            "image5": "shopify://shop_images/pdp1_beige.webp",
+            "variant5": 4,
+            "image6": "shopify://shop_images/pdp1_baby_blue.webp",
+            "variant6": 5,
+            "image7": "shopify://shop_images/pdp1_pink.webp",
+            "variant7": 6,
+            "image8": "shopify://shop_images/pdp1_hot_pink.webp",
+            "variant8": 7,
+            "image9": "shopify://shop_images/pdp1_lavender.webp",
+            "variant9": 8,
+            "image10": "shopify://shop_images/pdp1_silver.webp",
+            "variant10": 10,
+            "image11": "shopify://shop_images/pdp1_black.webp",
+            "variant11": 1,
+            "image12": "shopify://shop_images/pdp1_black.webp",
+            "variant12": 1,
+            "image13": "shopify://shop_images/pdp1_black.webp",
+            "variant13": 1
+          }
+        },
+        "product_card_ezgtrE": {
+          "type": "product_card",
+          "settings": {
+            "product": "packing-cubes",
+            "product_image": "shopify://shop_images/Frame_13.webp",
+            "product_title": "Compressable Packing Cubes (6 Pieces)",
+            "features": "<ul><li>Maximises suitcase space by 30%</li><li>Keeps outfits wrinkle-free and organised</li><li>Durable zippers + water-resistant lining</li></ul>",
+            "rating": "4.9 / 5.0",
+            "image1": "shopify://shop_images/pdp2_black.webp",
+            "variant1": 3,
+            "image2": "shopify://shop_images/pdp2_red.webp",
+            "variant2": 9,
+            "image3": "shopify://shop_images/pdp2_white.webp",
+            "variant3": 10,
+            "image4": "shopify://shop_images/pdp2_forest_green.webp",
+            "variant4": 6,
+            "image5": "shopify://shop_images/pdp2_beige.webp",
+            "variant5": 1,
+            "image6": "shopify://shop_images/pdp2_baby_blue.webp",
+            "variant6": 5,
+            "image7": "shopify://shop_images/pdp2_pink.webp",
+            "variant7": 4,
+            "image8": "shopify://shop_images/pdp2_hot_pink.webp",
+            "variant8": 7,
+            "image9": "shopify://shop_images/pdp2_lavender.webp",
+            "variant9": 8,
+            "image10": "shopify://shop_images/pdp2_silver.webp",
+            "variant10": 11,
+            "image11": "shopify://shop_images/pdp2_black.webp",
+            "variant11": 1,
+            "image12": "shopify://shop_images/pdp2_black.webp",
+            "variant12": 1,
+            "image13": "shopify://shop_images/pdp2_black.webp",
+            "variant13": 1
+          }
+        },
+        "product_card_MhU8tt": {
+          "type": "product_card",
+          "settings": {
+            "product": "weekender-bag",
+            "product_image": "shopify://shop_images/Frame_14.webp",
+            "product_title": "Weekender Bag",
+            "features": "<ul><li>Fits 2–3 days’ worth of essentials</li><li>Trolley sleeve for easy airport carry</li><li>Premium water-resistant fabric</li></ul>",
+            "rating": "4.9 / 5.0",
+            "image1": "shopify://shop_images/pdp3_black.webp",
+            "variant1": 2,
+            "image2": "shopify://shop_images/pdp3_black.webp",
+            "variant2": 2,
+            "image3": "shopify://shop_images/pdp3_white.webp",
+            "variant3": 3,
+            "image4": "shopify://shop_images/pdp3_forest_green.webp",
+            "variant4": 1,
+            "image5": "shopify://shop_images/pdp3_beige.webp",
+            "variant5": 4,
+            "image6": "shopify://shop_images/pdp3_baby_blue.webp",
+            "variant6": 5,
+            "image7": "shopify://shop_images/pdp3_pink.webp",
+            "variant7": 6,
+            "image8": "shopify://shop_images/pdp3_black.webp",
+            "variant8": 2,
+            "image9": "shopify://shop_images/pdp3_black.webp",
+            "variant9": 2,
+            "image10": "shopify://shop_images/pdp3_black.webp",
+            "variant10": 2,
+            "image11": "shopify://shop_images/pdp3_black.webp",
+            "variant11": 2,
+            "image12": "shopify://shop_images/pdp3_black.webp",
+            "variant12": 2,
+            "image13": "shopify://shop_images/pdp3_black.webp",
+            "variant13": 2
+          }
+        },
+        "product_card_qNPTii": {
+          "type": "product_card",
+          "settings": {
+            "product": "carry-on-all-in-one-expandable",
+            "product_image": "shopify://shop_images/Frame_15.webp",
+            "product_title": "Carry-on: All-in-one Expandable",
+            "features": "<ul><li>Expands for 20% more storage if needed</li><li>Tech compartment fits laptop</li><li>Smooth-glide 360° wheels </li></ul>",
+            "rating": "4.9 / 5.0",
+            "image1": "shopify://shop_images/pdp4_black.webp",
+            "variant1": 2,
+            "image2": "shopify://shop_images/pdp4_black.webp",
+            "variant2": 2,
+            "image3": "shopify://shop_images/pdp4_black.webp",
+            "variant3": 2,
+            "image4": "shopify://shop_images/pdp4_forest_green.webp",
+            "variant4": 3,
+            "image5": "shopify://shop_images/pdp4_beige.webp",
+            "variant5": 1,
+            "image6": "shopify://shop_images/pdp4_baby_blue.webp",
+            "variant6": 4,
+            "image7": "shopify://shop_images/pdp4_pink.webp",
+            "variant7": 5,
+            "image8": "shopify://shop_images/pdp4_black.webp",
+            "variant8": 2,
+            "image9": "shopify://shop_images/pdp4_black.webp",
+            "variant9": 2,
+            "image10": "shopify://shop_images/pdp4_silver.webp",
+            "variant10": 6,
+            "image11": "shopify://shop_images/pdp4_black.webp",
+            "variant11": 2,
+            "image12": "shopify://shop_images/pdp4_black.webp",
+            "variant12": 2,
+            "image13": "shopify://shop_images/pdp4_black.webp",
+            "variant13": 2
+          }
+        }
+      },
+      "block_order": [
+        "product_card_eRitJJ",
+        "product_card_ezgtrE",
+        "product_card_MhU8tt",
+        "product_card_qNPTii"
+      ],
+      "disabled": true,
+      "name": "You May Also Like",
+      "settings": {
+        "section_heading": "YOU MAY ALSO LIKE"
+      }
+    },
+    "nbl_features_new_pdp_Ptmc7y": {
+      "type": "nbl_features_new_pdp",
+      "blocks": {
+        "icon_block_bzbrh4": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "shopify://shop_images/image_71.webp",
+            "title": "GUARANTEED FOR LIFE. TESTED FOR TRAVEL.",
+            "text": "Built to perform. Backed for life."
+          }
+        },
+        "icon_block_EKWJCC": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "shopify://shop_images/image_72.webp",
+            "title": "Lifetime Coverage",
+            "text": "Shell. Wheels. Zippers. Handles. If it breaks—we fix it. No fine print."
+          }
+        },
+        "icon_block_CUWcgC": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "shopify://shop_images/image_73.webp",
+            "title": "100-Day Risk-Free Trial",
+            "text": "Take it for a spin. Don’t love it? Send it back, no hassle."
+          }
+        },
+        "card_block_7Wxxqb": {
+          "type": "card_block",
+          "settings": {
+            "image": "shopify://shop_images/a7c7d102-cffe-45dc-9186-7d9ed56a19e1_3.webp",
+            "title": "ENGINEERED FOR REAL-WORLD TRAVEL",
+            "text": "Every inch of the Carry-On was built to perform—from the reinforced corners to the silent-glide wheels. No fluff, no filler."
+          }
+        },
+        "card_block_Xj4nQA": {
+          "type": "card_block",
+          "settings": {
+            "image": "shopify://shop_images/a7c7d102-cffe-45dc-9186-7d9ed56a19e1_4.webp",
+            "title": "TSA-APPROVED. TAMPER-PROOF.",
+            "text": "Dual locks keep your gear secure through airports and overhead bins—without slowing you down. Built for peace of mind."
+          }
+        },
+        "card_block_MU9qqh": {
+          "type": "card_block",
+          "settings": {
+            "image": "shopify://shop_images/a7c7d102-cffe-45dc-9186-7d9ed56a19e1_5.webp",
+            "title": "DESIGNED FOR THE MODERN CARRY",
+            "text": "Built-in laptop pocket, charging access, and even a bottle hook—everything you need, right where you need it. No extra bags required."
+          }
+        }
+      },
+      "block_order": [
+        "icon_block_bzbrh4",
+        "icon_block_EKWJCC",
+        "icon_block_CUWcgC",
+        "card_block_7Wxxqb",
+        "card_block_Xj4nQA",
+        "card_block_MU9qqh"
+      ],
+      "disabled": true,
+      "name": "Features Section",
+      "settings": {
+        "heading": "",
+        "subtitle": "",
+        "top_image": "shopify://shop_images/image_49.webp",
+        "top_imagem": "shopify://shop_images/image_65.webp"
+      }
+    },
+    "richtext_lp_zR6yik": {
+      "type": "richtext_lp",
+      "blocks": {
+        "icons_with_text_yXMHJB": {
+          "type": "icons_with_text_slider",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/pdp_box_img1.png",
+            "title1": "Built for Real World Travel",
+            "text1": "Reinforced shell, aluminum frame, and smooth 360° wheels. Carries 35L with style—and stands up to every journey.",
+            "svg2": "",
+            "image2": "shopify://shop_images/pdp_box_img2.png",
+            "title2": "TSA-Approved. Tamper-Proof.",
+            "text2": "Dual latch locks skip zippers, breeze through checkpoints, and stay locked everywhere else.",
+            "svg3": "",
+            "image3": "shopify://shop_images/pdp_box_img3.png",
+            "title3": "Designed For The Modern Carry",
+            "text3": "Zipperless laptop access, built-in USB-C, cup holder, and quiet hooks—everything built in, nothing loose.",
+            "svg4": "",
+            "title4": "",
+            "text4": "",
+            "svg5": "",
+            "title5": "",
+            "text5": "",
+            "svg6": "",
+            "title6": "",
+            "text6": "",
+            "svg7": "",
+            "title7": "",
+            "text7": "",
+            "svg8": "",
+            "title8": "",
+            "text8": "",
+            "loading": "lazy",
+            "fetchpriority": "low",
+            "custom_class": "box_pdp_list"
+          }
+        }
+      },
+      "block_order": [
+        "icons_with_text_yXMHJB"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "pdp_box_section",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "#054b48",
+        "bg_color2": "",
+        "color": "#ffffff",
+        "position": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 20,
+        "trigger_class": ""
+      }
+    },
+    "richtext_lp_wWGnUz": {
+      "type": "richtext_lp",
+      "blocks": {
+        "heading_AcYP8t": {
+          "type": "heading",
+          "settings": {
+            "text": "Everything’s Engineered In.",
+            "heading_size": "h1",
+            "h1": false,
+            "custom_class": "new_pdp_heading everything_heading"
+          }
+        },
+        "richtext_NbRfmk": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>From the shell to the ports, every element exists for performance—not aesthetics.</p>",
+            "html": "",
+            "custom_class": "everything_text"
+          }
+        },
+        "icons_with_text_Hy4CDk": {
+          "type": "icons_with_text",
+          "settings": {
+            "svg1": "",
+            "image1": "shopify://shop_images/everything_icon_1.webp",
+            "title1": "Reinforced Shell Composition",
+            "text1": "Absorbs impact to protect what’s inside.",
+            "svg2": "",
+            "image2": "shopify://shop_images/everything_icon_2.webp",
+            "title2": "USB + USB-C Passthrough",
+            "text2": "Plug in your power bank and charge on the move",
+            "svg3": "",
+            "image3": "shopify://shop_images/everything_icon_3.webp",
+            "title3": "Zipperless Laptop Access",
+            "text3": "Fits up to 16\". Opens fast.  Stays secure.",
+            "svg4": "",
+            "image4": "shopify://shop_images/everything_icon_4.webp",
+            "title4": "Built-In Add-Ons",
+            "text4": "Magnetic phone mount + cup holder — integrated, not clipped on.",
+            "svg5": "",
+            "title5": "",
+            "text5": "",
+            "svg6": "",
+            "title6": "",
+            "text6": "",
+            "svg7": "",
+            "title7": "",
+            "text7": "",
+            "svg8": "",
+            "title8": "",
+            "text8": "",
+            "loading": "lazy",
+            "fetchpriority": "low",
+            "custom_class": "everything_pdp_list"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AcYP8t",
+        "richtext_NbRfmk",
+        "icons_with_text_Hy4CDk"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "everything_section",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "#ffffff",
+        "bg_color2": "",
+        "color": "#000000",
+        "position": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 30,
+        "trigger_class": ""
+      }
+    },
+    "nbl_text_slider_QrkQVj": {
+      "type": "nbl_text_slider",
+      "blocks": {
+        "text_item_NgQHfa": {
+          "type": "text_item",
+          "settings": {
+            "text": "ZIPPERLESS SECURITY"
+          }
+        },
+        "text_item_F8k6wB": {
+          "type": "text_item",
+          "settings": {
+            "text": "USB + USB-C PORT CHARGING"
+          }
+        },
+        "text_item_76JyN3": {
+          "type": "text_item",
+          "settings": {
+            "text": "LIFETIME WARRANTY"
+          }
+        }
+      },
+      "block_order": [
+        "text_item_NgQHfa",
+        "text_item_F8k6wB",
+        "text_item_76JyN3"
+      ],
+      "custom_css": [
+        ".text-slider-section {background-color: #054b48;}"
+      ],
+      "name": "Text Slider",
+      "settings": {}
+    },
+    "faq_two_column_KFEwiG": {
+      "type": "nbl_faq_section",
+      "blocks": {
+        "faq_yeaj43": {
+          "type": "faq",
+          "settings": {
+            "question": "Does the NOBL Carry-On fit all airline carry-on size limits?",
+            "answer": "<p>Yes - it’s designed to fit within most international and domestic carry-on size restrictions, including stricter budget airlines.Always double-check with your airline before flying.</p>"
+          }
+        },
+        "faq_qqFAMn": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it come with a battery pack for the USB ports?",
+            "answer": "<p>No battery is included, but the carry-on features a built-in USB + USB-C port system compatible with any standard power bank you place inside the internal sleeve.</p>"
+          }
+        },
+        "faq_LNYXY4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use the cup holder and phone mount at the same time?",
+            "answer": "<p>Yes - both are mounted near the telescopic handle and designed to be used simultaneously for ultimate pre-boarding convenience.</p>"
+          }
+        },
+        "faq_Mp3FJ4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the laptop pocket secure and easy to access?",
+            "answer": "<p>Absolutely. The front tech compartment is zip-free and TSA-compliant, fitting laptops up to 16\" and allowing for quick removal during security checks without opening the whole bag.</p>"
+          }
+        },
+        "faq_YTWYVF": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s covered under the lifetime warranty?",
+            "answer": "<p>Everything built into the case - including wheels, locks, handles, and hardware - is covered for life against manufacturing defects. If it fails under normal use, we’ll repair or replace it.</p>"
+          }
+        },
+        "faq_LGV3UE": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I clean the exterior easily?",
+            "answer": "<p>Yes - simply wipe it with a damp cloth. The matte shell resists scratches and cleans up easily after any travel grime or spills.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_yeaj43",
+        "faq_qqFAMn",
+        "faq_LNYXY4",
+        "faq_Mp3FJ4",
+        "faq_YTWYVF",
+        "faq_LGV3UE"
+      ],
+      "name": "Two Column FAQ",
+      "settings": {
+        "title": "Common Questions about The Carry-On: All-in-One"
+      }
+    },
+    "nbl_slider_section_kbTDNx": {
+      "type": "customer_review_slider",
+      "blocks": {
+        "review_C4iCEB": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/image_50.webp",
+            "text": "\"Just got back from 3 back-to-back business trips, this case handled every airport, cab, and hotel lobby like a champ. Smooth wheels, secure locks, and the layout inside? Spot on.\"",
+            "user_image": "shopify://shop_images/image_56.webp",
+            "name": "Oscar T.",
+            "tag1": "Glides Effortlessly",
+            "tag2": "Business Travel Ready",
+            "product_image": "shopify://shop_images/Frame_16.webp",
+            "product_name": "Forest Green Carry-On: All-in-One",
+            "purchase_date": "March 5th, 2025"
+          }
+        },
+        "review_3tKMTq": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/image_51.webp",
+            "text": "\"Survived being gate-checked in a storm, tossed on wet tarmac, and still came out looking sharp. The no-zip latch system is elite, and packing is way easier than others.”",
+            "user_image": "shopify://shop_images/image_57.webp",
+            "name": "James L.",
+            "tag1": "Weather-Proof",
+            "tag2": "Next-Level Interior",
+            "product_image": "shopify://shop_images/Frame_17.webp",
+            "product_name": "Silver Carry-On: All-in-One",
+            "purchase_date": "Nov 11th, 2024"
+          }
+        },
+        "review_dbwERW": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/image_52.webp",
+            "text": "\"This luggage took the beating of international travel. Very durable, stylish and easy to maneuver.”",
+            "user_image": "shopify://shop_images/image_58.webp",
+            "name": "Ed R.",
+            "tag1": "Durable Build",
+            "tag2": "Stylish Design",
+            "product_image": "shopify://shop_images/Frame_17.webp",
+            "product_name": "Black Carry-On: All-in-One",
+            "purchase_date": "July 13th, 2024"
+          }
+        },
+        "review_mJeHhD": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/image.webp",
+            "text": "\"The luggage is made very well and has accommodating articles attached to the luggage that can be used when traveling. Also loved the different colors to choose from.\"",
+            "user_image": "shopify://shop_images/image_1.webp",
+            "name": "Adam J.",
+            "tag1": "Build Quality",
+            "tag2": "Build Quality",
+            "product_image": "shopify://shop_images/Frame_88760be7-6e6c-40aa-9f46-d808cd855a25.webp",
+            "product_name": "Green Carry-On: All-in-One",
+            "purchase_date": "May 4th, 2025"
+          }
+        }
+      },
+      "block_order": [
+        "review_C4iCEB",
+        "review_3tKMTq",
+        "review_dbwERW",
+        "review_mJeHhD"
+      ],
+      "name": "Customer Review Slider",
+      "settings": {
+        "title": "Tested Around the World",
+        "subtitle": "Still flawless country after country. Built to handle whatever your trip throws at it."
+      }
+    },
+    "richtext_lp_jfhQhe": {
+      "type": "richtext_lp",
+      "blocks": {
+        "heading_nfTXXg": {
+          "type": "heading",
+          "settings": {
+            "text": "Engineered to Exceed the Standard.",
+            "heading_size": "h1",
+            "h1": false,
+            "custom_class": "new_pdp_heading table_heading"
+          }
+        },
+        "richtext_XDrH3p": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>From structural integrity to functional access and lock precision, NOBL is built for travellers who expect more from their gear.</p>",
+            "html": "",
+            "custom_class": "table_text"
+          }
+        },
+        "tab_trigger_MFtLhY": {
+          "type": "tab_trigger",
+          "settings": {
+            "title": "",
+            "text": "Security System",
+            "id": "table_1"
+          }
+        },
+        "tab_trigger_dUGQ34": {
+          "type": "tab_trigger",
+          "settings": {
+            "title": "",
+            "text": "Security System",
+            "id": "table_2"
+          }
+        },
+        "tab_trigger_QcwCAV": {
+          "type": "tab_trigger",
+          "settings": {
+            "title": "",
+            "text": "Security System",
+            "id": "table_3"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nfTXXg",
+        "richtext_XDrH3p",
+        "tab_trigger_MFtLhY",
+        "tab_trigger_dUGQ34",
+        "tab_trigger_QcwCAV"
+      ],
+      "name": "Richtext Lp",
+      "settings": {
+        "custom_class": "pdp_table_section",
+        "custom_id": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "bg_color": "",
+        "bg_color2": "",
+        "color": "",
+        "position": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 10,
+        "trigger_class": "table_bottom_section"
+      }
+    },
+    "two_layer_richtext_lp_gHhmyH": {
+      "type": "two_layer_richtext_lp",
+      "blocks": {
+        "richtext_LhMdiK": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>NOBL uses an aluminum-reinforced frame and impact-resistant polycarbonate shell. No flex. No cracks. Built to handle real pressure.</p>",
+            "position": "left",
+            "custom_class": "table_text table_text_1"
+          }
+        },
+        "richtext_4c49hz": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>*Based on customer feedback and reviews. Individual results may vary</p>",
+            "position": "left",
+            "custom_class": "table_text table_text_2 desktop_only"
+          }
+        },
+        "html_WMbr3Y": {
+          "type": "html",
+          "settings": {
+            "text": "<div class=\"table_box_main custom_counter\">\n        <div class=\"table_box_item table_box_item1\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_logo.webp\">\n            <p class=\"table_box_number\"><span class=\" count_js\" data-value=\"98\">0</span>%</p>\n            <img class=\"desktop_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_img.webp\">\n            <img class=\"mobile_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/table_img_1.png\">\n        </div>\n        <div class=\"table_box_item table_box_item2\">\n            <p class=\"table_box_text\">Competitor</p>\n            <p class=\"table_box_number\"><span class=\" count_js\" data-value=\"68\">0</span>%</p>\n            <img class=\"desktop_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_img_1.webp\">\n            <img class=\"mobile_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/table_img_2.png\">\n        </div>\n    </div>",
+            "position": "right",
+            "custom_class": ""
+          }
+        },
+        "richtext_FqbEgT": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>*Based on customer feedback and reviews. Individual results may vary</p>",
+            "position": "right",
+            "custom_class": "table_text table_text_2 mobile_only"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_LhMdiK",
+        "richtext_4c49hz",
+        "html_WMbr3Y",
+        "richtext_FqbEgT"
+      ],
+      "name": "Two Richtext Lp",
+      "settings": {
+        "custom_class": "table_bottom_section",
+        "custom_id": "table_1",
+        "bg_color": "",
+        "bg_color2": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "color": "",
+        "position": "center",
+        "content_size": 50,
+        "rating": "",
+        "rating_mobile": "",
+        "heading": "",
+        "subheading": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "two_layer_richtext_lp_dUYxa3": {
+      "type": "two_layer_richtext_lp",
+      "blocks": {
+        "richtext_HDTrXF": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Dual TSA-approved latch locks eliminate zipper weak points. No snags, no break-ins, no compromises — just hard-shell security that holds.</p>",
+            "position": "left",
+            "custom_class": "table_text table_text_1"
+          }
+        },
+        "richtext_Hyan4T": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>*Based on customer feedback and reviews. Individual results may vary</p>",
+            "position": "left",
+            "custom_class": "table_text table_text_2 desktop_only"
+          }
+        },
+        "html_DQEEPM": {
+          "type": "html",
+          "settings": {
+            "text": "<div class=\"table_box_main custom_counter\">\n        <div class=\"table_box_item table_box_item1\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_logo.webp\">\n            <p class=\"table_box_number\"><span class=\" count_js\" data-value=\"96\">0</span>%</p>\n            <img class=\"desktop_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_img.webp\">\n            <img class=\"mobile_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/table_img_1.png\">\n        </div>\n        <div class=\"table_box_item table_box_item2\">\n            <p class=\"table_box_text\">Competitor</p>\n            <p class=\"table_box_number\"><span class=\" count_js\" data-value=\"58\">0</span>%</p>\n            <img class=\"desktop_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_img_1.webp\">\n            <img class=\"mobile_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/table_img_2.png\">\n        </div>\n    </div>",
+            "position": "right",
+            "custom_class": ""
+          }
+        },
+        "richtext_4VQKjP": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>*Based on customer feedback and reviews. Individual results may vary</p>",
+            "position": "right",
+            "custom_class": "table_text table_text_2 mobile_only"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_HDTrXF",
+        "richtext_Hyan4T",
+        "html_DQEEPM",
+        "richtext_4VQKjP"
+      ],
+      "name": "Two Richtext Lp",
+      "settings": {
+        "custom_class": "table_bottom_section",
+        "custom_id": "table_2",
+        "bg_color": "",
+        "bg_color2": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "color": "",
+        "position": "center",
+        "content_size": 50,
+        "rating": "",
+        "rating_mobile": "",
+        "heading": "",
+        "subheading": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "two_layer_richtext_lp_3WeKTN": {
+      "type": "two_layer_richtext_lp",
+      "blocks": {
+        "richtext_crVxDg": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Designed for frictionless travel. From front laptop access to built-in charging and modular add-ons, every detail is integrated for speed, not show.</p>",
+            "position": "left",
+            "custom_class": "table_text table_text_1"
+          }
+        },
+        "richtext_itaFNb": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>*Based on customer feedback and reviews. Individual results may vary</p>",
+            "position": "left",
+            "custom_class": "table_text table_text_2 desktop_only"
+          }
+        },
+        "html_8TLY9k": {
+          "type": "html",
+          "settings": {
+            "text": "<div class=\"table_box_main custom_counter\">\n        <div class=\"table_box_item table_box_item1\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_logo.webp\">\n            <p class=\"table_box_number\"><span class=\" count_js\" data-value=\"94\">0</span>%</p>\n            <img class=\"desktop_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_img.webp\">\n            <img class=\"mobile_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/table_img_1.png\">\n        </div>\n        <div class=\"table_box_item table_box_item2\">\n            <p class=\"table_box_text\">Competitor</p>\n            <p class=\"table_box_number\"><span class=\" count_js\" data-value=\"62\">0</span>%</p>\n            <img class=\"desktop_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/number_img_1.webp\">\n            <img class=\"mobile_only table_img_pack\" src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/table_img_2.png\">\n        </div>\n    </div>",
+            "position": "right",
+            "custom_class": ""
+          }
+        },
+        "richtext_Mg4EFQ": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>*Based on customer feedback and reviews. Individual results may vary</p>",
+            "position": "right",
+            "custom_class": "table_text table_text_2 mobile_only"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_crVxDg",
+        "richtext_itaFNb",
+        "html_8TLY9k",
+        "richtext_Mg4EFQ"
+      ],
+      "name": "Two Richtext Lp",
+      "settings": {
+        "custom_class": "table_bottom_section",
+        "custom_id": "table_3",
+        "bg_color": "",
+        "bg_color2": "",
+        "svg_desktop": "",
+        "svg_mobile": "",
+        "svg_desktop2": "",
+        "svg_mobile2": "",
+        "color": "",
+        "position": "center",
+        "content_size": 50,
+        "rating": "",
+        "rating_mobile": "",
+        "heading": "",
+        "subheading": "",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "heading_sec_UVttjh": {
+      "type": "heading-sec",
+      "name": "Heading",
+      "settings": {
+        "heading": "What Flyers Are Saying About NOBL",
+        "subheading": "From airport chaos to carry-on calm – here’s how it holds up in the real world.",
+        "text_color": "#000000",
+        "text_align": "left"
+      }
+    },
+    "17509267635894abef": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_agg_section_qqUCBA": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "hide_thumbnails": false,
+            "product_handle": "carry-on-all-in-one",
+            "aggregated": true,
+            "data-limit": 20,
+            "maxwidth": 1400,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_qqUCBA"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 30px !important;}",
+        "@media (max-width: 991px) {.section-spacing {margin-top: 0px !important; }}"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "nbl_footer_a87cyq": {
+      "type": "nbl_footer",
+      "blocks": {
+        "link_column_rpXigg": {
+          "type": "link_column",
+          "settings": {
+            "column_title": "",
+            "menu": "pdp1"
+          }
+        },
+        "link_column_jpftRd": {
+          "type": "link_column",
+          "settings": {
+            "column_title": "",
+            "menu": "pdp2"
+          }
+        }
+      },
+      "block_order": [
+        "link_column_rpXigg",
+        "link_column_jpftRd"
+      ],
+      "name": "Custom Footer",
+      "settings": {
+        "logo": "shopify://shop_images/image_63.webp",
+        "tagline_heading": "MADE FOR THE WORLD",
+        "tagline_subtext": "Subscribe to get exclusive deals and VIP access to new product launches.",
+        "newsletter_placeholder": "Your Email",
+        "newsletter_button_text": "Submit",
+        "copyright_text": "NOBL Travel 2025"
+      }
+    }
+  },
+  "order": [
+    "richtext_lp_KVe47t",
+    "featured_product_pdp_WdnEgt",
+    "richtext_lp_MhNfnK",
+    "richtext_lp_c3B7cG",
+    "richtext_lp_UXDEew",
+    "two_layer_richtext_lp_anCbcF",
+    "two_layer_richtext_lp_PiQtB3",
+    "product_pdp_BPjMGP",
+    "nbl_text_slider_E97Xeh",
+    "nbl_you_may_also_like_6zzXri",
+    "nbl_features_new_pdp_Ptmc7y",
+    "richtext_lp_zR6yik",
+    "richtext_lp_wWGnUz",
+    "nbl_text_slider_QrkQVj",
+    "faq_two_column_KFEwiG",
+    "nbl_slider_section_kbTDNx",
+    "richtext_lp_jfhQhe",
+    "two_layer_richtext_lp_gHhmyH",
+    "two_layer_richtext_lp_dUYxa3",
+    "two_layer_richtext_lp_3WeKTN",
+    "heading_sec_UVttjh",
+    "17509267635894abef",
+    "nbl_footer_a87cyq"
+  ]
+}

@@ -1,0 +1,1002 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "sticky_manual_bar_rz43Qm": {
+      "type": "Sticky-manual-bar",
+      "blocks": {
+        "nav_item_VQWYW7": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Introduction",
+            "target_id": "introduction"
+          }
+        },
+        "nav_item_xDc9fz": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Dimensions",
+            "target_id": "dimensions"
+          }
+        },
+        "nav_item_kUTXRJ": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Features",
+            "target_id": "features"
+          }
+        },
+        "nav_item_RmCCGx": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Usage Instructions",
+            "target_id": "usage"
+          }
+        },
+        "nav_item_fYgNaD": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Locking",
+            "target_id": "locking"
+          }
+        },
+        "nav_item_KinNB4": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Maintenance",
+            "target_id": "maintenance"
+          }
+        },
+        "nav_item_9CPpyB": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Troubleshooting",
+            "target_id": "troubleshooting"
+          }
+        },
+        "nav_item_L7nAKP": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Warranty",
+            "target_id": "warranty"
+          }
+        }
+      },
+      "block_order": [
+        "nav_item_VQWYW7",
+        "nav_item_xDc9fz",
+        "nav_item_kUTXRJ",
+        "nav_item_RmCCGx",
+        "nav_item_fYgNaD",
+        "nav_item_KinNB4",
+        "nav_item_9CPpyB",
+        "nav_item_L7nAKP"
+      ],
+      "name": "Sticky Manual Bar",
+      "settings": {
+        "background_color": "#ffffff",
+        "border_color": "#e0e0e0",
+        "border_width": 1,
+        "shadow_style": "none",
+        "z_index": "999",
+        "container_width": "1400px",
+        "alignment": "center",
+        "padding_vertical": 16,
+        "mobile_padding_vertical": 12,
+        "text_color": "#333333",
+        "text_color_hover": "#000000",
+        "text_color_active": "#ffffff",
+        "item_background": "rgba(0,0,0,0)",
+        "item_background_hover": "rgba(0,0,0,0)",
+        "item_background_active": "#333333",
+        "item_border_color": "rgba(0,0,0,0)",
+        "item_border_color_active": "#333333",
+        "item_border_width": 0,
+        "item_border_radius": 4,
+        "font_size": 12,
+        "mobile_font_size": 14,
+        "font_weight": "500",
+        "item_padding_vertical": 8,
+        "item_padding_horizontal": 16,
+        "mobile_item_padding_vertical": 6,
+        "mobile_item_padding_horizontal": 12,
+        "item_spacing": 26,
+        "mobile_item_spacing": 10,
+        "scroll_offset": 30,
+        "transition_speed": 300,
+        "highlight_on_scroll": true
+      }
+    },
+    "rich_text_Ah4eQE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_GY8FK6": {
+          "type": "heading",
+          "settings": {
+            "text": "NOBL MANUAL",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GY8FK6"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 30px; margin-bottom: 20px;}",
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 30px; margin-top: 12px; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": false,
+        "content_width": "md",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "rich_text_CxRtjk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MybeCb": {
+          "type": "heading",
+          "settings": {
+            "text": "1. INTRODUCTION",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_qPtrRY": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Welcome to the NOBL family! Thank you for purchasing the NOBL All-in-One Suitcase. Designed for the modern traveler, this suitcase offers durability, convenience, and smart features to enhance your travel experience. This manual will guide you through the functionality and care of your new All-in-One Suitcase.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MybeCb",
+        "richtext_qPtrRY"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 50px; margin-bottom: 30px;}",
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 5px; margin-top: 12px; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "introduction",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "rich_text_Pericj": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_nDmedP": {
+          "type": "heading",
+          "settings": {
+            "text": "2. DIMENSIONS",
+            "heading_tag": "h1"
+          }
+        },
+        "subheading_mPKCRp": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "The Nobl All-in-One Set meets all airline requirements."
+          }
+        }
+      },
+      "block_order": [
+        "heading_nDmedP",
+        "subheading_mPKCRp"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 30px !important; margin-bottom: 0px !important;}",
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px !important; margin-top: 20px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "dimensions",
+        "separate_section_with_border": false,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "multi_column_new_dbjf4z": {
+      "type": "multi-column-new",
+      "blocks": {
+        "image_with_text_XdwqMe": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/image_5_401ee249-b786-4e46-ae9e-7c22ad3801c3.png",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "<p>INTERIOR MEASUREMENTS <br/>13.98\" X 7.68\" X 19.88\"<br/>WEIGHT - 10.91 LBS<br/>CAPACITY - 38L</p>",
+            "link_url": "shopify://products/carry-on-all-in-one",
+            "link_text": "CARRY-ON"
+          }
+        },
+        "image_with_text_fWF6Kf": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/image_6_b8befd54-f99a-49c9-8a97-e90f58891833.png",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "<p>INTERIOR MEASUREMENTS <br/>15.75\" X 9.76\" X 23.62\"<br/>WEIGHT - 11.13 LBS<br/>CAPACITY - 60L</p>",
+            "link_url": "shopify://products/check-in-medium-all-in-one",
+            "link_text": "CHECK-IN MEDIUM"
+          }
+        },
+        "image_with_text_j78eNe": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/image_7_54ed953b-418f-445c-bdb5-c1cba07c8bf4.png",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "<p>INTERIOR MEASUREMENTS <br/>18.5\" X 10.83\" X 27.36\"<br/>WEIGHT - 12.13 LBS<br/>CAPACITY - 90L</p>",
+            "link_url": "shopify://products/check-in-all-in-one-28",
+            "link_text": "CHECK-IN LARGE"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_XdwqMe",
+        "image_with_text_fWF6Kf",
+        "image_with_text_j78eNe"
+      ],
+      "custom_css": [
+        ".overflow-hidden {align-items: center; justify-content: center; display: flex;}",
+        ".section-spacing {max-width: 1260px; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 30px;}"
+      ],
+      "name": "t:sections.multi_column.presets.multi_column.name",
+      "settings": {
+        "unique_class": "nobl-manual",
+        "separate_section_with_border": true,
+        "columns_per_row": 3,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "center",
+        "spacing": "xs",
+        "subheading": "",
+        "title": "",
+        "content": "<p>The Nobl All-in-One Set meets all airline requirements.</p>"
+      }
+    },
+    "rich_text_9NeUFe": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_yhP94c": {
+          "type": "heading",
+          "settings": {
+            "text": "3. FEATURES",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yhP94c"
+      ],
+      "custom_css": [
+        ".h1 {margin-top: 45px !important; margin-bottom: 0px !important;}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "features",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": true
+      }
+    },
+    "nobl_manual_RppKc6": {
+      "type": "nobl-manual",
+      "blocks": {
+        "feature_HVNwHM": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Durable Polycarbonate Shell:",
+            "feature_description": "Built to withstand tough travel conditions."
+          }
+        },
+        "feature_nqYCpN": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "360° Silent Move Spinner Wheels:",
+            "feature_description": "For a smooth, quiet glide."
+          }
+        },
+        "feature_gW8ptr": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Slow-Release Handles:",
+            "feature_description": "Comfortable and easy to grip."
+          }
+        },
+        "feature_QYWLHk": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Dual TSA Locks:",
+            "feature_description": "Extra security with zipper-free access."
+          }
+        },
+        "feature_gNTMLJ": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Multiple Compartments:",
+            "feature_description": "Organize your belongings efficiently."
+          }
+        },
+        "feature_TMmpMn": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Side Hooks:",
+            "feature_description": "Hang bags for added convenience."
+          }
+        },
+        "feature_mM3gz8": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Y-Strap Compression System:",
+            "feature_description": "Maximize packing space."
+          }
+        },
+        "feature_8JLUKE": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Stain-Resistant Lining:",
+            "feature_description": "Easy to clean and maintain."
+          }
+        },
+        "feature_secondary_k6pt7N": {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Front Compartment:",
+            "feature_description": "Quick access to gadgets and essentials."
+          }
+        },
+        "feature_secondary_pWYgjm": {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Charging Ports:",
+            "feature_description": "Charge devices on the go with a power bank (not included)."
+          }
+        },
+        "feature_secondary_KwDzz7": {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Phone Holder:",
+            "feature_description": "Mount your phone at eye level."
+          }
+        },
+        "feature_secondary_EnFtNT": {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Cup Holder:",
+            "feature_description": "Securely holds your beverage."
+          }
+        }
+      },
+      "block_order": [
+        "feature_HVNwHM",
+        "feature_nqYCpN",
+        "feature_gW8ptr",
+        "feature_QYWLHk",
+        "feature_gNTMLJ",
+        "feature_TMmpMn",
+        "feature_mM3gz8",
+        "feature_8JLUKE",
+        "feature_secondary_k6pt7N",
+        "feature_secondary_pWYgjm",
+        "feature_secondary_KwDzz7",
+        "feature_secondary_EnFtNT"
+      ],
+      "custom_css": [
+        ".Nobl-manual-title {display: none;}"
+      ],
+      "name": "Nobl-manual",
+      "settings": {
+        "show_main_title": true,
+        "main_title": "",
+        "title_size_mobile": 20,
+        "title_size_desktop": 28,
+        "title_weight": "700",
+        "title_transform": "uppercase",
+        "title_letter_spacing": 1,
+        "title_color": "#000000",
+        "title_alignment_mobile": "left",
+        "title_alignment_desktop": "left",
+        "title_margin_mobile": 24,
+        "title_margin_desktop": 40,
+        "title_underline_width": 60,
+        "title_underline_height": 3,
+        "title_underline_color": "#000000",
+        "primary_gap_mobile": 20,
+        "primary_gap_desktop": 32,
+        "primary_margin_bottom_mobile": 40,
+        "primary_margin_bottom_desktop": 20,
+        "show_bullets": true,
+        "bullet_size": 6,
+        "bullet_gap": 12,
+        "bullet_color": "#000000",
+        "feature_title_size_mobile": 14,
+        "feature_title_size_desktop": 16,
+        "feature_title_weight": "600",
+        "feature_title_color": "#000000",
+        "feature_title_margin": 4,
+        "description_size_mobile": 14,
+        "description_size_desktop": 15,
+        "description_color": "#4a4a4a",
+        "description_line_height": 1.6,
+        "show_subtitle": true,
+        "subtitle": "All-in-One Carry-On and Medium Check-In: Special Features",
+        "subtitle_size_mobile": 16,
+        "subtitle_size_desktop": 18,
+        "subtitle_weight": "600",
+        "subtitle_color": "#000000",
+        "subtitle_margin_bottom_mobile": 16,
+        "subtitle_margin_bottom_desktop": 24,
+        "image_1": "shopify://shop_images/image_1_99db7bfc-5363-474b-b2ec-2b9d23ed6e4f.png",
+        "image_1_text": "",
+        "image_2": "shopify://shop_images/image_2_bcb9b367-d057-4b05-85dd-57fa51d8488c.png",
+        "image_2_text": "",
+        "image_3": "shopify://shop_images/image_3_83daff29-3823-4561-8e83-6df7d04f46a7.png",
+        "image_3_text": "",
+        "images_gap_mobile": 12,
+        "images_gap_desktop": 24,
+        "image_border_radius": 0,
+        "image_margin_top_mobile": 32,
+        "image_margin_top_desktop": 48,
+        "image_margin_bottom_mobile": 24,
+        "image_margin_bottom_desktop": 20,
+        "secondary_gap_mobile": 16,
+        "secondary_gap_desktop": 24,
+        "secondary_padding": 20,
+        "secondary_background": "#ffffff",
+        "secondary_border_radius": 8,
+        "secondary_border_width": 1,
+        "secondary_border_color": "#e5e5e5",
+        "secondary_border_hover_color": "#000000",
+        "padding_top_mobile": 20,
+        "padding_top_desktop": 40,
+        "padding_bottom_mobile": 32,
+        "padding_bottom_desktop": 60,
+        "padding_horizontal_mobile": 20,
+        "padding_horizontal_desktop": 40,
+        "max_width": 1200,
+        "background_color": "#ffffff"
+      }
+    },
+    "rich_text_gJGzQG": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_irymjf": {
+          "type": "heading",
+          "settings": {
+            "text": "4. USAGE INSTRUCTIONS",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_D3nQKF": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4><strong>PACKING:</strong></h4><ul><li><strong>Open the Suitcase</strong>: Unlock using the dual combination locks.</li><li><strong>Pack Efficiently:</strong> Organize your items in designated compartments.</li><li><strong>Secure Your Items:</strong> Fasten belongings with the NOBL Y-Strap Compression System to maximize packing space.</li><li><strong>Lock the Suitcase: </strong>Close the suitcase and lock it using the combination locks.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_irymjf",
+        "richtext_D3nQKF"
+      ],
+      "custom_css": [
+        ".h1 {margin-top: 0px !important; margin-bottom: 0px !important;}",
+        "@media (max-width: 767px) {.h1 {margin-bottom: 15px !important; }}",
+        ".h1 {margin-bottom: 50px;}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "usage",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": true
+      }
+    },
+    "rich_text_T69twc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Nxbb8Q": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "4. USAGE INSTRUCTIONS",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_aePzx7": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4><strong>CHARGING:</strong></h4><ul><li><strong>Insert Your Power Bank (Not Included):</strong> Place it in the front compartment's designated slot.</li><li><strong>Connect Your Devices:</strong> Use the built-in multi-USB-C ports.</li><li><strong>Charge on the Go:</strong> Ensure your power bank is fully charged before traveling.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Nxbb8Q",
+        "richtext_aePzx7"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 25px; margin-bottom: 5px;}",
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px; margin-top: 15px; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": false,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "image_with_text_overlay_kdGWmc": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "@media (min-width: 767px) {.content-over-media > picture img {min-width: 20%; max-width: 20%; }}",
+        "@media (max-width: 767px) {.content-over-media > picture img {min-width: 60%; max-width: 50%; }}"
+      ],
+      "name": "t:sections.image_with_text_overlay.presets.image_with_text_overlay.name",
+      "settings": {
+        "image_size": "auto",
+        "image": "shopify://shop_images/01_Carry_on_AIO_20inch_Manual.pdf-image-008_50b9e747-9e11-485b-a9ba-7eaad790f73f.png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_XM6KCT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_J9EW8p": {
+          "type": "heading",
+          "settings": {
+            "text": "5. LOCKING",
+            "heading_tag": "h1"
+          }
+        },
+        "subheading_Ax4Cqg": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "TOP LOCK (TSA22023)"
+          }
+        },
+        "richtext_LkfiVt": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4>TSA accepted locks</h4><ul><li>Ideal for air travel, features the TSA-recognized Travel Sentry logo.</li><li>Allows airport screeners to unlock, inspect and relock bags without damaging the lock.</li><li>For more information on the Travel Sentry Approved override system,<br/>please visit travelsentry.org</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_J9EW8p",
+        "subheading_Ax4Cqg",
+        "richtext_LkfiVt"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-bottom: 5px; margin-top: 5px;}",
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px; margin-top: 5px; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "locking",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "custom_liquid_3HqcWf": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".section-spacing {margin: 0px;}",
+        "@media (max-width: 767px) {.Nobl-travel-sentary {display: flex; justify-content: center; align-items: center; } .Nobl-travel-sentary img {width: 200px; height: 65px; }}"
+      ],
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div class=\"Nobl-travel-sentary container container--lg\">\n      <img  src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/image_8_0fa6462a-9048-4146-aad0-296ecfb756ae.png?v=1760475238\" \n        alt=\"Warning Icon\"\n        loading=\"lazy\"\n      >\n    </div>\n<p>\nTOP LOCK (TSA22023)\n</p>\n<style>\n.Nobl-travel-sentary img{\nwidth: 300px;\nheight: 100px;\n}\n.Nobl-travel-sentary{\ndisplay: flex;\njustify-content: flex-end;\nalign-items: center;\n}\n}\n</style>",
+        "text_alignment": "center"
+      }
+    },
+    "image_with_text_overlay_Gd3gj9": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "@media (min-width: 767px) {.content-over-media > picture img {min-width: 45%; max-width: 45%; }}"
+      ],
+      "name": "t:sections.image_with_text_overlay.presets.image_with_text_overlay.name",
+      "settings": {
+        "image_size": "auto",
+        "image": "shopify://shop_images/nobl_Charging_Socket_D.png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_KM9wTi": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6XDxj7": {
+          "type": "heading",
+          "settings": {
+            "text": "How to set",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_zKdLny": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>The lock combination is preset to 0-0-0.</strong><br/>To set your own combination, please follow the steps below:<br/>1.  Turn the dials (B) to the correct combination at unlocked status.<br/>2.  Press down the reset button (A) with a pen or other tool.<br/>3.  Set your own combination by turning the dials (B), e.g. 8-8-8.<br/>4.  Push the push button (C) at either side with the reset button pop up.<br/><br/>Now the setting is finished. To set another combination please repeat the steps above. <br/>Please remember your combination – if you forget it, there is no way to open your lock<br/><br/><strong>USB charging socket function (D)<br/></strong>When either side of USB-A and Type-C male connector is connected with the power bank, both of the USB-A and Type-C female socket on the lock can be used for battery charging. It is recommended to use the original cable to connect to your phone when charging</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6XDxj7",
+        "richtext_zKdLny"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px; margin-top: 1px; }}",
+        ".section-spacing {margin-bottom: 1px; margin-top: 1px;}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "rich_text_TzNtNy": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MwQemN": {
+          "type": "heading",
+          "settings": {
+            "text": "SIDE LOCK",
+            "heading_tag": "h1"
+          }
+        },
+        "subheading_4JrFyQ": {
+          "type": "subheading",
+          "settings": {
+            "text": "SIDE LOCK (TSA16138)"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MwQemN",
+        "subheading_4JrFyQ"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px; margin-top: 15px; }}",
+        ".section-spacing {margin-bottom: 1px; margin-top: 20px;}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "image_with_text_overlay_GxbKkQ": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "@media (min-width: 767px) {.content-over-media > picture img {min-width: 40%; max-width: 40%; }}"
+      ],
+      "name": "t:sections.image_with_text_overlay.presets.image_with_text_overlay.name",
+      "settings": {
+        "image_size": "auto",
+        "image": "shopify://shop_images/Nobl_TSA_Lock.png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "lg",
+        "mobile_text_position": "place-self-start-center text-center",
+        "desktop_text_position": "sm:place-self-start sm:text-start",
+        "text_color": "#000000",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_cFWiLm": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_UhgeAf": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "richtext_rkxxNE": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>How to reset the combination<br/></strong>The original combination is 0-0-0. <br/>If you want to reset the number, please follow the below steps:<br/>1. Slide the resettable button (1) from \"OFF\" to \"SET\";<br/>2. Dial the numbers (B) to your desired code (e.g.:888);<br/>3. Slide back the resettable button (A) to \"OFF\".  You can now open the lock with the new code.<br/><br/><strong>How to use combination lock</strong><br/>1. Align your code with the display window, then press the two push buttons (C) to open the lock.<br/>2. Press down the lock to latch the luggage, then turn the numbers randomly. <br/>3. Now it is locked.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_UhgeAf",
+        "richtext_rkxxNE"
+      ],
+      "custom_css": [
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px; margin-top: 15px; }}",
+        ".section-spacing {margin-bottom: 1px; margin-top: 12px;}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "custom_liquid_UYeKYw": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "@media (max-width: 767px) {.section-spacing {margin-bottom: 1px; margin-top: 15px; }}",
+        ".section-spacing {margin-bottom: 1px; margin-top: 1px;}"
+      ],
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<style>\n  .Nobl-warning-block {\n    padding: 16px;\n    background-color: #ffffff;\n    border: 2px solid #000000;\n    border-radius: 8px;\n    margin: 20px auto;\n    max-width: 900px;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-block {\n      padding: 24px;\n    }\n  }\n\n  .Nobl-warning-content {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n    flex-direction: column;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-content {\n      flex-direction: row;\n      gap: 20px;\n    }\n  }\n\n  .Nobl-warning-image {\n    flex-shrink: 0;\n    order: -1;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-image {\n      order: 1;\n    }\n  }\n\n  .Nobl-warning-image img {\n    width: 60px;\n    height: auto;\n    display: block;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-image img {\n      width: 80px;\n    }\n  }\n\n  .Nobl-warning-text {\n    flex: 1;\n    order: 1;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-text {\n      order: 0;\n    }\n  }\n\n  .Nobl-warning-label {\n    font-size: 14px;\n    font-weight: 700;\n    color: #000000;\n    margin: 0 0 4px 0;\n    text-transform: uppercase;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-label {\n      font-size: 16px;\n    }\n  }\n\n  .Nobl-warning-message {\n    font-size: 13px;\n    color: #333333;\n    line-height: 1.5;\n    margin: 0;\n  }\n\n  @media screen and (min-width: 750px) {\n    .Nobl-warning-message {\n      font-size: 14px;\n    }\n  }\n</style>\n\n<div class=\"Nobl-warning-block\">\n  <div class=\"Nobl-warning-content\">\n    <div class=\"Nobl-warning-text\">\n      <div class=\"Nobl-warning-label\">WARNING:</div>\n      <p class=\"Nobl-warning-message\">If the cylinder is opened, please pay attention to lock it again by turning it to the red dot position by the direction of the arrow (Any tool that can be inserted into the cylinder is acceptable.)</p>\n    </div>\n    \n    <div class=\"Nobl-warning-image\">\n      <img \n        src=\"https://cdn.shopify.com/s/files/1/0715/3536/2348/files/Warning_d9f69362-3496-44fc-8c72-f774d587c575.png?v=1760473035\" \n        alt=\"Warning Icon\"\n        loading=\"lazy\"\n      >\n    </div>\n  </div>\n</div>",
+        "text_alignment": "center"
+      }
+    },
+    "rich_text_azMkEU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_7nfttj": {
+          "type": "heading",
+          "settings": {
+            "text": "6. MAINTENANCE AND CARE",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_7nfttj"
+      ],
+      "custom_css": [
+        ".h1 {margin-top: 20px !important; margin-bottom: 20px !important;}",
+        "@media (max-width: 767px) {.h1 {margin-top: 30px !important; margin-bottom: 0px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "maintenance",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": true
+      }
+    },
+    "rich_text_VTwHgn": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_yymYyL": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "richtext_VgXpLR": {
+          "type": "richtext",
+          "settings": {
+            "content": "<ul><li><strong>Cleaning: </strong>Wipe the exterior with a damp cloth. Avoid harsh chemicals.<br/></li><li><strong>Storage: </strong>Store in a cool, dry place when not in use.<br/></li><li><strong>Handling: </strong>Avoid overpacking to prevent damage to locks and compartments</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_yymYyL",
+        "richtext_VgXpLR"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 20px !important; margin-bottom: 20px !important;}",
+        "@media (max-width: 767px) {.section-spacing {margin-top: 5px !important; margin-bottom: 0px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "rich_text_JxFQ3n": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VCd77X": {
+          "type": "heading",
+          "settings": {
+            "text": "7. TROUBLESHOOTING",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VCd77X"
+      ],
+      "custom_css": [
+        ".h1 {margin-top: 30px !important; margin-bottom: 10px !important;}",
+        "@media (max-width: 767px) {.h1 {margin-top: 30px !important; margin-bottom: 1px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "troubleshooting",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": true
+      }
+    },
+    "rich_text_Tn9Ghg": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_dQL3XF": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "richtext_MGM9k7": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Locks not opening?</strong></p><ul><li>Double-check your combination.</li><li>Clear any debris obstructing the lock system.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_dQL3XF",
+        "richtext_MGM9k7"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 15px !important; margin-bottom: 30px !important;}",
+        "@media (max-width: 767px) {.section-spacing {margin-top: 5px !important; margin-bottom: 0px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
+    "rich_text_k6w46V": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_4XPqK9": {
+          "type": "heading",
+          "settings": {
+            "text": "8. WARRANTY AND CUSTOMER SUPPORT",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_4XPqK9"
+      ],
+      "custom_css": [
+        ".h1 {margin-top: 30px !important; margin-bottom: 20px !important;}",
+        "@media (max-width: 767px) {.h1 {margin-top: 30px !important; margin-bottom: 1px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "warranty",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": true
+      }
+    },
+    "rich_text_e7jnCg": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_PMFptR": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "richtext_zC6iCq": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Your <strong>NOBL luggage</strong> comes with a Lifetime Warranty over manufacturing defects in materials and workmanship for the product’s full useful life. Lifetime Warranty covers defects in materials and workmanship that affect the performance or function of your <br/><strong>NOBL luggage</strong> including wheels, handles, zippers, locks, or structural issues.</p><p>For support, contact us at:<br/><a href=\"mailto:hello@nobltravel.com\" title=\"mailto:hello@nobltravel.com\"><strong>hello@nobltravel.com</strong></a></p><p>Thank you for choosing <strong>Nobl Travel!</strong><br/>We hope your new luggage enhances your travel experiences.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_PMFptR",
+        "richtext_zC6iCq"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-top: 20px !important; margin-bottom: 20px !important;}",
+        "@media (max-width: 767px) {.section-spacing {margin-top: 5px !important; margin-bottom: 0px !important; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "lg",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "sticky_manual_bar_rz43Qm",
+    "rich_text_Ah4eQE",
+    "rich_text_CxRtjk",
+    "rich_text_Pericj",
+    "multi_column_new_dbjf4z",
+    "rich_text_9NeUFe",
+    "nobl_manual_RppKc6",
+    "rich_text_gJGzQG",
+    "rich_text_T69twc",
+    "image_with_text_overlay_kdGWmc",
+    "rich_text_XM6KCT",
+    "custom_liquid_3HqcWf",
+    "image_with_text_overlay_Gd3gj9",
+    "rich_text_KM9wTi",
+    "rich_text_TzNtNy",
+    "image_with_text_overlay_GxbKkQ",
+    "rich_text_cFWiLm",
+    "custom_liquid_UYeKYw",
+    "rich_text_azMkEU",
+    "rich_text_VTwHgn",
+    "rich_text_JxFQ3n",
+    "rich_text_Tn9Ghg",
+    "rich_text_k6w46V",
+    "rich_text_e7jnCg"
+  ]
+}

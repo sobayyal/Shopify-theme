@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "market": "canada"
+  },
+  "sections": {
+    "slideshow_Mqma6b": {
+      "custom_css": [],
+      "settings": {},
+      "blocks": {
+        "image_BzMnU3": {
+          "settings": {
+            "image": "shopify://shop_images/5th_Annual_NOBL_Day_Sale_Green-collection-mobile.webp",
+            "mobile_image": "shopify://shop_images/5th_Annual_NOBL_Day_Sale_Green-Hero-Mobile.webp",
+            "subheading": "Biggest Sale Of The Year",
+            "title": "Black Friday Sale",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "content_max_width": 900,
+            "button_1_text": "shop now",
+            "button_1_style": "outline",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_background": "rgba(0,0,0,0)",
+            "button_2_text_color": "#ffffff",
+            "text_color": "#ffffff"
+          }
+        }
+      }
+    },
+    "4a9d4e82-a1cd-49b7-9170-9806935a81db": {
+      "settings": {},
+      "blocks": {
+        "template--20865401258284__4a9d4e82-a1cd-49b7-9170-9806935a81db-collection-1": {
+          "settings": {
+            "collection": "our-best-sellers"
+          }
+        }
+      }
+    }
+  }
+}

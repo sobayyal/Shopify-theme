@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "market": "europe"
+  },
+  "sections": {
+    "slideshow_Mqma6b": {
+      "settings": {},
+      "blocks": {
+        "image_BzMnU3": {
+          "settings": {
+            "title": "Black Friday Sale",
+            "mobile_image": "shopify://shop_images/banner_image_466a428e-c582-4933-9fb6-3afa95fcbacf.png",
+            "image": "shopify://shop_images/web_banner_updated.webp",
+            "subheading": "BIGGEST SALE OF THE YEAR",
+            "button_1_text": "SHOP NOW"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,486 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "1761147317f64c1f28": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_69f8b04_eWf4Mn": {
+          "type": "ai_gen_block_69f8b04",
+          "name": "Store locator banner",
+          "settings": {
+            "background_image": "shopify://shop_images/NOBL_Travel_luggage_collection_displayed_banner_desktop.webp",
+            "background_image_mobile": "shopify://shop_images/NOBL_Travel_luggage_collection_displayed_banner_mobile.webp",
+            "fallback_color": "#f4f4f4",
+            "banner_height": 500,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.4,
+            "heading": "Find Our Store Locations",
+            "description": "Discover our stores near you and visit us for an exceptional shopping experience.",
+            "text_color": "#ffffff",
+            "heading_size": 48,
+            "description_size": 18,
+            "search_placeholder": "Enter city, state, or ZIP code",
+            "button_text": "",
+            "search_action": "",
+            "search_bg_color": "#ffffff",
+            "search_text_color": "#000000",
+            "search_placeholder_color": "#666666",
+            "search_border_radius": 8,
+            "button_color": "#ffffff",
+            "button_text_color": "#282828",
+            "button_hover_color": "rgba(0,0,0,0)",
+            "map_section_bg": "#ffffff",
+            "map_section_padding": 50,
+            "map_height": 400,
+            "map_border_radius": 12,
+            "map_title_color": "#1f2937",
+            "map_subtitle_color": "#6b7280",
+            "results_bg_color": "#ffffff",
+            "results_header_bg": "#f9fafb",
+            "results_title_color": "#1f2937",
+            "active_result_bg": "#eff6ff",
+            "result_name_color": "#1f2937",
+            "result_address_color": "#6b7280",
+            "result_distance_color": "#059669"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_69f8b04_eWf4Mn"
+      ],
+      "settings": {}
+    },
+    "store_locator_banner_7yhkac": {
+      "type": "store-locator-banner",
+      "disabled": true,
+      "name": "Store Locator Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/NOBL_landing_page_banner-08_copy.webp",
+        "fallback_color": "#f4f4f4",
+        "banner_height": 500,
+        "overlay_color": "#054b48",
+        "overlay_opacity": 0.6,
+        "heading": "Find Our Store Locations",
+        "description": "Discover our stores near you and visit us for an exceptional shopping experience.",
+        "text_color": "#ffffff",
+        "heading_size": 48,
+        "description_size": 18,
+        "search_placeholder": "Enter city, state, or ZIP code",
+        "button_text": "",
+        "search_action": "",
+        "search_bg_color": "#ffffff",
+        "search_text_color": "#000000",
+        "search_placeholder_color": "#666666",
+        "search_border_radius": 8,
+        "button_color": "#ffffff",
+        "button_text_color": "#282828",
+        "button_hover_color": "#ffffff",
+        "map_section_bg": "#ffffff",
+        "map_section_padding": 50,
+        "map_height": 400,
+        "map_border_radius": 12,
+        "map_title_color": "#1f2937",
+        "map_subtitle_color": "#6b7280",
+        "results_bg_color": "#ffffff",
+        "results_header_bg": "#f9fafb",
+        "results_title_color": "#1f2937",
+        "active_result_bg": "#eff6ff",
+        "result_name_color": "#1f2937",
+        "result_address_color": "#6b7280",
+        "result_distance_color": "#059669"
+      }
+    },
+    "rich_text_APHzwr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gLfAxT": {
+          "type": "heading",
+          "settings": {
+            "text": "Bestsellers Available In-Store",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_T6yc7m": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Try before you buy - experience our most popular travel essentials</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gLfAxT",
+        "richtext_T6yc7m"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": false,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "featured_collections_fEBw8J": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_rHcX9R": {
+          "type": "collection",
+          "settings": {
+            "collection": "our-best-sellers",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_rHcX9R"
+      ],
+      "name": "t:sections.featured_collections.presets.featured_collections.name",
+      "settings": {
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "subsubheading": ""
+      }
+    },
+    "blocks_cNpNe3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_89c7a2b_BrcLjz": {
+          "type": "ai_gen_block_89c7a2b",
+          "name": "Store locations",
+          "settings": {
+            "heading": "Store Locations",
+            "subtitle": "Visit us at any of our premium retail locations",
+            "store_1_name": "Paradise Baggage Company",
+            "store_1_address": "4442 S Broadway, Englewood, CO 80113, United States",
+            "store_1_phone": "",
+            "store_1_hours": "Mon-Sat: 10AM-6PM, Sunday: Closed",
+            "store_2_name": "Airline International",
+            "store_2_address": "8701 Montana Ave, El Paso, TX 79925, United States",
+            "store_2_phone": "",
+            "store_2_hours": "Mon-Sat: 10AM-5PM, Sunday: Closed",
+            "store_3_name": "Lazar's Luggage Superstore",
+            "store_3_address": "14528 Ventura Blvd, Sherman Oaks, CA 91403, United States",
+            "store_3_phone": "",
+            "store_3_hours": "Monday-Sunday: 10AM-5PM",
+            "store_4_name": "Leather World",
+            "store_4_address": "30 Langley Rd, Newton Centre, MA 02459, United States",
+            "store_4_phone": "",
+            "store_4_hours": "Mon-Sat: 10AM-5PM, Sunday: Closed",
+            "store_5_name": "GROSKOPFS LUGGAGE",
+            "store_5_address": "1200 E Paris Ave SE STE 1, Grand Rapids, MI 49546, United States",
+            "store_5_phone": "",
+            "store_5_hours": "Mon-Sat: 10AM-6PM, Sunday: Closed",
+            "store_6_name": "Irv's Luggage",
+            "store_6_address": "1200 E Paris Ave SE, Grand Rapids, MI 49546, USA",
+            "store_6_phone": "",
+            "store_6_hours": "Mon-Sat: 10AM-5PM, Sunday: Closed",
+            "store_7_name": "Bag & Baggage – Prairie Village",
+            "store_7_address": "22 On The Mall, Prairie Village, KS 66208, USA",
+            "store_7_phone": "",
+            "store_7_hours": "Mon-Sat: 10AM-6PM, Sunday: 12AM-6PM",
+            "store_8_name": "Bag & Baggage – Overland Park (119th & Roe)",
+            "store_8_address": "5013 W 119th St, Overland Park, KS 66209, United States",
+            "store_8_phone": "",
+            "store_8_hours": "Mon-Sat: 10AM-6PM, Sunday: 12AM-6PM",
+            "store_9_name": "Bag & Baggage – Overland Park (95th & Quivira)",
+            "store_9_address": "11179 W 95th St, Overland Park, KS 66214, United States",
+            "store_9_phone": "",
+            "store_9_hours": "Mon-Sat: 11AM-6PM, Sunday: 12AM-5PM",
+            "store_10_name": "",
+            "store_10_address": "",
+            "store_10_phone": "",
+            "store_10_hours": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM",
+            "background_color": "#ffffff",
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "card_background": "#ffffff",
+            "map_background": "#f5f5f5",
+            "button_color": "rgba(0,0,0,0)",
+            "button_text_color": "#282828",
+            "button_hover_color": "rgba(0,0,0,0)",
+            "heading_size": 36,
+            "subtitle_size": 18,
+            "border_radius": 8,
+            "button_border_radius": 6
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_89c7a2b_BrcLjz"
+      ],
+      "settings": {}
+    },
+    "store_locations_PqiABp": {
+      "type": "store-locations",
+      "disabled": true,
+      "name": "Store Locations",
+      "settings": {
+        "heading": "Store Locations",
+        "subtitle": "Visit us at any of our premium retail locations",
+        "store_1_name": "",
+        "store_1_address": "",
+        "store_1_phone": "",
+        "store_1_hours": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM",
+        "store_2_name": "Manhattan Flagship",
+        "store_2_address": "123 Fifth Avenue, New York, NY 10001",
+        "store_2_phone": "",
+        "store_2_hours": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM",
+        "store_3_name": "Beverly Hills",
+        "store_3_address": "456 Rodeo Drive, Beverly Hills, CA 90210",
+        "store_3_phone": "",
+        "store_3_hours": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM",
+        "store_4_name": "London Mayfair",
+        "store_4_address": "789 Bond Street, London W1S 1DX",
+        "store_4_phone": "",
+        "store_4_hours": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM",
+        "store_5_name": "",
+        "store_5_address": "",
+        "store_5_phone": "",
+        "store_5_hours": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM",
+        "background_color": "#f5f3eb",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "card_background": "#ffffff",
+        "map_background": "#f5f5f5",
+        "button_color": "rgba(0,0,0,0)",
+        "button_text_color": "#282828",
+        "button_hover_color": "#333333",
+        "heading_size": 36,
+        "subtitle_size": 18,
+        "border_radius": 8,
+        "button_border_radius": 6
+      }
+    },
+    "visit_out_store_nYBicV": {
+      "type": "visit-out-store",
+      "name": "Why Visit Our Stores?",
+      "settings": {
+        "section_heading": "Why Visit Our Stores?",
+        "background_color": "#054b48",
+        "text_color": "#ffffff",
+        "icon_color": "#ffffff",
+        "section_padding": 60,
+        "mobile_section_padding": 40,
+        "items_spacing": 35,
+        "mobile_items_spacing": 30,
+        "item_inner_spacing": 10,
+        "heading_size": 36,
+        "mobile_heading_size": 28,
+        "title_size": 20,
+        "mobile_title_size": 18,
+        "description_size": 16,
+        "mobile_description_size": 14,
+        "icon_size": 50,
+        "item_1_enabled": true,
+        "item_1_icon": "shopify://shop_images/two-hands-svgrepo-com_1.svg",
+        "item_1_title": "Touch & Feel Quality",
+        "item_1_description": "Experience the premium materials and craftsmanship firsthand",
+        "item_2_enabled": true,
+        "item_2_icon": "shopify://shop_images/specialist-user-svgrepo-com_1.svg",
+        "item_2_title": "Expert Consultation",
+        "item_2_description": "Get personalized advice from our travel specialists",
+        "item_3_enabled": true,
+        "item_3_icon": "shopify://shop_images/gift-svgrepo-com.svg",
+        "item_3_title": "Exclusive In-Store Offers",
+        "item_3_description": "Access special promotions available only in our stores"
+      }
+    },
+    "travel_style_hero_gXbxNF": {
+      "type": "travel-style-hero",
+      "name": "Travel Style Hero",
+      "settings": {
+        "hero_image": "shopify://shop_images/NOBL_landing_page_banner-05_1db442a2-696d-4ed0-a64a-d430dac1b7ce.webp",
+        "show_overlay": true,
+        "overlay_opacity": 0.4,
+        "headline": "Travel in Style",
+        "subtext": "Discover our curated collection of premium travel essentials",
+        "button_text": "Explore Collection",
+        "button_link": "",
+        "section_height": 500,
+        "section_height_mobile": 300,
+        "content_width": 600,
+        "text_color": "#ffffff",
+        "headline_size": 48,
+        "headline_size_mobile": 32,
+        "subtext_size": 18,
+        "subtext_size_mobile": 16,
+        "text_spacing": 20,
+        "button_spacing": 30,
+        "button_background": "#000000",
+        "button_hover_background": "#333333",
+        "button_text_color": "#ffffff",
+        "button_hover_text_color": "#ffffff",
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "button_padding_vertical": 16,
+        "button_padding_horizontal": 32,
+        "button_padding_vertical_mobile": 12,
+        "button_padding_horizontal_mobile": 24,
+        "button_border_radius": 6
+      }
+    },
+    "rich_text_F8Leyd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_yVezKh": {
+          "type": "heading",
+          "settings": {
+            "text": "Travel Accessories",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_FpKyfR": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Complete your travel setup with our premium accessories.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yVezKh",
+        "richtext_FpKyfR"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": false,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "featured_collections_FeRVC6": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_X9NMcp": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessories",
+            "products_count": 8,
+            "title": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_X9NMcp"
+      ],
+      "name": "t:sections.featured_collections.presets.featured_collections.name",
+      "settings": {
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "subsubheading": ""
+      }
+    },
+    "store_faqs_ep9g6h": {
+      "type": "store-faqs",
+      "name": "Store FAQ",
+      "settings": {
+        "section_heading": "Frequently Asked Questions",
+        "heading_alignment": "center",
+        "max_width": 800,
+        "section_padding": 40,
+        "faq_1_question": "Do you offer product demonstrations in-store?",
+        "faq_1_answer": "<p>Yes, we offer product demonstrations for most items in our store. Our knowledgeable staff can show you features and help you make informed decisions.</p>",
+        "faq_2_question": "Can I reserve items online for in-store pickup?",
+        "faq_2_answer": "<p>Absolutely! You can reserve items online and pick them up at your convenience. We'll hold your items for up to 48 hours.</p>",
+        "faq_3_question": "Do you offer repair services?",
+        "faq_3_answer": "<p>Yes, we provide repair services for products purchased from our store. Contact us for more information about warranty and repair options.</p>",
+        "background_color": "#f5f3eb",
+        "heading_color": "#000000",
+        "heading_size": 30,
+        "heading_spacing": 40,
+        "item_background": "#ffffff",
+        "border_color": "#e0e0e0",
+        "border_radius": 8,
+        "item_spacing": 12,
+        "question_color": "#000000",
+        "question_hover_bg": "rgba(0,0,0,0)",
+        "question_size": 16,
+        "question_weight": "600",
+        "question_padding": 20,
+        "icon_color": "#666666",
+        "answer_background": "#ffffff",
+        "answer_color": "#333333",
+        "answer_size": 14,
+        "answer_padding": 20,
+        "focus_color": "rgba(0,0,0,0)"
+      }
+    },
+    "store_locator_promo_ajJjq9": {
+      "type": "store-locator-promo",
+      "name": "Store Locator Promo",
+      "settings": {
+        "heading": "No Store Nearby?",
+        "subtext": "Shop our complete collection online with free shipping and easy returns.",
+        "button_text": "Shop Online Now",
+        "button_link": "shopify://collections/our-best-sellers",
+        "background_color": "#1a1a1a",
+        "text_color": "#ffffff",
+        "button_background_color": "#ffffff",
+        "button_text_color": "#1a1a1a",
+        "button_hover_background_color": "#ffffff",
+        "button_hover_text_color": "#1a1a1a",
+        "content_max_width": 600,
+        "padding_vertical": 60,
+        "padding_horizontal": 20,
+        "content_spacing": 20,
+        "heading_size": 32,
+        "subtext_size": 16,
+        "button_font_size": 16,
+        "button_padding_vertical": 14,
+        "button_padding_horizontal": 32,
+        "button_border_radius": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1761147317f64c1f28",
+    "store_locator_banner_7yhkac",
+    "rich_text_APHzwr",
+    "featured_collections_fEBw8J",
+    "blocks_cNpNe3",
+    "store_locations_PqiABp",
+    "visit_out_store_nYBicV",
+    "travel_style_hero_gXbxNF",
+    "rich_text_F8Leyd",
+    "featured_collections_FeRVC6",
+    "store_faqs_ep9g6h",
+    "store_locator_promo_ajJjq9"
+  ]
+}

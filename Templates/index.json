@@ -1,0 +1,421 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_Mqma6b": {
+      "type": "slideshow",
+      "blocks": {
+        "image_BzMnU3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5th_Annual_NOBL_Day_Sale_Green-collection-mobile.webp",
+            "mobile_image": "shopify://shop_images/5th_Annual_NOBL_Day_Sale_Green-Hero-Mobile.webp",
+            "subheading": "Biggest Sale Of The Year",
+            "title": "Black Friday Sale",
+            "subtitle": "58% Off Sitewide",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-start sm:text-start",
+            "content_max_width": 780,
+            "button_1_text": "Shop Now",
+            "button_1_link": "shopify://collections/our-best-sellers",
+            "button_1_style": "outline",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "show_discount_codes": false,
+            "discount_1_amount": "$150 Off",
+            "discount_1_condition": "Orders over $750",
+            "discount_1_code": "Use Code NOBLDAY150",
+            "discount_2_amount": "$100 Off",
+            "discount_2_condition": "Orders over $500",
+            "discount_2_code": "Use Code NOBLDAY100",
+            "background": "",
+            "background_opacity": 0,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_BzMnU3"
+      ],
+      "settings": {
+        "allow_transparent_header": true,
+        "show_next_section_button": false,
+        "media_size": "auto",
+        "autoplay": true,
+        "autoplay_pause_on_video": true,
+        "cycle_speed": 5,
+        "background": "rgba(0,0,0,0)",
+        "controls_color": "#ffffff"
+      }
+    },
+    "4a9d4e82-a1cd-49b7-9170-9806935a81db": {
+      "type": "featured-collections",
+      "blocks": {
+        "template--20865401258284__4a9d4e82-a1cd-49b7-9170-9806935a81db-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers-home",
+            "products_count": 9,
+            "title": "Shop Best Sellers",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20865401258284__4a9d4e82-a1cd-49b7-9170-9806935a81db-collection-1"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 0.2,
+        "vertical_spacing_factor": 0.2,
+        "subheading": "",
+        "subsubheading": ""
+      }
+    },
+    "featured_in_gjkeeE": {
+      "type": "featured-in",
+      "blocks": {
+        "logo_M9c97K": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/travel-leisure-seeklogo.svg",
+            "logo_alt": "Travel and Leisure",
+            "logo_link": ""
+          }
+        },
+        "logo_qCCQ8G": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/vogue-seeklogo.png",
+            "logo_alt": "Vogue",
+            "logo_link": ""
+          }
+        },
+        "logo_tB8qdC": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/forbes-seeklogo.svg",
+            "logo_alt": "Forbes",
+            "logo_link": ""
+          }
+        },
+        "logo_BjKCeX": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/gq-seeklogo_2c152b89-ab76-47ff-b5db-6af4e7f54659.svg",
+            "logo_alt": "GQ",
+            "logo_link": ""
+          }
+        },
+        "logo_Yi9jTc": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/cnn-seeklogo.png",
+            "logo_alt": "CNN",
+            "logo_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_M9c97K",
+        "logo_qCCQ8G",
+        "logo_tB8qdC",
+        "logo_BjKCeX",
+        "logo_Yi9jTc"
+      ],
+      "name": "Featured In",
+      "settings": {
+        "heading": "Featured In",
+        "heading_size": 18,
+        "heading_color": "#282828",
+        "background_color": "rgba(0,0,0,0)",
+        "logo_max_width": 150,
+        "logo_spacing": 20,
+        "logo_opacity": 100,
+        "hover_opacity": 100,
+        "grayscale_amount": 100,
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "margin_top": 0
+      }
+    },
+    "ecb3803e-3fe3-4297-8578-49f8c1adb233": {
+      "type": "rich-text",
+      "blocks": {
+        "template--20865401258284__ecb3803e-3fe3-4297-8578-49f8c1adb233-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Create Your Perfect Set",
+            "heading_tag": "h1"
+          }
+        },
+        "template--20865401258284__ecb3803e-3fe3-4297-8578-49f8c1adb233-richtext-1": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Our signature styles, now available in every Core color. Effortless combinations designed to fit the way you travel.</p>"
+          }
+        },
+        "3e79ae85-0c16-4f02-91b8-66e70f5fe47d": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "text": "SHOP NOW",
+            "url": "shopify://collections/luggage-sets",
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "4f81641e-72a9-4fd6-aee0-f342931ae613": {
+          "type": "my_image",
+          "settings": {
+            "image": "shopify://shop_images/nobl_luggages_college_desktop.webp",
+            "mobile_image": "shopify://shop_images/nobl_luggages_college_mobile.webp",
+            "width_mode": "full_width",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        }
+      },
+      "block_order": [
+        "template--20865401258284__ecb3803e-3fe3-4297-8578-49f8c1adb233-heading-1",
+        "template--20865401258284__ecb3803e-3fe3-4297-8578-49f8c1adb233-richtext-1",
+        "3e79ae85-0c16-4f02-91b8-66e70f5fe47d",
+        "4f81641e-72a9-4fd6-aee0-f342931ae613"
+      ],
+      "custom_css": [
+        ".bordered-section {background: #f6f5fa; padding: 25px 0 0;}"
+      ],
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": true,
+        "content_width": "md",
+        "text_position": "center",
+        "remove_vertical_spacing": true
+      }
+    },
+    "fa9a4f57-3a7c-485b-93e8-853b2117e338": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--16046406631574__fa9a4f57-3a7c-485b-93e8-853b2117e338-168878833527d2280e-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Image with text overlay",
+            "heading_tag": "h4"
+          }
+        },
+        "template--16046406631574__fa9a4f57-3a7c-485b-93e8-853b2117e338-168878833527d2280e-1": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Add your own custom content to give more information about your store, availability details...</p>"
+          }
+        },
+        "7a9e144b-1c7b-489c-bba0-202c005db79b": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<p>Use this text to output some custom Liquid code to include widget or dynamic code.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16046406631574__fa9a4f57-3a7c-485b-93e8-853b2117e338-168878833527d2280e-0",
+        "template--16046406631574__fa9a4f57-3a7c-485b-93e8-853b2117e338-168878833527d2280e-1",
+        "7a9e144b-1c7b-489c-bba0-202c005db79b"
+      ],
+      "settings": {
+        "image_size": "auto",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": false,
+        "remove_vertical_spacing": true,
+        "content_width": "lg",
+        "mobile_text_position": "place-self-end-center text-center",
+        "desktop_text_position": "sm:place-self-end-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "29dab5ee-cc86-4b20-9ee7-b82d803d957f": {
+      "type": "text-with-icons-custom",
+      "blocks": {
+        "9c06a7f3-32d8-40d6-b09d-014a1559c8bb": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "custom_icon": "shopify://shop_images/icons8-protect-50.png",
+            "icon_width": 35,
+            "mobile_icon_width": 30,
+            "title": "Lifetime Warranty",
+            "content": ""
+          }
+        },
+        "template--16046406631574__29dab5ee-cc86-4b20-9ee7-b82d803d957f-168879284547ef28dd-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-customer-support",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 39,
+            "mobile_icon_width": 35,
+            "title": "360° Smooth Wheels",
+            "content": ""
+          }
+        },
+        "template--16046406631574__29dab5ee-cc86-4b20-9ee7-b82d803d957f-168879284547ef28dd-0": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/lock22.png",
+            "icon_width": 39,
+            "mobile_icon_width": 35,
+            "title": "TSA Approved Lock System",
+            "content": ""
+          }
+        },
+        "template--16046406631574__29dab5ee-cc86-4b20-9ee7-b82d803d957f-168879284547ef28dd-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/phone22.png",
+            "icon_width": 39,
+            "mobile_icon_width": 35,
+            "title": "Premium Design",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "9c06a7f3-32d8-40d6-b09d-014a1559c8bb",
+        "template--16046406631574__29dab5ee-cc86-4b20-9ee7-b82d803d957f-168879284547ef28dd-1",
+        "template--16046406631574__29dab5ee-cc86-4b20-9ee7-b82d803d957f-168879284547ef28dd-0",
+        "template--16046406631574__29dab5ee-cc86-4b20-9ee7-b82d803d957f-168879284547ef28dd-2"
+      ],
+      "custom_css": [
+        ".image-with-text > .prose {padding: 0 !important;}",
+        ".button {min-width: 280px;}",
+        "@media screen and (min-width: 1000px) {.image-with-text {--image-with-text-gap: 1rem; display: grid; grid-template-columns: 1.5fr 2fr; }}",
+        ".custom-icons-section {background: #f6f5fa;}"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "subheading": "",
+        "title": "Made for you",
+        "content": "<p>Elevate your travel experience to the highest standard with world-class quality.</p>",
+        "button_link": "shopify://collections/hard-shell-luggage",
+        "button_text": "Shop Now",
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "center"
+      }
+    },
+    "1762355179aefc2fd9": {
+      "type": "apps",
+      "blocks": {
+        "tolstoy_shoppable_video_quiz_carousel_block_8CFH8i": {
+          "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "7edgcyrfa34dn"
+          }
+        }
+      },
+      "block_order": [
+        "tolstoy_shoppable_video_quiz_carousel_block_8CFH8i"
+      ],
+      "custom_css": [
+        ".section-spacing {margin-block-start: 40px !important; margin-block-end: 0px !important;}",
+        "@media screen and (max-width: 480px) {.container {margin: 0 !important; }}"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "faq_section_alt_nBe9Ry": {
+      "type": "Faq-section-alt",
+      "blocks": {
+        "faq_item_hdPYTr": {
+          "type": "faq_item",
+          "settings": {
+            "faq_question": "Lifetime Warranty",
+            "faq_answer": "Because trust shouldn’t have an expiration date. Every Nobl suitcase is built to last a lifetime and backed by one. If anything ever goes wrong, our team will repair or replace it. No fine print, no hidden fees, just a promise that travels as far as you do.",
+            "button-url": "",
+            "button-text": ""
+          }
+        },
+        "faq_item_RU8yYf": {
+          "type": "faq_item",
+          "settings": {
+            "faq_question": "100 Day Returns",
+            "faq_answer": "We believe confidence starts the moment you unbox. Take your time, pack, roll, and travel with it. If it’s not love within 100 days, send it back. We’ll take care of the rest.",
+            "button-url": "",
+            "button-text": ""
+          }
+        },
+        "faq_item_R7rkyD": {
+          "type": "faq_item",
+          "settings": {
+            "faq_question": "Rich Design",
+            "faq_answer": "Every line, curve, and component exists for a reason. Our pieces are engineered to inspire movement, blending timeless form with intelligent function. You’ll feel the difference in the smooth precision of the wheels, the silent glide of the handle, and the satisfying click of the lock.",
+            "button-url": "",
+            "button-text": "Read article"
+          }
+        },
+        "faq_item_XEkxTc": {
+          "type": "faq_item",
+          "settings": {
+            "faq_question": "Free 3-Day U.S. Shipping",
+            "faq_answer": "Wherever you’re headed, we’ll get you started fast and free.\nEnjoy <b>complimentary 3-day shipping across the U.S</b>., delivered straight from our hands to yours.",
+            "button-url": "",
+            "button-text": "Read article"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_hdPYTr",
+        "faq_item_RU8yYf",
+        "faq_item_R7rkyD",
+        "faq_item_XEkxTc"
+      ],
+      "settings": {
+        "faq_head": "Focus on the Parts of Travel You Love",
+        "faq_subhead": "Travel should feel effortless, so we’ve built Nobl to handle everything else. From lifetime coverage to design that turns heads, every detail is crafted so you can focus on where you’re going, not what you’re carrying.",
+        "background_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "slideshow_Mqma6b",
+    "4a9d4e82-a1cd-49b7-9170-9806935a81db",
+    "featured_in_gjkeeE",
+    "ecb3803e-3fe3-4297-8578-49f8c1adb233",
+    "fa9a4f57-3a7c-485b-93e8-853b2117e338",
+    "29dab5ee-cc86-4b20-9ee7-b82d803d957f",
+    "1762355179aefc2fd9",
+    "faq_section_alt_nBe9Ry"
+  ]
+}

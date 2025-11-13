@@ -1,0 +1,445 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "image_with_text_overlay_v2_BHzDHh": {
+      "type": "image-with-text-overlay-v2",
+      "blocks": {
+        "heading_FPMJHX": {
+          "type": "heading",
+          "settings": {
+            "text": "Redefining the<strong> Art of Travel</strong>",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_6pUqpi": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Nobl was born from a simple idea that luggage should inspire movement, not just enable it. For decades, the travel industry stood still: the same shapes, the same materials, the same lifeless designs. We saw an opportunity to reinvent it to build something with soul, purpose, and precision.</p>"
+          }
+        },
+        "button_GDw7HU": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "Explore the Collection",
+            "url": "shopify://collections/our-best-sellers",
+            "background": "#ffffff",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FPMJHX",
+        "richtext_6pUqpi",
+        "button_GDw7HU"
+      ],
+      "name": "Image Banner",
+      "settings": {
+        "image_size": "auto",
+        "image": "shopify://shop_images/Banner_2_1920x700_abd45bdc-e7bb-4836-8902-e1f97e95bc96.webp",
+        "mobile_image": "shopify://shop_images/nobl-about-Mobile_V1.webp",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": false,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 37
+      }
+    },
+    "images_with_text_Y6M3aG": {
+      "type": "images-with-text",
+      "custom_css": [
+        ".images-with-text__img{height: 500px;}",
+        "@media screen and (max-width:767px){.images-with-text__img{height: 300px;}}"
+      ],
+      "name": "Images with Text",
+      "settings": {
+        "layout": "image-right",
+        "content_position": "center",
+        "text_alignment": "left",
+        "image_1": "shopify://shop_images/NOBL_home_page.webp",
+        "image_1_mobile": "shopify://shop_images/NOBL_home_page.webp",
+        "heading": "Our Origin Story",
+        "description": "<p>We’re the underdogs who started Nobl from scratch because the luggage industry had lost its spark. There was no imagination, no evolution, and no emotion left in the category. </p><p>So we set out to create travel gear that felt alive again, designed for those who value craftsmanship as much as the journey itself.</p>",
+        "tagline": "",
+        "button_label": "",
+        "button_link": "",
+        "heading_size_desktop": 48,
+        "heading_font_weight": "400",
+        "description_size_desktop": 16,
+        "heading_size_mobile": 32,
+        "description_size_mobile": 14,
+        "tagline_size_desktop": 15,
+        "tagline_size_mobile": 14,
+        "tagline_font_weight": "400",
+        "tagline_color": "#666666",
+        "background_color": "#f5f5f5",
+        "heading_color": "#1a1a1a",
+        "description_color": "#4a4a4a",
+        "button_bg_color": "#1a1a1a",
+        "button_text_color": "#ffffff",
+        "button_hover_bg_color": "#333333",
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 56,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "features_grid_7MtWEn": {
+      "type": "features-grid",
+      "blocks": {
+        "feature_6PyBDx": {
+          "type": "feature",
+          "settings": {
+            "svg_code": "",
+            "image": "shopify://shop_images/icon-1_db9418f3-2dc9-4611-8904-03876c117d63.png",
+            "icon_size_desktop": 60,
+            "icon_size_mobile": 50,
+            "title": "Craftsmanship",
+            "description": "Every stitch, every rivet, every curve is intentional. We build luggage the way masters build instruments."
+          }
+        },
+        "feature_QYyPHx": {
+          "type": "feature",
+          "settings": {
+            "svg_code": "",
+            "image": "shopify://shop_images/icon-2_b24b7932-e39c-416c-957a-51a9e9ba3d02.png",
+            "icon_size_desktop": 60,
+            "icon_size_mobile": 50,
+            "title": "Obsessive Quality",
+            "description": "Good enough isn't good enough. We test, refine, and perfect until every product exceeds expectations."
+          }
+        },
+        "feature_LDfMew": {
+          "type": "feature",
+          "settings": {
+            "svg_code": "",
+            "image": "shopify://shop_images/icon-3_137beb5e-cf27-4eda-ae37-aac89f97cecd.png",
+            "icon_size_desktop": 60,
+            "icon_size_mobile": 50,
+            "title": "Timeless Design",
+            "description": "Fashion fades. Function endures. We create pieces that look as relevant in 20 years as they do today."
+          }
+        }
+      },
+      "block_order": [
+        "feature_6PyBDx",
+        "feature_QYyPHx",
+        "feature_LDfMew"
+      ],
+      "name": "Features Grid",
+      "settings": {
+        "heading": "Our Beliefs",
+        "description": "At Nobl, we believe in obsessive craftsmanship, uncompromising quality, and design that truly solves problems. Every line, every curve, every component exists for a reason. We don’t follow trends we build for timelessness. The result is travel gear that looks beautiful, performs flawlessly, and endures for a lifetime.",
+        "columns_desktop": "3",
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 32,
+        "heading_font_weight": "400",
+        "description_size_desktop": 16,
+        "description_size_mobile": 14,
+        "block_title_size_desktop": 20,
+        "block_title_size_mobile": 18,
+        "block_title_font_weight": "600",
+        "block_description_size_desktop": 14,
+        "block_description_size_mobile": 13,
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "description_color": "#666666",
+        "block_title_color": "#1a1a1a",
+        "block_description_color": "#666666",
+        "icon_background_color": "#1a1a1a",
+        "icon_color": "#ffffff",
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "images_with_text_XG36VC": {
+      "type": "images-with-text",
+      "name": "Images with Text",
+      "settings": {
+        "layout": "image-left",
+        "content_position": "center",
+        "text_alignment": "left",
+        "image_1": "shopify://shop_images/nobl_image_1040_x_768.webp",
+        "image_1_mobile": "shopify://shop_images/nobl_image_1040_x_768.webp",
+        "heading": "Made in North America",
+        "description": "<p>Our products are assembled in our own facilities, managed end-to-end by our team, never outsourced. This control allows us to maintain precision at every stage, from material selection to final inspection.</p><p>When you travel with Nobl, you’re carrying something designed with integrity and built with purpose.</p>",
+        "tagline": "\"Designed and Assembled in North America\"",
+        "button_label": "",
+        "button_link": "",
+        "heading_size_desktop": 48,
+        "heading_font_weight": "400",
+        "description_size_desktop": 16,
+        "heading_size_mobile": 28,
+        "description_size_mobile": 14,
+        "tagline_size_desktop": 15,
+        "tagline_size_mobile": 14,
+        "tagline_font_weight": "400",
+        "tagline_color": "#d4c4a8",
+        "background_color": "#1a1a1a",
+        "heading_color": "#ffffff",
+        "description_color": "#ffffff",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#1a1a1a",
+        "button_hover_bg_color": "#666666",
+        "padding_top_desktop": 56,
+        "padding_bottom_desktop": 56,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "craft_grid_a8fPVi": {
+      "type": "craft-grid",
+      "blocks": {
+        "craft_item_7Gygyf": {
+          "type": "craft_item",
+          "settings": {
+            "image": "shopify://shop_images/Red_340d21cf-1918-42e2-bd57-3d3550442ef1.webp",
+            "title": "Cup Holder",
+            "description": "Enjoy hands-free convenience with built-in-cup holder for your drink.\nMost luggage brands overlook the micro-moments of travel, waiting at the gate, balancing coffee, phone, and boarding pass.\nAt NOBL, we obsessed over that moment."
+          }
+        },
+        "craft_item_TiPGNJ": {
+          "type": "craft_item",
+          "settings": {
+            "image": "shopify://shop_images/Charging_Port_793b33a1-9c44-462c-96ab-9bb7d871febb.webp",
+            "title": "Charging Port",
+            "description": "Stay powered with USB and USB-C ports by connecting your power bank.\nModern travel isn’t just about movement, it’s about connection. Dead devices mean lost boarding passes, missed calls, and unnecessary stress."
+          }
+        },
+        "craft_item_P88iCK": {
+          "type": "craft_item",
+          "settings": {
+            "image": "shopify://shop_images/Tsa_Locks_ff8e15b7-4fd8-4cc2-baf1-743f194d129c.webp",
+            "title": "TSA Locks",
+            "description": "Keep your suitcase secure with TSA-approved locks for peace of mind.\nEvery traveler deserves peace of mind.\nOur dual TSA-approved locks are designed for flawless security, effortless use, and lasting integrity."
+          }
+        }
+      },
+      "block_order": [
+        "craft_item_7Gygyf",
+        "craft_item_TiPGNJ",
+        "craft_item_P88iCK"
+      ],
+      "name": "Craft Grid",
+      "settings": {
+        "heading": "Our Craft",
+        "description": "Behind every Nobl product is a team of designers, engineers, and craftspeople obsessed with perfection. Every stitch, hinge, and wheel passes through rigorous testing and refinement. It’s not about mass production it’s about mastery.",
+        "columns_desktop": "3",
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 32,
+        "heading_font_weight": "400",
+        "description_size_desktop": 16,
+        "description_size_mobile": 14,
+        "block_title_size_desktop": 18,
+        "block_title_size_mobile": 16,
+        "block_title_font_weight": "600",
+        "block_description_size_desktop": 14,
+        "block_description_size_mobile": 13,
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "description_color": "#666666",
+        "block_title_color": "#1a1a1a",
+        "block_description_color": "#666666",
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "rich_text_KwcWP3": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_9qCnWG": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_wyEdVc": {
+          "type": "heading",
+          "settings": {
+            "text": "Customer Obsession",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_tg9463": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Nobl’s evolution is guided by one voice , yours. Every improvement we make comes directly from traveler feedback. We listen, refine, rebuild, and repeat. Our promise is simple: your experience defines our craft.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_9qCnWG",
+        "heading_wyEdVc",
+        "richtext_tg9463"
+      ],
+      "custom_css": [
+        ".prose .h1 {font-size: 48px; letter-spacing: normal; font-weight: 400;}",
+        " {background: #f5f5f5; padding: 40px 0px 0;}",
+        "@media screen and (max-width: 767px) {.prose .h1 {font-size: 30px; } {padding: 30px 0px 0; }}"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "custom_id": "",
+        "separate_section_with_border": false,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": true
+      }
+    },
+    "176176456117779505": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_Jt73wi": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1380,
+            "borderRadius": 8,
+            "itemsPerView": 4,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "0.72",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#FFFFFF",
+            "arrows_iconColor": "#9A9A9A",
+            "shadow": "offset-dark",
+            "border_active": false,
+            "border_width": 2,
+            "border_color": "#000000",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_Jt73wi"
+      ],
+      "custom_css": [
+        "{background: #f5f5f5; padding: 0px 0px 30px;}",
+        "@media screen and (max-width: 767px) {{padding: 0px 0px 0px; }}"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "customer_testimonial_gQPNft": {
+      "type": "customer-testimonial",
+      "disabled": true,
+      "name": "Customer Testimonial",
+      "settings": {
+        "heading": "Customer Obsession",
+        "description": "Nobl’s evolution is guided by one voice , yours. Every improvement we make comes directly from traveler feedback. We listen, refine, rebuild, and repeat. Our promise is simple: your experience defines our craft.",
+        "layout": "horizontal",
+        "quote_text": "\"This isn't just luggage. It's engineering poetry. Every detail shows they actually care about the traveler experience.\"",
+        "author_image": "shopify://shop_images/Customer.png",
+        "author_name": "Sarah Chen",
+        "author_title": "Frequent Business Traveler",
+        "stat_number": "500,000+",
+        "stat_text": "Travellers worldwide trust Nobl",
+        "show_rating": true,
+        "rating_value": 5,
+        "rating_text": "4.9/5 average rating",
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 32,
+        "heading_font_weight": "400",
+        "description_size_desktop": 16,
+        "description_size_mobile": 14,
+        "quote_text_size_desktop": 21,
+        "quote_text_size_mobile": 16,
+        "author_name_size_desktop": 16,
+        "author_name_size_mobile": 14,
+        "author_name_font_weight": "600",
+        "author_title_size_desktop": 14,
+        "author_title_size_mobile": 13,
+        "stat_number_size_desktop": 36,
+        "stat_number_size_mobile": 28,
+        "stat_number_font_weight": "600",
+        "stat_text_size_desktop": 14,
+        "stat_text_size_mobile": 13,
+        "rating_text_size_desktop": 14,
+        "rating_text_size_mobile": 13,
+        "background_color": "#f5f5f5",
+        "card_background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "description_color": "#666666",
+        "quote_text_color": "#374151",
+        "author_name_color": "#1a1a1a",
+        "author_title_color": "#666666",
+        "stat_number_color": "#1a1a1a",
+        "stat_text_color": "#666666",
+        "rating_text_color": "#666666",
+        "star_color": "#ffd700",
+        "padding_top_desktop": 36,
+        "padding_bottom_desktop": 44,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "nobl_mission_krwjxt": {
+      "type": "nobl-mission",
+      "name": "Nobl Mission",
+      "settings": {
+        "heading": "Our Mission",
+        "description": "<p>We’re here to redefine what travel gear can be functional, beautiful, and built to last a lifetime. Nobl represents the biggest evolution in luggage since wheels were added in 1970.<br/>Over 500,000 travelers worldwide trust Nobl to accompany their journeys a testament to craftsmanship, innovation, and care that travels with you wherever you go.</p>",
+        "button_text": "Discover What Makes Nobl Different",
+        "button_link": "shopify://collections/our-best-sellers",
+        "button_style": "solid",
+        "button_background": "#ffffff",
+        "button_text_color": "#000000",
+        "heading_size_desktop": 48,
+        "heading_size_mobile": 32,
+        "heading_font_weight": "400",
+        "description_size_desktop": 18,
+        "description_size_mobile": 14,
+        "background_color": "#1a1a1a",
+        "heading_color": "#ffffff",
+        "description_color": "#cccccc",
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_v2_BHzDHh",
+    "images_with_text_Y6M3aG",
+    "features_grid_7MtWEn",
+    "images_with_text_XG36VC",
+    "craft_grid_a8fPVi",
+    "rich_text_KwcWP3",
+    "176176456117779505",
+    "customer_testimonial_gQPNft",
+    "nobl_mission_krwjxt"
+  ]
+}
