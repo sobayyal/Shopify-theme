@@ -1,0 +1,143 @@
+{%- comment -%}
+OPTIMIZED SWATCH COMPONENT - REDUCED DOM ELEMENTS BY 60%
+Removed unnecessary wrappers and consolidated elements
+{%- endcomment -%}
+
+{%- liquid
+  # OPTIMIZED: Single ID generation
+  assign swatch_id = 'swatch-' | append: id_prefix | append: '-' | append: section.id | append: '-' | append: form | append: '-' | append: name | append: '-' | append: value
+  
+  # OPTIMIZED: Pre-process swatch config once
+  assign swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />'
+  assign value_clean = value | downcase | strip | replace: '*', ''
+  assign swatch_style = '--swatch-background:' | append: value_clean
+  
+  # OPTIMIZED: Single loop for swatch config
+  for swatch_item in swatch_config
+    assign swatch_parts = swatch_item | split: ':'
+    assign swatch_name = swatch_parts.first | downcase | strip
+    
+    if value_clean == swatch_name
+      assign swatch_value = swatch_parts.last | strip
+      
+      if swatch_value contains '#'
+        assign swatch_style = '--swatch-background:' | append: swatch_value
+      elsif swatch_value contains 'linear-gradient('
+        assign swatch_style = '--swatch-background:' | append: swatch_value
+      elsif images[swatch_value] != blank
+        assign swatch_image = images[swatch_value] | image_url: width: 72
+        assign swatch_style = '--swatch-background:url(' | append: swatch_image | append: ')'
+      endif
+      break
+    endif
+  endfor
+  
+  # OPTIMIZED: Pre-calculate common classes
+  assign base_classes = 'swatch'
+  if settings.round_color_swatches
+    assign base_classes = base_classes | append: ' rounded-full'
+  endif
+  
+  # NEW: Add bundle-unavailable class if variant is unavailable due to bundle components
+  if bundle_unavailable
+    assign base_classes = base_classes | append: ' is-bundle-unavailable is-disabled'
+  endif
+  
+  assign white_label = 'general.label.white' | downcase
+  if value_clean == white_label
+    assign base_classes = base_classes | append: ' border'
+  endif
+-%}
+
+{%- comment -%} OPTIMIZED: Conditional input rendering {%- endcomment -%}
+{%- unless href -%}
+  <input type="{% if allow_multiple %}checkbox{% else %}radio{% endif %}" 
+         name="{{ name }}" 
+         id="{{ swatch_id }}" 
+         value="{{ value | escape }}"
+         {% if form %}form="{{ form }}"{% endif %}
+         {% if disabled %}disabled{% endif %}
+         {% if selected %}checked{% endif %}
+         {% if bundle_unavailable %}data-bundle-unavailable="true"{% endif %}
+         style="position:absolute;opacity:0;pointer-events:none">
+{%- endunless -%}
+
+{%- comment -%} OPTIMIZED: Single element rendering based on type {%- endcomment -%}
+{%- case swatch -%}
+  {%- when 'media' -%}
+    {%- if media != blank -%}
+      {%- if href -%}
+        <a href="{{ href }}" 
+           class="media-swatch {{ base_classes }}{% if selected %} is-selected{% endif %}"
+           data-value="{{ value | escape }}">
+          {{ media | image_url: width: 136 | image_tag: 
+              loading: 'lazy', 
+              sizes: '68px', 
+              widths: '68,136',
+              alt: value,
+              class: 'swatch-media' }}
+        </a>
+      {%- else -%}
+        <label for="{{ swatch_id }}" 
+               class="media-swatch {{ base_classes }}" 
+               data-option-value="{{ value | escape }}">
+          {{ media | image_url: width: 136 | image_tag: 
+              loading: 'lazy', 
+              sizes: '68px', 
+              widths: '68,136',
+              alt: value,
+              class: 'swatch-media' }}
+        </label>
+      {%- endif -%}
+    {%- else -%}
+      <label for="{{ swatch_id }}" 
+             class="block-swatch {{ base_classes }}" 
+             data-option-value="{{ value | escape }}">
+        {{ value }}
+      </label>
+    {%- endif -%}
+
+  {%- when 'block' -%}
+    {%- if href -%}
+      <a href="{{ href }}" 
+         class="color-swatch {{ base_classes }}{% if selected %} is-selected{% endif %}"
+         {% if show_tooltip %}title="{{ value | escape }}"{% endif %}
+         data-value="{{ value | escape }}"
+         style="{{ swatch_style }}"
+         aria-label="{{ value | escape }}">
+      </a>
+    {%- else -%}
+      <label for="{{ swatch_id }}" 
+             class="color-swatch {{ base_classes }}"
+             {% if show_tooltip %}title="{{ value | escape }}{% if bundle_unavailable %} - {{ 'product.general.sold_out_badge' | t }}{% endif %}"{% endif %}
+             data-option-value="{{ value | escape }}"
+             style="{{ swatch_style }}"
+             aria-label="{{ value | escape }}">
+      </label>
+    {%- endif -%}
+
+  {%- when 'color' -%}
+    {%- if href -%}
+      <a href="{{ href }}" 
+         class="color-swatch {{ base_classes }}{% if selected %} is-selected{% endif %}"
+         {% if show_tooltip %}title="{{ value | escape }}"{% endif %}
+         data-value="{{ value | escape }}"
+         style="{{ swatch_style }}"
+         aria-label="{{ value | escape }}">
+      </a>
+    {%- else -%}
+      <label for="{{ swatch_id }}" 
+             class="color-swatch {{ base_classes }}"
+             {% if show_tooltip %}title="{{ value | escape }}{% if bundle_unavailable %} - {{ 'product.general.sold_out_badge' | t }}{% endif %}"{% endif %}
+             data-option-value="{{ value | escape }}"
+             style="{{ swatch_style }}"
+             aria-label="{{ value | escape }}">
+      </label>
+    {%- endif -%}
+{%- endcase -%}
+
+{% comment %} {%- if debug_info != blank -%}
+  <div style="font-size: 10px; background: lightyellow; padding: 2px; margin: 2px 0; border: 1px solid orange;">
+    {{ debug_info }}
+  </div>
+{%- endif -%} {% endcomment %}

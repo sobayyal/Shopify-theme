@@ -1,0 +1,266 @@
+<div class="variant--tabs" style="--margin-top:{{ block.settings.margin_top }}px;">
+  {% if block.settings.tab_one_name != blank %}
+    {% assign tab_one_link = block.settings.tab_one_link | replace: ' ','' %}
+    {% assign tab_one_link_clean = tab_one_link | split: '?' | first %}
+    <div class="variant--tab--item {% if request.path contains tab_one_link_clean %}selected_tab{% endif %}">
+      <a href="{{ tab_one_link }}">{{ block.settings.tab_one_name }}
+      {% if block.settings.badge_text_one != blank %}
+        <span class="variant_tab_badge">{{ block.settings.badge_text_one }}</span>
+      {% endif %}
+      </a>
+    </div>
+  {% endif %}
+  {% assign tabTwoBundleProducts = block.settings.bundle_products | split: ',' %}
+  {% assign tab_two_link = block.settings.tab_two_link | replace: ' ', '' %}
+  {% assign tab_two_link_clean = tab_two_link | split: '?' | first %}
+
+  {% assign selected = false %}
+  
+  {% for product in block.settings.bundle_products %}
+    {% if request.path contains product.url %}
+      {% assign selected = true %}  
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  
+  {% if block.settings.tab_two_name != blank %}
+    <div class="variant--tab--item {{ product_url_trimmed }} {% if selected or request.path contains tab_two_link_clean %}selected_tab{% endif %}">
+      <a href="{{ tab_two_link }}">{{ block.settings.tab_two_name }}
+      {% if block.settings.badge_text_two != blank %}
+        {% unless selected or request.path contains tab_two_link_clean %}
+          <span class="variant_tab_badge">{{ block.settings.badge_text_two }}</span>
+        {% endunless %}
+      {% endif %}
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+
+<style>
+  .variant--tab--item a {
+    min-width: 170px;
+    padding: 12px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap:10px;
+    border: 1px solid #dadada;
+    font-weight: 500;
+    background: #E8E8E8;
+    text-transform:capitalize;
+    border-radius: 5px 5px 0 0;
+    height: 100%;
+  }
+  .variant--tab--item:last-child a {
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .variant--tab--item:not(.selected_tab):first-child a {
+    border-right: 0;
+    border-bottom: 0;
+    border-top-right-radius: 0;
+  }
+  .variant--tab--item.selected_tab:last-child a {
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+  }
+  span.variant_tab_badge {
+    font-size: 10px;
+    padding: 4px 10px 3px;
+    font-weight: 500;
+  }
+  .variant--tabs {
+    display: flex;
+    margin-top:var(--margin-top);
+  }
+  .variant--tab--item.selected_tab a {
+    background: white;
+    border-bottom: none;
+    position: relative;
+    z-index: 4;
+    border-left: 1px solid #dadada;
+  }
+  .variant--tab--item.selected_tab a {
+    border-top-right-radius: 0;
+  }
+  .variant--tab--item:not(.selected_tab):last-child a {
+    border-top-left-radius: 0;
+  }
+  .variant_tabs-enabled .product-info__block-item[data-block-type="variant-picker"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid transparent;
+    border-image-source: linear-gradient(to bottom, #DADADA 35%, rgba(0, 0, 0, 0) 95%);
+    border-image-slice: 1;
+    z-index: -1;
+    background:white;
+  }
+  .variant_tabs-enabled .product-info__block-item[data-block-type="variant-picker"] {
+     position: relative;
+    margin-top: -3px;
+    padding: 10px 10px 0px;
+    z-index: 3;
+    margin-block-end: 0px !important;
+  }
+  .variant_tabs-enabled .variant-picker__option-info legend {
+    text-transform: capitalize;
+  }
+  div[data-block-type="variant-picker"] variant-picker fieldset {
+    margin-left: 16px;
+  }
+  .variant_tabs-enabled span.variant_tab_badge{
+    background: #F6F3EB !important;
+    color: #282828 !important;
+    border: 1px solid #282828 !important;
+    border-radius: 3.75rem;
+  }
+  @media screen and (min-width:1101px){
+    .variant--tab--item.selected_tab a{
+      padding:12px 22px;
+    }
+    span.variant_tab_badge{
+      font-size:10px;
+      letter-spacing:0.896px;
+    }
+  }
+  @media screen and (max-width:1100px) and (min-width:992px){
+    .variant--tab--item a {
+      font-size: 14px;
+      min-width: 168px;
+    }
+     span.variant_tab_badge {
+      font-size: 10px;
+     }
+  }
+  @media screen and (max-width:768px){
+  
+     div[data-block-type="variant-picker"] variant-picker fieldset{
+      margin-left: 15px;
+    } 
+    .variant_tabs-enabled .product-info__block-item[data-block-type="variant-picker"]{
+      width: calc(100% + 20%);
+      margin-left: -10%;
+      padding:10px 10px 10px 10% !important;
+      
+    }
+    .variant--tabs{
+      justify-content:center;
+    }
+    .variant--tab--item  {
+      min-width:50%;
+    }
+  }
+   @media screen and (max-width:480px){
+    .variant_tabs-enabled .variant-picker__option-info{
+      font-size:13px;
+    }
+    .variant_tabs-enabled span.variant_tab_badge{
+      padding: 5px 10px;
+      line-height: 16px;
+      font-size: 10px;
+    }
+    .variant--tab--item {
+      width: max-content;
+    }
+    .variant--tab--item a {
+      min-width:auto;
+    }
+  }
+  @media screen and (max-width:480px) and (min-width:442px){
+    span.variant_tab_badge {
+      font-size: 9px;
+    }
+    .variant_tabs-enabled span.variant_tab_badge {
+        padding: 5px 10px;
+        line-height: 16px;
+        font-size: 10px;
+    }
+    .variant--tab--item a {
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+    .variant_tabs-enabled .product-info__block-item[data-block-type="variant-picker"]{
+      padding: 12px 10px 10px;
+    }
+  }
+   @media screen and (max-width:442px){
+    .variant_tabs-enabled span.variant_tab_badge {
+        padding: 5px 10px;
+        line-height: 14px;
+        font-size: 10px;
+    }
+     .variant--tab--item a {
+        font-size: 13px;
+     }
+   }
+  @media screen and (max-width:425px){
+    .variant--tab--item a{
+      gap:8px;
+    }
+    span.variant_tab_badge {
+      padding:3px 8px;
+      line-height: 16px;
+      font-size:9px;
+    }
+    .variant--tab--item a {
+      padding: 8px 10px;
+      font-size: 13px;
+      min-width:auto;
+    }
+
+    .variant_tabs-enabled .product-info .variant-picker__option-values{
+      gap:0.3rem;
+    }
+    .variant--tab--item a {
+        padding: 8px 20px;
+    }
+
+  }
+ 
+  @media screen and (max-width:425px) and (min-width:406px){
+    .variant--tab--item a {
+        padding: 8px 20px;
+    }
+  }
+
+  @media screen and (max-width:406px) and (min-width:394px){
+    .variant--tab--item a {
+        padding: 8px 20px;
+    }
+  }
+  @media screen and (max-width:393px) and (min-width:370px){
+     .variant_tabs-enabled span.variant_tab_badge {
+      padding:3px 8px;
+      line-height: 16px;
+      font-size:9px;
+    }
+    .variant--tab--item a {
+        padding: 8px 20px;
+    }
+  }
+  @media screen and (max-width:386px){
+    .variant--tab--item a {
+        padding: 8px 18px;
+    }
+  }
+  
+
+  @media screen and (max-width:375px){
+    .variant--tab--item a {
+        padding: 8px 12px;
+      font-size: 11px;
+      gap: 6px;
+    }
+    .variant_tabs-enabled span.variant_tab_badge{
+      padding:4px 7px;
+      font-size: 10px;
+    }
+  }
+  
+</style>

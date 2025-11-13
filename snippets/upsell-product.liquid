@@ -1,0 +1,36 @@
+{%- if product.available -%}
+  {%- capture form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+
+        {% assign product_id = product.selected_or_first_available_variant.id %}
+            {% assign product_found = '' %}
+            {% for item in cart.items %}
+              {% if item.id == product_id %}
+                {% assign product_found = 'hidden' %}
+                <style>
+                    .cart-drawer__recommendations {
+                      display: none;
+                    }
+                </style>
+              {% endif %}
+            {% endfor %}
+
+
+  <div form="{{ form_id }}" class="upsell_product {{ product_found }}">
+    <div class="">
+      <div class="line-item">
+        {%- if product.media.size > 0 -%}       
+            {%- assign default_media = product.selected_or_first_available_variant.media | default: product.featured_media -%}
+            {{- default_media | image_url: width: default_media.width | image_tag: loading: 'lazy', class: 'line-item__media', sizes: '60px', widths: '60,120,180' -}}         
+        {%- endif -%}
+
+        <div class="line-item-info">
+          <span class="h6">{{ product.title }}</span>
+          {{- product_description  | truncate: 30 -}}
+          {%- render 'price-list', variant: product.selected_or_first_available_variant, form_id: form_id, hide_unit_price: true, context: 'card' -%}
+        </div>
+      </div>
+    </div>
+
+    {%- render 'buy-buttons-upsell', product: product, form_id: form_id, show_payment_button: false -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,162 @@
+<variant-option-selector class="size-selector--dropdown product-form__input py-15 mb-15 mt-15" style="--margin-bottom:{{ block.settings.margin_bottom }}px;">
+    {% if block.settings.variant_title != '' or block.settings.compare_size_text != '' %}
+      <div class="form__label flex-space-between" bis_skin_checked="1">
+        <p class="size-selector__title">{{ block.settings.variant_title }}</p>
+        <a href="{{ block.settings.compare_size_link }}" class="compare_sizes_btn link-default text-underline">{{ block.settings.compare_size_text }}</a>
+      </div>
+    {% endif %}
+    
+    <div bis_skin_checked="1">
+      <div bis_skin_checked="1">
+        <ul class="grid-lg-4-md-2 gap-10 list-default">
+          {% if block.settings.item_one != blank %}
+            {% assign clean_url_one = block.settings.item_one_url | split: '?' | first %}
+            <li class="{% if request.path == clean_url_one %}selected{% endif %}" data-tab-url="{{ clean_url_one }}" data-request-patth="{{ request.path }}" data-size="Small Carry-On">
+              <a href="{{ block.settings.item_one_url }}" class="flex-center-center p-05 variant_size_link link-default m-0 text-center">
+                {{ block.settings.item_one }}
+              </a>
+            </li>
+         {% endif %}
+         {% if block.settings.item_two != blank %}
+            {% assign clean_url_two = block.settings.item_two_url | split: '?' | first %}
+            <li class="{% if request.path == clean_url_two %}selected{% endif %}" data-tab-url="{{ clean_url_two }}" data-request-patth="{{ request.path }}" data-size="Carry-On">
+              <a href="{{ block.settings.item_two_url }}" class="flex-center-center p-05 variant_size_link link-default m-0 text-center">
+               {{ block.settings.item_two }}
+              </a>
+            </li>
+         {% endif %}
+         {% if block.settings.item_three != blank %}
+            {% assign clean_url_three = block.settings.item_three_url | split: '?' | first %}
+            <li class="{% if request.path == clean_url_three %}selected{% endif %} tag-container" data-tab-url="{{ clean_url_three }}" data-request-patth="{{ request.path }}" data-size="Medium Check-In">
+              <span class="option-tag most-popular-tag">Most popular</span>
+              <a href="{{ block.settings.item_three_url }}" class="flex-center-center p-05 variant_size_link link-default m-0 text-center">
+                {{ block.settings.item_three }}
+              </a>
+            </li>
+         {% endif %}
+         {% if block.settings.item_four != blank %}
+            {% assign clean_url_four = block.settings.item_four_url | split: '?' | first %}
+            <li class="{% if request.path == clean_url_four %}selected{% endif %} tag-container" data-tab-url="{{ clean_url_four }}" data-request-patth="{{ request.path }}" data-size="Large Check-In">
+              <span class="option-tag best-value-tag">Best value</span>
+              <a href="{{ block.settings.item_four_url }}" class="flex-center-center p-05 variant_size_link link-default m-0 text-center">
+                {{ block.settings.item_four }}
+              </a>
+            </li>
+         {% endif %}
+        </ul>
+      </div>
+    </div>
+</variant-option-selector>
+<style>
+  
+  .size-selector--dropdown li {
+    background-color: #E5E4E2 !important;
+    transition: all .2s ease-in-out;
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 4px;
+    position: relative;
+}
+  .compare_sizes_btn{
+    font-size: 0.7rem;
+  }
+  .size-selector__title{
+    font-size:16px !important;
+    font-weight:400 !important;
+  }
+  variant-option-selector.size-selector--dropdown .variant_size_link {
+    font-size: 0.6rem;
+    line-height: 1.2;
+    letter-spacing: .1rem;
+    height: 40px;
+    font-weight: 600;
+}
+  .size-selector--dropdown .flex-center-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  .size-selector--dropdown .list-default{
+    list-style-type: none;
+}
+  .size-selector--dropdown .form__label {
+    margin-bottom: 0.6rem;
+}
+  .size-selector--dropdown .text-underline {
+    text-decoration: underline;
+}
+  .size-selector--dropdown li.selected {
+    background-color: #fff !important;
+    border: 1px solid #222222;
+}
+ .size-selector--dropdown ul.grid-lg-4-md-2 {
+    margin-inline-start: 0em;
+}
+  .product-info__block-item [data-block-type=size-variation] {
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .size-selector--dropdown li:hover {
+    border: 1px solid #222222;
+}
+.size-selector--dropdown .flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.product-info__block-item[data-block-type="sizing-buttons"]:not(:first-child) {
+    margin-top: 10px;
+}
+variant-option-selector.size-selector--dropdown{
+  margin-bottom:var(--margin-bottom);
+  display:block;
+}
+
+/* New styles for tags */
+.option-tag {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222222;
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 2px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.tag-container {
+  margin-top: 10px;
+}
+
+.most-popular-tag {
+  background-color: #f0b324; /* Gold color for Most popular */
+}
+
+.best-value-tag {
+  background-color: #054b48; /* Green color for Best value */
+}
+
+@media screen and (min-width: 990px) {
+     .size-selector--dropdown ul {
+       gap:10px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+@media screen and (max-width: 989px) {
+    .size-selector--dropdown ul {
+      row-gap: 15px;
+        column-gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+  .list-default li:nth-child(4) .variant_size_link,
+  .list-default li:nth-child(3) .variant_size_link{
+    line-height:1.5 !important;
+    padding-top:5px;
+  }
+</style>

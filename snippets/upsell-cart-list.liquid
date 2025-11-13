@@ -1,0 +1,519 @@
+{%- comment -%}
+TRUE LAZY LOADING CART UPSELL - CLEAN VERSION
+Hides bundle products if any of their bundle_products are in cart
+Also hides component products if their parent bundle is in cart
+{%- endcomment -%}
+
+{%- comment -%} PRE-CALCULATE VALUES {%- endcomment -%}
+{%- assign cart_product_ids = cart.items | map: 'product' | map: 'id' -%}
+{%- assign display_upsell = false -%}
+{%- assign displayed_product_count = 0 -%}
+
+{%- comment -%} COLLECT BUNDLE COMPONENT PRODUCT IDs FROM CART ITEMS {%- endcomment -%}
+{%- assign bundle_component_ids_str = '' -%}
+{%- for cart_item in cart.items -%}
+  {%- assign item_bundle_products = cart_item.product.metafields.custom.bundle_products.value -%}
+  {%- if item_bundle_products -%}
+    {%- for bundle_component in item_bundle_products -%}
+      {%- assign component_id_str = bundle_component.id | string -%}
+      {%- assign bundle_component_ids_str = bundle_component_ids_str | append: ',' | append: component_id_str | append: ',' -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} COUNT VALID PRODUCTS AND BUILD HANDLES ARRAY {%- endcomment -%}
+{%- assign valid_product_handles = '' | split: ',' -%}
+{%- assign displayed_product_ids = '' | split: ',' -%}
+
+{%- for cart_item in cart.items -%}
+  {%- assign upsell_products_list = cart_item.product.metafields.custom.cart_upsell_products.value -%}
+  
+  {%- for upsell_product in upsell_products_list -%}
+    {%- if upsell_product.available -%}
+      {%- assign product_id_str = upsell_product.id | string -%}
+      {%- assign already_in_cart = false -%}
+      {%- if cart_product_ids contains product_id_str -%}
+        {%- assign already_in_cart = true -%}
+      {%- endif -%}
+      
+      {%- comment -%} Check if this product is a component of a bundle in cart {%- endcomment -%}
+      {%- assign is_bundle_component = false -%}
+      {%- assign search_pattern = ',' | append: product_id_str | append: ',' -%}
+      {%- if bundle_component_ids_str contains search_pattern -%}
+        {%- assign is_bundle_component = true -%}
+      {%- endif -%}
+      
+      {%- unless already_in_cart or is_bundle_component -%}
+        {%- unless displayed_product_ids contains product_id_str -%}
+          
+          {%- comment -%} Check if this is a bundle and if any bundle products are in cart {%- endcomment -%}
+          {%- assign is_bundle_with_cart_item = false -%}
+          {%- assign bundle_products_list = upsell_product.metafields.custom.bundle_products.value -%}
+          
+          {%- if bundle_products_list -%}
+            {%- for bundle_product in bundle_products_list -%}
+              {%- assign bundle_product_id_str = bundle_product.id | string -%}
+              {%- if cart_product_ids contains bundle_product_id_str -%}
+                {%- assign is_bundle_with_cart_item = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          
+          {%- unless is_bundle_with_cart_item -%}
+            {%- assign valid_product_handles = valid_product_handles | push: upsell_product.handle -%}
+            {%- assign displayed_product_ids = displayed_product_ids | append: product_id_str | append: ',' -%}
+            {%- assign displayed_product_count = displayed_product_count | plus: 1 -%}
+            {%- assign display_upsell = true -%}
+          {%- endunless -%}
+          
+        {%- endunless -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- comment -%} ONLY RENDER IF PRODUCTS EXIST {%- endcomment -%}
+{%- if display_upsell and displayed_product_count > 0 -%}
+<div class="cart-recommendations-container lang="{{ request.locale }}">
+  <div class="cart-drawer__recommendations car-drawer-recommendation-carousel {% if cart.item_count == 1 %}one-item-left{% endif %}" id="recommendations-section">
+    <h5 class="picked-for-you-title">{{ section.settings.recommendations_title }}</h5>
+    <div class="cart-upsell-carousel-wrapper">
+      <scroll-carousel class="cart-upsell-carousel" id="carousel" role="region" data-lazy-load="true" data-total-products="{{ displayed_product_count }}">
+        
+        {%- comment -%} RENDER ONLY FIRST 3 PRODUCTS {%- endcomment -%}
+        {%- assign initial_load_count = 3 -%}
+        {%- assign rendered_count = 0 -%}
+        {%- assign displayed_product_ids_render = '' | split: ',' -%}
+        
+        {%- for cart_item in cart.items -%}
+          {%- assign upsell_products_list = cart_item.product.metafields.custom.cart_upsell_products.value -%}
+          {%- for upsell_product in upsell_products_list -%}
+            {%- if rendered_count >= initial_load_count -%}{%- break -%}{%- endif -%}
+            
+            {%- assign product = upsell_product -%}
+            {%- assign product_id_str = product.id | string -%}
+            
+            {%- assign product_in_cart = false -%}
+            {%- assign product_already_displayed = false -%}
+            
+            {%- if cart_product_ids contains product_id_str -%}
+              {%- assign product_in_cart = true -%}
+            {%- endif -%}
+            
+            {%- if displayed_product_ids_render contains product_id_str -%}
+              {%- assign product_already_displayed = true -%}
+            {%- endif -%}
+            
+            {%- comment -%} Check if this product is a component of a bundle in cart {%- endcomment -%}
+            {%- assign is_bundle_component = false -%}
+            {%- assign search_pattern = ',' | append: product_id_str | append: ',' -%}
+            {%- if bundle_component_ids_str contains search_pattern -%}
+              {%- assign is_bundle_component = true -%}
+            {%- endif -%}
+            
+            {%- comment -%} Check if this is a bundle and if any bundle products are in cart {%- endcomment -%}
+            {%- assign is_bundle_with_cart_item = false -%}
+            {%- assign bundle_products_list = product.metafields.custom.bundle_products.value -%}
+            
+            {%- if bundle_products_list -%}
+              {%- for bundle_product in bundle_products_list -%}
+                {%- assign bundle_product_id_str = bundle_product.id | string -%}
+                {%- if cart_product_ids contains bundle_product_id_str -%}
+                  {%- assign is_bundle_with_cart_item = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+            
+            {%- if product.available and product_in_cart == false and product_already_displayed == false and is_bundle_component == false and is_bundle_with_cart_item == false -%}
+              
+              {%- assign displayed_product_ids_render = displayed_product_ids_render | append: product_id_str | append: ',' -%}
+              {%- assign form_id = 'product-form-' | append: product.id | append: '-upsell' -%}
+              
+              <div class="upsell_product" id="upsell-product-{{ product.id }}" data-product-id="{{ product.id }}">
+                <div class="line-item">
+                  
+                  {%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+                  {%- assign filtered_indexes = '' | split: ',' -%}
+                  {%- if product.variants.size > 1 -%}
+                    {%- for media in product.media -%}
+                      {%- if media.alt contains '#' and media.alt != product.title -%}
+                        {%- assign alt_parts = media.alt | split: '#' -%}
+                        {%- assign media_group_parts = alt_parts.last | split: '_' -%}
+                        {%- assign option = product.options_by_name[media_group_parts.first] -%}
+                        {%- if option -%}
+                          {%- assign option_value = option.selected_value | downcase | replace: '*', '' -%}
+                          {%- assign downcase_group_value = media_group_parts.last | strip | downcase -%}
+                          {%- if option_value != downcase_group_value and media != default_media -%}
+                            {%- assign filtered_indexes = filtered_indexes | append: media.position | append: ',' -%}
+                          {%- endif -%}
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  
+                  <product-gallery class="product-gallery" form="{{ form_id }}">
+                    <div class="product-gallery__image-list">
+                      <div class="contents">
+                        <scroll-carousel class="product-gallery__carousel scroll-area upsell-product-gallery" role="region">
+                          
+                          {%- assign filtered_indexes_array = filtered_indexes | split: ',' -%}
+                          {%- for media in product.media -%}
+                            {%- assign media_position_str = media.position | string -%}
+                            {%- assign should_hide = false -%}
+                            
+                            {%- if media.alt == 'card-only' -%}
+                              {%- assign show_card_only = false -%}
+                              {%- assign selected_variant = product.selected_or_first_available_variant -%}
+                              
+                              {%- unless selected_variant.featured_media -%}
+                                {%- assign show_card_only = true -%}
+                              {%- endunless -%}
+                              
+                              {%- if selected_variant.featured_media.id == media.id -%}
+                                {%- assign show_card_only = true -%}
+                              {%- endif -%}
+                              
+                              {%- unless show_card_only -%}
+                                {%- assign should_hide = true -%}
+                              {%- endunless -%}
+                            {%- endif -%}
+                            
+                            {%- if filtered_indexes_array contains media_position_str -%}
+                              {%- assign should_hide = true -%}
+                            {%- endif -%}
+                            
+                            <div class="product-gallery__media upsell_media snap-center {% if media == default_media %}is-initial{% endif %}" 
+                                 data-media-type="{{ media.media_type }}" 
+                                 data-media-id="{{ media.id }}" 
+                                 data-media-position="{{ media.position }}"
+                                 role="group" 
+                                 aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: media.position, count: product.media.size }}"
+                                 {% if should_hide %}hidden{% endif %}>
+                              
+                              {%- if media.media_type == 'image' -%}
+                                <img src="{{ media | image_url: width: 400 }}" 
+                                     alt="{{ media.alt | escape }}"
+                                     width="400" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="line-item__media"
+                                     style="object-fit: cover; width: 100%; height: auto;">
+                              {%- else -%}
+                                {%- render 'media', media: media, sizes: '400px', preload: false, controls: true, playsinline: true, muted: false, loop: false, group: 'upsell', class: 'line-item__media' -%}
+                              {%- endif -%}
+                            </div>
+                          {%- endfor -%}
+                          
+                          {%- assign visible_media_count = 0 -%}
+                          {%- for media in product.media -%}
+                            {%- assign media_position_str = media.position | string -%}
+                            {%- unless filtered_indexes_array contains media_position_str or media.alt == 'card-only' -%}
+                              {%- assign visible_media_count = visible_media_count | plus: 1 -%}
+                            {%- endunless -%}
+                          {%- endfor -%}
+                          
+                          {%- if visible_media_count == 0 -%}
+                            <div class="product-gallery__media upsell_media snap-center is-initial" role="group">
+                              {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+                            </div>
+                          {%- endif -%}
+                        </scroll-carousel>
+                      </div>
+                    </div>  
+                  </product-gallery>
+                  
+                  {%- assign title_length = product.title | size -%}
+                  <div class="line-item-info {% if title_length <= 24 %}long-title{% endif %}">
+                    <div class="line-item-info-content">
+                      <div class="v-stack justify-items-start gap-1">
+                        
+                        {%- case product.title -%}
+                          {%- when 'Compressible Packing Cubes (6 Pieces)' -%}
+                            <a href="{{ product.url }}" class="h6">Packing Cubes</a>
+                          {%- when 'Check-in: All-in-One 28"' -%}
+                            <a href="{{ product.url }}" class="h6">Check-in: All-in-One</a>
+                          {%- when 'Check-in: Aluminum 28"' -%}
+                            <a href="{{ product.url }}" class="h6">Check-in: Aluminum</a>
+                          {%- when 'Check-in Medium: All-in-One 24"' -%}
+                            <a href="{{ product.url }}" class="h6">Check-in Medium: All-in-One</a>
+                          {%- else -%}
+                            <a href="{{ product.url }}" class="h6">{{ product.title }}</a>
+                        {%- endcase -%}
+                      </div>
+                      
+                      {%- render 'price-list', variant: product.selected_or_first_available_variant, form_id: form_id, hide_unit_price: true, context: 'card' -%}
+                      {%- render 'variant-picker', product: product, form_id: form_id, update_url: false, hide_sold_out_variants: true, selector_type: 'color', color_selector_type: 'color' -%}
+                    </div> 
+                    
+                    {%- render 'buy-button-alt', product: product, form_id: form_id, show_payment_button: false -%}
+                  </div>
+                </div>
+              </div>
+              
+              {%- assign rendered_count = rendered_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        
+        {%- comment -%} STORE REMAINING PRODUCT HANDLES FOR LAZY LOADING {%- endcomment -%}
+        {%- if displayed_product_count > initial_load_count -%}
+          <script type="application/json" id="upsell-remaining-handles" data-loaded-count="{{ rendered_count }}">
+            [
+              {%- assign remaining_count = 0 -%}
+              {%- assign displayed_ids_check = '' | split: ',' -%}
+              {%- assign handles_output = '' -%}
+              {%- for cart_item in cart.items -%}
+                {%- assign upsell_products_list = cart_item.product.metafields.custom.cart_upsell_products.value -%}
+                {%- for upsell_product in upsell_products_list -%}
+                  {%- assign product_id_str = upsell_product.id | string -%}
+                  {%- assign is_cart_product = false -%}
+                  {%- if cart_product_ids contains product_id_str -%}
+                    {%- assign is_cart_product = true -%}
+                  {%- endif -%}
+                  
+                  {%- comment -%} Check if this product is a component of a bundle in cart {%- endcomment -%}
+                  {%- assign is_bundle_component = false -%}
+                  {%- assign search_pattern = ',' | append: product_id_str | append: ',' -%}
+                  {%- if bundle_component_ids_str contains search_pattern -%}
+                    {%- assign is_bundle_component = true -%}
+                  {%- endif -%}
+                  
+                  {%- unless is_cart_product or is_bundle_component -%}
+                    {%- unless displayed_ids_check contains product_id_str -%}
+                      
+                      {%- comment -%} Check if this is a bundle and if any bundle products are in cart {%- endcomment -%}
+                      {%- assign is_bundle_with_cart_item = false -%}
+                      {%- assign bundle_products_list = upsell_product.metafields.custom.bundle_products.value -%}
+                      
+                      {%- if bundle_products_list -%}
+                        {%- for bundle_product in bundle_products_list -%}
+                          {%- assign bundle_product_id_str = bundle_product.id | string -%}
+                          {%- if cart_product_ids contains bundle_product_id_str -%}
+                            {%- assign is_bundle_with_cart_item = true -%}
+                            {%- break -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                      
+                      {%- unless is_bundle_with_cart_item -%}
+                        {%- assign displayed_ids_check = displayed_ids_check | append: product_id_str | append: ',' -%}
+                        {%- assign remaining_count = remaining_count | plus: 1 -%}
+                        {%- if remaining_count > initial_load_count -%}
+                          {%- if handles_output != '' -%}
+                            {%- assign handles_output = handles_output | append: ',' -%}
+                          {%- endif -%}
+                          {%- assign handles_output = handles_output | append: '"' | append: upsell_product.handle | append: '"' -%}
+                        {%- endif -%}
+                      {%- endunless -%}
+                      
+                    {%- endunless -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+              {%- endfor -%}
+              {{ handles_output }}
+            ]
+          </script>
+        {%- endif -%}
+      </scroll-carousel>
+      
+      {%- comment -%} CUSTOM NAVIGATION BUTTONS {%- endcomment -%}
+      {%- if displayed_product_count > 1 -%}
+        <button type="button" class="carousel-arrows-upsell prev-next-button prev-next-button--prev circle-button hover:animate-icon-inline custom-upsell-prev" data-carousel-prev disabled>
+          <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+          {%- render 'icon' with 'arrow-left', direction_aware: true -%}
+        </button>
+        <button type="button" class="carousel-arrows-upsell prev-next-button prev-next-button--next circle-button hover:animate-icon-inline custom-upsell-next" data-carousel-next>
+          <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+          {%- render 'icon' with 'arrow-right', direction_aware: true -%}
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const carousel = document.querySelector('[data-lazy-load="true"]');
+  if (!carousel) return;
+
+  const nextButton = document.querySelector('[data-carousel-next]');
+  const prevButton = document.querySelector('[data-carousel-prev]');
+  
+  let isReady = false;
+  let hasLoaded = false;
+  const loadedProductIds = new Set();
+
+  function refreshLoadedIds() {
+    loadedProductIds.clear();
+    carousel.querySelectorAll('.upsell_product').forEach(el => {
+      loadedProductIds.add(el.dataset.productId);
+    });
+  }
+
+  refreshLoadedIds();
+
+  function scrollToProduct(direction) {
+    const products = carousel.querySelectorAll('.upsell_product');
+    if (products.length === 0) return;
+
+    const productWidth = products[0].offsetWidth || 0;
+    const gap = 16;
+    const scrollAmount = productWidth + gap;
+
+    if (direction === 'next') {
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+
+    requestAnimationFrame(updateButtonStates);
+  }
+
+  function updateButtonStates() {
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    const currentScroll = carousel.scrollLeft;
+
+    if (prevButton) {
+      prevButton.disabled = currentScroll <= 1;
+    }
+
+    if (nextButton) {
+      nextButton.disabled = currentScroll >= maxScroll - 1;
+    }
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      scrollToProduct('next');
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      scrollToProduct('prev');
+    });
+  }
+
+  carousel.addEventListener('scroll', updateButtonStates);
+
+  async function loadAllRemainingProducts() {
+    if (hasLoaded) return;
+
+    const handlesScript = document.getElementById('upsell-remaining-handles');
+    
+    if (!handlesScript) {
+      isReady = true;
+      updateButtonStates();
+      return;
+    }
+
+    let remainingHandles;
+    try {
+      remainingHandles = JSON.parse(handlesScript.textContent);
+    } catch (e) {
+      console.error('Error parsing handles:', e);
+      isReady = true;
+      updateButtonStates();
+      return;
+    }
+
+    if (remainingHandles.length === 0) {
+      isReady = true;
+      updateButtonStates();
+      return;
+    }
+
+    hasLoaded = true;
+
+    try {
+      const fetchPromises = remainingHandles.map(handle => 
+        fetch(`/products/${handle}?section_id=upsell-product-card&variant_id=available`)
+          .then(response => response.ok ? response.text() : null)
+          .catch(error => {
+            console.error('Error fetching product:', handle, error);
+            return null;
+          })
+      );
+
+      const htmlResponses = await Promise.all(fetchPromises);
+      const fragment = document.createDocumentFragment();
+
+      htmlResponses.forEach((html) => {
+        if (!html) return;
+
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+        const productElement = temp.querySelector('.upsell_product');
+
+        if (productElement && !loadedProductIds.has(productElement.dataset.productId)) {
+          const availabilityElement = productElement.querySelector('[data-product-availability]');
+          
+          let isAvailable = true;
+          
+          if (availabilityElement && availabilityElement.dataset.productAvailability === 'false') {
+            isAvailable = false;
+          }
+          
+          if (isAvailable) {
+            loadedProductIds.add(productElement.dataset.productId);
+            fragment.appendChild(productElement);
+          }
+        }
+      });
+
+      if (fragment.children.length > 0) {
+        carousel.appendChild(fragment);
+      }
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(updateButtonStates);
+      });
+
+    } catch (error) {
+      console.error('Error loading products:', error);
+    } finally {
+      isReady = true;
+      updateButtonStates();
+    }
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(updateButtonStates);
+  });
+
+  loadAllRemainingProducts();
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+        const hasUpsellSection = Array.from(mutation.addedNodes).some(node => 
+          node.nodeType === 1 && node.querySelector && node.querySelector('.cart-upsell-carousel')
+        );
+        
+        if (hasUpsellSection) {
+          hasLoaded = false;
+          isReady = false;
+          refreshLoadedIds();
+          loadAllRemainingProducts();
+          requestAnimationFrame(() => {
+            requestAnimationFrame(updateButtonStates);
+          });
+        }
+      }
+    });
+  });
+
+  const cartDrawer = document.querySelector('cart-drawer');
+  if (cartDrawer) {
+    observer.observe(cartDrawer, { childList: true, subtree: true });
+  }
+
+})();
+</script>
+{%- endif -%}
