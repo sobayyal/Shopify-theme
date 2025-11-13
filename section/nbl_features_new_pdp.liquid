@@ -1,0 +1,117 @@
+<section class="features-section container_1408">
+  <!-- Top Banner -->
+  <div class="features-top ">
+    <div class="features-top-left">
+      {% comment %}<h3 class="features-top-title">{{ section.settings.heading }}</h3>
+      <p class="features-top-subtitle">{{ section.settings.subtitle }}</p>{% endcomment %}
+      <div class="features-top-icons">
+        {% for block in section.blocks %}
+          {% if block.type == 'icon_block' %}
+            <div class="top-feature-item">
+              <img src="{{ block.settings.icon | image_url }}" alt="Icon" width="auto" height="auto" loading="eager" fetchpriority="high">
+              <div>
+                <h2>{{ block.settings.title }}</h2>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="features-top-right">
+      <img src="{{ section.settings.top_image | image_url }}" alt="Feature Image" width="auto" height="auto" loading="eager" fetchpriority="high" />
+    </div>
+  </div>
+
+  <!-- Bottom Feature Cards -->
+  <div class="features-bottom ">
+    <div class="features-card-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'card_block' %}
+          <div class="feature-card">
+            <img src="{{ block.settings.image | image_url }}" alt="Card Image" width="auto" height="auto" loading="eager" fetchpriority="high" />
+            <h4>{{ block.settings.title }}</h4>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% if section.settings.top_imagem != blank %}
+<style>
+  @media (max-width: 991px) {
+    .features-top {
+    background-image: url({{ section.settings.top_imagem | image_url }});
+              background-size: auto 100%;
+        background-position: right center;
+        background-repeat: no-repeat;
+}
+  }
+</style>
+{% endif %}
+{% schema %}
+{
+  "name": "Features Section By Paras",
+  "tag": "section",
+  "class": "features-section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Top Heading",
+      "default": "GUARANTEED FOR LIFE. TESTED FOR TRAVEL."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Top Subheading",
+      "default": "Built to perform. Backed for life."
+    },
+    {
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Right Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_imagem",
+      "label": "Right Image Mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_block",
+      "name": "Top Icon",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "card_block",
+      "name": "Bottom Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Features Section",
+      "blocks": [
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "card_block" },
+        { "type": "card_block" },
+        { "type": "card_block" }
+      ]
+    }
+  ]
+}
+{% endschema %}

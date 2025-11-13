@@ -1,0 +1,1091 @@
+{% assign gen_id = section.id | replace: '_', '' | replace: '-', '' | downcase %}
+
+{% style %}
+  .store-locator-search-banner-{{ gen_id }} {
+    position: relative;
+    min-height: {{ section.settings.banner_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: {{ section.settings.fallback_color }};
+  }
+
+  .store-locator-search-banner-background-{{ gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .store-locator-search-banner-placeholder-{{ gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .store-locator-search-banner-placeholder-{{ gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 300px;
+    opacity: 0.3;
+  }
+
+  .store-locator-search-banner-overlay-{{ gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity }};
+    z-index: 2;
+  }
+
+  .store-locator-search-banner-content-{{ gen_id }} {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: {{ section.settings.text_color }};
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+  }
+
+  .store-locator-search-banner-heading-{{ gen_id }} {
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+
+  .store-locator-search-banner-description-{{ gen_id }} {
+    font-size: {{ section.settings.description_size }}px;
+    margin: 0 0 32px;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .store-locator-search-form-{{ gen_id }} {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .store-locator-search-input-wrapper-{{ gen_id }} {
+    position: relative;
+    display: flex;
+    background-color: {{ section.settings.search_bg_color }};
+    border-radius: {{ section.settings.search_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .store-locator-search-input-{{ gen_id }} {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: {{ section.settings.search_text_color }};
+    outline: none;
+  }
+
+  .store-locator-search-input-{{ gen_id }}::placeholder {
+    color: {{ section.settings.search_placeholder_color }};
+  }
+
+  .store-locator-search-button-{{ gen_id }} {
+    padding: 16px 24px;
+    background-color: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .store-locator-search-button-{{ gen_id }}:hover {
+    background-color: {{ section.settings.button_hover_color }};
+  }
+
+  .store-locator-search-button-{{ gen_id }}:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .store-locator-search-button-{{ gen_id }}.clear-mode {
+    background-color: #fff;
+  }
+
+  .store-locator-search-button-{{ gen_id }}.clear-mode:hover {
+    background-color: #fff;
+  }
+
+  .store-locator-search-icon-{{ gen_id }} {
+    width: 20px;
+    height: 20px;
+  }
+
+  .store-locator-clear-icon-{{ gen_id }} {
+    width: 20px;
+    height: 20px;
+    display: none;
+  }
+
+  .store-locator-loading-{{ gen_id }} {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin-{{ gen_id }} 1s linear infinite;
+  }
+
+  @keyframes spin-{{ gen_id }} {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .store-locator-empty-state-{{ gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* Map Container Styles */
+  .store-locator-map-section-{{ gen_id }} {
+    background-color: {{ section.settings.map_section_bg }};
+    padding: {{ section.settings.map_section_padding }}px 20px 0;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+  }
+
+  .store-locator-map-section-{{ gen_id }}.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .store-locator-map-container-{{ gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .store-locator-map-column-{{ gen_id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .store-locator-results-column-{{ gen_id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .store-locator-map-header-{{ gen_id }} {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .store-locator-map-title-{{ gen_id }} {
+    font-size: 28px;
+    font-weight: 700;
+    color: {{ section.settings.map_title_color }};
+    margin: 0 0 10px;
+  }
+
+  .store-locator-map-subtitle-{{ gen_id }} {
+    font-size: 16px;
+    color: {{ section.settings.map_subtitle_color }};
+    margin: 0;
+  }
+
+  .store-locator-map-wrapper-{{ gen_id }} {
+    position: relative;
+    height: {{ section.settings.map_height }}px;
+    border-radius: {{ section.settings.map_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background-color: #f0f0f0;
+  }
+
+  .store-locator-map-{{ gen_id }} {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .store-locator-map-loading-{{ gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: #666;
+    z-index: 10;
+  }
+
+  .store-locator-map-loading-spinner-{{ gen_id }} {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top: 4px solid {{ section.settings.button_color }};
+    border-radius: 50%;
+    animation: spin-{{ gen_id }} 1s linear infinite;
+  }
+
+  .store-locator-results-list-{{ gen_id }} {
+    background-color: {{ section.settings.results_bg_color }};
+    border-radius: {{ section.settings.map_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+  }
+
+  .store-locator-results-header-{{ gen_id }} {
+    padding: 20px;
+    background-color: {{ section.settings.results_header_bg }};
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .store-locator-results-title-{{ gen_id }} {
+    font-size: 20px;
+    font-weight: 500;
+    color: {{ section.settings.results_title_color }};
+    margin: 0;
+  }
+
+  .store-locator-result-item-{{ gen_id }} {
+    padding: 20px;
+    border-bottom: 1px solid #e8e8e8;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .store-locator-result-item-{{ gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .store-locator-result-item-{{ gen_id }}:hover {
+    background-color: #f8f9fa;
+  }
+
+  .store-locator-result-item-{{ gen_id }}.active {
+    background-color: {{ section.settings.active_result_bg }};
+  }
+
+  .store-locator-result-name-{{ gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ section.settings.result_name_color }};
+    margin: 0 0 8px;
+  }
+
+  .store-locator-result-address-{{ gen_id }} {
+    font-size: 14px;
+    color: {{ section.settings.result_address_color }};
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+
+  .store-locator-result-details-{{ gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .store-locator-result-distance-{{ gen_id }} {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ section.settings.result_distance_color }};
+  }
+
+  .store-locator-result-actions-{{ gen_id }} {
+    display: flex;
+    gap: 8px;
+  }
+
+  .store-locator-result-button-{{ gen_id }} {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .store-locator-directions-button-{{ gen_id }} {
+    background-color: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+  }
+
+  .store-locator-directions-button-{{ gen_id }}:hover {
+    background-color: {{ section.settings.button_hover_color }};
+  }
+
+  .store-locator-reset-button-{{ gen_id }} {
+    background-color: #6b7280;
+    color: white;
+  }
+
+  .store-locator-reset-button-{{ gen_id }}:hover {
+    background-color: #4b5563;
+  }
+
+  .store-locator-no-results-{{ gen_id }} {
+    padding: 40px 20px;
+    text-align: center;
+    color: #6b7280;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .store-locator-search-banner-heading-{{ gen_id }} {
+      font-size: calc({{ section.settings.heading_size }}px * 0.7);
+    }
+
+    .store-locator-search-banner-description-{{ gen_id }} {
+      font-size: calc({{ section.settings.description_size }}px * 0.9);
+    }
+
+    .store-locator-map-container-{{ gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .store-locator-map-wrapper-{{ gen_id }} {
+      height: 300px;
+    }
+
+    .store-locator-result-details-{{ gen_id }} {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+{% endstyle %}
+
+<store-locator-banner-{{ gen_id }} class="store-locator-search-banner-{{ gen_id }}">
+  {%- if section.settings.background_image != blank -%}
+    <img 
+      src="{{ section.settings.background_image | img_url: '2000x' }}" 
+      alt="{{ section.settings.heading }}"
+      class="store-locator-search-banner-background-{{ gen_id }}"
+      loading="lazy"
+    >
+  {%- else -%}
+    <div class="store-locator-search-banner-placeholder-{{ gen_id }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+        <polyline points="21 15 16 10 5 21"></polyline>
+      </svg>
+    </div>
+  {%- endif -%}
+
+  <div class="store-locator-search-banner-overlay-{{ gen_id }}"></div>
+
+  <div class="store-locator-search-banner-content-{{ gen_id }}">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="store-locator-search-banner-heading-{{ gen_id }}">
+        {{ section.settings.heading }}
+      </h1>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <p class="store-locator-search-banner-description-{{ gen_id }}">
+        {{ section.settings.description }}
+      </p>
+    {%- endif -%}
+
+    <div class="store-locator-search-form-{{ gen_id }}">
+      <div class="store-locator-search-input-wrapper-{{ gen_id }}">
+        <input 
+          type="text" 
+          class="store-locator-search-input-{{ gen_id }}" 
+          placeholder="{{ section.settings.search_placeholder }}"
+          aria-label="Store location search"
+        >
+        <button 
+          type="button" 
+          class="store-locator-search-button-{{ gen_id }}"
+          aria-label="{{ section.settings.button_text }}"
+        >
+          <svg class="store-locator-search-icon-{{ gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <svg class="store-locator-clear-icon-{{ gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          <div class="store-locator-loading-{{ gen_id }}"></div>
+          <span class="store-locator-button-text-{{ gen_id }}">{{ section.settings.button_text }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="store-locator-empty-state-{{ gen_id }}" style="display: none;">
+    Enter a location to find nearby stores
+  </div>
+</store-locator-banner-{{ gen_id }}>
+
+<!-- Map and Results Section -->
+<div class="store-locator-map-section-{{ gen_id }}">
+  <div class="store-locator-map-header-{{ gen_id }}">
+    <h2 class="store-locator-map-title-{{ gen_id }}">Store Locations</h2>
+    <p class="store-locator-map-subtitle-{{ gen_id }}">Find the nearest store to your location</p>
+  </div>
+
+  <div class="store-locator-map-container-{{ gen_id }}">
+    <div class="store-locator-map-column-{{ gen_id }}">
+      <div class="store-locator-map-wrapper-{{ gen_id }}">
+        <div id="store-locator-map-{{ gen_id }}" class="store-locator-map-{{ gen_id }}"></div>
+        <div class="store-locator-map-loading-{{ gen_id }}">
+          <div class="store-locator-map-loading-spinner-{{ gen_id }}"></div>
+          <span>Loading map...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="store-locator-results-column-{{ gen_id }}">
+      <div class="store-locator-results-list-{{ gen_id }}">
+        <div class="store-locator-results-header-{{ gen_id }}">
+          <h3 class="store-locator-results-title-{{ gen_id }}">Nearby Stores</h3>
+        </div>
+        <div id="store-locator-results-{{ gen_id }}"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  (function() {
+    class StoreLocatorBanner{{ gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.searchInput = this.querySelector('.store-locator-search-input-{{ gen_id }}');
+        this.searchButton = this.querySelector('.store-locator-search-button-{{ gen_id }}');
+        this.searchIcon = this.querySelector('.store-locator-search-icon-{{ gen_id }}');
+        this.clearIcon = this.querySelector('.store-locator-clear-icon-{{ gen_id }}');
+        this.loadingSpinner = this.querySelector('.store-locator-loading-{{ gen_id }}');
+        this.buttonText = this.querySelector('.store-locator-button-text-{{ gen_id }}');
+        this.mapSection = document.querySelector('.store-locator-map-section-{{ gen_id }}');
+        this.mapElement = document.getElementById('store-locator-map-{{ gen_id }}');
+        this.resultsContainer = document.getElementById('store-locator-results-{{ gen_id }}');
+        this.emptyState = this.querySelector('.store-locator-empty-state-{{ gen_id }}');
+        
+        this.map = null;
+        this.markers = [];
+        this.isSearching = false;
+        this.hasSearched = false;
+        
+        // Mock store data - replace with actual API call
+        this.stores = [
+          {
+            id: 1,
+            name: "Downtown Store",
+            address: "123 Main St, New York, NY 10001",
+            lat: 40.7589,
+            lng: -73.9851,
+            phone: "(212) 555-0123"
+          },
+          {
+            id: 2,
+            name: "Brooklyn Store",
+            address: "456 Bedford Ave, Brooklyn, NY 11211",
+            lat: 40.7195,
+            lng: -73.9573,
+            phone: "(718) 555-0456"
+          },
+          {
+            id: 3,
+            name: "Queens Store",
+            address: "789 Queens Blvd, Queens, NY 11374",
+            lat: 40.7282,
+            lng: -73.8652,
+            phone: "(718) 555-0789"
+          }
+        ];
+        
+        this.init();
+      }
+
+      init() {
+        this.searchButton.addEventListener('click', () => this.handleSearch());
+        this.searchInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            this.handleSearch();
+          }
+        });
+        this.searchInput.addEventListener('input', () => this.updateButtonState());
+        
+        this.updateButtonState();
+        this.showEmptyState();
+      }
+
+      showEmptyState() {
+        if (!this.hasSearched && !this.searchInput.value) {
+          this.emptyState.style.display = 'block';
+        } else {
+          this.emptyState.style.display = 'none';
+        }
+      }
+
+      updateButtonState() {
+        const hasValue = this.searchInput.value.trim().length > 0;
+        
+        if (hasValue && this.hasSearched) {
+          this.searchButton.classList.add('clear-mode');
+          this.searchIcon.style.display = 'none';
+          this.clearIcon.style.display = 'block';
+          this.buttonText.textContent = 'Clear';
+        } else {
+          this.searchButton.classList.remove('clear-mode');
+          this.searchIcon.style.display = 'block';
+          this.clearIcon.style.display = 'none';
+          this.buttonText.textContent = "{{ section.settings.button_text }}";
+        }
+        
+        this.showEmptyState();
+      }
+
+      async handleSearch() {
+        const searchValue = this.searchInput.value.trim();
+        
+        // If in clear mode, clear the search
+        if (this.searchButton.classList.contains('clear-mode')) {
+          this.clearResults();
+          this.searchInput.value = '';
+          this.updateButtonState();
+          this.searchInput.focus();
+          return;
+        }
+        
+        if (!searchValue || this.isSearching) return;
+        
+        this.setLoadingState(true);
+        this.hasSearched = true;
+        
+        try {
+          // Simulate API call - replace with actual geocoding/search API
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          
+          // For demo purposes, we'll search for stores
+          // In production, you would:
+          // 1. Geocode the search input to get coordinates
+          // 2. Query your store database for nearby stores
+          // 3. Calculate distances
+          
+          const results = this.stores.map(store => ({
+            ...store,
+            distance: this.calculateDistance(40.7589, -73.9851, store.lat, store.lng)
+          })).sort((a, b) => a.distance - b.distance);
+          
+          if (results.length > 0) {
+            this.displayResults(results);
+            this.initializeMap(results);
+          } else {
+            this.showNoResults();
+          }
+        } catch (error) {
+          console.error('Search error:', error);
+          this.showNoResults();
+        } finally {
+          this.setLoadingState(false);
+          this.updateButtonState();
+        }
+      }
+
+      setLoadingState(loading) {
+        this.isSearching = loading;
+        this.searchButton.disabled = loading;
+        
+        if (loading) {
+          this.searchIcon.style.display = 'none';
+          this.clearIcon.style.display = 'none';
+          this.loadingSpinner.style.display = 'block';
+          this.buttonText.textContent = 'Searching...';
+        } else {
+          this.loadingSpinner.style.display = 'none';
+          this.updateButtonState();
+        }
+      }
+
+      calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 10000; // Earth's radius in miles
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon/2) * Math.sin(dLon/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return (R * c).toFixed(1);
+      }
+
+      displayResults(stores) {
+        this.showMapSection();
+        
+        this.resultsContainer.innerHTML = `
+          <div class="store-locator-results-header-{{ gen_id }}">
+            <h3 class="store-locator-results-title-{{ gen_id }}">${stores.length} Store${stores.length !== 1 ? 's' : ''} Found</h3>
+          </div>
+          ${stores.map(store => `
+            <div class="store-locator-result-item-{{ gen_id }}" data-store-id="${store.id}" data-lat="${store.lat}" data-lng="${store.lng}">
+              <h4 class="store-locator-result-name-{{ gen_id }}">${store.name}</h4>
+              <p class="store-locator-result-address-{{ gen_id }}">${store.address}</p>
+              <div class="store-locator-result-details-{{ gen_id }}">
+                <span class="store-locator-result-distance-{{ gen_id }}">${store.distance} miles away</span>
+                <div class="store-locator-result-actions-{{ gen_id }}">
+                  <a href="https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}" 
+                     target="_blank" 
+                     class="store-locator-result-button-{{ gen_id }} store-locator-directions-button-{{ gen_id }}">
+                    Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+          <div style="padding: 20px; text-align: center;">
+            <button onclick="resetStoreLocator{{ gen_id }}()" class="store-locator-result-button-{{ gen_id }} store-locator-reset-button-{{ gen_id }}">
+              New Search
+            </button>
+          </div>
+        `;
+
+        // Add click handlers to result items
+        this.resultsContainer.querySelectorAll('.store-locator-result-item-{{ gen_id }}').forEach(item => {
+          item.addEventListener('click', () => {
+            const storeId = parseInt(item.dataset.storeId);
+            const lat = parseFloat(item.dataset.lat);
+            const lng = parseFloat(item.dataset.lng);
+            this.highlightStore(storeId);
+            if (this.map) {
+              this.map.setView([lat, lng], 15);
+            }
+          });
+        });
+      }
+
+      initializeMap(stores) {
+        if (!this.map) {
+          const mapLoading = document.querySelector('.store-locator-map-loading-{{ gen_id }}');
+          if (mapLoading) mapLoading.style.display = 'flex';
+          
+          setTimeout(() => {
+            this.map = L.map(this.mapElement).setView([stores[0].lat, stores[0].lng], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '© OpenStreetMap contributors'
+            }).addTo(this.map);
+            
+            if (mapLoading) mapLoading.style.display = 'none';
+            
+            this.addMarkers(stores);
+          }, 300);
+        } else {
+          this.clearMarkers();
+          this.addMarkers(stores);
+          this.map.setView([stores[0].lat, stores[0].lng], 12);
+        }
+      }
+
+      addMarkers(stores) {
+        stores.forEach(store => {
+          const marker = L.marker([store.lat, store.lng])
+            .bindPopup(`
+              <div style="text-align: center;">
+                <strong>${store.name}</strong><br>
+                ${store.address}<br>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}" target="_blank">Get Directions</a>
+              </div>
+            `)
+            .addTo(this.map);
+          
+          marker.on('click', () => {
+            this.highlightStore(store.id);
+          });
+          
+          this.markers.push(marker);
+        });
+
+        if (stores.length > 1) {
+          const group = L.featureGroup(this.markers);
+          this.map.fitBounds(group.getBounds().pad(0.1));
+        }
+      }
+
+      highlightStore(storeId) {
+        this.resultsContainer.querySelectorAll('.store-locator-result-item-{{ gen_id }}').forEach(item => {
+          item.classList.remove('active');
+          if (parseInt(item.dataset.storeId) === storeId) {
+            item.classList.add('active');
+          }
+        });
+      }
+
+      showMapSection() {
+        this.mapSection.classList.add('show');
+        setTimeout(() => {
+          this.mapSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Trigger map resize after transition
+          if (this.map) {
+            setTimeout(() => this.map.invalidateSize(), 100);
+          }
+        }, 100);
+      }
+
+      showNoResults() {
+        this.showMapSection();
+        this.resultsContainer.innerHTML = `
+          <div class="store-locator-results-header-{{ gen_id }}">
+            <h3 class="store-locator-results-title-{{ gen_id }}">No Results Found</h3>
+          </div>
+          <div class="store-locator-no-results-{{ gen_id }}">
+            <p>No stores found for your search. Please try a different location or search term.</p>
+          </div>
+        `;
+      }
+
+      clearMarkers() {
+        this.markers.forEach(marker => marker.remove());
+        this.markers = [];
+      }
+
+      clearResults() {
+        this.mapSection.classList.remove('show');
+        this.clearMarkers();
+        this.setLoadingState(false);
+        this.updateButtonState();
+      }
+    }
+
+    customElements.define('store-locator-banner-{{ gen_id }}', StoreLocatorBanner{{ gen_id }});
+  })();
+
+  // Global reset function for the reset button
+  window.resetStoreLocator{{ gen_id }} = function() {
+    const storeLocator = document.querySelector('store-locator-banner-{{ gen_id }}');
+    if (storeLocator) {
+      storeLocator.clearResults();
+      storeLocator.input = storeLocator.searchInput;
+      storeLocator.input.value = '';
+      storeLocator.updateButtonState();
+      storeLocator.input.focus();
+    }
+  };
+</script>
+
+{% schema %}
+{
+  "name": "Store Locator Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "fallback_color",
+      "label": "Fallback background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Banner height",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#1e40af"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.6
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find Our Store Locations"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover our stores near you and visit us for an exceptional shopping experience."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Search form"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder text",
+      "default": "Enter city, state, or ZIP code"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Search"
+    },
+    {
+      "type": "url",
+      "id": "search_action",
+      "label": "Search form action URL"
+    },
+    {
+      "type": "color",
+      "id": "search_bg_color",
+      "label": "Search background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "search_text_color",
+      "label": "Search text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "search_placeholder_color",
+      "label": "Placeholder text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "search_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Search border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Search button"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#1e40af"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#1e3a8a"
+    },
+    {
+      "type": "header",
+      "content": "Map Styling"
+    },
+    {
+      "type": "color",
+      "id": "map_section_bg",
+      "label": "Map section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "map_section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Map section padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "min": 300,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Map height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "map_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Map border radius",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "map_title_color",
+      "label": "Map title color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "map_subtitle_color",
+      "label": "Map subtitle color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Results Styling"
+    },
+    {
+      "type": "color",
+      "id": "results_bg_color",
+      "label": "Results background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "results_header_bg",
+      "label": "Results header background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "results_title_color",
+      "label": "Results title color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "active_result_bg",
+      "label": "Active result background",
+      "default": "#eff6ff"
+    },
+    {
+      "type": "color",
+      "id": "result_name_color",
+      "label": "Result name color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "result_address_color",
+      "label": "Result address color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "result_distance_color",
+      "label": "Result distance color",
+      "default": "#059669"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locator Banner"
+    }
+  ]
+}
+{% endschema %}

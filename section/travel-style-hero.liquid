@@ -1,0 +1,454 @@
+{% assign travel_gen_id = section.id | replace: '_', '' | replace: '-', '' | downcase %}
+
+{% style %}
+  .travel-style-hero-section-{{ travel_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: {{ section.settings.section_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .travel-style-hero-background-{{ travel_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .travel-style-hero-background-placeholder-{{ travel_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .travel-style-hero-background-placeholder-{{ travel_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .travel-style-hero-empty-state-{{ travel_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .travel-style-hero-overlay-{{ travel_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, {{ section.settings.overlay_opacity }});
+    z-index: 2;
+  }
+
+  .travel-style-hero-content-{{ travel_gen_id }} {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: {{ section.settings.text_color }};
+    max-width: {{ section.settings.content_width }}px;
+    padding: 0 20px;
+  }
+
+  .travel-style-hero-headline-{{ travel_gen_id }} {
+    font-size: {{ section.settings.headline_size }}px;
+    font-weight: 500;
+    margin: 0 0 {{ section.settings.text_spacing }}px;
+    line-height: 1.2;
+  }
+
+  .travel-style-hero-subtext-{{ travel_gen_id }} {
+    font-size: {{ section.settings.subtext_size }}px;
+    margin: 0 0 {{ section.settings.button_spacing }}px;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .travel-style-hero-button-{{ travel_gen_id }} {
+    display: inline-block;
+    padding: {{ section.settings.button_padding_vertical }}px {{ section.settings.button_padding_horizontal }}px;
+    background-color: {{ section.settings.button_background }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ section.settings.button_border_radius }}px;
+    font-size: {{ section.settings.button_font_size }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid {{ section.settings.button_background }};
+  }
+
+  .travel-style-hero-button-{{ travel_gen_id }}:hover {
+    background-color: {{ section.settings.button_hover_background }};
+    color: {{ section.settings.button_hover_text_color }};
+    border-color: {{ section.settings.button_hover_background }};
+    transform: translateY(-2px);
+  }
+  @media screen and (min-width:769px){
+    .travel-style-hero-section-{{ travel_gen_id }} {
+      align-items:flex-start;
+    }
+    .travel-style-hero-content-{{ travel_gen_id }}{
+      margin-top: 5rem;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .travel-style-hero-content-{{ travel_gen_id }}{
+       position: absolute !important;
+      bottom:10px;
+    }
+    .travel-style-hero-section-{{ travel_gen_id }} {
+      height: {{ section.settings.section_height_mobile }}px;
+    }
+
+    .travel-style-hero-headline-{{ travel_gen_id }} {
+      font-size: {{ section.settings.headline_size_mobile }}px;
+    }
+
+    .travel-style-hero-subtext-{{ travel_gen_id }} {
+      font-size: {{ section.settings.subtext_size_mobile }}px;
+    }
+
+    .travel-style-hero-button-{{ travel_gen_id }} {
+      font-size: {{ section.settings.button_font_size_mobile }}px;
+      padding: {{ section.settings.button_padding_vertical_mobile }}px {{ section.settings.button_padding_horizontal_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="travel-style-hero-section-{{ travel_gen_id }}">
+  {% if section.settings.hero_image %}
+    <img
+      src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+      alt="{{ section.settings.hero_image.alt | escape }}"
+      class="travel-style-hero-background-{{ travel_gen_id }}"
+      loading="lazy"
+      width="{{ section.settings.hero_image.width }}"
+      height="{{ section.settings.hero_image.height }}"
+    >
+  {% else %}
+    <div class="travel-style-hero-background-placeholder-{{ travel_gen_id }}">
+      {{ 'hero-apparel-1' | placeholder_svg_tag }}
+      <div class="travel-style-hero-empty-state-{{ travel_gen_id }}">
+        Add a hero background image
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_overlay %}
+    <div class="travel-style-hero-overlay-{{ travel_gen_id }}"></div>
+  {% endif %}
+
+  <div class="travel-style-hero-content-{{ travel_gen_id }}">
+    {% if section.settings.headline != blank %}
+      <h1 class="travel-style-hero-headline-{{ travel_gen_id }}">
+        {{ section.settings.headline }}
+      </h1>
+    {% endif %}
+
+    {% if section.settings.subtext != blank %}
+      <p class="travel-style-hero-subtext-{{ travel_gen_id }}">
+        {{ section.settings.subtext }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="travel-style-hero-button-{{ travel_gen_id }}">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Travel Style Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.4
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Travel in Style"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Discover our curated collection of premium travel essentials"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "min": 400,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Section height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "section_height_mobile",
+      "min": 300,
+      "max": 600,
+      "step": 25,
+      "unit": "px",
+      "label": "Section height mobile",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 400,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Content width",
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Headline size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "headline_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Headline size mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtext_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtext size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtext_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtext size mobile",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Text spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "button_spacing",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Button spacing",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size mobile",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical_mobile",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding mobile",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding mobile",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Travel Style Hero"
+    }
+  ]
+}
+{% endschema %}

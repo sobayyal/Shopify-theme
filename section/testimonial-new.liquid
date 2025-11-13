@@ -1,0 +1,170 @@
+{% comment %}
+Testimonials Section with Splide Slider
+{% endcomment %}
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+/>
+
+<div class="testimonial-section">
+  <div class="container-1400">
+  <div class="testimonial-header">
+      
+    {% if section.settings.heading %}
+      <div class="t-star"><svg width="139" height="24" viewBox="0 0 139 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.83 0L14.486 8.17433H23.081L16.1275 13.2263L18.7835 21.4007L11.83 16.3487L4.8765 21.4007L7.5325 13.2263L0.579001 8.17433H9.174L11.83 0Z" fill="black"/>
+<path d="M40.56 0L43.216 8.17433H51.811L44.8575 13.2263L47.5135 21.4007L40.56 16.3487L33.6065 21.4007L36.2625 13.2263L29.309 8.17433H37.904L40.56 0Z" fill="black"/>
+<path d="M69.29 0L71.946 8.17433H80.541L73.5875 13.2263L76.2435 21.4007L69.29 16.3487L62.3365 21.4007L64.9925 13.2263L58.039 8.17433H66.634L69.29 0Z" fill="black"/>
+<path d="M98.0199 0L100.676 8.17433H109.271L102.317 13.2263L104.973 21.4007L98.0199 16.3487L91.0664 21.4007L93.7224 13.2263L86.7689 8.17433H95.3639L98.0199 0Z" fill="black"/>
+<path d="M126.75 0L129.406 8.17433H138.001L131.047 13.2263L133.703 21.4007L126.75 16.3487L119.796 21.4007L122.452 13.2263L115.499 8.17433H124.094L126.75 0Z" fill="black"/>
+</svg>
+</div>
+      <h2 class="font-32">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtext_1 %}
+      <div class="rte">{{ section.settings.subtext_1 }}</div>
+    {% endif %}
+   
+  </div>
+
+  <div id="testimonial-slider" class="splide">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {% for block in section.blocks %}
+          <li class="splide__slide">
+            <div class="testimonial-card">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="Testimonial image" />
+              {% endif %}
+              <div class="content">
+                <span class="quotes">“”</span>
+                {% if block.settings.quote %}
+                  <div class="rte"><em>{{ block.settings.quote }}</em></div>
+                {% endif %}
+                {% if block.settings.name_title %}
+                  <p class="t-author"><svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="13" cy="13.7012" r="9.75" stroke="#222222" stroke-width="1.3"/>
+<path d="M8.66659 13.7012L11.9166 16.9512L17.3333 10.4512" stroke="#222222" stroke-width="1.3"/>
+</svg>
+ {{ block.settings.name_title }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+      <div class="custom-arrows">
+  <button class="splide-prev" aria-label="Previous">
+   <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="11" cy="11" r="10.5" stroke="black"/>
+<path d="M8.64647 11.3536C8.45121 11.1583 8.45121 10.8417 8.64647 10.6464L11.8284 7.46447C12.0237 7.2692 12.3403 7.2692 12.5356 7.46447C12.7308 7.65973 12.7308 7.97631 12.5356 8.17157L9.70713 11L12.5356 13.8284C12.7308 14.0237 12.7308 14.3403 12.5356 14.5355C12.3403 14.7308 12.0237 14.7308 11.8284 14.5355L8.64647 11.3536ZM9.00012 11V11.5H9.00002V11V10.5H9.00012V11Z" fill="black"/>
+</svg>
+
+  </button>
+
+  <!-- Dots will be auto-injected here -->
+  <div class="splide__pagination dost-inside"> </div>
+
+  <button class="splide-next" aria-label="Next">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="11" cy="11" r="10.5" stroke="black"/>
+<path d="M13.3537 11.3536C13.5489 11.1583 13.5489 10.8417 13.3537 10.6464L10.1717 7.46447C9.97641 7.2692 9.65983 7.2692 9.46457 7.46447C9.2693 7.65973 9.2693 7.97631 9.46457 8.17157L12.293 11L9.46457 13.8284C9.2693 14.0237 9.2693 14.3403 9.46457 14.5355C9.65983 14.7308 9.97641 14.7308 10.1717 14.5355L13.3537 11.3536ZM13 11V11.5H13.0001V11V10.5H13V11Z" fill="black"/>
+</svg>
+
+  </button>
+</div>
+  </div>
+</div>
+</div>
+      {% assign block_count = section.blocks.size %}
+
+  <style>
+   
+   #shopify-section-{{section.id}} .splide__pagination.dost-inside > li:nth-child(1n + {{ block_count | plus: 1 }}) {
+    display: none;
+}
+</style>
+
+
+<script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+  var splide = new Splide('#testimonial-slider', {
+     type: 'loop',       
+    perPage: 3,          
+    perMove: 1,          
+    autoplay: false,
+    gap: '27px',
+    pagination: true,
+    arrows: false,
+    breakpoints: {
+      991: {
+        perPage: 1,
+        perMove: 1,
+      },
+    },
+  });
+
+  splide.mount();
+
+  // Custom arrows
+  document.querySelector('.splide-prev').addEventListener('click', function () {
+    splide.go('<');
+  });
+
+  document.querySelector('.splide-next').addEventListener('click', function () {
+    splide.go('>');
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials Slider PDP",
+  "settings": [
+   
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Trusted by People Who Actually Travel"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext_1",
+      "label": "Subtext Line 1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name_title",
+          "label": "Name & Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials Slider PDP",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

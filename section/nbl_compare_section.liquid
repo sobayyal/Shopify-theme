@@ -1,0 +1,105 @@
+{% schema %}
+{
+  "name": "Comparison Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "NOBL WAS BUILT TO OUTPERFORM."
+    },
+    {
+      "type": "textarea",
+      "id": "main_subheading",
+      "label": "Main Subheading",
+      "default": "While others cut corners, we engineered every detail for real-world travel—then backed it for life"
+    },
+    {
+      "type": "image_picker",
+      "id": "middle_image",
+      "label": "Middle Product Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "compare_card",
+      "name": "Comparison Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title",
+          "default": "NOBL"
+        },
+        {
+          "type": "select",
+          "id": "card_type",
+          "label": "Card Type",
+          "options": [
+            { "value": "positive", "label": "Positive (Green Tick)" },
+            { "value": "negative", "label": "Negative (Red Cross)" }
+          ],
+          "default": "positive"
+        },
+        {
+          "type": "richtext",
+          "id": "features",
+          "label": "Feature List"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_imagem",
+          "label": "Image Mobile"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Comparison Block By Paras",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="comparison-wrapper">
+  <div class="container_1408">
+    <h2 class="main-heading">{{ section.settings.main_heading }}</h2>
+    <p class="main-subheading">{{ section.settings.main_subheading }}</p>
+
+    <div class="compare-flex">
+      {% for block in section.blocks %}
+        <div class="compare-card block-{{ block.id }} {{ block.settings.card_type }}">
+          <div class="compare-card_left">
+          <h3>{{ block.settings.card_title }}</h3>
+         <div class="n-rte">{{ block.settings.features }}</div>
+          </div>
+          <div class="product-image">
+            <img src="{{ block.settings.feature_image  | image_url }}" alt="Middle Product Image" width="auto" height="auto" loading="eager" fetchpriority="high">
+          </div>
+          
+        </div>
+      {% if block.settings.feature_imagem != blank %}
+        <style>
+          @media (max-width: 991px){
+          .block-{{ block.id }} .product-image {
+            display: none;
+          }
+          .block-{{ block.id }} {
+            background-image: url({{ block.settings.feature_imagem | image_url }});
+          }
+          }
+        </style>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+ 

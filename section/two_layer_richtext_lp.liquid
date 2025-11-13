@@ -1,0 +1,2708 @@
+
+{%- style -%}
+{% if section.settings.bg != blank %}
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+{% if section.settings.bg_mobile != blank %}
+  @media screen and (max-width: 915px) {
+    .section_bg_{{ section.id }} {
+      background-image:url({{section.settings.bg_mobile | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  }
+  {% endif %}
+  @media screen and (max-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media screen and (min-width: 915px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .custom-flex_item_ad_{{ section.id }} {
+      max-width:{{section.settings.content_size}}%;
+      width:100%;
+    }
+  }
+  {% if section.settings.bg2 != blank %}
+    .block_{{ section.id }} {
+      background-image:url({{section.settings.bg2 | image_url}});
+    background-size: cover;
+    background-attachment: unset;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+  {% endif %}
+
+    .custom-flex_two_ad_{{ section.id }} {
+      display:flex;
+      flex-wrap:wrap;
+      justify_content:space-between;
+    }
+
+        
+{%- endstyle -%}
+{% assign image_item = false %}
+
+{% if section.settings.svg_desktop != blank %}
+  <div class="desktop_only curve_top {{ section.settings.custom_class }}">{{ section.settings.svg_desktop }}</div>
+  {% endif %}
+  {% if section.settings.svg_mobile != blank %}
+  <div class="mobile_only curve_top {{ section.settings.custom_class }}">{{ section.settings.svg_mobile }}</div>
+  {% endif %}
+<div class=" section_bg_{{ section.id }} {{ section.settings.custom_class }}"{% if section.settings.custom_id != blank %} id="{{ section.settings.custom_id }}"{% endif %}
+style="background-color:{{ section.settings.bg_color | default:'transparent' }}">
+   <div class="container_hk section-{{ section.id }}-padding isolate">
+     <div class="richtext_blocks_new {{ section.settings.position }} block_{{ section.id }}" style="background-color:{{ section.settings.bg_color2 | default:'transparent' }};color:{{ section.settings.color | default:'#000' }}">
+     
+       {% if section.settings.heading != blank %}
+       <div class="two_layers_top center">
+       {% if section.settings.rating != blank %}
+      <div class="two_layers_rating desktop_only">
+         <a href="#reviews"><svg xmlns="http://www.w3.org/2000/svg" width="111" height="23" viewBox="0 0 111 23" fill="none">
+  <path d="M10.8408 2.6123C10.953 2.30181 11.3927 2.30177 11.5049 2.6123L13.3311 7.67773C13.4783 8.08551 13.8596 8.36214 14.293 8.37598L19.6738 8.54785C20.0041 8.5584 20.1399 8.97705 19.8789 9.17969L15.627 12.4814C15.2844 12.7475 15.138 13.1957 15.2588 13.6123L16.7588 18.7832C16.8504 19.1003 16.4949 19.3583 16.2217 19.1729L11.7676 16.1494C11.4087 15.9058 10.937 15.9058 10.5781 16.1494L6.12402 19.1729C5.85076 19.3584 5.49528 19.1004 5.58691 18.7832L7.08594 13.6123C7.20673 13.1957 7.06132 12.7475 6.71875 12.4814L2.4668 9.17969C2.20583 8.97705 2.34164 8.5584 2.67188 8.54785L8.05273 8.37598C8.48611 8.36213 8.86742 8.08554 9.01465 7.67773L10.8408 2.6123Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.705561"/>
+  <path d="M32.8564 2.6123C32.9686 2.30181 33.4083 2.30177 33.5205 2.6123L35.3467 7.67773C35.4939 8.08551 35.8752 8.36214 36.3086 8.37598L41.6895 8.54785C42.0197 8.5584 42.1555 8.97705 41.8945 9.17969L37.6426 12.4814C37.3 12.7475 37.1536 13.1957 37.2744 13.6123L38.7744 18.7832C38.866 19.1003 38.5106 19.3583 38.2373 19.1729L33.7832 16.1494C33.4244 15.9058 32.9526 15.9058 32.5938 16.1494L28.1396 19.1729C27.8664 19.3584 27.5109 19.1004 27.6025 18.7832L29.1016 13.6123C29.2224 13.1957 29.0769 12.7475 28.7344 12.4814L24.4824 9.17969C24.2215 8.97705 24.3573 8.5584 24.6875 8.54785L30.0684 8.37598C30.5017 8.36213 30.883 8.08554 31.0303 7.67773L32.8564 2.6123Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.705561"/>
+  <path d="M54.8662 2.6123C54.9784 2.30181 55.4181 2.30177 55.5303 2.6123L57.3564 7.67773C57.5037 8.08551 57.885 8.36214 58.3184 8.37598L63.6992 8.54785C64.0295 8.5584 64.1653 8.97705 63.9043 9.17969L59.6523 12.4814C59.3098 12.7475 59.1634 13.1957 59.2842 13.6123L60.7842 18.7832C60.8758 19.1003 60.5203 19.3583 60.2471 19.1729L55.793 16.1494C55.4341 15.9058 54.9624 15.9058 54.6035 16.1494L50.1494 19.1729C49.8762 19.3584 49.5207 19.1004 49.6123 18.7832L51.1113 13.6123C51.2321 13.1957 51.0867 12.7475 50.7441 12.4814L46.4922 9.17969C46.2312 8.97705 46.367 8.5584 46.6973 8.54785L52.0781 8.37598C52.5115 8.36213 52.8928 8.08554 53.04 7.67773L54.8662 2.6123Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.705561"/>
+  <path d="M76.8818 2.6123C76.994 2.30181 77.4337 2.30177 77.5459 2.6123L79.3721 7.67773C79.5193 8.08551 79.9006 8.36214 80.334 8.37598L85.7148 8.54785C86.0451 8.5584 86.1809 8.97705 85.9199 9.17969L81.668 12.4814C81.3254 12.7475 81.179 13.1957 81.2998 13.6123L82.7998 18.7832C82.8914 19.1003 82.5359 19.3583 82.2627 19.1729L77.8086 16.1494C77.4497 15.9058 76.978 15.9058 76.6191 16.1494L72.165 19.1729C71.8918 19.3584 71.5363 19.1004 71.6279 18.7832L73.127 13.6123C73.2477 13.1957 73.1023 12.7475 72.7598 12.4814L68.5078 9.17969C68.2468 8.97705 68.3827 8.5584 68.7129 8.54785L74.0938 8.37598C74.5271 8.36213 74.9084 8.08554 75.0557 7.67773L76.8818 2.6123Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.705561"/>
+  <path d="M98.8916 2.6123C99.0038 2.30181 99.4435 2.30177 99.5557 2.6123L101.382 7.67773C101.529 8.08551 101.91 8.36214 102.344 8.37598L107.725 8.54785C108.055 8.5584 108.191 8.97705 107.93 9.17969L103.678 12.4814C103.335 12.7475 103.189 13.1957 103.31 13.6123L104.81 18.7832C104.901 19.1003 104.546 19.3583 104.272 19.1729L99.8184 16.1494C99.4595 15.9058 98.9878 15.9058 98.6289 16.1494L94.1748 19.1729C93.9015 19.3584 93.5461 19.1004 93.6377 18.7832L95.1367 13.6123C95.2575 13.1957 95.1121 12.7475 94.7695 12.4814L90.5176 9.17969C90.2566 8.97705 90.3924 8.5584 90.7227 8.54785L96.1035 8.37598C96.5369 8.36213 96.9182 8.08554 97.0654 7.67773L98.8916 2.6123Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.705561"/>
+</svg><span>{{ section.settings.rating }}</span></a></div>
+       {% endif %}
+       {% if section.settings.rating_mobile != blank %}
+      <div class="two_layers_rating mobile_only">
+         <a href="#reviews"><svg xmlns="http://www.w3.org/2000/svg" width="78" height="17" viewBox="0 0 78 17" fill="none">
+  <path d="M7.56543 1.81152C7.64486 1.59126 7.95573 1.59126 8.03516 1.81152L9.33008 5.40039C9.43437 5.68923 9.70382 5.88552 10.0107 5.89551L13.8242 6.01758C14.0582 6.02505 14.1547 6.32124 13.9697 6.46484L10.9561 8.80469C10.7136 8.99315 10.6109 9.31047 10.6963 9.60547L11.7588 13.2705C11.8238 13.4953 11.5716 13.6784 11.3779 13.5469L8.22168 11.4043C7.96738 11.2317 7.63321 11.2317 7.37891 11.4043L4.22168 13.5469C4.02802 13.6779 3.77672 13.4952 3.8418 13.2705L4.9043 9.60547C4.98967 9.31039 4.88621 8.99311 4.64355 8.80469L1.62988 6.46484C1.44518 6.32125 1.5416 6.02526 1.77539 6.01758L5.58887 5.89551C5.89601 5.8857 6.16619 5.68942 6.27051 5.40039L7.56543 1.81152Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.500009"/>
+  <path d="M23.167 1.81152C23.2464 1.59126 23.5573 1.59126 23.6367 1.81152L24.9316 5.40039C25.0359 5.68923 25.3054 5.88552 25.6123 5.89551L29.4258 6.01758C29.6598 6.02505 29.7562 6.32124 29.5713 6.46484L26.5576 8.80469C26.3151 8.99315 26.2125 9.31047 26.2979 9.60547L27.3604 13.2705C27.4254 13.4953 27.1732 13.6784 26.9795 13.5469L23.8232 11.4043C23.5689 11.2317 23.2348 11.2317 22.9805 11.4043L19.8232 13.5469C19.6296 13.6779 19.3783 13.4952 19.4434 13.2705L20.5059 9.60547C20.5912 9.31039 20.4878 8.99311 20.2451 8.80469L17.2314 6.46484C17.0467 6.32125 17.1432 6.02526 17.377 6.01758L21.1904 5.89551C21.4976 5.8857 21.7678 5.68942 21.8721 5.40039L23.167 1.81152Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.500009"/>
+  <path d="M38.7646 1.81152C38.8441 1.59126 39.1549 1.59126 39.2344 1.81152L40.5293 5.40039C40.6336 5.68923 40.903 5.88552 41.21 5.89551L45.0234 6.01758C45.2575 6.02505 45.3539 6.32124 45.1689 6.46484L42.1553 8.80469C41.9128 8.99315 41.8101 9.31047 41.8955 9.60547L42.958 13.2705C43.023 13.4953 42.7708 13.6784 42.5771 13.5469L39.4209 11.4043C39.1666 11.2317 38.8324 11.2317 38.5781 11.4043L35.4209 13.5469C35.2272 13.6779 34.9759 13.4952 35.041 13.2705L36.1035 9.60547C36.1889 9.31039 36.0854 8.99311 35.8428 8.80469L32.8291 6.46484C32.6444 6.32125 32.7408 6.02526 32.9746 6.01758L36.7881 5.89551C37.0952 5.8857 37.3654 5.68942 37.4697 5.40039L38.7646 1.81152Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.500009"/>
+  <path d="M54.3662 1.81152C54.4456 1.59126 54.7565 1.59126 54.8359 1.81152L56.1309 5.40039C56.2351 5.68923 56.5046 5.88552 56.8115 5.89551L60.625 6.01758C60.859 6.02505 60.9554 6.32124 60.7705 6.46484L57.7568 8.80469C57.5144 8.99315 57.4117 9.31047 57.4971 9.60547L58.5596 13.2705C58.6246 13.4953 58.3724 13.6784 58.1787 13.5469L55.0225 11.4043C54.7682 11.2317 54.434 11.2317 54.1797 11.4043L51.0225 13.5469C50.8288 13.6779 50.5775 13.4952 50.6426 13.2705L51.7051 9.60547C51.7905 9.31039 51.687 8.99311 51.4443 8.80469L48.4307 6.46484C48.246 6.32125 48.3424 6.02526 48.5762 6.01758L52.3896 5.89551C52.6968 5.8857 52.967 5.68942 53.0713 5.40039L54.3662 1.81152Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.500009"/>
+  <path d="M69.9639 1.81152C70.0433 1.59126 70.3542 1.59126 70.4336 1.81152L71.7285 5.40039C71.8328 5.68923 72.1023 5.88552 72.4092 5.89551L76.2227 6.01758C76.4567 6.02505 76.5531 6.32124 76.3682 6.46484L73.3545 8.80469C73.112 8.99315 73.0093 9.31047 73.0947 9.60547L74.1572 13.2705C74.2223 13.4953 73.97 13.6784 73.7764 13.5469L70.6201 11.4043C70.3658 11.2317 70.0316 11.2317 69.7773 11.4043L66.6201 13.5469C66.4265 13.6779 66.1752 13.4952 66.2402 13.2705L67.3027 9.60547C67.3881 9.31039 67.2846 8.99311 67.042 8.80469L64.0283 6.46484C63.8436 6.32125 63.94 6.02526 64.1738 6.01758L67.9873 5.89551C68.2944 5.8857 68.5646 5.68942 68.6689 5.40039L69.9639 1.81152Z" fill="#FF9900" stroke="#415D7D" stroke-width="0.500009"/>
+</svg><span>{{ section.settings.rating_mobile }}</span></a></div>
+       {% endif %}
+       {% if section.settings.heading != blank %}
+      <h2 class="rich-text__heading  inline-richtext h1 two_layers_heading">{{ section.settings.heading }}</h2>
+       {% endif %}
+       {% if section.settings.subheading != blank %}
+      <div class="two_layers_subheading">{{ section.settings.subheading }}</div>
+       {% endif %}
+     </div>
+       {% endif %}
+
+       
+     <div class="custom-flex_two_ad custom-flex_two_ad_{{ section.id }}">  
+     <div class="custom-flex_item_ad_{{ section.id }} custom-flex_item_ad_1">  
+     <div class="custom-flex_item_ad_inner">  
+       {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            
+
+            {% when 'icons_with_text_slider' %}
+           {% if block.settings.position == 'left' %}
+            <div class="relative">
+              <div  class="custom_icons_with_text_landing_page {{ block.settings.custom_class }} slider_{{ block.id }} with_buttons custom_slick_slider same_height_slider">  {% if block.settings.text1 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg1 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg1 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg1 contains '%' %}%{% endif %}{% if block.settings.svg1 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg1 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text1 }}</span>
+                  
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text2 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg2 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg2 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg2 contains '%' %}%{% endif %}{% if block.settings.svg2 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg2 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image2 != blank %}
+                  <img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image2.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text2 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text3 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg3 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg3 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg3 contains '%' %}%{% endif %}{% if block.settings.svg3 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg3 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image3 != blank %}
+                  <img src="{{ block.settings.image3 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image3.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text3 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text4 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg4 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg4 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg4 contains '%' %}%{% endif %}{% if block.settings.svg4 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg4 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image4 != blank %}
+                  <img src="{{ block.settings.image4 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image4.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text4 }}</span>
+                 </div>
+                    {% endif %}
+                 </div>
+            
+     <div class="slider_navigations center mobile_only">
+  <div class="slider_button_custom custom_prev prev_{{ block.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+  <circle cx="22.5" cy="22.5" r="22.5" fill="#F0EAE3"/>
+  <path d="M15.7044 23.2955C15.2651 22.8562 15.2651 22.1438 15.7044 21.7045L22.8639 14.545C23.3032 14.1057 24.0155 14.1057 24.4549 14.545C24.8942 14.9844 24.8942 15.6967 24.4549 16.136L18.0909 22.5L24.4549 28.864C24.8942 29.3033 24.8942 30.0156 24.4549 30.455C24.0155 30.8943 23.3032 30.8943 22.8639 30.455L15.7044 23.2955ZM16.5 23.625H16.4999V21.375H16.5V23.625Z" fill="#474747"/>
+</svg></div>
+       <div class="slider_dots_custom  dots_{{ block.id }}"></div>
+  <div class="slider_button_custom custom_next next_{{ block.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+  <circle cx="22.5" cy="22.5" r="22.5" fill="#F0EAE3"/>
+  <path d="M29.2956 23.2955C29.7349 22.8562 29.7349 22.1438 29.2956 21.7045L22.1361 14.545C21.6968 14.1057 20.9845 14.1057 20.5451 14.545C20.1058 14.9844 20.1058 15.6967 20.5451 16.136L26.9091 22.5L20.5451 28.864C20.1058 29.3033 20.1058 30.0156 20.5451 30.455C20.9845 30.8943 21.6968 30.8943 22.1361 30.455L29.2956 23.2955ZM28.5 23.625H28.5001V21.375H28.5V23.625Z" fill="#474747"/>
+</svg></div>
+     </div>
+<script>
+$('.slider_{{ block.id }}').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: false,
+    prevArrow: $('.prev_{{ block.id }}'),
+    nextArrow: $('.next_{{ block.id }}'),
+    appendDots: $('.dots_{{ block.id }}'),
+  cssEase:'linear',
+  responsive: [
+         {
+            breakpoint: 9999,
+            settings: "unslick"
+        },
+         {
+      breakpoint: 915,
+      settings: {
+        speed: 300,
+        slidesToShow:1,
+  slidesToScroll: 1, 
+  infinite: true,
+      }
+    }
+  ]
+});
+</script>
+            
+  </div>
+{% endif %}
+
+       
+
+            {% when 'image_item' %}
+           {% if block.settings.position == 'left' %}
+            {% if image_item == false %}
+          {% assign image_item = true %}
+<div class="image_item_main_div">
+       <div class="image_item_main_slider_new_block slider_{{ section.id }} with_buttons custom_slick_slider">
+               {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {% when 'image_item' %}
+              <div  class="image_item_item {{ block.settings.custom_class }}">
+                <div class="image_item_item_inner">
+          {% if block.settings.image != blank %}
+             <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+             {% endif %}
+                 </div>
+                 </div>
+    {% endcase %}
+       {% endfor %} 
+       </div>
+
+
+     <div class="slider_navigations center" style="display:none;">
+  <div class="slider_button_custom prev_{{ section.id }}" style="display:none;"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <g opacity="1">
+    <rect width="47.7647" height="47.7647" rx="23.8824" fill="#5CCBFF"/>
+    <path d="M25.9299 34.1176L16.377 24.5647L25.9299 15.0117L28.6593 17.7411L21.8358 24.5647L28.6593 31.3882L25.9299 34.1176Z" fill="black"/>
+  </g>
+</svg></div>
+       <div class="slider_dots_custom dots_{{ section.id }}"></div>
+  <div class="slider_button_custom next_{{ section.id }} " style="display:none;"> <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="47.7647" height="47.7647" rx="23.8824" transform="matrix(-1 0 0 1 48 0)" fill="#5CCBFF"/>
+  <path d="M22.0701 34.1176L31.623 24.5647L22.0701 15.0117L19.3407 17.7411L26.1642 24.5647L19.3407 31.3882L22.0701 34.1176Z" fill="black"/>
+</svg></div>
+     </div>
+
+      
+<script>
+$('.slider_{{ section.id }}').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: true,
+adaptiveHeight: true,
+    prevArrow: $('.prev_{{ section.id }}'),
+    nextArrow: $('.next_{{ section.id }}'),
+    appendDots: $('.dots_{{ section.id }}'),
+  cssEase:'linear',
+  responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+        speed: 300,
+        slidesToShow:1,
+  slidesToScroll: 1, 
+      }
+    }
+  ]
+});
+</script>
+</div>
+              {% endif %}
+              {% endif %}
+
+            {%- when 'heading' -%}
+            {% if block.settings.position == 'left' %}
+            {% if block.settings.h1 != true %}
+              <h2 class="rich-text_custom__heading  inline-richtext {{ block.settings.custom_class }} {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</h2>
+              {% else %}
+              <h1 class="rich-text_custom__heading  inline-richtext {{ block.settings.custom_class }} {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</h1>
+              {% endif %} 
+              {% endif %}
+            {%- when 'richtext' -%}
+            {% if block.settings.position == 'left' %}
+              <div  class="rich-text_custom__richtext  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {% endif %}
+            {%- when 'html' -%}
+            {% if block.settings.position == 'left' %}
+              <div  class="rich-text_custom__html  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {% endif %}
+            {%- when 'text' -%}
+            {% if block.settings.position == 'left' %}
+              <div  class="rich-text_custom__text  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {% endif %}
+            {%- when 'image' -%}
+            {% if block.settings.position == 'left' %}
+            {% if block.settings.image != blank %}
+              <div  class="rich-text_custom__image  {{ block.settings.custom_class }}" {{ block.shopify_attributes }} >
+  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" {% if block.settings.image_mobile != blank %} class="desktop_only"{% endif %}>
+            {% if block.settings.image_mobile != blank %}
+  <img src="{{ block.settings.image_mobile | image_url }}" alt="{{ block.settings.image_mobile.alt }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" class="mobile_only">
+              {% endif %}
+              </div>
+              {% endif %}
+              {% endif %}
+
+
+
+            {%- when 'button_product' -%}
+           {% if block.settings.position == 'left' %}
+            {% if block.settings.product != blank %}
+              <div class="rich-text_custom__buttons {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label != blank -%}
+                  {% assign product_link = block.settings.product.url %}
+                  <a href="{{ block.settings.button_link | default:product_link}}" class="custom_hk_button trigger_{{ block.id }}" variant_id="{{ block.settings.product.selected_or_first_available_variant.id }}">{{- block.settings.button_label  -}}</a>
+                {%- endif -%}
+                <script>
+
+$(document).on("click", '.trigger_{{ block.id }}', function(e) {
+e.preventDefault(); 
+var this_element =  jQuery(this);
+this_element.addClass('loading_hk');
+var id = jQuery(this).attr('variant_id');
+var current_url = location.href;
+
+jQuery.ajax({
+type: 'POST',
+url: '/cart/add.js',
+data: {
+  quantity: 1,
+  id: id
+},
+  dataType: 'json', 
+ success: function (data) { 
+   $.ajax({
+        url: current_url,
+        data: "",
+        type: "GET",
+        dataType: "html",
+        success: function (data) {
+$(".quick-cart__wrapper").html($(".quick-cart__wrapper", data).html());
+$(".lp_cart_icon").html($(".lp_cart_icon", data).html());
+$('.quick-cart').addClass('animation--quick-cart-revealed');
+$('.quick-cart__wrapper').addClass('active');
+$('body').attr('data-fluorescent-overlay-open','true');
+this_element.removeClass('loading_hk'); 
+        },
+        error: function (xhr, status) {},
+        complete: function (xhr, status) {},
+      }); 
+ } 
+ });
+  });
+                  
+              </script>
+              </div>
+            {% endif %}
+            {% endif %}
+            
+            
+            
+            {%- when 'button' -%}
+           {% if block.settings.position == 'left' %}
+              <div class="rich-text_custom__buttons {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label != blank -%}
+                  <a href="{{ block.settings.button_link | default:'#'}}" class="custom_hk_button">{{- block.settings.button_label  -}}</a>
+                {%- endif -%}
+              </div>
+                {%- endif -%}
+
+            
+            {% when 'icons_with_text' %}
+           {% if block.settings.position == 'left' %}
+              <div  class="custom_icons_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icons_with_text_flex">
+                  {% if block.settings.text1 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg1 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg1 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg1 contains '%' %}%{% endif %}{% if block.settings.svg1 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg1 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text1 }}</span>
+                  
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text2 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg2 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg2 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg2 contains '%' %}%{% endif %}{% if block.settings.svg2 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg2 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image2 != blank %}
+                  <img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image2.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text2 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text3 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg3 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg3 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg3 contains '%' %}%{% endif %}{% if block.settings.svg3 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg3 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image3 != blank %}
+                  <img src="{{ block.settings.image3 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image3.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text3 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text4 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg4 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg4 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg4 contains '%' %}%{% endif %}{% if block.settings.svg4 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg4 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image4 != blank %}
+                  <img src="{{ block.settings.image4 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image4.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text4 }}</span>
+                 </div>
+                    {% endif %}
+                 </div>
+              </div>
+            
+                    {% endif %}
+            {% when 'icon_with_text' %}
+           {% if block.settings.position == 'left' %}
+              <div  class="custom_icon_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icon_with_text_flex">
+                <div class="icon_with_text_item">
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+             <div class="icon_with_text_item_texts">
+                  <div class="icon_with_text_item_svg">{{ block.settings.svg1 }}</div>
+                  {{ block.settings.text1 }}
+                 </div>
+                 </div>
+                 </div>
+              </div>
+                {%- endif -%}
+            {%- when 'faq' -%}
+           {% if block.settings.position == 'left' %}
+              {%- if block.settings.question != blank -%}
+       <div class="faq_slider_item faq_slider_item2 {{ block.settings.custom_class }}">
+       <div class="faq_slider_item_inner faq_slider_item_inner2">
+          <div class="faq_question faq_question2">
+            {% if block.settings.svg != blank %}
+            <div class="faq_svg">{{ block.settings.svg }}</div>
+            {% endif %}
+           <span>{{ block.settings.question }}</span>
+          </div>
+          <div class="faq_answer faq_answer2" style="display:none;">
+            {{ block.settings.answer }}
+          </div>
+       </div>
+           </div>
+              {%- endif -%}
+              {%- endif -%}
+
+
+       
+            {%- when 'video' -%}
+           {% if block.settings.position == 'left' %}
+              {%- if block.settings.video != blank -%}
+              <div class="rich-text_custom__rating  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+              <div class="video_wrapper_custom">
+            {{ block.settings.video | media_tag: image_size: "master", autoplay: false, loop: true, controls: true, preload: "true", class:"video_paused_custom" }}
+            {% if  block.settings.image != blank %}
+           <img src="{{ block.settings.image | image_url }}" width="auto" height="auto"  fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image.alt }}" class="trigger_video_play_js trigger_video_play_css">
+            {% else %}
+              <img src="{{ block.settings.video.preview_image | image_url }}" width="auto" height="auto"  fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="video" class="trigger_video_play_js trigger_video_play_css">
+           
+              {% endif %}
+             <div class="custom_button">
+                <span>
+<svg xmlns="http://www.w3.org/2000/svg" width="139" height="139" viewBox="0 0 139 139" fill="none">
+  <rect x="3.95" y="3.95" width="130.35" height="130.35" rx="65.175" fill="white" fill-opacity="0.01"/>
+  <rect x="3.95" y="3.95" width="130.35" height="130.35" rx="65.175" stroke="white" stroke-width="7.9"/>
+  <path d="M104.675 70.1133L52.8311 100.045L52.8311 40.1813L104.675 70.1133Z" fill="white"/>
+</svg></span>
+                </div>
+                </div>
+              </div>
+                {% endif %}
+                {% endif %}
+
+
+    
+
+            {%- when 'after_before' -%}
+           {% if block.settings.position == 'left' %}
+
+{% if block.settings.before != blank and block.settings.after != blank %}
+<div class="container-before-after container-before-after_{{ block.id }} {{ block.settings.custom_class }}">
+          <div class="image-container image-container_{{ block.id }}">
+            <img
+              class="image-before slider-image"
+              src="{{ block.settings.before | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high"
+              alt="{{ block.settings.before.alt }}"
+            >
+            <img
+              class="image-after slider-image"
+              src="{{ block.settings.after | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high"
+              alt="{{ block.settings.after.alt }}"
+            >
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Percentage of before photo shown"
+            class="slider-before-after slider-before-after_{{ block.id }}"
+          >
+          
+          <div class="slider-button-before-after-block">
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="15" viewBox="0 0 27 15" fill="none">
+  <path d="M26.5401 8.43943C26.9209 8.05867 26.9209 7.44133 26.5401 7.06057L20.3353 0.855709C19.9545 0.474947 19.3372 0.474947 18.9564 0.855709C18.5756 1.23647 18.5756 1.85381 18.9564 2.23457L24.4718 7.75L18.9564 13.2654C18.5756 13.6462 18.5756 14.2635 18.9564 14.6443C19.3372 15.0251 19.9545 15.0251 20.3353 14.6443L26.5401 8.43943ZM25.8506 7.75V8.725H25.8507V7.75V6.775H25.8506V7.75Z" fill="#EF5E78"/>
+  <path d="M0.460862 7.06057C0.0801003 7.44133 0.0801003 8.05867 0.460862 8.43943L6.66572 14.6443C7.04648 15.0251 7.66382 15.0251 8.04458 14.6443C8.42534 14.2635 8.42534 13.6462 8.04458 13.2654L2.52915 7.75L8.04458 2.23457C8.42534 1.85381 8.42534 1.23647 8.04458 0.855709C7.66382 0.474947 7.04648 0.474947 6.66572 0.855709L0.460862 7.06057ZM1.15039 7.75V6.775H1.15029V7.75V8.725H1.15039V7.75Z" fill="#EF5E78"/>
+</svg>
+          </div>
+          
+        </div>
+		
+
+<style>
+  .container-before-after_{{ block.id }} {
+    display: grid;
+    place-content: center;
+    position: relative;
+    overflow: hidden;
+    --position: 50%;
+  }
+  
+  .image-container_{{ block.id }} {
+    aspect-ratio: 1/1;
+	aspect-ratio:{{ block.settings.before.width }}/{{ block.settings.before.height }};
+    position: relative;
+    border-radius: 0px !important;
+    overflow: hidden;
+    margin: 1px;
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    border-radius: 0;
+  }
+  
+  .image-before {
+    position: absolute;
+    inset: 0;
+    width: var(--position);
+    /* filter: grayscale(100%); */
+  }
+  
+  .slider-before-after_{{ block.id }} {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .container-before-after .slider-line {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: .4rem;
+    height: 100%;
+    background-color: #000;
+    left: var(--position);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  
+  .slider-button-before-after-block {
+    /*position: absolute;
+    color: black;
+    border-radius: 100vw;
+    display: grid;
+    place-items: center;
+    top: 50%;
+    left: var(--position);
+    transform: translate(-50%, -50%);
+    pointer-events: none;*/
+    position: absolute;
+    color: #000;
+    display: grid;
+    place-items: center;
+    top: 50%;
+    left: var(--position);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    height: 60px;
+    width: 60px;
+  }
+
+  .before-slide-image {
+    top: 0;
+    left: 0;
+    border-top-left-radius: 10px;
+  }
+  
+  .after-slide-image {
+    top: 0;
+    right: 0;
+    border-top-right-radius: 10px;
+  }
+
+  .before-after-section .button-container {margin: 0 auto;}
+  img.image-before.slider-image {
+    border-right: 2px solid #000;
+}
+
+</style>
+
+<script>
+  const container_before_after_{{ block.id }} = document.querySelector('.container-before-after_{{ block.id }}');
+  document.querySelector('.slider-before-after_{{ block.id }}').addEventListener('input', (e) => {
+    container_before_after_{{ block.id }}.style.setProperty('--position', `${e.target.value}%`);
+  });
+</script>		
+{% endif %}
+              {%- endif -%}
+
+            
+       
+            {%- when 'rating' -%}
+           {% if block.settings.position == 'left' %}
+              <div class="rich-text_custom__rating  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+              <div class="reviews_rating_html">
+              <a href="#reviews">
+             {{ block.settings.svg }}
+                <span>{{ block.settings.text }}</span>
+             </a>
+            </div>
+              </div>
+             {% endif %}
+            {% endcase %}
+       {% endfor %}
+  </div>
+  </div>
+
+
+
+{% assign image_item = false %}
+
+    
+     <div class="custom-flex_item_ad_{{ section.id }} custom-flex_item_ad_2">  
+     <div class="custom-flex_item_ad_inner">  
+       {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+
+       
+
+            {% when 'icons_with_text_slider' %}
+           {% if block.settings.position == 'right' %}
+            <div class="relative">
+              <div  class="custom_icons_with_text_landing_page {{ block.settings.custom_class }} slider_{{ block.id }} with_buttons custom_slick_slider same_height_slider">  {% if block.settings.text1 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg1 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg1 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg1 contains '%' %}%{% endif %}{% if block.settings.svg1 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg1 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text1 }}</span>
+                  
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text2 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg2 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg2 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg2 contains '%' %}%{% endif %}{% if block.settings.svg2 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg2 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image2 != blank %}
+                  <img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image2.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text2 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text3 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg3 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg3 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg3 contains '%' %}%{% endif %}{% if block.settings.svg3 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg3 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image3 != blank %}
+                  <img src="{{ block.settings.image3 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image3.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text3 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text4 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg4 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg4 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg4 contains '%' %}%{% endif %}{% if block.settings.svg4 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg4 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image4 != blank %}
+                  <img src="{{ block.settings.image4 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image4.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text4 }}</span>
+                 </div>
+                    {% endif %}
+                 </div>
+            
+     <div class="slider_navigations center mobile_only">
+  <div class="slider_button_custom custom_prev prev_{{ block.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+  <circle cx="22.5" cy="22.5" r="22.5" fill="#F0EAE3"/>
+  <path d="M15.7044 23.2955C15.2651 22.8562 15.2651 22.1438 15.7044 21.7045L22.8639 14.545C23.3032 14.1057 24.0155 14.1057 24.4549 14.545C24.8942 14.9844 24.8942 15.6967 24.4549 16.136L18.0909 22.5L24.4549 28.864C24.8942 29.3033 24.8942 30.0156 24.4549 30.455C24.0155 30.8943 23.3032 30.8943 22.8639 30.455L15.7044 23.2955ZM16.5 23.625H16.4999V21.375H16.5V23.625Z" fill="#474747"/>
+</svg></div>
+       <div class="slider_dots_custom  dots_{{ block.id }}"></div>
+  <div class="slider_button_custom custom_next next_{{ block.id }}"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+  <circle cx="22.5" cy="22.5" r="22.5" fill="#F0EAE3"/>
+  <path d="M29.2956 23.2955C29.7349 22.8562 29.7349 22.1438 29.2956 21.7045L22.1361 14.545C21.6968 14.1057 20.9845 14.1057 20.5451 14.545C20.1058 14.9844 20.1058 15.6967 20.5451 16.136L26.9091 22.5L20.5451 28.864C20.1058 29.3033 20.1058 30.0156 20.5451 30.455C20.9845 30.8943 21.6968 30.8943 22.1361 30.455L29.2956 23.2955ZM28.5 23.625H28.5001V21.375H28.5V23.625Z" fill="#474747"/>
+</svg></div>
+     </div>
+<script>
+$('.slider_{{ block.id }}').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: false,
+    prevArrow: $('.prev_{{ block.id }}'),
+    nextArrow: $('.next_{{ block.id }}'),
+    appendDots: $('.dots_{{ block.id }}'),
+  cssEase:'linear',
+  responsive: [
+         {
+            breakpoint: 9999,
+            settings: "unslick"
+        },
+         {
+      breakpoint: 915,
+      settings: {
+        speed: 300,
+        slidesToShow:1,
+  slidesToScroll: 1, 
+  infinite: true,
+      }
+    }
+  ]
+});
+</script>
+            
+  </div>
+{% endif %}
+
+       
+           {% if block.settings.position == 'right' %}
+            {% if block.settings.h1 != true %}
+              <h2 class="rich-text_custom__heading  inline-richtext {{ block.settings.custom_class }} {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</h2>
+              {% else %}
+              <h1 class="rich-text_custom__heading  inline-richtext {{ block.settings.custom_class }} {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</h1>
+              {% endif %} 
+              {% endif %}
+            {%- when 'richtext' -%}
+            {% if block.settings.position == 'right' %}
+              <div  class="rich-text_custom__richtext  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {% endif %}
+            {%- when 'text' -%}
+            {% if block.settings.position == 'right' %}
+              <div  class="rich-text_custom__text  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {% endif %}
+            {%- when 'html' -%}
+            {% if block.settings.position == 'right' %}
+              <div  class="rich-text_custom__html  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {% endif %}
+            {%- when 'image' -%}
+            {% if block.settings.position == 'right' %}
+            {% if block.settings.image != blank %}
+              <div  class="rich-text_custom__image  {{ block.settings.custom_class }}" {{ block.shopify_attributes }} >
+  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" {% if block.settings.image_mobile != blank %} class="desktop_only"{% endif %}>
+            {% if block.settings.image_mobile != blank %}
+  <img src="{{ block.settings.image_mobile | image_url }}" alt="{{ block.settings.image_mobile.alt }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" class="mobile_only">
+              {% endif %}
+              </div>
+              {% endif %}
+              {% endif %}
+            {%- when 'button' -%}
+           {% if block.settings.position == 'right' %}
+              <div class="rich-text_custom__buttons {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label != blank -%}
+                  {% assign product_link = block.settings.product.url %}
+                  <a href="{{ block.settings.button_link | default:product_link}}" class="custom_hk_button trigger_{{ block.id }}" variant_id="{{ block.settings.product.selected_or_first_available_variant.id }}">{{- block.settings.button_label  -}}</a>
+                {%- endif -%}
+              </div>
+                {%- endif -%}
+
+
+            {% when 'icon_with_text' %}
+           {% if block.settings.position == 'right' %}
+              <div  class="custom_icon_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icon_with_text_flex">
+                <div class="icon_with_text_item">
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+             <div class="icon_with_text_item_texts">
+                  <div class="icon_with_text_item_svg">{{ block.settings.svg1 }}</div>
+                  {{ block.settings.text1 }}
+                 </div>
+                 </div>
+                 </div>
+              </div>
+                {%- endif -%}
+            
+            {% when 'icons_with_text' %}
+           {% if block.settings.position == 'right' %}
+              <div  class="custom_icons_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icons_with_text_flex">
+                  {% if block.settings.text1 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg1 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg1 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg1 contains '%' %}%{% endif %}{% if block.settings.svg1 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg1 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text1 }}</span>
+                  
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text2 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg2 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg2 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg2 contains '%' %}%{% endif %}{% if block.settings.svg2 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg2 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image2 != blank %}
+                  <img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image2.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text2 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text3 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg3 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg3 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg3 contains '%' %}%{% endif %}{% if block.settings.svg3 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg3 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image3 != blank %}
+                  <img src="{{ block.settings.image3 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image3.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text3 }}</span>
+                 </div>
+                    {% endif %}
+                  {% if block.settings.text4 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="icon_svg_main">
+                  {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg4 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg4 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg4 contains '%' %}%{% endif %}{% if block.settings.svg4 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg4 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image4 != blank %}
+                  <img src="{{ block.settings.image4 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image4.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text4 }}</span>
+                 </div>
+                    {% endif %}
+                 </div>
+              </div>
+            
+                    {% endif %}
+            
+
+
+            {%- when 'faq' -%}
+           {% if block.settings.position == 'right' %}
+              {%- if block.settings.question != blank -%}
+       <div class="faq_slider_item faq_slider_item2 {{ block.settings.custom_class }}">
+       <div class="faq_slider_item_inner faq_slider_item_inner2">
+          <div class="faq_question faq_question2">
+            {% if block.settings.svg != blank %}
+            <div class="faq_svg">{{ block.settings.svg }}</div>
+            {% endif %}
+           <span>{{ block.settings.question }}</span>
+          </div>
+          <div class="faq_answer faq_answer2" style="display:none;">
+            {{ block.settings.answer }}
+          </div>
+       </div>
+           </div>
+              {%- endif -%}
+              {%- endif -%}
+
+            
+
+
+            {%- when 'button_product' -%}
+           {% if block.settings.position == 'right' %}
+            {% if block.settings.product != blank %}
+              <div class="rich-text_custom__buttons {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label != blank -%}
+                  <a href="{{ block.settings.button_link | default:'#'}}" class="custom_hk_button trigger_{{ block.id }}" variant_id="{{ block.settings.product.selected_or_first_available_variant.id }}">{{- block.settings.button_label  -}}</a>
+                {%- endif -%}
+                <script>
+
+$(document).on("click", '.trigger_{{ block.id }}', function(e) {
+e.preventDefault(); 
+var this_element =  jQuery(this);
+this_element.addClass('loading_hk');
+var id = jQuery(this).attr('variant_id');
+var current_url = location.href;
+
+jQuery.ajax({
+type: 'POST',
+url: '/cart/add.js',
+data: {
+  quantity: 1,
+  id: id
+},
+  dataType: 'json', 
+ success: function (data) { 
+   $.ajax({
+        url: current_url,
+        data: "",
+        type: "GET",
+        dataType: "html",
+        success: function (data) {
+$(".quick-cart__wrapper").html($(".quick-cart__wrapper", data).html());
+$(".lp_cart_icon").html($(".lp_cart_icon", data).html());
+$('.quick-cart').addClass('animation--quick-cart-revealed');
+$('.quick-cart__wrapper').addClass('active');
+$('body').attr('data-fluorescent-overlay-open','true');
+this_element.removeClass('loading_hk'); 
+        },
+        error: function (xhr, status) {},
+        complete: function (xhr, status) {},
+      }); 
+ } 
+ });
+  });
+                  
+              </script>
+              </div>
+            {% endif %}
+            {% endif %}
+       
+            {%- when 'rating' -%}
+           {% if block.settings.position == 'right' %}
+              <div class="rich-text_custom__rating  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+              <div class="reviews_rating_html">
+              <a href="#reviews">
+             {{ block.settings.svg }}
+                <span>{{ block.settings.text }}</span>
+             </a>
+            </div>
+              </div>
+             {% endif %}
+
+            {%- when 'video' -%}
+           {% if block.settings.position == 'right' %}
+              {%- if block.settings.video != blank -%}
+              <div class="rich-text_custom__rating  {{ block.settings.custom_class }}" {{ block.shopify_attributes }}>
+              <div class="video_wrapper_custom">
+            {{ block.settings.video | media_tag: image_size: "master", autoplay: false, loop: true, controls: true, preload: "true", class:"video_paused_custom" }}
+            {% if  block.settings.image != blank %}
+           <img src="{{ block.settings.image | image_url }}" width="auto" height="auto"  fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image.alt }}" class="trigger_video_play_js trigger_video_play_css">
+            {% else %}
+              <img src="{{ block.settings.video.preview_image | image_url }}" width="auto" height="auto"  fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="video" class="trigger_video_play_js trigger_video_play_css">
+           
+              {% endif %}
+             <div class="custom_button">
+                <span>
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="40" viewBox="0 0 34 40" fill="none">
+  <path d="M32.5347 20.8619C33.192 20.4753 33.192 19.5247 32.5347 19.1381L1.50702 0.886484C0.840384 0.494344 -1.70584e-06 0.975 -1.67203e-06 1.74842L-7.64257e-08 38.2516C-4.26186e-08 39.025 0.840389 39.5057 1.50702 39.1135L32.5347 20.8619Z" fill="white"/>
+</svg></span>
+                </div>
+                </div>
+              </div>
+                {% endif %}
+                {% endif %}
+
+    
+
+            {%- when 'after_before' -%}
+           {% if block.settings.position == 'right' %}
+
+{% if block.settings.before != blank and block.settings.after != blank %}
+<div class="container-before-after container-before-after_{{ block.id }} {{ block.settings.custom_class }}">
+          <div class="image-container image-container_{{ block.id }}">
+            <img
+              class="image-before slider-image"
+              src="{{ block.settings.before | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high"
+              alt="{{ block.settings.before.alt }}"
+            >
+            <img
+              class="image-after slider-image"
+              src="{{ block.settings.after | image_url }}" width="auto" height="auto" loading="eager" fetchpriority="high"
+              alt="{{ block.settings.after.alt }}"
+            >
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Percentage of before photo shown"
+            class="slider-before-after slider-before-after_{{ block.id }}"
+          >
+          
+          <div class="slider-button-before-after-block">
+<svg xmlns="http://www.w3.org/2000/svg" width="27" height="15" viewBox="0 0 27 15" fill="none">
+  <path d="M26.5401 8.43943C26.9209 8.05867 26.9209 7.44133 26.5401 7.06057L20.3353 0.855709C19.9545 0.474947 19.3372 0.474947 18.9564 0.855709C18.5756 1.23647 18.5756 1.85381 18.9564 2.23457L24.4718 7.75L18.9564 13.2654C18.5756 13.6462 18.5756 14.2635 18.9564 14.6443C19.3372 15.0251 19.9545 15.0251 20.3353 14.6443L26.5401 8.43943ZM25.8506 7.75V8.725H25.8507V7.75V6.775H25.8506V7.75Z" fill="#EF5E78"/>
+  <path d="M0.460862 7.06057C0.0801003 7.44133 0.0801003 8.05867 0.460862 8.43943L6.66572 14.6443C7.04648 15.0251 7.66382 15.0251 8.04458 14.6443C8.42534 14.2635 8.42534 13.6462 8.04458 13.2654L2.52915 7.75L8.04458 2.23457C8.42534 1.85381 8.42534 1.23647 8.04458 0.855709C7.66382 0.474947 7.04648 0.474947 6.66572 0.855709L0.460862 7.06057ZM1.15039 7.75V6.775H1.15029V7.75V8.725H1.15039V7.75Z" fill="#EF5E78"/>
+</svg>
+          </div>
+          
+        </div>
+		
+
+<style>
+  .container-before-after_{{ block.id }} {
+    display: grid;
+    place-content: center;
+    position: relative;
+    overflow: hidden;
+    --position: 50%;
+  }
+  
+  .image-container_{{ block.id }} {
+    aspect-ratio: 1/1;
+	aspect-ratio:{{ block.settings.before.width }}/{{ block.settings.before.height }};
+    position: relative;
+    border-radius: 0px !important;
+    overflow: hidden;
+    margin: 1px;
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    border-radius: 0;
+  }
+  
+  .image-before {
+    position: absolute;
+    inset: 0;
+    width: var(--position);
+    /* filter: grayscale(100%); */
+  }
+  
+  .slider-before-after_{{ block.id }} {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .container-before-after .slider-line {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: .4rem;
+    height: 100%;
+    background-color: #000;
+    left: var(--position);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  
+  .slider-button-before-after-block {
+    /*position: absolute;
+    color: black;
+    border-radius: 100vw;
+    display: grid;
+    place-items: center;
+    top: 50%;
+    left: var(--position);
+    transform: translate(-50%, -50%);
+    pointer-events: none;*/
+    position: absolute;
+    color: #000;
+    display: grid;
+    place-items: center;
+    top: 50%;
+    left: var(--position);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    height: 60px;
+    width: 60px;
+  }
+
+  .before-slide-image {
+    top: 0;
+    left: 0;
+    border-top-left-radius: 10px;
+  }
+  
+  .after-slide-image {
+    top: 0;
+    right: 0;
+    border-top-right-radius: 10px;
+  }
+
+  .before-after-section .button-container {margin: 0 auto;}
+  img.image-before.slider-image {
+    border-right: 2px solid #000;
+}
+
+</style>
+
+<script>
+  const container_before_after_{{ block.id }} = document.querySelector('.container-before-after_{{ block.id }}');
+  document.querySelector('.slider-before-after_{{ block.id }}').addEventListener('input', (e) => {
+    container_before_after_{{ block.id }}.style.setProperty('--position', `${e.target.value}%`);
+  });
+</script>		
+{% endif %}
+              {%- endif -%}
+
+
+
+
+            {% when 'image_item' %}
+           {% if block.settings.position == 'right' %}
+            {% if image_item == false %}
+          {% assign image_item = true %}
+<div class="image_item_main_div">
+       <div class="image_item_main_slider_new_block slider_{{ section.id }} with_buttons custom_slick_slider">
+               {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {% when 'image_item' %}
+              <div  class="image_item_item {{ block.settings.custom_class }}">
+                <div class="image_item_item_inner">
+          {% if block.settings.image != blank %}
+             <img src="{{ block.settings.image | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+             {% endif %}
+                 </div>
+                
+                  {% if block.settings.text1 != blank %}
+                <div class="icons_with_text_item mobile_only">
+                  <div class="icon_svg_main">
+                 {% if block.settings.custom_class contains 'custom_counter' %}
+                      <span class="count_js" data-value="{{- block.settings.svg1 | replace:'%','' | replace:'X','' -}}">{{ block.settings.svg1 | replace:'%','' | replace:'X','' }}</span>{% if block.settings.svg1 contains '%' %}%{% endif %}{% if block.settings.svg1 contains 'X' %}X{% endif %}
+                    {% else %}
+                  {{ block.settings.svg1 }}
+                    {% endif %}
+                  </div>
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <span>{{ block.settings.text1 }}</span>
+                  
+                 </div>
+                    {% endif %}
+                 </div>
+    {% endcase %}
+       {% endfor %} 
+       </div>
+
+
+     <div class="slider_navigations center">
+  <div class="slider_button_custom prev_{{ section.id }} custom_prev"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <g opacity="1">
+    <rect width="47.7647" height="47.7647" rx="23.8824" fill="#5CCBFF"/>
+    <path d="M25.9299 34.1176L16.377 24.5647L25.9299 15.0117L28.6593 17.7411L21.8358 24.5647L28.6593 31.3882L25.9299 34.1176Z" fill="black"/>
+  </g>
+</svg></div>
+       <div class="slider_dots_custom dots_{{ section.id }} mobile_only"></div>
+  <div class="slider_button_custom next_{{ section.id }} custom_next"> <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="47.7647" height="47.7647" rx="23.8824" transform="matrix(-1 0 0 1 48 0)" fill="#5CCBFF"/>
+  <path d="M22.0701 34.1176L31.623 24.5647L22.0701 15.0117L19.3407 17.7411L26.1642 24.5647L19.3407 31.3882L22.0701 34.1176Z" fill="black"/>
+</svg></div>
+     </div>
+
+      
+<script>
+$('.slider_{{ section.id }}').slick({
+  dots: true,
+  speed: 300,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  infinite: true,
+    prevArrow: $('.prev_{{ section.id }}'),
+    nextArrow: $('.next_{{ section.id }}'),
+    appendDots: $('.dots_{{ section.id }}'),
+  cssEase:'linear',
+  responsive: [
+    {
+      breakpoint: 915,
+      settings: {
+        speed: 300,
+        slidesToShow:1,
+  slidesToScroll: 1, 
+      }
+    }
+  ]
+});
+</script>
+</div>
+              {% endif %}
+              {% endif %}
+
+            {% when 'icons_with_text_new' %}
+           {% if block.settings.position == 'right' %}
+              <div  class="custom_icons_with_text_landing_page {{ block.settings.custom_class }}">
+                <div class="icons_with_text_flex">
+                  {% if block.settings.text1 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="top_image_flex">
+                  {% if block.settings.image1 != blank %}
+                  <img src="{{ block.settings.image1 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image1.alt }}">  
+                  {% endif %}
+                  <div class="top_image_right_title">{{ block.settings.title1 }}</div>
+                  </div>
+                  <div class="custom_numebrs_main_flex">
+                    {% if block.settings.number1_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number1 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number1 | replace:'%',''  -}}">0</span>{% if block.settings.number1 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number1_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number2_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number2 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number2 | replace:'%',''  -}}">0</span>{% if block.settings.number2 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number2_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number3_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number3 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number3 | replace:'%',''  -}}">0</span>{% if block.settings.number3 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number3_text  }}</span>
+                  </div>
+                      {% endif %}
+                  </div>
+                  <span>{{ block.settings.text1 }}</span>
+                  
+                 </div>
+                    {% endif %}
+
+                  
+                   {% if block.settings.text2 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="top_image_flex">
+                  {% if block.settings.image2 != blank %}
+                  <img src="{{ block.settings.image2 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image2.alt }}">  
+                  {% endif %}
+                  <div class="top_image_right_title">{{ block.settings.title2 }}</div>
+                  </div>
+                  <div class="custom_numebrs_main_flex">
+                    {% if block.settings.number4_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number4 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number4 | replace:'%',''  -}}">0</span>{% if block.settings.number4 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number4_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number5_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number5 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number5 | replace:'%',''  -}}">0</span>{% if block.settings.number5 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number5_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number6_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number6 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number6 | replace:'%',''  -}}">0</span>{% if block.settings.number6 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number6_text  }}</span>
+                  </div>
+                      {% endif %}
+                  </div>
+                  <span>{{ block.settings.text2 }}</span>
+                  
+                 </div>
+                    {% endif %}
+
+
+                    {% if block.settings.text3 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="top_image_flex">
+                  {% if block.settings.image3 != blank %}
+                  <img src="{{ block.settings.image3 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image3.alt }}">  
+                  {% endif %}
+                  <div class="top_image_right_title">{{ block.settings.title3 }}</div>
+                  </div>
+                  <div class="custom_numebrs_main_flex">
+                    {% if block.settings.number7_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number7 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number7 | replace:'%',''  -}}">0</span>{% if block.settings.number7 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number7_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number8_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number8 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number8 | replace:'%',''  -}}">0</span>{% if block.settings.number8 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number8_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number9_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number9 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number9 | replace:'%',''  -}}">0</span>{% if block.settings.number9 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number9_text  }}</span>
+                  </div>
+                      {% endif %}
+                  </div>
+                  <span>{{ block.settings.text3 }}</span>
+                  
+                 </div>
+                    {% endif %}
+
+
+                    {% if block.settings.text4 != blank %}
+                <div class="icons_with_text_item">
+                  <div class="top_image_flex">
+                  {% if block.settings.image4 != blank %}
+                  <img src="{{ block.settings.image4 | image_url }}" width="auto" height="auto" fetchpriority="{{ block.settings.fetchpriority }}" loading="{{ block.settings.loading }}" alt="{{ block.settings.image4.alt }}">  
+                  {% endif %}
+                  <div class="top_image_right_title">{{ block.settings.title4 }}</div>
+                  </div>
+                  <div class="custom_numebrs_main_flex">
+                    {% if block.settings.number10_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number10 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number10 | replace:'%',''  -}}">0</span>{% if block.settings.number10 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number10_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number11_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number11 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number11 | replace:'%',''  -}}">0</span>{% if block.settings.number11 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number11_text  }}</span>
+                  </div>
+                      {% endif %}
+                    {% if block.settings.number12_text != blank %}
+                  <div class="custom_numebrs_main_flex_item">
+                    {% if block.settings.number12 != blank %}
+                   <span class="count_js" data-value="{{- block.settings.number12 | replace:'%',''  -}}">0</span>{% if block.settings.number12 contains '%' %}%{% endif %}
+                   {% endif %}
+                  <span class="custom_numebrs_main_flex_item_text">{{ block.settings.number12_text  }}</span>
+                  </div>
+                      {% endif %}
+                  </div>
+                  <span>{{ block.settings.text4 }}</span>
+                  
+                 </div>
+                    {% endif %}
+
+
+                  
+                 </div>
+              </div>
+            
+                    {% endif %}
+            
+
+    
+            {% endcase %}
+       {% endfor %}
+  </div>
+  </div>
+  </div>
+     </div>
+   </div>
+  </div>
+
+
+    {% if section.settings.svg_desktop2 != blank %}
+  <div class="desktop_only curve_bottom {{ section.settings.custom_class }}">{{ section.settings.svg_desktop2 }}</div>
+  {% endif %}
+  {% if section.settings.svg_mobile2 != blank %}
+  <div class="mobile_only curve_bottom {{ section.settings.custom_class }}">{{ section.settings.svg_mobile2 }}</div>
+  {% endif %}
+
+
+{% schema %}
+  {
+    "name": "Two Richtext Lp",
+    "settings": [
+       {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg",
+      "label": "Section Background"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg_mobile",
+      "label": "Section Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color"
+    },
+      {
+      "type": "image_picker",
+      "id": "bg2",
+      "label": "Section Block Background"
+    },
+     {
+      "type": "color",
+      "id": "bg_color2",
+      "label": "Section Block Background Color"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_desktop",
+      "label": "Curve Top Desktop"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_mobile",
+      "label": "Curve Top Mobile"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_desktop2",
+      "label": "Curve Bottom Desktop"
+    },
+     {
+      "type": "liquid",
+      "id": "svg_mobile2",
+      "label": "Curve Bottom Mobile"
+    },
+     {
+      "type": "color",
+      "id": "color",
+      "label": "Section Block Text Color"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Content position"
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Size Of Content on Desktop",
+      "default": 50
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating",
+      "label": "Rating"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating_mobile",
+      "label": "Rating Mobile"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "SubHeading"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 50
+    }
+    ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "Small"
+            },
+            {
+              "value": "h1",
+              "label": "Medium"
+            },
+            {
+              "value": "h0",
+              "label": "Large"
+            }
+          ],
+          "default": "h1",
+          "label": "Heading Size"
+        },
+         {
+          "type": "checkbox",
+          "id": "h1",
+          "label": "Use H1 tag"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "RichText",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "html",
+      "name": "Html",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "text",
+          "label": "Html"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image Mobile"
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "icons_with_text",
+      "name": "Icons With Text",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg1",
+        },
+         {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1",
+        },
+         {
+          "type": "richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+         {
+          "type": "liquid",
+          "id": "svg2",
+          "label": "Svg2",
+        },
+         {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2",
+        },
+         {
+          "type": "richtext",
+          "id": "text2",
+          "label": "Text2",
+        },
+         {
+          "type": "liquid",
+          "id": "svg3",
+          "label": "Svg3",
+        },
+         {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3",
+        },
+         {
+          "type": "richtext",
+          "id": "text3",
+          "label": "Text3",
+        },
+         {
+          "type": "liquid",
+          "id": "svg4",
+          "label": "Svg4",
+        },
+         {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Image4",
+        },
+         {
+          "type": "richtext",
+          "id": "text4",
+          "label": "Text4",
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "Button label",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "icon_with_text",
+      "name": "Icon With Text",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg1",
+        },
+         {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+     {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+          {
+          "type": "liquid",
+          "id": "svg",
+          "label": "Svg"
+        },
+         {
+          "type": "inline_richtext",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "button_product",
+      "name": "ATC Button",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "Button label",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+         {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Poster"
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        }
+      ]
+    },
+    {
+      "type": "after_before",
+      "name": "After Before",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "before",
+          "label": "Before Image"
+        },
+       {
+          "type": "image_picker",
+          "id": "after",
+          "label": "After Image"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Rating",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg",
+          "label": "Svg"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom Class"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        }
+      ]
+    },
+    {
+      "type": "image_item",
+      "name": "Image Slider Item",
+      "settings": [
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Icon"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text1",
+          "label": "Text"
+        },
+       {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "icons_with_text_new",
+      "name": "Icons With Text New",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title1",
+          "label": "Title1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number1",
+          "label": "Number1",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number1_text",
+          "label": "Number1 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number2",
+          "label": "Number2",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number2_text",
+          "label": "Number2 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number3",
+          "label": "Number3",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number3_text",
+          "label": "Number3 Text",
+        },
+         {
+          "type": "richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+         {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title2",
+          "label": "Title2",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number4",
+          "label": "Number4",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number4_text",
+          "label": "Number4 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number5",
+          "label": "Number5",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number5_text",
+          "label": "Number5 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number6",
+          "label": "Number6",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number6_text",
+          "label": "Number6 Text",
+        },
+         {
+          "type": "richtext",
+          "id": "text2",
+          "label": "Text2",
+        },
+         {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title3",
+          "label": "Title3",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number7",
+          "label": "Number7",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number7_text",
+          "label": "Number7 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number8",
+          "label": "Number8",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number8_text",
+          "label": "Number8 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number9",
+          "label": "Number9",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number9_text",
+          "label": "Number9 Text",
+        },
+         {
+          "type": "richtext",
+          "id": "text3",
+          "label": "Text3",
+        },
+         {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Image4",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "title4",
+          "label": "Title4",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number10",
+          "label": "Number10",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number10_text",
+          "label": "Number10 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number11",
+          "label": "Number11",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number11_text",
+          "label": "Number11 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number12",
+          "label": "Number12",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "number12_text",
+          "label": "Number12 Text",
+        },
+         {
+          "type": "inline_richtext",
+          "id": "text4",
+          "label": "Text4",
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    },
+    {
+      "type": "icons_with_text_slider",
+      "name": "Icons With Text Slider",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "svg1",
+          "label": "Svg1",
+        },
+         {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image1",
+        },
+         {
+          "type": "richtext",
+          "id": "text1",
+          "label": "Text1",
+        },
+         {
+          "type": "liquid",
+          "id": "svg2",
+          "label": "Svg2",
+        },
+         {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image2",
+        },
+         {
+          "type": "richtext",
+          "id": "text2",
+          "label": "Text2",
+        },
+         {
+          "type": "liquid",
+          "id": "svg3",
+          "label": "Svg3",
+        },
+         {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image3",
+        },
+         {
+          "type": "richtext",
+          "id": "text3",
+          "label": "Text3",
+        },
+         {
+          "type": "liquid",
+          "id": "svg4",
+          "label": "Svg4",
+        },
+         {
+          "type": "image_picker",
+          "id": "image4",
+          "label": "Image4",
+        },
+         {
+          "type": "richtext",
+          "id": "text4",
+          "label": "Text4",
+        },
+        {
+          "type": "select",
+          "id": "loading",
+          "options": [
+            {
+              "value": "lazy",
+              "label": "Lazy"
+            },
+            {
+              "value": "eager",
+              "label": "Eager"
+            }
+          ],
+          "default": "lazy",
+          "label": "Image Loading"
+        },
+        {
+          "type": "select",
+          "id": "fetchpriority",
+          "options": [
+            {
+              "value": "low",
+              "label": "Low"
+            },
+            {
+              "value": "high",
+              "label": "High"
+            }
+          ],
+          "default": "low",
+          "label": "Image Fetchpriority"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left",
+          "label": "Content Position"
+        },
+         {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Richtext Lp"
+    }
+  ]
+  }
+{% endschema %}

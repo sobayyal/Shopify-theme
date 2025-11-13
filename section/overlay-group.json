@@ -1,0 +1,86 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.overlay",
+  "name": "Overlay group",
+  "sections": {
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "custom_css": [
+        ".upsell_product .line-item,.upsell_media img {--line-item-media-width: 6rem; height: 100px; width: 100% !important; object-fit: contain;}"
+      ],
+      "settings": {
+        "enable_custom_payment_terms": false,
+        "cart_title": "My Cart",
+        "freeshipping_title": "Congratulations, you qualify for free shipping!",
+        "freeshipping_title_warning": "more to qualify for free shipping!",
+        "free_gift_tag_text": "Free Gift",
+        "cart-drawer-adc-button": "Add to Cart",
+        "cart_discount": "Discount",
+        "cart_incl_tax": "Subtotal",
+        "show_cart_note": false,
+        "show_shipping_text": true,
+        "show_view_cart_button": false,
+        "cart_checkout_button_text": "Checkout",
+        "recommendations_title": "Black Friday Sale - 58% OFF",
+        "products": [
+          "check-in-all-in-one-28",
+          "carry-on-aluminum",
+          "large-aluminum",
+          "carry-on-all-in-one",
+          "packing-cubes",
+          "fold-n-go-duffel"
+        ],
+        "custom_icon": "shopify://shop_images/m_21.svg",
+        "title": "30-Day Satisfaction Guarantee",
+        "show_checkout_button": true,
+        "show_price_in_checkout_button": false,
+        "icon1": "shopify://shop_images/nobl_cart_icons_100_x_50_px_3.svg",
+        "title1": "",
+        "icon2": "shopify://shop_images/6_36a099a3-33d3-42c4-b40e-a3c46db16244.svg",
+        "title2": "",
+        "icon3": "shopify://shop_images/nobl_cart_icons_100_x_50_px_4.svg",
+        "title3": ""
+      }
+    },
+    "newsletter-popup": {
+      "type": "newsletter-popup",
+      "disabled": true,
+      "settings": {
+        "apparition_delay": 5,
+        "show_only_on_index": true,
+        "hide_for_account_holders": true,
+        "show_only_once": true,
+        "title": "Signup for our newsletter",
+        "content": "Describe what your customers will receive when subscribing to your newsletter.",
+        "button_text": "Subscribe",
+        "background": "#1c1c1c",
+        "text_color": "#ffffff",
+        "button_background": "#ffffff",
+        "button_text_color": "#1c1c1c"
+      }
+    },
+    "privacy-banner": {
+      "type": "privacy-banner",
+      "disabled": true,
+      "settings": {
+        "title": "🍪 Cookie policy",
+        "content": "<p>We use cookies and similar technologies to provide the best experience on our website. Refer to our Privacy Policy for more information.</p>",
+        "background": "#1c1c1c",
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "cart-drawer",
+    "newsletter-popup",
+    "privacy-banner"
+  ]
+}

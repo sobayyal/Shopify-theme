@@ -1,0 +1,438 @@
+{% comment %}
+  Mother's Day Hero Section - Based on HexClad reference code but with custom classes
+  This is a direct implementation of the hero banner with split layout design
+{% endcomment %}
+
+<style>
+.mothers-day-hero{z-index:1;color:#fff;background-color:#002921;scroll-margin-top:6.25rem;position:relative}
+.mothers-day-hero.--big{height:31.75rem}
+.mothers-day-hero.--big .mothers-day-hero__grid{min-height:31.75rem}
+.mothers-day-hero.--small{height:36.125rem}
+.mothers-day-hero.--small .mothers-day-hero__grid{height:36.125rem}
+.mothers-day-hero__grid{height:100%;display:grid}
+.mothers-day-hero__grid.--half{grid-template-columns:minmax(0,1fr)}
+.mothers-day-hero__grid.--half .mothers-day-hero__image{position:absolute;top:0;left:0}
+.mothers-day-hero__grid.--full-width{grid-template-columns:minmax(0,1fr)}
+.mothers-day-hero__grid.--full-width .mothers-day-hero__bg{background:0 0!important}
+.mothers-day-hero__grid.--full-width .mothers-day-hero__image{position:absolute;top:0;left:0}
+.mothers-day-hero__bg{padding:0;position:relative;overflow:hidden}
+.mothers-day-hero__image{z-index:-1;width:100%;height:100%}
+.mothers-day-hero__image.--desktop{display:none}
+.mothers-day-hero__image.--mobile{display:block}
+.mothers-day-hero__image img{object-fit:cover;width:100%;height:100%;position:absolute;top:0;left:0}
+.mothers-day-hero__gif{z-index:1;display:block;position:relative}
+.mothers-day-hero__gif picture{position:absolute}
+.mothers-day-hero__shadow{z-index:0;background-color:#002921;width:100%;height:100%;position:absolute;top:0;left:0}
+.mothers-day-hero__content{text-align:center;z-index:2;flex-direction:column;align-items:center;gap:.75rem;width:100%;max-width:37.5rem;height:100%;margin:0 auto;padding:1.25rem 1.75rem;display:flex;position:relative}
+.mothers-day-hero__mobile{width:100%;height:2.8125rem;display:block;position:relative}
+.mothers-day-hero__mobile img{object-fit:contain;object-position:center;width:100%;height:100%;position:absolute;top:0;left:0}
+.mothers-day-hero__overline{font-size:20px;font-weight:600;display:none}
+.mothers-day-hero__overline.--show{align-items:center;gap:.3125rem;display:flex}
+.mothers-day-hero__overline picture{align-items:center;display:flex}
+.mothers-day-hero__overline picture img{height:1.875rem}
+.mothers-day-hero__title{margin:0;font-size:44px;font-weight:500;line-height:normal;}
+.mothers-day-hero__title span{font-size:clamp(1.75rem,1.2965rem + 1.93492vw,3.125rem)}
+.mothers-day-hero__description{padding:0 .625rem;17px;font-weight:500;line-height:normal}
+.mothers-day-hero__description p{color:inherit;line-height:1.5}
+.mothers-day-hero__description p:last-child{margin-bottom:0}
+.mothers-day-hero__buttons{margin:auto 0 0}
+.mothers-day-hero__button{cursor:pointer;white-space:nowrap;color:#b2292e;background-color:#fff;border-radius:1.875rem;justify-content:center;align-items:center;gap:.625rem;width:fit-content;height:clamp(3rem,2.83509rem + .703606vw,3.5rem);margin-top:auto;padding:.75rem 2.5rem;font-size:1.25rem;font-weight:600;display:flex}
+.mothers-day-hero__button:active,.mothers-day-hero__button:focus,.mothers-day-hero__button:hover{color:#fff;background-color:#b2292e}
+.mothers-day-hero__button:active path,.mothers-day-hero__button:focus path,.mothers-day-hero__button:hover path{stroke:#fff}
+@media print,screen and (min-width:64em){.mothers-day-hero.--big{height:31.75rem}
+.mothers-day-hero.--big .mothers-day-hero__grid{min-height:31.75rem}
+.mothers-day-hero.--small{height:25rem}
+.mothers-day-hero.--small .mothers-day-hero__grid{height:25rem}
+.mothers-day-hero__grid.--half{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.mothers-day-hero__grid.--half .mothers-day-hero__image{position:relative}
+.mothers-day-hero__bg{padding:2.5rem 4.375rem 2.5rem 5rem}
+.mothers-day-hero__image.--desktop{display:block}
+.mothers-day-hero__image.--mobile{display:none}
+.mothers-day-hero__gif{display:none}
+.mothers-day-hero__content{text-align:left;justify-content:center;align-items:flex-start;gap:1.25rem;margin:0;padding:0}
+.mothers-day-hero__mobile{display:none}
+.mothers-day-hero__overline{align-items:center;gap:.3125rem;display:flex}
+.mothers-day-hero__overline picture img{height:auto}
+.mothers-day-hero__description{padding:0}
+.mothers-day-hero__button{margin-top:0;font-size:1.25rem}
+}
+
+/* Section-specific styles */
+#shopify-section-{{ section.id }} .mothers-day-hero__shadow {
+  background: transparent;
+}
+
+@media screen and (min-width: 1024px) {
+  #shopify-section-{{ section.id }} .mothers-day-hero__shadow {
+    background: linear-gradient(to right,
+    rgba(0, 0, 0, 0.0) 0%,
+    rgba(0, 0, 0, 0.0) 40%,
+    rgba(0, 0, 0, 0) 100%);
+  }
+  
+  #shopify-section-{{ section.id }} .mothers-day-hero__bg {
+    background-color: #031d1b;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  #shopify-section-{{ section.id }} .mothers-day-hero {
+    scroll-margin-top: var(--header-height, 102px);
+  }
+  
+  #shopify-section-{{ section.id }} .mothers-day-hero__bg {
+    background-color: transparent;
+  }
+}
+
+/* Custom Canela font - Add the proper font import if needed */
+/* @font-face {
+  font-family: 'Canela';
+  src: url('{{ "Canela-Regular.woff2" | asset_url }}') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} */
+
+.canela {
+  font-family: inherit;
+}
+
+@media(max-width:768px){
+  .hide--content-mobile{
+    display:none;
+  }
+  .mothers-day-hero__overline.--show{
+    display:none !important
+  }
+  .mothers-day-hero__title{
+    font-size:36px !important;
+  }
+  .mothers-day-hero__description{
+    font-size:14px !important;
+  }
+  /* .mothers-day-hero__content{
+    padding:1.25rem 1.3rem !important;
+  } */
+}
+  @media(max-width:430px){
+  .mothers-day-hero__title{
+    font-size:32px !important;
+  }
+  .mothers-day-hero__description{
+    font-size:14px !important;
+  }
+  /* .mothers-day-hero__content{
+    padding:1.25rem 1.3rem !important;
+  } */
+}
+  @media print, screen and (min-width: 1800px) {
+    .mothers-day-hero.--big {
+        height: 35.75rem !important;
+    }
+}
+</style>
+
+<div
+  class="mothers-day-hero {% if section.settings.size == 'large' %}--big{% else %}--small{% endif %}"
+  id="{{ section.settings.section_id }}"
+>
+  <div class="mothers-day-hero__grid --half">
+    <div class="mothers-day-hero__bg">
+      <div class="mothers-day-hero__content {% if section.settings.hide_content_mobile %} hide--content-mobile{% endif %}">
+        {% if section.settings.show_mobile_logo %}
+          <div class="mothers-day-hero__mobile">
+            {% if section.settings.mobile_logo != blank %}
+              <picture>
+                <source media="(min-width: 768px)" srcset="{{ section.settings.mobile_logo | img_url: '768x' }}, {{ section.settings.mobile_logo | img_url: '1536x' }} 2x">
+                <source media="(min-width: 375px)" srcset="{{ section.settings.mobile_logo | img_url: '375x' }}, {{ section.settings.mobile_logo | img_url: '750x' }} 2x">
+                <img 
+                  src="{{ section.settings.mobile_logo | img_url: '375x' }}" 
+                  alt="{{ section.settings.mobile_logo.alt | escape }}" 
+                  width="{{ section.settings.mobile_logo.width }}" 
+                  height="{{ section.settings.mobile_logo.height }}" 
+                  loading="lazy"
+                  style="object-position: 50% 50%"
+                  fetchpriority="auto"
+                >
+              </picture>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.show_overline %}
+          <div class="mothers-day-hero__overline {% if section.settings.show_overline %} --show{% endif %}">
+            {% if section.settings.overline_icon != blank %}
+              <picture>
+                <source media="(min-width: 75px)" srcset="{{ section.settings.overline_icon | img_url: '75x' }}, {{ section.settings.overline_icon | img_url: '150x' }} 2x">
+                <img 
+                  src="{{ section.settings.overline_icon | img_url: '75x' }}" 
+                  alt="{{ section.settings.overline_text | escape }}" 
+                  width="{{ section.settings.overline_icon.width }}" 
+                  height="{{ section.settings.overline_icon.height }}" 
+                  loading="lazy"
+                  style="object-position: 50% 50%"
+                  fetchpriority="auto"
+                >
+              </picture>
+            {% endif %}
+            {{ section.settings.overline_text }}
+          </div>
+        {% endif %}
+        
+        <h2 class="mothers-day-hero__title canela">
+          {{ section.settings.heading }}
+        </h2>
+        
+        <div class="mothers-day-hero__description">
+          {{ section.settings.description }}
+        </div>
+        
+        {% if section.settings.show_button %}
+          <div class="mothers-day-hero__buttons">
+            <a href="{{ section.settings.button_link }}" class="mothers-day-hero__button">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="mothers-day-hero__shadow"></div>
+    
+    {% if section.settings.desktop_image != blank %}
+      <div class="mothers-day-hero__image --desktop">
+        <picture>
+          {% if section.settings.image_responsive %}
+            <source media="(min-width: 1512px)" srcset="{{ section.settings.desktop_image | img_url: '1512x' }}, {{ section.settings.desktop_image | img_url: '3024x' }} 2x">
+            <source media="(min-width: 1024px)" srcset="{{ section.settings.desktop_image | img_url: '1024x' }}, {{ section.settings.desktop_image | img_url: '2048x' }} 2x">
+            <source media="(min-width: 768px)" srcset="{{ section.settings.desktop_image | img_url: '768x' }}, {{ section.settings.desktop_image | img_url: '1536x' }} 2x">
+            <source media="(min-width: 375px)" srcset="{{ section.settings.desktop_image | img_url: '375x' }}, {{ section.settings.desktop_image | img_url: '750x' }} 2x">
+          {% endif %}
+          <img 
+            src="{{ section.settings.desktop_image | img_url: 'master' }}" 
+            alt="{{ section.settings.desktop_image.alt | escape }}" 
+            width="{{ section.settings.desktop_image.width }}" 
+            height="{{ section.settings.desktop_image.height }}" 
+            loading="eager"
+            style="object-position: {{ section.settings.image_position }}"
+            fetchpriority="auto"
+          >
+        </picture>
+      </div>
+    {% endif %}
+    
+    {% if section.settings.mobile_image != blank %}
+      <div class="mothers-day-hero__image --mobile">
+        <picture>
+          <source media="(min-width: 375px)" srcset="{{ section.settings.mobile_image | img_url: '375x' }}, {{ section.settings.mobile_image | img_url: '750x' }} 2x">
+          <img 
+            src="{{ section.settings.mobile_image | img_url: 'master' }}" 
+            alt="{{ section.settings.mobile_image.alt | escape }}" 
+            width="{{ section.settings.mobile_image.width }}" 
+            height="{{ section.settings.mobile_image.height }}" 
+            loading="eager"
+            style="object-position: {{ section.settings.mobile_position | default: section.settings.image_position }}"
+            fetchpriority="auto"
+          >
+        </picture>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mother's Day Hero",
+  "class": "mothers-day-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "mothers-day-hero"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Section Size",
+      "options": [
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mobile_logo",
+      "label": "Show Mobile Logo",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo",
+      "label": "Mobile Logo"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overline",
+      "label": "Show Overline",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "overline_icon",
+      "label": "Overline Icon"
+    },
+    {
+      "type": "text",
+      "id": "overline_text",
+      "label": "Overline Text",
+      "default": "Best Selling Sets"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Flowers die.  <br />HexClad is forever."
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Mom wants cookware that delivers a great sear, cleans up fast, has a lifetime warranty and looks fab. And our knives are as sharp as she is.<br/><strong>Save up to 49% on our most popular sets.</strong></p>"
+    },
+    {
+      "type": "checkbox",
+      "id":"hide_content_mobile",
+      "label":"Hide Content on Mobile",
+      "default":false
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_responsive",
+      "label": "Enable Responsive Images",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "50% 50%",
+          "label": "Center"
+        },
+        {
+          "value": "50% 0%",
+          "label": "Top"
+        },
+        {
+          "value": "50% 100%",
+          "label": "Bottom"
+        },
+        {
+          "value": "50% 60%",
+          "label": "Lower Center"
+        },
+        {
+          "value": "0% 50%",
+          "label": "Left"
+        },
+        {
+          "value": "100% 50%",
+          "label": "Right"
+        }
+      ],
+      "default": "50% 60%"
+    },
+    {
+      "type": "select",
+      "id": "mobile_position",
+      "label": "Mobile Image Position",
+      "options": [
+        {
+          "value": "50% 50%",
+          "label": "Center"
+        },
+        {
+          "value": "50% 0%",
+          "label": "Top"
+        },
+        {
+          "value": "50% 100%",
+          "label": "Bottom"
+        },
+        {
+          "value": "50% 60%",
+          "label": "Lower Center"
+        },
+        {
+          "value": "0% 50%",
+          "label": "Left"
+        },
+        {
+          "value": "100% 50%",
+          "label": "Right"
+        }
+      ],
+      "default": "50% 60%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mother's Day Hero",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,813 @@
+{%- if section.blocks.size > 0 -%}
+  <div class="sticky-manual-bar" id="sticky-manual-bar-{{ section.id }}">
+    <div class="sticky-manual-bar__container">
+      <!-- Left scroll arrow -->
+      <button class="sticky-manual-bar__scroll-arrow sticky-manual-bar__scroll-arrow--left hidden" id="scroll-left-{{ section.id }}" aria-label="Scroll left">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      
+      <div class="sticky-manual-bar__content" id="sticky-content-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'nav_item' -%}
+              {%- if block.settings.text != blank -%}
+                <a 
+                  href="#{{ block.settings.target_id }}" 
+                  class="sticky-manual-bar__item"
+                  data-scroll-to="{{ block.settings.target_id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.text }}
+                </a>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      
+      <!-- Right scroll arrow -->
+      <button class="sticky-manual-bar__scroll-arrow sticky-manual-bar__scroll-arrow--right" id="scroll-right-{{ section.id }}" aria-label="Scroll right">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Placeholder to prevent content jump -->
+  <div class="sticky-manual-bar__placeholder" id="sticky-placeholder-{{ section.id }}" style="display: none;"></div>
+
+  <style>
+    .sticky-manual-bar {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: {{ section.settings.background_color }};
+      z-index: {{ section.settings.z_index }};
+      box-shadow: {{ section.settings.shadow_style }};
+      border-bottom: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+      transition: all 0.3s ease;
+    }
+
+    .sticky-manual-bar.is-stuck {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    /* Placeholder takes up space when bar is sticky */
+    .sticky-manual-bar__placeholder {
+      width: 100%;
+    }
+
+    .sticky-manual-bar__container {
+      max-width: {{ section.settings.container_width }};
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .sticky-manual-bar__content {
+      display: flex;
+      justify-content: {{ section.settings.alignment }};
+      align-items: center;
+      gap: {{ section.settings.item_spacing }}px;
+      flex-wrap: wrap;
+      padding: {{ section.settings.padding_vertical }}px 0;
+    }
+
+    .sticky-manual-bar__item {
+      color: {{ section.settings.text_color }};
+      text-decoration: none;
+      font-size: {{ section.settings.font_size }}px;
+      font-weight: {{ section.settings.font_weight }};
+      transition: all {{ section.settings.transition_speed }}ms ease;
+      cursor: pointer;
+      background-color: {{ section.settings.item_background }};
+      border: {{ section.settings.item_border_width }}px solid {{ section.settings.item_border_color }};
+      position: relative;
+      letter-spacing: 1.2px;
+    }
+
+    .sticky-manual-bar__item:hover {
+      color: {{ section.settings.text_color_hover }};
+      background-color: {{ section.settings.item_background_hover }};
+    }
+
+    .sticky-manual-bar__item.active {
+      border-bottom: 1px solid black !important;
+    }
+
+    /* Mobile scroll arrows */
+    .sticky-manual-bar__scroll-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      {% comment %} background: rgba(255, 255, 255, 0.95); {% endcomment %}
+      {% comment %} border: 1px solid #e0e0e0; {% endcomment %}
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      align-items: center;
+      justify-content: center;
+      {% comment %} box-shadow: 0 2px 8px rgba(0,0,0,0.15); {% endcomment %}
+      transition: all 0.2s ease;
+    }
+
+    .sticky-manual-bar__scroll-arrow:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .sticky-manual-bar__scroll-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: #333;
+    }
+
+    .sticky-manual-bar__scroll-arrow--left {
+      left: 0px;
+    }
+
+    .sticky-manual-bar__scroll-arrow--right {
+      right: 0px;
+    }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 749px) {
+      .sticky-manual-bar {
+        position: relative;
+      }
+
+      .sticky-manual-bar__scroll-arrow {
+        display: flex;
+      }
+
+      .sticky-manual-bar__scroll-arrow.hidden {
+        display: none;
+      }
+
+      .sticky-manual-bar__content {
+        gap: {{ section.settings.mobile_item_spacing }}px;
+        padding: {{ section.settings.mobile_padding_vertical }}px 0;
+        display: flex;
+        justify-content: flex-start; 
+        align-items: center;
+        gap: 16px;
+        flex-wrap: nowrap;
+        padding: 10px 0;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .sticky-manual-bar__content::-webkit-scrollbar {
+        display: none;
+      }
+
+      .sticky-manual-bar__item {
+        font-size: {{ section.settings.mobile_font_size }}px;
+        max-width: fit-content;
+        width: fit-content;
+        min-width: fit-content;
+      }
+       .sticky-manual-bar__container {
+      max-width: {{ section.settings.container_width }};
+      margin: 0 auto;
+      padding: 0 35px;
+    }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const stickyBar = document.getElementById('sticky-manual-bar-{{ section.id }}');
+      const placeholder = document.getElementById('sticky-placeholder-{{ section.id }}');
+      const navContent = document.getElementById('sticky-content-{{ section.id }}');
+      const navItems = stickyBar.querySelectorAll('[data-scroll-to]');
+      const scrollOffset = {{ section.settings.scroll_offset }};
+      const leftArrow = document.getElementById('scroll-left-{{ section.id }}');
+      const rightArrow = document.getElementById('scroll-right-{{ section.id }}');
+      
+      // Store the original offset position
+      let stickyBarOffset = stickyBar.offsetTop;
+      let stickyBarHeight = stickyBar.offsetHeight;
+
+      // Mobile scroll arrows functionality
+      function updateArrowsVisibility() {
+        if (window.innerWidth <= 749) {
+          const scrollLeft = navContent.scrollLeft;
+          const maxScroll = navContent.scrollWidth - navContent.clientWidth;
+          
+          // Hide left arrow if at start
+          if (scrollLeft <= 5) {
+            leftArrow.classList.add('hidden');
+          } else {
+            leftArrow.classList.remove('hidden');
+          }
+          
+          // Hide right arrow if at end
+          if (scrollLeft >= maxScroll - 5) {
+            rightArrow.classList.add('hidden');
+          } else {
+            rightArrow.classList.remove('hidden');
+          }
+        }
+      }
+
+      // Scroll arrows click handlers
+      if (leftArrow && rightArrow) {
+        leftArrow.addEventListener('click', function() {
+          navContent.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+
+        rightArrow.addEventListener('click', function() {
+          navContent.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+
+        // Update arrows on scroll
+        navContent.addEventListener('scroll', updateArrowsVisibility);
+        
+        // Update arrows on resize
+        window.addEventListener('resize', updateArrowsVisibility);
+        
+        // Initial check
+        updateArrowsVisibility();
+      }
+
+      // Scroll active item into view on mobile
+      function scrollActiveItemIntoView(activeItem) {
+        if (window.innerWidth <= 749 && activeItem) {
+          const itemLeft = activeItem.offsetLeft;
+          const itemWidth = activeItem.offsetWidth;
+          const containerWidth = navContent.clientWidth;
+          const scrollLeft = navContent.scrollLeft;
+          
+          // Calculate center position
+          const targetScroll = itemLeft - (containerWidth / 2) + (itemWidth / 2);
+          
+          navContent.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      // Update measurements on resize
+      window.addEventListener('resize', function() {
+        if (!stickyBar.classList.contains('is-stuck')) {
+          stickyBarOffset = stickyBar.offsetTop;
+        }
+        stickyBarHeight = stickyBar.offsetHeight;
+        placeholder.style.height = stickyBarHeight + 'px';
+      });
+
+      // Smooth sticky functionality with placeholder
+      function handleSticky() {
+        if (window.pageYOffset >= stickyBarOffset) {
+          if (!stickyBar.classList.contains('is-stuck')) {
+            // Set placeholder height to match bar height
+            placeholder.style.height = stickyBarHeight + 'px';
+            placeholder.style.display = 'block';
+            stickyBar.classList.add('is-stuck');
+          }
+        } else {
+          if (stickyBar.classList.contains('is-stuck')) {
+            placeholder.style.display = 'none';
+            stickyBar.classList.remove('is-stuck');
+          }
+        }
+      }
+
+      // Run on scroll
+      window.addEventListener('scroll', handleSticky);
+      
+      // Run on load
+      handleSticky();
+
+      // Smooth scroll functionality with accurate positioning
+      navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('data-scroll-to');
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            // Always get fresh measurements
+            const currentStickyBarHeight = stickyBar.offsetHeight;
+            
+            // Calculate target position accounting for sticky bar
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - currentStickyBarHeight - scrollOffset;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+
+            // Update active state
+            navItems.forEach(nav => nav.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Scroll active item into view on mobile
+            scrollActiveItemIntoView(this);
+          } else {
+            console.warn('Target element with ID "' + targetId + '" not found');
+          }
+        });
+      });
+
+      // Improved active section detection on scroll
+      function updateActiveNav() {
+        const currentStickyBarHeight = stickyBar.offsetHeight;
+        const scrollPosition = window.scrollY + currentStickyBarHeight + 100;
+        
+        let currentSection = null;
+        
+        // Create array of all sections with their positions
+        const sections = [];
+        navItems.forEach((item, index) => {
+          const targetId = item.getAttribute('data-scroll-to');
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            sections.push({
+              item: item,
+              element: targetElement,
+              top: targetElement.offsetTop,
+              index: index
+            });
+          }
+        });
+        
+        // Sort sections by position
+        sections.sort((a, b) => a.top - b.top);
+        
+        // Find which section we're currently in
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i];
+          const nextSection = sections[i + 1];
+          
+          // If this is the last section, it extends to the end of the page
+          const sectionBottom = nextSection ? nextSection.top : document.documentElement.scrollHeight;
+          
+          // Check if scroll position is within this section's range
+          if (scrollPosition >= section.top && scrollPosition < sectionBottom) {
+            currentSection = section.item;
+            break;
+          }
+        }
+        
+        // Update active states
+        navItems.forEach(nav => nav.classList.remove('active'));
+        if (currentSection) {
+          currentSection.classList.add('active');
+          
+          // Scroll active item into view on mobile during manual scroll
+          scrollActiveItemIntoView(currentSection);
+        }
+      }
+
+      // Debounced scroll handler for manual scrolling
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveNav, 0);
+      });
+
+      // Run on page load
+      updateActiveNav();
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sticky Manual Bar",
+  "tag": "section",
+  "class": "section-sticky-manual-bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bar Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Width",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "shadow_style",
+      "label": "Shadow Style",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "0 2px 4px rgba(0,0,0,0.1)",
+          "label": "Light"
+        },
+        {
+          "value": "0 4px 6px rgba(0,0,0,0.1)",
+          "label": "Medium"
+        },
+        {
+          "value": "0 10px 15px rgba(0,0,0,0.1)",
+          "label": "Heavy"
+        }
+      ],
+      "default": "0 2px 4px rgba(0,0,0,0.1)"
+    },
+    {
+      "type": "select",
+      "id": "z_index",
+      "label": "Z-Index (Layer Priority)",
+      "options": [
+        {
+          "value": "10",
+          "label": "Very Low (10)"
+        },
+        {
+          "value": "100",
+          "label": "Low (100)"
+        },
+        {
+          "value": "500",
+          "label": "Medium (500)"
+        },
+        {
+          "value": "999",
+          "label": "High (999)"
+        },
+        {
+          "value": "9999",
+          "label": "Very High (9999)"
+        }
+      ],
+      "default": "999",
+      "info": "Higher values appear above other elements"
+    },
+    {
+      "type": "select",
+      "id": "container_width",
+      "label": "Container Width",
+      "options": [
+        {
+          "value": "100%",
+          "label": "Full Width"
+        },
+        {
+          "value": "1200px",
+          "label": "1200px"
+        },
+        {
+          "value": "1400px",
+          "label": "1400px"
+        },
+        {
+          "value": "1600px",
+          "label": "1600px"
+        }
+      ],
+      "default": "1400px"
+    },
+    {
+      "type": "header",
+      "content": "Content Alignment"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Items Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        },
+        {
+          "value": "space-between",
+          "label": "Space Between"
+        },
+        {
+          "value": "space-around",
+          "label": "Space Around"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_vertical",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Vertical Padding",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Item Styling"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "text_color_hover",
+      "label": "Text Color (Hover)",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color_active",
+      "label": "Text Color (Active)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_background",
+      "label": "Item Background",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "item_background_hover",
+      "label": "Item Background (Hover)",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "item_background_active",
+      "label": "Item Background (Active)",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Item Border Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color_active",
+      "label": "Item Border Color (Active)",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "item_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Item Border Width",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Border Radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "item_padding_vertical",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Vertical Padding",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "item_padding_horizontal",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Horizontal Padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_item_padding_vertical",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Item Vertical Padding",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "mobile_item_padding_horizontal",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Item Horizontal Padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Space Between Items",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_item_spacing",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Space Between Items",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Scroll Behavior"
+    },
+    {
+      "type": "range",
+      "id": "scroll_offset",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Scroll Offset",
+      "default": 20,
+      "info": "Extra space above target section when scrolling"
+    },
+    {
+      "type": "range",
+      "id": "transition_speed",
+      "min": 100,
+      "max": 1000,
+      "step": 50,
+      "unit": "ms",
+      "label": "Transition Speed",
+      "default": 300
+    },
+    {
+      "type": "checkbox",
+      "id": "highlight_on_scroll",
+      "label": "Highlight Active Section on Scroll",
+      "default": true,
+      "info": "Automatically highlights the menu item as you scroll through sections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Navigation Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Button Text",
+          "default": "Section Name",
+          "info": "The text displayed on the navigation button"
+        },
+        {
+          "type": "text",
+          "id": "target_id",
+          "label": "Target Section ID",
+          "info": "Enter the ID of the section you want to scroll to (without #). Must match exactly with the section's Custom ID.",
+          "placeholder": "e.g., about-section"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky Manual Bar",
+      "blocks": [
+        {
+          "type": "nav_item",
+          "settings": {
+            "text": "About",
+            "target_id": "about-section"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "text": "Services",
+            "target_id": "services-section"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "text": "Contact",
+            "target_id": "contact-section"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,586 @@
+{% schema %}
+{
+  "name": "Custom Text with Image",
+  "settings": [
+     {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Top Pick: NOBL Carry-On: All In One"
+    },
+    {
+      "type": "textarea",
+      "id": "rating",
+      "label": "Rating",
+      "default": "4.7 / 5.0 | 14,972 Verified Reviews"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "The award winning ALL-IN-One Carry-On, designed to be more than a rolling box to store your things in."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Explore The NOBL Carry-On Pro"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text_content",
+          "label": "Text Content",
+          "default": "<p>Enter your text here</p>"
+        }
+      ]
+    },
+      {
+      "type": "bullets_block",
+      "name": "Bullets Block",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "Heading",
+          "label": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "bullets",
+          "label": "Bullet Points",
+          "default": "<ul><li>Bullet point 1</li><li>Bullet point 2</li><li>Bullet point 3</li></ul>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bullet Icon"
+        },
+        {
+          "type": "text",
+          "id": "class",
+          "label": "Add Custom Class"
+        }
+      ]
+    },
+    {
+      "type": "image_block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "block_imagem",
+          "label": "Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "default": "Image description"
+        }
+      ]
+    },
+    {
+      "type": "product_highlight_block",
+      "name": "Product Highlight Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image_1",
+          "label": "Product Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_2",
+          "label": "Product Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_3",
+          "label": "Product Image 3"
+        },
+        {
+          "type": "richtext",
+          "id": "product_text_3",
+          "label": "Description ",
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Check Out Favorites"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "feature_list_block",
+      "name": "Feature List Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What We Look for in Exceptional Carry-On Luggage"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_1",
+          "label": "Feature Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_1m",
+          "label": "Feature Image 1 Mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text_1",
+          "label": "Feature Text 1",
+          "default": "<p>Access That Works in Motion - The best carry-ons let you grab your laptop, charger, or passport without opening the whole case. Quick-access pockets and external ports make all the difference mid-transit.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_2",
+          "label": "Feature Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_2m",
+          "label": "Feature Image 2 Mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text_2",
+          "label": "Feature Text 2",
+          "default": "<p>A Purposeful Interior Layout - Smart design isn't about more space - it's about better use of space. We looked for layouts that separate tech from clothing and make compression actually useful.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_3",
+          "label": "Feature Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_3m",
+          "label": "Feature Image 3 Mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text_3",
+          "label": "Feature Text 3",
+          "default": "<p>Smooth Handling in Real Environments - A good suitcase should glide across airport tiles and rougher streets alike. Silent wheels, stable balance, and easy turns make a big difference in real-world testing.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_4",
+          "label": "Feature Image 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_4m",
+          "label": "Feature Image 4 Mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text_4",
+          "label": "Feature Text 4",
+          "default": "<p>Durability That Justifies the Price - Whether it's daily work trips or twice-a-year gateways, premium carry-on should hold up. We prioritized strong shells, secure closures, and warranty-backed reliability.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_5",
+          "label": "Feature Image 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image_5m",
+          "label": "Feature Image 5 Mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text_5",
+          "label": "Feature Text 5",
+          "default": "<p>Professional Presence Without Flash - Style matters - but subtly wins. The best bags look sharp without trying too hard. Minimal design and matte finishes tend to feel most elevated.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text_6",
+          "label": "Feature Text 6",
+          "default": "<p>Each of these bags has its strengths - from legacy craftsmanship to lightweight convenience - and all performed well in different scenarios. But only one model consistently stood out for professionals who travel often, expect efficiency, and demand real function from their gear. In the next section, we take a closer look at the carry-on that set a new benchmark in 2025: the NOBL Carry-On Pro.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Find Out About Our Number 1"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "editor_pick_block",
+      "name": "Editor Pick Block",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Editor's Pick - Best Overall Carry-On for 2025"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "NOBL Carry-On: All In One"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating",
+          "default": "Rated 9.7 / 10.0"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>One thing that stood out immediately: the latches. In a category dominated by zippers, NOBL's secure latch system felt cleaner, faster, and far more reliable — especially for protecting tech and essentials on the go.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Check Out The NOBL Carry-On"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "class",
+          "label": "Add Custom Class"
+        }
+      ]
+    },
+    {
+      "type": "border",
+      "name": "Border Block",
+      "settings": [
+      
+        {
+          "type": "checkbox",
+          "id": "hide",
+          "label": "Hide on Mobile"
+        }
+      ]
+    },
+    {
+      "type": "product_review_block",
+      "name": "Product Review Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "TUMI 19 Degree Lite"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating",
+          "default": "Rated 8.6 / 10.0"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>With its sleek polycarbonate shell and signature angled design, the TUMI 19 Degree Lite stands out for travelers who want to keep things light — without sacrificing quality.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_1",
+          "label": "Product Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_2",
+          "label": "Product Image 2"
+        },
+        {
+          "type": "richtext",
+          "id": "liked_list",
+          "label": "Things We Liked",
+          "default": "<ul><li>Lightweight and easy to maneuver</li><li>Premium polycarbonate shell feels durable and refined</li><li>Sleek, sculpted design with a high-end finish</li><li>TSA-integrated lock and smooth wheels for seamless transit</li></ul>"
+        },
+        {
+          "type": "richtext",
+          "id": "short_list",
+          "label": "Where It Falls Short",
+          "default": "<ul><li>No external laptop or tech compartment</li><li>Simplified interior layout — limited organization</li><li>Glossy shell may scuff with heavy use</li></ul>"
+        },
+        {
+          "type": "richtext",
+          "id": "note",
+          "label": "Note",
+          "default": "<p><strong>Where It Falls Short:</strong> Matte variant.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Text with Image",
+      "blocks": [
+        {
+          "type": "text_block"
+        },
+        {
+          "type": "image_block"
+        },
+        {
+          "type": "product_highlight_block"
+        },
+        {
+          "type": "feature_list_block"
+        },
+        {
+          "type": "editor_pick_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<div class="container-1400">
+<div class="custom-section-flex">
+<div class="custom-section">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'text_block' %}
+        <div class="text-block block-{{ block.id }}" {{ block.shopify_attributes }}>
+          {{ block.settings.text_content }}
+        </div>
+  {% when "border" %}
+   <div id="block-{{ block.id }}"  class="border-block block-{{ block.id }} {% if block.settings.hide %} hide-mob-border{% endif %}" {{ block.shopify_attributes }}>
+          <hr>
+        </div>
+     
+      {% when 'image_block' %}
+        <div class="image-block block-{{ block.id }}" {{ block.shopify_attributes }}>
+          
+       {% if block.settings.block_imagem %}
+            <img class="hide-desk" src="{{ block.settings.block_imagem | img_url: '800x' }}" alt="{{ block.settings.image_alt }}" />
+          {% endif %}
+      
+      {% if block.settings.block_image %}
+            <img src="{{ block.settings.block_image | img_url: '800x' }}" alt="{{ block.settings.image_alt }}" />
+          {% endif %}
+        </div>
+    {% when "bullets_block" %}
+        <div class="bullets-block bull-{{ block.id }} {{ block.settings.class }}" {{ block.shopify_attributes }}>
+         {% if block.settings.Heading != blank %}
+<h2 class="rte font-32">{{ block.settings.Heading }}</h2>
+          {% endif %}
+      {% if block.settings.bullets %}
+            <div class="block-bullets">
+              {{ block.settings.bullets }}
+            </div>
+          {% endif %}
+        </div>
+<style>
+  {% if block.settings.image != blank %}
+      .bull-{{ block.id }} ul li {
+    background-image: url({{block.settings.image | image_url: width: 40 }});
+            background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 31.2px;
+    padding-left: 48.1px;
+  }
+    @media (max-width: 767px) {
+       .bull-{{ block.id }} ul li {
+      background-size: 24px;
+        padding-left: 35px;
+       }
+    }
+    {% endif %}
+</style>
+      {% when 'product_highlight_block' %}
+        <div class="product-highlight-block block-{{ block.id }}" {{ block.shopify_attributes }}>
+          <div class="product-grid">
+            <div class="product-item">
+              {% if block.settings.product_image_1 %}
+                <img src="{{ block.settings.product_image_1 | img_url: '500x' }}" alt="Product 1" />
+              {% endif %}
+           
+            </div>
+            <div class="product-item">
+              {% if block.settings.product_image_2 %}
+                <img src="{{ block.settings.product_image_2 | img_url: '500x' }}" alt="Product 2" />
+              {% endif %}
+            
+            </div>
+            <div class="product-item">
+              {% if block.settings.product_image_3 %}
+                <img src="{{ block.settings.product_image_3 | img_url: '500x' }}" alt="Product 3" />
+              {% endif %}
+           
+            </div>
+          </div>
+          <div class="rte">{{ block.settings.product_text_3 }}</div>
+          <a href="{{ block.settings.button_link }}" class="button btn-full ">{{ block.settings.button_text }}</a>
+        </div>
+      {% when 'feature_list_block' %}
+        <div class="feature-list-block block-{{ block.id }}" {{ block.shopify_attributes }}>
+          <h2>{{ block.settings.heading }}</h2>
+          <div class="feature-item">
+      {% if block.settings.feature_image_1m %}
+              <img class="hide-desk" src="{{ block.settings.feature_image_1m | img_url: '252x' }}" alt="Feature 1" />
+            {% endif %}
+            {% if block.settings.feature_image_1 %}
+              <img src="{{ block.settings.feature_image_1 | img_url: '252x' }}" alt="Feature 1" />
+            {% endif %}
+      <div class="rte">
+            {{ block.settings.feature_text_1 }}
+      </div>
+          </div>
+          <div class="feature-item">
+      {% if block.settings.feature_image_2m %}
+              <img class="hide-desk" src="{{ block.settings.feature_image_2m | img_url: '252x' }}" alt="Feature 1" />
+            {% endif %}
+            {% if block.settings.feature_image_2 %}
+              <img src="{{ block.settings.feature_image_2 | img_url: '252x' }}" alt="Feature 2" />
+            {% endif %}
+       <div class="rte">
+            {{ block.settings.feature_text_2 }}
+       </div>
+          </div>
+          <div class="feature-item">
+      {% if block.settings.feature_image_3m %}
+              <img class="hide-desk" src="{{ block.settings.feature_image_3m | img_url: '252x' }}" alt="Feature 1" />
+            {% endif %}
+            {% if block.settings.feature_image_3 %}
+              <img src="{{ block.settings.feature_image_3 | img_url: '252x' }}" alt="Feature 3" />
+            {% endif %}
+       <div class="rte">
+            {{ block.settings.feature_text_3 }}
+       </div>
+          </div>
+          <div class="feature-item">
+      {% if block.settings.feature_image_4m %}
+              <img class="hide-desk" src="{{ block.settings.feature_image_4m | img_url: '252x' }}" alt="Feature 1" />
+            {% endif %}
+            {% if block.settings.feature_image_4 %}
+              <img src="{{ block.settings.feature_image_4 | img_url: '252x' }}" alt="Feature 4" />
+            {% endif %}
+      <div class="rte">
+            {{ block.settings.feature_text_4 }}
+      </div>
+          </div>
+          <div class="feature-item">
+      {% if block.settings.feature_image_5m %}
+              <img class="hide-desk" src="{{ block.settings.feature_image_5m | img_url: '252x' }}" alt="Feature 1" />
+            {% endif %}
+      {% if block.settings.feature_image_5 %}
+              <img src="{{ block.settings.feature_image_5 | img_url: '252x' }}" alt="Feature 5" />
+            {% endif %}
+      <div class="rte">
+            {{ block.settings.feature_text_5 }}
+      </div>
+          </div>
+          <div class="feature-item-bottom">
+            {{ block.settings.feature_text_6 }}
+          </div>
+          <a href="{{ block.settings.button_link }}" class="button btn-full ">{{ block.settings.button_text }}</a>
+        </div>
+      {% when 'editor_pick_block' %}
+        <div id="block-{{ block.id }}" class="editor-pick-block block-{{ block.id }} {{ block.settings.class }}" {{ block.shopify_attributes }}>
+          {% if block.settings.heading  != blank %} <p class="top-edi">{{ block.settings.heading }}</p>{% endif %}
+          {% if block.settings.subheading  != blank %} <h2 class="font-32">{{ block.settings.subheading }}</h2>{% endif %}
+          {% if block.settings.rating  != blank %}<p class="rating"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.1 0.900391L11.1431 7.18834H17.7546L12.4058 11.0745L14.4488 17.3624L9.1 13.4763L3.75115 17.3624L5.79423 11.0745L0.445386 7.18834H7.05692L9.1 0.900391Z" fill="#B99208"/>
+</svg>
+ {{ block.settings.rating }}</p>{% endif %}
+           {% if block.settings.description  != blank %}<div class="rte">{{ block.settings.description }}</div>{% endif %}
+             {% if block.settings.button_link  != blank %}
+               <a href="{{ block.settings.button_link }}" class="button btn-full ">{{ block.settings.button_text }}</a>
+               {% endif %}
+        </div>
+  {% when 'product_review_block' %}
+        <div class="product-review-block block-{{ block.id }}" {{ block.shopify_attributes }}>
+         {% if block.settings.heading  != blank %} <h2 class="font-32">{{ block.settings.heading }}</h2>{% endif %}
+       {% if block.settings.rating  != blank %}<p class="rating"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.1 0.900391L11.1431 7.18834H17.7546L12.4058 11.0745L14.4488 17.3624L9.1 13.4763L3.75115 17.3624L5.79423 11.0745L0.445386 7.18834H7.05692L9.1 0.900391Z" fill="black"/>
+</svg>
+ {{ block.settings.rating }}</p>{% endif %}
+        {% if block.settings.description  != blank %}  <div class="rte"> {{ block.settings.description }}</div>{% endif %}
+          <div class="product-images">
+            {% if block.settings.product_image_1 %}
+              <img src="{{ block.settings.product_image_1 | img_url: '600x' }}" alt="Product Image 1" />
+            {% endif %}
+            {% if block.settings.product_image_2 %}
+              <img src="{{ block.settings.product_image_2 | img_url: '600x' }}" alt="Product Image 2" />
+            {% endif %}
+          </div>
+        <div class="list-block">
+          <div class="tick-box ">{{ block.settings.liked_list }}</div>
+         
+         <div class="cross-box"> {{ block.settings.short_list }}</div>
+        </div>
+          <div class="note">{{ block.settings.note }}</div>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+<div class="noble-carry-on-section">
+  <h2 class="font-32">{{ section.settings.title }}</h2>
+  <div class="noble-carry-on-content">
+    <div class="noble-carry-on-image">
+      {% if section.settings.product_image %}
+        <img src="{{ section.settings.product_image | img_url: '700x' }}" alt="Noble Carry-On">
+     
+      {% endif %}
+    </div>
+    
+  </div>
+  <div  class="f-star"><svg width="102" height="18" viewBox="0 0 102 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z" fill="#080808"/>
+<path d="M30 0L32.0206 6.21885H38.5595L33.2694 10.0623L35.2901 16.2812L30 12.4377L24.7099 16.2812L26.7306 10.0623L21.4405 6.21885H27.9794L30 0Z" fill="#080808"/>
+<path d="M51 0L53.0206 6.21885H59.5595L54.2694 10.0623L56.2901 16.2812L51 12.4377L45.7099 16.2812L47.7306 10.0623L42.4405 6.21885H48.9794L51 0Z" fill="#080808"/>
+<path d="M72 0L74.0206 6.21885H80.5595L75.2694 10.0623L77.2901 16.2812L72 12.4377L66.7099 16.2812L68.7306 10.0623L63.4405 6.21885H69.9794L72 0Z" fill="#080808"/>
+<path d="M93 0L95.0206 6.21885H101.56L96.2694 10.0623L98.2901 16.2812L93 12.4377L87.7099 16.2812L89.7306 10.0623L84.4405 6.21885H90.9794L93 0Z" fill="#080808"/>
+</svg> {{ section.settings.rating }}
+  </div>
+  <p class="noble-carry-on-description">{{ section.settings.description }}</p>
+  <a href="{{ section.settings.button_link }}" class="button btn-full ">{{ section.settings.button_text }}</a>
+</div>
+</div>
+</div>

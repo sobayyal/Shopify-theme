@@ -1,0 +1,176 @@
+<div class="faq-section">
+  <h2 class="faq-title">{{ section.settings.title }}</h2>
+
+  <div class="faq-column">
+    <div class="faq-grid">
+      {% assign half = section.blocks.size | divided_by: 2 %}
+      {% for block in section.blocks limit: half %}
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>{{ block.settings.question }}</span>
+          <span class="faq-icon">
+
+            <svg class="plus" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.325" y="0.424609" width="20.15" height="20.15" rx="2.275" stroke="black" stroke-width="0.65" />
+              <path d="M9.82661 14.3584V6.6416H10.9732V14.3584H9.82661ZM6.44141 11.046V9.9722H14.3584V11.046H6.44141Z"
+                fill="black" />
+            </svg>
+
+
+
+            <svg class="minus" width="21" height="21" viewBox="0 0 21 21" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.325" y="0.424609" width="20.15" height="20.15" rx="2.275" stroke="black" stroke-width="0.65" />
+              <path d="M6.44141 11.046V9.9722H14.3584V11.046H6.44141Z" fill="black" />
+            </svg>
+
+          </span>
+        </div>
+        <div class="faq-answer" style="display:none;"><br>{{ block.settings.answer }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="faq-grid">
+      {% assign half = section.blocks.size | divided_by: 2 %}
+      {% for block in section.blocks offset: half %}
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>{{ block.settings.question }}</span>
+          <span class="faq-icon">
+            <svg class="plus" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.325" y="0.424609" width="20.15" height="20.15" rx="2.275" stroke="black" stroke-width="0.65" />
+              <path d="M9.82661 14.3584V6.6416H10.9732V14.3584H9.82661ZM6.44141 11.046V9.9722H14.3584V11.046H6.44141Z"
+                fill="black" />
+            </svg>
+
+
+
+            <svg class="minus" width="21" height="21" viewBox="0 0 21 21" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.325" y="0.424609" width="20.15" height="20.15" rx="2.275" stroke="black" stroke-width="0.65" />
+              <path d="M6.44141 11.046V9.9722H14.3584V11.046H6.44141Z" fill="black" />
+            </svg>
+          </span>
+        </div>
+        <div class="faq-answer" style="display:none;"><br>{{ block.settings.answer }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div> 
+</div>
+
+
+<script> 
+$(document).on("click", ".faq-question", function () {
+  const $clicked = $(this);
+  const $answer = $clicked.next(".faq-answer");
+  const isActive = $clicked.parent().hasClass("active");
+
+  // Collapse all
+  $(".faq-item").removeClass("active");
+  $(".faq-answer").slideUp();
+  $(".faq-icon .plus").show();
+  $(".faq-icon .minus").hide();
+
+  // If not already active, activate clicked one
+  if (!isActive) {
+    $clicked.parent().addClass("active");
+    $answer.slideDown(function () {
+      const $slider = $answer.find(".faq-sli");
+
+      // Only initialize if not already
+      if (!$slider.hasClass("slick-initialized")) {
+        $slider.slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          dots: true,
+          infinite: true,
+           prevArrow: `<button type="button" class="slick-prev slick-prevs slick-arrow" aria-label="Previous">
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="19" cy="19" r="18.5" stroke="black" stroke-opacity="1"/>
+<path d="M14.2928 19.7071C13.9023 19.3166 13.9023 18.6834 14.2928 18.2929L20.6568 11.9289C21.0473 11.5384 21.6804 11.5384 22.071 11.9289C22.4615 12.3195 22.4615 12.9526 22.071 13.3431L16.4141 19L22.071 24.6569C22.4615 25.0474 22.4615 25.6805 22.071 26.0711C21.6804 26.4616 21.0473 26.4616 20.6568 26.0711L14.2928 19.7071ZM15 19V20H14.9999V19V18H15V19Z" fill="black" fill-opacity="1"/>
+</svg>
+
+  </button>`,
+  nextArrow: `<button type="button" class="slick-next slick-nexts slick-arrow" aria-label="Next">
+    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="19" cy="19" r="18.5" stroke="black"/>
+<path d="M24.7072 19.7071C25.0977 19.3166 25.0977 18.6834 24.7072 18.2929L18.3432 11.9289C17.9527 11.5384 17.3196 11.5384 16.929 11.9289C16.5385 12.3195 16.5385 12.9526 16.929 13.3431L22.5859 19L16.929 24.6569C16.5385 25.0474 16.5385 25.6805 16.929 26.0711C17.3196 26.4616 17.9527 26.4616 18.3432 26.0711L24.7072 19.7071ZM24 19V20H24.0001V19V18H24V19Z" fill="black"/>
+</svg>
+
+  </button>`,
+        });
+      } else {
+        $slider.slick('setPosition'); // Fix layout glitch
+      }
+    });
+
+    $clicked.find(".faq-icon .plus").hide();
+    $clicked.find(".faq-icon .minus").show();
+  }
+});
+
+
+</script>
+                
+  
+{% schema %}
+{
+  "name": "Two Column FAQ",
+  "class": "faq-two",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "FAQ Section Title",
+      "default": "Common Questions Women Asked While Testing Flo Pilates"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is Flo Pilates suitable for beginners?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Absolutely! Flo Pilates is designed to be beginner-friendly while still offering challenges for more experienced users.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Two Column FAQ",
+      "category": "FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Flo Pilates suitable for beginners?",
+            "answer": "<p>Absolutely! Flo Pilates is designed to be beginner-friendly while still offering challenges for more experienced users.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "I've tried fitness programs and always quit. What's different here?",
+            "answer": "<p>Our program focuses on gentle progression, community support, and short daily sessions that build consistency.</p>",
+          
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

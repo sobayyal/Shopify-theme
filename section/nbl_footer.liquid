@@ -1,0 +1,112 @@
+
+
+<footer class="footer-section">
+  <div class="container_1408">
+  <div class="footer-inner ">
+    {% if section.settings.logo %}
+      <div class="footer-logo">
+        <a href="/"><img src="{{ section.settings.logo | image_url }}" alt="Footer Logo" width="auto" height="auto" loading="eager" fetchpriority="high"></a>
+      </div>
+    {% endif %}
+
+    <div class="footer-tagline">
+      <h3>{{ section.settings.tagline_heading }}</h3>
+      <p>{{ section.settings.tagline_subtext }}</p>
+       <form method="post" action="/contact#contact_form" class="footer-newsletter">
+      <input type="hidden" name="form_type" value="customer" />
+      <input type="email" name="contact[email]" placeholder="{{ section.settings.newsletter_placeholder }}" required>
+      <button type="submit">{{ section.settings.newsletter_button_text }}</button>
+    </form>
+    </div>
+
+   
+
+    <div class="footer-links">
+      {% for block in section.blocks %}
+        <div class="link-column">
+         {% if block.settings.column_title != blank %} <h4>{{ block.settings.column_title }}</h4>{% endif %}
+          <ul>
+            {% for link in linklists[block.settings.menu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  <div class="footer-bottom">
+    <div class="footer-payments">
+      <img src="https://cdn.shopify.com/s/files/1/0715/3536/2348/files/image_64.webp?v=1750926432" alt="Footer Logo" width="auto" height="auto" loading="eager" fetchpriority="high">
+    </div>
+
+  
+      <p>{{ section.settings.copyright_text }}</p>
+    </div>
+  </div>
+  </div>
+</footer>
+ {% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "text",
+      "id": "tagline_heading",
+      "label": "Tagline Heading",
+      "default": "MADE FOR THE WORLD"
+    },
+    {
+      "type": "text",
+      "id": "tagline_subtext",
+      "label": "Tagline Subtext",
+      "default": "Subscribe to get exclusive deals and VIP access to new product launches."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Newsletter Placeholder",
+      "default": "Your Email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_text",
+      "label": "Newsletter Button Text",
+      "default": "Submit"
+    },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "NOBL Travel 2025"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title",
+          "label": "Column Title"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

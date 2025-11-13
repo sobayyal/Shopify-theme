@@ -1,0 +1,45 @@
+<!-- sections/announcement-bar-button.liquid -->
+
+<div class="footer-bar" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-1400">
+    <span class="footer-text">{{ section.settings.title }}</span>
+  <div class="footer-rte bor-tb">{{ section.settings.desv }}</div>
+    <div class="footer-rte">{{ section.settings.desv1 }}</div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Footer Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Logo Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "desv",
+      "label": "Description"
+    },
+    {
+      "type": "liquid",
+      "id": "desv1",
+      "label": "Description 2"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Bar",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

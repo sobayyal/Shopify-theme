@@ -1,0 +1,1093 @@
+{% style %}
+  .Nobl-manual-section {
+    padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_horizontal_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-section {
+      padding: {{ section.settings.padding_top_desktop }}px {{ section.settings.padding_horizontal_desktop }}px {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+
+  .Nobl-manual-images-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: {{ section.settings.images_gap_mobile }}px !important;
+    justify-items: center !important;
+    align-items: flex-end !important;
+  }
+
+  .Nobl-manual-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .Nobl-manual-title {
+    font-size: {{ section.settings.title_size_mobile }}px;
+    font-weight: {{ section.settings.title_weight }};
+    color: {{ section.settings.title_color }};
+    margin-bottom: {{ section.settings.title_margin_mobile }}px;
+    text-align: {{ section.settings.title_alignment_mobile }};
+    text-transform: {{ section.settings.title_transform }};
+    letter-spacing: {{ section.settings.title_letter_spacing }}px;
+    position: relative;
+    padding-bottom: 16px;
+  }
+
+  .Nobl-manual-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: {% if section.settings.title_alignment_mobile == 'center' %}50%{% elsif section.settings.title_alignment_mobile == 'right' %}100%{% else %}0{% endif %};
+    transform: translateX({% if section.settings.title_alignment_mobile == 'center' %}-50%{% elsif section.settings.title_alignment_mobile == 'right' %}-100%{% else %}0{% endif %});
+    width: {{ section.settings.title_underline_width }}px;
+    height: {{ section.settings.title_underline_height }}px;
+    background-color: {{ section.settings.title_underline_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-title {
+      font-size: {{ section.settings.title_size_desktop }}px;
+      margin-bottom: {{ section.settings.title_margin_desktop }}px;
+      text-align: {{ section.settings.title_alignment_desktop }};
+    }
+    
+    .Nobl-manual-title::after {
+      left: {% if section.settings.title_alignment_desktop == 'center' %}50%{% elsif section.settings.title_alignment_desktop == 'right' %}100%{% else %}0{% endif %};
+      transform: translateX({% if section.settings.title_alignment_desktop == 'center' %}-50%{% elsif section.settings.title_alignment_desktop == 'right' %}-100%{% else %}0{% endif %});
+    }
+  }
+
+  /* PRIMARY FEATURES - NO BORDER, 2 COLUMNS DESKTOP, 1 COLUMN MOBILE */
+  .Nobl-manual-primary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ section.settings.primary_gap_mobile }}px;
+    margin-bottom: {{ section.settings.primary_margin_bottom_mobile }}px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-primary-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: {{ section.settings.primary_gap_desktop }}px;
+      margin-bottom: {{ section.settings.primary_margin_bottom_desktop }}px;
+    }
+  }
+
+  .Nobl-manual-primary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: {{ section.settings.bullet_gap }}px;
+  }
+
+  .Nobl-manual-bullet {
+    width: {{ section.settings.bullet_size }}px;
+    height: {{ section.settings.bullet_size }}px;
+    background-color: {{ section.settings.bullet_color }};
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+
+  .Nobl-manual-feature-content {
+    flex: 1;
+  }
+
+  .Nobl-manual-feature-title {
+    font-size: {{ section.settings.feature_title_size_mobile }}px;
+    font-weight: {{ section.settings.feature_title_weight }};
+    color: {{ section.settings.feature_title_color }};
+    margin: 0 0 {{ section.settings.feature_title_margin }}px 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-feature-title {
+      font-size: {{ section.settings.feature_title_size_desktop }}px;
+    }
+  }
+
+  .Nobl-manual-feature-description {
+    font-size: {{ section.settings.description_size_mobile }}px;
+    color: {{ section.settings.description_color }};
+    line-height: {{ section.settings.description_line_height }};
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-feature-description {
+      font-size: {{ section.settings.description_size_desktop }}px;
+    }
+  }
+
+  /* IMAGE SECTION WITH THREE IMAGES */
+  .Nobl-manual-image-section {
+    margin-top: {{ section.settings.image_margin_top_mobile }}px;
+    margin-bottom: {{ section.settings.image_margin_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-image-section {
+      margin-top: {{ section.settings.image_margin_top_desktop }}px;
+      margin-bottom: {{ section.settings.image_margin_bottom_desktop }}px;
+    }
+  }
+
+  .Nobl-manual-subtitle {
+    font-size: {{ section.settings.subtitle_size_mobile }}px;
+    font-weight: {{ section.settings.subtitle_weight }};
+    color: {{ section.settings.subtitle_color }};
+    margin: 0 0 {{ section.settings.subtitle_margin_bottom_mobile }}px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-subtitle {
+      font-size: {{ section.settings.subtitle_size_desktop }}px;
+      margin-bottom: {{ section.settings.subtitle_margin_bottom_desktop }}px;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-images-wrapper {
+      gap: {{ section.settings.images_gap_desktop }}px !important;
+    }
+  }
+
+  .Nobl-manual-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+
+  .Nobl-manual-image-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .Nobl-manual-image-text {
+    font-size: 10px;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-image-text {
+      font-size: 23px;
+    }
+  }
+
+  /* SECONDARY FEATURES - WITH BORDER, 2 COLUMNS DESKTOP, 1 COLUMN MOBILE */
+  .Nobl-manual-secondary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ section.settings.secondary_gap_mobile }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .Nobl-manual-secondary-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: {{ section.settings.secondary_gap_desktop }}px;
+    }
+  }
+
+  .Nobl-manual-secondary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: {{ section.settings.bullet_gap }}px;
+    padding: {{ section.settings.secondary_padding }}px;
+    background-color: {{ section.settings.secondary_background }};
+    border-radius: {{ section.settings.secondary_border_radius }}px;
+    border: {{ section.settings.secondary_border_width }}px solid {{ section.settings.secondary_border_color }};
+    transition: all 0.3s ease;
+  }
+
+  .Nobl-manual-secondary-item:hover {
+    /* transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: {{ section.settings.secondary_border_hover_color }}; */
+  }
+{% endstyle %}
+
+<div class="Nobl-manual-section">
+  <div class="Nobl-manual-container">
+    
+    {% if section.settings.show_main_title %}
+      <h2 class="Nobl-manual-title">{{ section.settings.main_title }}</h2>
+    {% endif %}
+
+    <!-- PRIMARY FEATURES (NO BORDER) -->
+    {% assign primary_features = section.blocks | where: "type", "feature" %}
+    {% if primary_features.size > 0 %}
+      <div class="Nobl-manual-primary-grid">
+        {% for block in primary_features %}
+          <div class="Nobl-manual-primary-item" {{ block.shopify_attributes }}>
+            {% if section.settings.show_bullets %}
+              <span class="Nobl-manual-bullet"></span>
+            {% endif %}
+            <div class="Nobl-manual-feature-content">
+              <strong class="Nobl-manual-feature-title">{{ block.settings.feature_title }}</strong>
+              <p class="Nobl-manual-feature-description">{{ block.settings.feature_description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- IMAGE SECTION WITH THREE IMAGES -->
+    <div class="Nobl-manual-image-section">
+      {% if section.settings.show_subtitle %}
+        <h3 class="Nobl-manual-subtitle">{{ section.settings.subtitle }}</h3>
+      {% endif %}
+      
+      <div class="Nobl-manual-images-wrapper">
+        {% if section.settings.image_1 != blank %}
+          <div class="Nobl-manual-image-item">
+            <img 
+              src="{{ section.settings.image_1 | img_url: '800x' }}" 
+              alt="{{ section.settings.image_1.alt | escape }}"
+              class="Nobl-manual-image"
+              loading="lazy"
+            >
+            {% if section.settings.image_1_text != blank %}
+              <p class="Nobl-manual-image-text">{{ section.settings.image_1_text }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.image_2 != blank %}
+          <div class="Nobl-manual-image-item">
+            <img 
+              src="{{ section.settings.image_2 | img_url: '800x' }}" 
+              alt="{{ section.settings.image_2.alt | escape }}"
+              class="Nobl-manual-image"
+              loading="lazy"
+            >
+            {% if section.settings.image_2_text != blank %}
+              <p class="Nobl-manual-image-text">{{ section.settings.image_2_text }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.image_3 != blank %}
+          <div class="Nobl-manual-image-item">
+            <img 
+              src="{{ section.settings.image_3 | img_url: '800x' }}" 
+              alt="{{ section.settings.image_3.alt | escape }}"
+              class="Nobl-manual-image"
+              loading="lazy"
+            >
+            {% if section.settings.image_3_text != blank %}
+              <p class="Nobl-manual-image-text">{{ section.settings.image_3_text }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- SECONDARY FEATURES (WITH BORDER) -->
+    {% assign secondary_features = section.blocks | where: "type", "feature_secondary" %}
+    {% if secondary_features.size > 0 %}
+      <div class="Nobl-manual-secondary-grid">
+        {% for block in secondary_features %}
+          <div class="Nobl-manual-secondary-item" {{ block.shopify_attributes }}>
+            {% if section.settings.show_bullets %}
+              <span class="Nobl-manual-bullet"></span>
+            {% endif %}
+            <div class="Nobl-manual-feature-content">
+              <strong class="Nobl-manual-feature-title">{{ block.settings.feature_title }}</strong>
+              <p class="Nobl-manual-feature-description">{{ block.settings.feature_description }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nobl-manual",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main Title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_main_title",
+      "label": "Show Main Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "3. FEATURES"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Size (Desktop)",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "title_transform",
+      "label": "Title Text Transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "lowercase", "label": "Lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "title_letter_spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Title Letter Spacing",
+      "default": 1.5
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment_mobile",
+      "label": "Title Alignment (Mobile)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment_desktop",
+      "label": "Title Alignment (Desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "title_margin_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Title Bottom Margin (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_margin_desktop",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Title Bottom Margin (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "title_underline_width",
+      "min": 30,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Title Underline Width",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "title_underline_height",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Underline Height",
+      "default": 3
+    },
+    {
+      "type": "color",
+      "id": "title_underline_color",
+      "label": "Title Underline Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Primary Features (No Border)"
+    },
+    {
+      "type": "range",
+      "id": "primary_gap_mobile",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Items (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "primary_gap_desktop",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap Between Items (Desktop)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "primary_margin_bottom_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Margin (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "primary_margin_bottom_desktop",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Margin (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Bullets"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bullets",
+      "label": "Show Bullets",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "bullet_size",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Bullet Size",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "bullet_gap",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Bullet Gap",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "bullet_color",
+      "label": "Bullet Color",
+      "default": "#2d2d2d"
+    },
+    {
+      "type": "header",
+      "content": "Feature Typography"
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size_mobile",
+      "min": 13,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature Title Size (Mobile)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "feature_title_size_desktop",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature Title Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "feature_title_weight",
+      "label": "Feature Title Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "feature_title_color",
+      "label": "Feature Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "feature_title_margin",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Feature Title Bottom Margin",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "min": 13,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "min": 13,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size (Desktop)",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "description_line_height",
+      "min": 1.3,
+      "max": 2,
+      "step": 0.1,
+      "label": "Description Line Height",
+      "default": 1.6
+    },
+    {
+      "type": "header",
+      "content": "Image Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subtitle",
+      "label": "Show Subtitle",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "All-in-One Carry-On and Medium Check-In: Special Features"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 15,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size (Mobile)",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "subtitle_weight",
+      "label": "Subtitle Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#2d2d2d"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_margin_bottom_mobile",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Subtitle Bottom Margin (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtitle_margin_bottom_desktop",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Subtitle Bottom Margin (Desktop)",
+      "default": 32
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "image_1_text",
+      "label": "Image 1 Text",
+      "default": "Image 1 Caption"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "image_2_text",
+      "label": "Image 2 Text",
+      "default": "Image 2 Caption"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "image_3_text",
+      "label": "Image 3 Text",
+      "default": "Image 3 Caption"
+    },
+    {
+      "type": "range",
+      "id": "images_gap_mobile",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap Between Images (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "images_gap_desktop",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap Between Images (Desktop)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_margin_top_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Image Section Top Margin (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_margin_top_desktop",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Image Section Top Margin (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_margin_bottom_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Image Section Bottom Margin (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_margin_bottom_desktop",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Image Section Bottom Margin (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Secondary Features"
+    },
+    {
+      "type": "range",
+      "id": "secondary_gap_mobile",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Items (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "secondary_gap_desktop",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap Between Items (Desktop)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "secondary_padding",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Padding",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "secondary_background",
+      "label": "Item Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "secondary_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Item Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "secondary_border_width",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Item Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "secondary_border_color",
+      "label": "Item Border Color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "secondary_border_hover_color",
+      "label": "Item Border Hover Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 40,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 40,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum Width",
+      "default": 1200
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Primary Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Feature Title:"
+        },
+        {
+          "type": "text",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Feature description goes here."
+        }
+      ]
+    },
+    {
+      "type": "feature_secondary",
+      "name": "Secondary Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Feature Title:"
+        },
+        {
+          "type": "text",
+          "id": "feature_description",
+          "label": "Feature Description",
+          "default": "Feature description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nobl-manual",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Durable Polycarbonate Shell:",
+            "feature_description": "Built to withstand tough travel conditions."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "360° Silent Move Spinner Wheels:",
+            "feature_description": "For a smooth, quiet glide."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Slow-Release Handles:",
+            "feature_description": "Comfortable and easy to grip."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Dual TSA Locks:",
+            "feature_description": "Extra security with zipper-free access."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Multiple Compartments:",
+            "feature_description": "Organize your belongings efficiently."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Side Hooks:",
+            "feature_description": "Hang bags for added convenience."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Y-Strap Compression System:",
+            "feature_description": "Maximize packing space."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Stain-Resistant Lining:",
+            "feature_description": "Easy to clean and maintain."
+          }
+        },
+        {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Front Compartment:",
+            "feature_description": "Quick access to gadgets and essentials."
+          }
+        },
+        {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Charging Ports:",
+            "feature_description": "Charge devices on the go with a power bank."
+          }
+        },
+        {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Phone Holder:",
+            "feature_description": "Mount your phone at eye level."
+          }
+        },
+        {
+          "type": "feature_secondary",
+          "settings": {
+            "feature_title": "Cup Holder:",
+            "feature_description": "Securely holds your beverage."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

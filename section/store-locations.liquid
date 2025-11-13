@@ -1,0 +1,753 @@
+{% assign store_gen_id = section.id | replace: '_', '' | replace: '-', '' | downcase %}
+
+{% style %}
+  .store-locations-section-{{ store_gen_id }} {
+    padding: 60px 20px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .store-locations-container-{{ store_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .store-locations-header-{{ store_gen_id }} {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .store-locations-section-heading-{{ store_gen_id }} {
+    font-size: {{ section.settings.heading_size }}px;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 15px;
+    font-weight: 500;
+  }
+
+  .store-locations-subtitle-{{ store_gen_id }} {
+    font-size: {{ section.settings.subtitle_size }}px;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .store-locations-content-{{ store_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .store-locations-map-wrapper-{{ store_gen_id }} {
+    background-color: {{ section.settings.map_background }};
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    height: 500px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .store-locations-map-{{ store_gen_id }} {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .store-locations-map-loading-{{ store_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: #666;
+    z-index: 10;
+  }
+
+  .store-locations-map-loading-spinner-{{ store_gen_id }} {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top: 4px solid {{ section.settings.button_color }};
+    border-radius: 50%;
+    animation: spin-{{ store_gen_id }} 1s linear infinite;
+  }
+
+  @keyframes spin-{{ store_gen_id }} {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .store-locations-list-{{ store_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .store-locations-item-{{ store_gen_id }} {
+    padding: 20px;
+    background-color: {{ section.settings.card_background }};
+    border-radius: {{ section.settings.border_radius }}px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .store-locations-item-{{ store_gen_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .store-locations-name-{{ store_gen_id }} {
+    font-size: 18px;
+    font-weight: 500;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 10px;
+  }
+
+  .store-locations-address-{{ store_gen_id }} {
+    font-size: 16px;
+    color: #4B5563;
+    margin: 0 0 10px;
+    line-height: 1.5;
+  }
+
+  .store-locations-phone-{{ store_gen_id }} {
+    font-size: 14px;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 10px;
+  }
+
+  .store-locations-hours-{{ store_gen_id }} {
+    font-size: 14px;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 8px;
+    opacity: 0.8;
+    font-weight: 400;
+  }
+
+  .store-locations-directions-{{ store_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ section.settings.button_border_radius }}px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .store-locations-directions-{{ store_gen_id }}:hover {
+    background-color: {{ section.settings.button_hover_color }};
+  }
+
+  .store-locations-directions-icon-{{ store_gen_id }} {
+    width: 16px;
+    height: 16px;
+  }
+
+  .store-locations-empty-{{ store_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-style: italic;
+  }
+
+  /* Custom popup styles for Leaflet */
+  .store-locations-popup-{{ store_gen_id }} {
+    font-family: inherit;
+  }
+
+  .store-locations-popup-{{ store_gen_id }} h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .store-locations-popup-{{ store_gen_id }} p {
+    margin: 0 0 6px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #6b7280;
+  }
+
+  .store-locations-popup-{{ store_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Override default Leaflet styles */
+  .leaflet-container {
+    font-family: inherit;
+  }
+
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .leaflet-popup-content{
+      width: 270px !important;
+    }
+    .store-locations-section-{{ store_gen_id }} {
+      padding: 40px 15px;
+    }
+
+    .store-locations-content-{{ store_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .store-locations-map-wrapper-{{ store_gen_id }} {
+      height: 300px;
+    }
+
+    .store-locations-section-heading-{{ store_gen_id }} {
+      font-size: {{ section.settings.heading_size | times: 0.8 }}px;
+    }
+
+    .store-locations-item-{{ store_gen_id }} {
+      padding: 20px;
+    }
+  }
+{% endstyle %}
+
+<!-- Load Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<div class="store-locations-section-{{ store_gen_id }}">
+  <div class="store-locations-container-{{ store_gen_id }}">
+    <div class="store-locations-header-{{ store_gen_id }}">
+      <h2 class="store-locations-section-heading-{{ store_gen_id }}">
+        {{ section.settings.heading }}
+      </h2>
+      <p class="store-locations-subtitle-{{ store_gen_id }}">
+        {{ section.settings.subtitle }}
+      </p>
+    </div>
+
+    {% assign has_locations = false %}
+    {% for i in (1..5) %}
+      {% assign store_name_key = 'store_' | append: i | append: '_name' %}
+      {% assign store_address_key = 'store_' | append: i | append: '_address' %}
+      {% if section.settings[store_name_key] != blank and section.settings[store_address_key] != blank %}
+        {% assign has_locations = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_locations %}
+      <div class="store-locations-content-{{ store_gen_id }}">
+        <div class="store-locations-map-wrapper-{{ store_gen_id }}">
+          <div class="store-locations-map-loading-{{ store_gen_id }}" id="mapLoading{{ store_gen_id }}">
+            <div class="store-locations-map-loading-spinner-{{ store_gen_id }}"></div>
+            <p>Loading map...</p>
+          </div>
+          <div class="store-locations-map-{{ store_gen_id }}" id="storeLocationsMap{{ store_gen_id }}"></div>
+        </div>
+
+        <div class="store-locations-list-{{ store_gen_id }}" id="storeLocationsList{{ store_gen_id }}">
+          {% for i in (1..5) %}
+            {% liquid
+              assign store_name_key = 'store_' | append: i | append: '_name'
+              assign store_address_key = 'store_' | append: i | append: '_address'
+              assign store_hours_key = 'store_' | append: i | append: '_hours'
+              assign store_phone_key = 'store_' | append: i | append: '_phone'
+
+              assign store_name = section.settings[store_name_key]
+              assign store_address = section.settings[store_address_key]
+              assign store_hours = section.settings[store_hours_key]
+              assign store_phone = section.settings[store_phone_key]
+            %}
+
+            {% if store_name != blank and store_address != blank %}
+              <div class="store-locations-item-{{ store_gen_id }}" 
+                   data-store-name="{{ store_name | escape }}"
+                   data-store-address="{{ store_address | escape }}"
+                   data-store-phone="{{ store_phone | escape }}"
+                   data-store-hours="{{ store_hours | escape }}"
+                   data-store-index="{{ i }}"
+                   onclick="updateMapLocation{{ store_gen_id }}(event, this)">
+                <h3 class="store-locations-name-{{ store_gen_id }}">{{ store_name }}</h3>
+                
+                <div class="store-locations-address-{{ store_gen_id }}">
+                  {{ store_address | newline_to_br }}
+                </div>
+
+                {% if store_phone != blank %}
+                  <div class="store-locations-phone-{{ store_gen_id }}">
+                    📞 {{ store_phone }}
+                  </div>
+                {% endif %}
+
+                {% if store_hours != blank %}
+                  <div class="store-locations-hours-{{ store_gen_id }}">
+                    🕒 {{ store_hours }}
+                  </div>
+                {% endif %}
+
+                <a 
+                  href="#" 
+                  class="store-locations-directions-{{ store_gen_id }}"
+                  onclick="event.stopPropagation(); openDirections{{ store_gen_id }}('{{ store_address | escape }}'); return false;"
+                >
+                  <svg class="store-locations-directions-icon-{{ store_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"></path>
+                  </svg>
+                  Get Directions
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <div class="store-locations-empty-{{ store_gen_id }}">
+        No store locations have been added yet. Please add store information in the theme customizer.
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  (function() {
+    let map{{ store_gen_id }} = null;
+    let markers{{ store_gen_id }} = [];
+    let isLeafletLoaded{{ store_gen_id }} = false;
+    const DEFAULT_LOCATION{{ store_gen_id }} = {
+      name: 'Default Location',
+      address: 'No address available',
+      lat: 40.7128,
+      lng: -74.0060
+    };
+
+    // Geocoding function using Nominatim (OpenStreetMap)
+    async function geocodeAddress{{ store_gen_id }}(address) {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`
+        );
+        const data = await response.json();
+        
+        if (data && data.length > 0) {
+          return {
+            lat: parseFloat(data[0].lat),
+            lng: parseFloat(data[0].lon)
+          };
+        }
+        return null;
+      } catch (error) {
+        console.error('Geocoding error:', error);
+        return null;
+      }
+    }
+
+    // Initialize map
+    async function initializeMap{{ store_gen_id }}() {
+      const mapElement = document.getElementById('storeLocationsMap{{ store_gen_id }}');
+      const mapLoading = document.getElementById('mapLoading{{ store_gen_id }}');
+      
+      if (!mapElement || !isLeafletLoaded{{ store_gen_id }}) return;
+
+      // Create map instance
+      map{{ store_gen_id }} = L.map(mapElement, {
+        scrollWheelZoom: true,
+        dragging: true,
+        zoomControl: true
+      }).setView([DEFAULT_LOCATION{{ store_gen_id }}.lat, DEFAULT_LOCATION{{ store_gen_id }}.lng], 13);
+
+      // Add tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+      }).addTo(map{{ store_gen_id }});
+
+      // Get all store items
+      const storeItems = document.querySelectorAll('.store-locations-item-{{ store_gen_id }}');
+      const locations = [];
+
+      // Geocode all store addresses
+      for (const item of storeItems) {
+        const address = item.dataset.storeAddress;
+        const name = item.dataset.storeName;
+        const phone = item.dataset.storePhone;
+        const hours = item.dataset.storeHours;
+
+        const coordinates = await geocodeAddress{{ store_gen_id }}(address);
+        
+        if (coordinates) {
+          locations.push({
+            name: name,
+            address: address,
+            phone: phone,
+            hours: hours,
+            lat: coordinates.lat,
+            lng: coordinates.lng
+          });
+        }
+      }
+
+      // Add markers for all locations
+      if (locations.length > 0) {
+        locations.forEach((location, index) => {
+          const marker = L.marker([location.lat, location.lng]).addTo(map{{ store_gen_id }});
+          
+          // Create popup content
+          const popupContent = `
+            <div class="store-locations-popup-{{ store_gen_id }}">
+              <h3>${location.name}</h3>
+              <p>${location.address.replace(/\n/g, '<br>')}</p>
+              ${location.phone ? `<p>📞 ${location.phone}</p>` : ''}
+              ${location.hours ? `<p>🕒 ${location.hours}</p>` : ''}
+            </div>
+          `;
+          
+          marker.bindPopup(popupContent);
+          markers{{ store_gen_id }}.push(marker);
+        });
+
+        // Fit map to show all markers
+        if (locations.length > 1) {
+          const group = L.featureGroup(markers{{ store_gen_id }});
+          map{{ store_gen_id }}.fitBounds(group.getBounds().pad(0.1));
+        } else {
+          map{{ store_gen_id }}.setView([locations[0].lat, locations[0].lng], 15);
+        }
+      }
+
+      // Hide loading indicator
+      if (mapLoading) {
+        mapLoading.style.display = 'none';
+      }
+    }
+
+    // Show location on map
+    function showLocationOnMap{{ store_gen_id }}(location) {
+      if (!map{{ store_gen_id }}) return;
+
+      // Pan to location
+      map{{ store_gen_id }}.setView([location.lat, location.lng], 15);
+
+      // Find and open the corresponding marker popup
+      markers{{ store_gen_id }}.forEach(marker => {
+        const markerLatLng = marker.getLatLng();
+        if (Math.abs(markerLatLng.lat - location.lat) < 0.0001 && 
+            Math.abs(markerLatLng.lng - location.lng) < 0.0001) {
+          marker.openPopup();
+        }
+      });
+    }
+
+    // Open Google Maps directions
+    window.openDirections{{ store_gen_id }} = function(address) {
+      const encodedAddress = encodeURIComponent(address);
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank');
+    };
+
+    // Update map location when clicking on a store item
+    window.updateMapLocation{{ store_gen_id }} = async function(event, storeItem) {
+      event.preventDefault();
+      
+      const storeData = {
+        name: storeItem.dataset.storeName,
+        address: storeItem.dataset.storeAddress,
+        phone: storeItem.dataset.storePhone,
+        hours: storeItem.dataset.storeHours
+      };
+
+      // Geocode the address
+      const coordinates = await geocodeAddress{{ store_gen_id }}(storeData.address);
+      
+      if (coordinates) {
+        const locationData = {
+          ...storeData,
+          lat: coordinates.lat,
+          lng: coordinates.lng
+        };
+
+        showLocationOnMap{{ store_gen_id }}(locationData);
+      } else {
+        // Fallback to default location if geocoding fails
+        console.warn('Could not geocode address:', storeData.address);
+        showLocationOnMap{{ store_gen_id }}(DEFAULT_LOCATION{{ store_gen_id }});
+      }
+    };
+
+    // Initialize when Leaflet is loaded
+    function checkLeafletAndInit{{ store_gen_id }}() {
+      if (typeof L !== 'undefined') {
+        isLeafletLoaded{{ store_gen_id }} = true;
+        initializeMap{{ store_gen_id }}();
+      } else {
+        setTimeout(checkLeafletAndInit{{ store_gen_id }}, 100);
+      }
+    }
+
+    // Start initialization
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkLeafletAndInit{{ store_gen_id }});
+    } else {
+      checkLeafletAndInit{{ store_gen_id }}();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Store Locations",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Store Locations"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Visit us at any of our premium retail locations"
+    },
+    {
+      "type": "header",
+      "content": "Store 1"
+    },
+    {
+      "type": "text",
+      "id": "store_1_name",
+      "label": "Store name"
+    },
+    {
+      "type": "textarea",
+      "id": "store_1_address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "store_1_phone",
+      "label": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "store_1_hours",
+      "label": "Store hours",
+      "default": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM"
+    },
+    {
+      "type": "header",
+      "content": "Store 2"
+    },
+    {
+      "type": "text",
+      "id": "store_2_name",
+      "label": "Store name"
+    },
+    {
+      "type": "textarea",
+      "id": "store_2_address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "store_2_phone",
+      "label": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "store_2_hours",
+      "label": "Store hours",
+      "default": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM"
+    },
+    {
+      "type": "header",
+      "content": "Store 3"
+    },
+    {
+      "type": "text",
+      "id": "store_3_name",
+      "label": "Store name"
+    },
+    {
+      "type": "textarea",
+      "id": "store_3_address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "store_3_phone",
+      "label": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "store_3_hours",
+      "label": "Store hours",
+      "default": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM"
+    },
+    {
+      "type": "header",
+      "content": "Store 4"
+    },
+    {
+      "type": "text",
+      "id": "store_4_name",
+      "label": "Store name"
+    },
+    {
+      "type": "textarea",
+      "id": "store_4_address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "store_4_phone",
+      "label": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "store_4_hours",
+      "label": "Store hours",
+      "default": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM"
+    },
+    {
+      "type": "header",
+      "content": "Store 5"
+    },
+    {
+      "type": "text",
+      "id": "store_5_name",
+      "label": "Store name"
+    },
+    {
+      "type": "textarea",
+      "id": "store_5_address",
+      "label": "Address"
+    },
+    {
+      "type": "text",
+      "id": "store_5_phone",
+      "label": "Phone number"
+    },
+    {
+      "type": "text",
+      "id": "store_5_hours",
+      "label": "Store hours",
+      "default": "Mon-Fri: 9AM-8PM, Sat-Sun: 10AM-6PM"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "map_background",
+      "label": "Map background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover background",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locations"
+    }
+  ]
+}
+{% endschema %}
