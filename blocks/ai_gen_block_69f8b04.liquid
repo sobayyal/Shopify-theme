@@ -1,0 +1,1743 @@
+{% assign gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .store-locator-search-banner-{{ gen_id }} {
+    position: relative;
+    min-height: {{ block.settings.banner_height }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: {{ block.settings.fallback_color }};
+  }
+
+  .store-locator-search-banner-background-{{ gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .store-locator-search-banner-placeholder-{{ gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .store-locator-search-banner-placeholder-{{ gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 300px;
+    opacity: 0.3;
+  }
+
+  .store-locator-search-banner-overlay-{{ gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.overlay_color }};
+    opacity: {{ block.settings.overlay_opacity }};
+    z-index: 2;
+  }
+
+  .store-locator-search-banner-content-{{ gen_id }} {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: {{ block.settings.text_color }};
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    padding: 40px 20px 0;
+    width: 100%;
+  }
+
+  .store-locator-search-banner-heading-{{ gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    line-height: 1.2;
+  }
+
+  .store-locator-search-banner-description-{{ gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    margin: 0 0 32px;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .store-locator-search-form-{{ gen_id }} {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .store-locator-search-input-wrapper-{{ gen_id }} {
+    position: relative;
+    display: flex;
+    background-color: {{ block.settings.search_bg_color }};
+    border-radius: {{ block.settings.search_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .store-locator-search-input-{{ gen_id }} {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: {{ block.settings.search_text_color }};
+    outline: none;
+  }
+
+  .store-locator-search-input-{{ gen_id }}::placeholder {
+    color: {{ block.settings.search_placeholder_color }};
+  }
+
+  .store-locator-search-button-{{ gen_id }} {
+    padding: 16px 24px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .store-locator-search-button-{{ gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .store-locator-search-button-{{ gen_id }}:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .store-locator-search-button-{{ gen_id }}.clear-mode {
+    background-color:#f9fafb;
+  }
+
+  .store-locator-search-button-{{ gen_id }}.clear-mode:hover {
+    background-color: #f9fafb;
+  }
+
+  .store-locator-search-icon-{{ gen_id }} {
+    width: 20px;
+    height: 20px;
+  }
+
+  .store-locator-clear-icon-{{ gen_id }} {
+    width: 20px;
+    height: 20px;
+    display: none;
+  }
+
+  .store-locator-loading-{{ gen_id }} {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .store-locator-button-text-{{ gen_id }} {
+    white-space: nowrap;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .store-locator-empty-state-{{ gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* Map Container Styles */
+  .store-locator-map-section-{{ gen_id }} {
+    background-color: {{ block.settings.map_section_bg }};
+    padding: {{ block.settings.map_section_padding }}px 20px;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+  }
+
+  .store-locator-map-section-{{ gen_id }}.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .store-locator-map-header-{{ gen_id }} {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .store-locator-map-title-{{ gen_id }} {
+    font-size: 28px;
+    font-weight: 700;
+    color: {{ block.settings.map_title_color }};
+    margin: 0 0 10px;
+  }
+
+  .store-locator-map-subtitle-{{ gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.map_subtitle_color }};
+    margin: 0;
+  }
+
+  .store-locator-map-container-{{ gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .store-locator-map-wrapper-{{ gen_id }} {
+    position: relative;
+    height: {{ block.settings.map_height }}px;
+    border-radius: {{ block.settings.map_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background-color: #f0f0f0;
+  }
+
+  .store-locator-map-{{ gen_id }} {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .store-locator-map-loading-{{ gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: #666;
+    z-index: 10;
+  }
+
+  .store-locator-map-loading-spinner-{{ gen_id }} {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top: 4px solid {{ block.settings.button_color }};
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  /* CAROUSEL STYLES - NEW */
+  .store-locator-carousel-wrapper-{{ gen_id }} {
+    display: flex;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .store-locator-carousel-controls-{{ gen_id }} {
+    display: none; /* Hidden by default, shown via JS when needed */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+  }
+
+  .store-locator-carousel-controls-{{ gen_id }}.active {
+    display: flex;
+  }
+
+  .store-locator-carousel-arrow-{{ gen_id }} {
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .store-locator-carousel-arrow-{{ gen_id }}:hover:not(:disabled) {
+    background-color: {{ block.settings.button_hover_color }};
+    transform: scale(1.1);
+  }
+
+  .store-locator-carousel-arrow-{{ gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .store-locator-carousel-arrow-{{ gen_id }} svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .store-locator-carousel-indicators-{{ gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .store-locator-carousel-indicator-{{ gen_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+
+  .store-locator-carousel-indicator-{{ gen_id }}.active {
+    background-color: #000;
+    height: 24px;
+    border-radius: 4px;
+  }
+
+  .store-locator-carousel-indicator-{{ gen_id }}:hover {
+    background-color: #ccc;
+  }
+
+  .store-locator-results-list-{{ gen_id }} {
+    background-color: {{ block.settings.results_bg_color }};
+    border-radius: {{ block.settings.map_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .store-locator-results-slider-{{ gen_id }} {
+    overflow: hidden;
+    position: relative;
+    max-height: 370px;
+    flex: 1;
+  }
+
+  .store-locator-results-track-{{ gen_id }} {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .store-locator-results-header-{{ gen_id }} {
+    padding: 20px;
+    background-color: {{ block.settings.results_header_bg }};
+    border-bottom: 1px solid #e0e0e0;
+    flex-shrink: 0;
+  }
+
+  .store-locator-results-title-{{ gen_id }} {
+    font-size: 20px;
+    font-weight: 500;
+    color: {{ block.settings.results_title_color }};
+    margin: 0;
+  }
+
+  .store-locator-result-item-{{ gen_id }} {
+    padding: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .store-locator-result-item-{{ gen_id }}:last-child {
+    border-bottom: none;
+  }
+
+  .store-locator-result-item-{{ gen_id }}:hover {
+    background-color: #f8f9fa;
+  }
+
+  .store-locator-result-item-{{ gen_id }}.active {
+    background-color: {{ block.settings.active_result_bg }};
+  }
+
+  .store-locator-result-name-{{ gen_id }} {
+    font-size: 16px;
+    font-weight: 600;
+    color: {{ block.settings.result_name_color }};
+    margin: 0 0 8px;
+  }
+
+  .store-locator-result-address-{{ gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.result_address_color }};
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+
+  .store-locator-result-details-{{ gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .store-locator-result-distance-{{ gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.result_distance_color }};
+    font-weight: 500;
+    display:none !important;
+  }
+
+  .store-locator-result-phone-{{ gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.result_address_color }};
+  }
+
+  .store-locator-reset-section-{{ gen_id }} {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .store-locator-reset-button-{{ gen_id }} {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: {{ block.settings.search_border_radius }}px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .store-locator-reset-button-{{ gen_id }}:hover {
+    background-color: #4b5563;
+  }
+
+  .store-locator-no-results-{{ gen_id }} {
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+    display: none;
+    background-color: {{ block.settings.results_bg_color }};
+    border-radius: {{ block.settings.map_border_radius }}px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .store-locator-no-results-{{ gen_id }} p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  /* Custom popup styles for Leaflet */
+  .store-locator-popup-{{ gen_id }} {
+    font-family: inherit;
+  }
+
+  .store-locator-popup-{{ gen_id }} h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .store-locator-popup-{{ gen_id }} p {
+    margin: 0 0 6px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .store-locator-search-banner-content-{{ gen_id }}{
+      margin:-55px auto 0 auto !important;
+      padding:0 20px !important;
+    }
+    .store-locator-search-input-{{ gen_id }},
+    .store-locator-search-button-{{ gen_id }}{
+      font-size:12px !important;
+      padding:10px !important;
+    }
+    .store-locator-carousel-wrapper-{{ gen_id }}{
+      display:block !important;
+    }
+    .store-locator-map-container-{{ gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .store-locator-search-banner-heading-{{ gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.7);
+    }
+
+    .store-locator-search-banner-description-{{ gen_id }} {
+      font-size: calc({{ block.settings.description_size }}px * 0.9);
+      margin: 0 0 10px !important;
+    }
+    .store-locator-results-slider-{{ gen_id }} {
+      max-height: 400px;
+      overflow:scroll !important;
+    }
+    .store-locator-carousel-controls-{{ gen_id }}{
+      display:none !important;
+    }
+    .store-locator-result-name-{{ gen_id }}{
+      font-size:14px !important;
+    }
+
+  }
+  @media(max-width:360px){
+    .store-locator-search-banner-description-{{ gen_id }} {
+      font-size: 14px !important;
+    }
+  }
+  /* Mobile background - hidden by default */
+.store-locator-search-banner-background-mobile-{{ gen_id }} {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  display: none;
+}
+/* Show mobile background on mobile devices */
+@media screen and (max-width: 768px) {
+  .store-locator-search-banner-background-{{ gen_id }} {
+    display: none;
+  }
+  
+  .store-locator-search-banner-background-mobile-{{ gen_id }} {
+    display: block;
+  }
+}
+{% endstyle %}
+
+<store-locator-banner-{{ gen_id }}>
+  <div class="store-locator-search-banner-{{ gen_id }}">
+    {% if block.settings.background_image %}
+      <img
+        class="store-locator-search-banner-background-{{ gen_id }}"
+        src="{{ block.settings.background_image | image_url: width: 1920 }}"
+        alt="{{ block.settings.heading }}"
+        loading="lazy">
+    {% else %}
+      <div class="store-locator-search-banner-placeholder-{{ gen_id }}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+      </div>
+    {% endif %}
+    {% if block.settings.background_image_mobile %}
+        <img 
+          src="{{ block.settings.background_image_mobile | image_url: width: 768 }}"
+          srcset="{{ block.settings.background_image_mobile | image_url: width: 375 }} 375w,
+                  {{ block.settings.background_image_mobile | image_url: width: 768 }} 768w"
+          sizes="100vw"
+          alt="{{ block.settings.heading }}"
+          class="store-locator-search-banner-background-mobile-{{ gen_id }}"
+          loading="eager"
+        >
+      {% endif %}
+
+    <div class="store-locator-search-banner-overlay-{{ gen_id }}"></div>
+
+    <div class="store-locator-search-banner-content-{{ gen_id }}">
+      {% if block.settings.heading %}
+        <h1 class="store-locator-search-banner-heading-{{ gen_id }}">{{ block.settings.heading }}</h1>
+      {% endif %}
+
+      {% if block.settings.description %}
+        <p class="store-locator-search-banner-description-{{ gen_id }}">{{ block.settings.description }}</p>
+      {% endif %}
+
+      <form class="store-locator-search-form-{{ gen_id }}">
+        <div class="store-locator-search-input-wrapper-{{ gen_id }}">
+          <input
+            type="text"
+            class="store-locator-search-input-{{ gen_id }}"
+            placeholder="{{ block.settings.search_placeholder }}"
+            autocomplete="off">
+          <button
+            type="submit"
+            class="store-locator-search-button-{{ gen_id }}">
+            <svg
+              class="store-locator-search-icon-{{ gen_id }}"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <svg
+              class="store-locator-clear-icon-{{ gen_id }}"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+            <div class="store-locator-loading-{{ gen_id }}"></div>
+            <span class="store-locator-button-text-{{ gen_id }}">{{ block.settings.button_text }}</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</store-locator-banner-{{ gen_id }}>
+
+<!-- Map Section -->
+<div class="store-locator-map-section-{{ gen_id }}" id="storeMapSection{{ gen_id }}">
+  <div class="store-locator-map-header-{{ gen_id }}">
+      <h2 class="store-locator-map-title-{{ gen_id }}">Store Locations</h2>
+      <p class="store-locator-map-subtitle-{{ gen_id }}">Click on any store below to view it on the map</p>
+    </div>
+  <div class="store-locator-map-container-{{ gen_id }}"> 
+    <div class="store-locator-map-wrapper-{{ gen_id }}">
+      <div class="store-locator-map-loading-{{ gen_id }}" id="mapLoading{{ gen_id }}">
+        <div class="store-locator-map-loading-spinner-{{ gen_id }}"></div>
+        <p>Loading map...</p>
+      </div>
+      <div class="store-locator-map-{{ gen_id }}" id="storeMap{{ gen_id }}"></div>
+    </div>
+
+    <!-- CAROUSEL WRAPPER - NEW -->
+    <div class="store-locator-carousel-wrapper-{{ gen_id }}">
+      <div class="store-locator-results-list-{{ gen_id }}" id="storeResults{{ gen_id }}">
+        <div class="store-locator-results-header-{{ gen_id }}">
+          <h3 class="store-locator-results-title-{{ gen_id }}">Found Locations</h3>
+        </div>
+        <div class="store-locator-results-slider-{{ gen_id }}" id="resultsSlider{{ gen_id }}">
+          <div class="store-locator-results-track-{{ gen_id }}" id="resultsTrack{{ gen_id }}">
+            <!-- Results will be inserted here -->
+          </div>
+        </div>
+      </div>
+      <div class="store-locator-no-results-{{ gen_id }}" id="noResults{{ gen_id }}" style="display: none;">
+        <p>No stores found. Please try a different search term.</p>
+      </div>
+
+      <!-- CAROUSEL CONTROLS - NEW -->
+      <div class="store-locator-carousel-controls-{{ gen_id }}" id="carouselControls{{ gen_id }}">
+        <button class="store-locator-carousel-arrow-{{ gen_id }}" id="prevBtn{{ gen_id }}" aria-label="Previous stores">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+          </svg>
+        </button>
+        
+        <div class="store-locator-carousel-indicators-{{ gen_id }}" id="indicators{{ gen_id }}">
+          <!-- Indicators will be inserted here -->
+        </div>
+        
+        <button class="store-locator-carousel-arrow-{{ gen_id }}" id="nextBtn{{ gen_id }}" aria-label="Next stores">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Reset Button Section -->
+  <div class="store-locator-reset-section-{{ gen_id }}">
+    <button class="store-locator-reset-button-{{ gen_id }}" onclick="resetStoreLocator{{ gen_id }}()">
+      <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+      Clear Search Results
+    </button>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  (function() {
+    // Store data - In production, this would come from Shopify metafields or API
+    const STORE_DATA_{{ gen_id }} = [
+  {
+    id: 1,
+    name: "Paradise Baggage Company",
+    address: "4442 S Broadway, Englewood, CO 80113, United States",
+    lat: 39.64821,
+    lng: -104.98796,
+    phone: "",
+    hours: "Mon-Sat: 10AM-6PM, Sunday: Closed"
+  },
+  {
+    id: 2,
+    name: "Airline International",
+    address: "8701 Montana Ave, El Paso, TX 79925, United States",
+    lat: 31.80720,
+    lng: -106.37800,
+    phone: "",
+    hours: "Mon-Sat: 10AM-5PM, Sunday: Closed"
+  },
+  {
+    id: 3,
+    name: "Lazar's Luggage Superstore",
+    address: "14528 Ventura Blvd, Sherman Oaks, CA 91403, United States",
+    lat: 34.15190,
+    lng: -118.45712,
+    phone: "",
+    hours: "Monday-Sunday: 10AM-5PM"
+  },
+  {
+    id: 4,
+    name: "Leather World",
+    address: "30 Langley Rd, Newton Centre, MA 02459, United States",
+    lat: 42.34104,
+    lng: -71.21713,
+    phone: "",
+    hours: "Mon-Sat: 10AM-5PM, Sunday: Closed"
+  },
+  {
+    id: 5,
+    name: "GROSKOPFS LUGGAGE",
+    address: "1200 E Paris Ave SE STE 1, Grand Rapids, MI 49546, United States",
+    lat: 42.91261,
+    lng: -85.59229,
+    phone: "",
+    hours: "Mon-Sat: 10AM-6PM, Sunday: Closed"
+  },
+  {
+    id: 6,
+    name: "Irv's Luggage",
+    address: "1322 S Milwaukee Ave, Vernon Hills, IL 60061, United States",
+    lat: 42.24330,
+    lng: -87.94264,
+    phone: "",
+    hours: "Mon-Sat: 10AM-5PM, Sunday: Closed"
+  },
+  {
+    id: 7,
+    name: "Bag & Baggage – Prairie Village",
+    address: "22 On The Mall, Prairie Village, KS 66208, USA",
+    lat: 38.99398,
+    lng: -94.63509,
+    phone: "",
+    hours: "Mon-Sat: 10AM-6PM, Sunday: 12AM-6PM"
+  },
+  {
+    id: 8,
+    name: "Bag & Baggage – Overland Park (119th & Roe)",
+    address: "5013 W 119th St, Overland Park, KS 66209, United States",
+    lat: 38.91282,
+    lng: -94.64626,
+    phone: "",
+    hours: "Mon-Sat: 10AM-6PM, Sunday: 12AM-6PM"
+  },
+  {
+    id: 9,
+    name: "Bag & Baggage – Overland Park (95th & Quivira)",
+    address: "11179 W 95th St, Overland Park, KS 66214, United States",
+    lat: 38.95603,
+    lng: -94.72485,
+    phone: "",
+    hours: "Mon-Sat: 11AM-6PM, Sunday: 12AM-5PM"
+  }
+];
+
+    class StoreLocatorBanner{{ gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.map = null;
+        this.markers = [];
+        this.isLeafletLoaded = false;
+        this.searchTimeout = null;
+        this.minSearchLength = 2;
+        
+        // CAROUSEL PROPERTIES - NEW
+        this.currentSlide = 0;
+        this.itemsPerSlide = 3;
+        this.resultsTrack = null;
+        this.carouselControls = null;
+        this.prevBtn = null;
+        this.nextBtn = null;
+        this.indicators = null;
+      }
+
+      connectedCallback() {
+        this.form = this.querySelector('.store-locator-search-form-{{ gen_id }}');
+        this.input = this.querySelector('.store-locator-search-input-{{ gen_id }}');
+        this.button = this.querySelector('.store-locator-search-button-{{ gen_id }}');
+        this.loadingSpinner = this.querySelector('.store-locator-loading-{{ gen_id }}');
+        this.buttonText = this.querySelector('.store-locator-button-text-{{ gen_id }}');
+        this.searchIcon = this.querySelector('.store-locator-search-icon-{{ gen_id }}');
+        this.clearIcon = this.querySelector('.store-locator-clear-icon-{{ gen_id }}');
+        this.mapSection = document.getElementById('storeMapSection{{ gen_id }}');
+        this.mapElement = document.getElementById('storeMap{{ gen_id }}');
+        this.mapLoading = document.getElementById('mapLoading{{ gen_id }}');
+        this.resultsContainer = document.getElementById('storeResults{{ gen_id }}');
+        this.noResults = document.getElementById('noResults{{ gen_id }}');
+        
+        // CAROUSEL ELEMENTS - NEW
+        this.resultsTrack = document.getElementById('resultsTrack{{ gen_id }}');
+        this.carouselControls = document.getElementById('carouselControls{{ gen_id }}');
+        this.prevBtn = document.getElementById('prevBtn{{ gen_id }}');
+        this.nextBtn = document.getElementById('nextBtn{{ gen_id }}');
+        this.indicators = document.getElementById('indicators{{ gen_id }}');
+        
+        if (this.form && this.input) {
+          this.setupFormHandling();
+          this.initializeLeafletWhenReady();
+          this.updateButtonState();
+          this.setupCarouselControls(); // NEW
+        }
+      }
+
+      // CAROUSEL METHODS - NEW
+      setupCarouselControls() {
+        if (this.prevBtn) {
+          this.prevBtn.addEventListener('click', () => this.previousSlide());
+        }
+        if (this.nextBtn) {
+          this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+      }
+
+      initializeCarousel(totalItems) {
+        this.currentSlide = 0;
+        
+        if (totalItems <= this.itemsPerSlide) {
+          this.carouselControls.classList.remove('active');
+          return;
+        }
+        
+        this.carouselControls.classList.add('active');
+        
+        // Create indicators
+        const totalSlides = Math.ceil(totalItems / this.itemsPerSlide);
+        this.indicators.innerHTML = '';
+        
+        for (let i = 0; i < totalSlides; i++) {
+          const indicator = document.createElement('button');
+          indicator.className = 'store-locator-carousel-indicator-{{ gen_id }}';
+          indicator.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          if (i === 0) indicator.classList.add('active');
+          
+          indicator.addEventListener('click', () => this.goToSlide(i));
+          this.indicators.appendChild(indicator);
+        }
+        
+        this.updateCarousel();
+      }
+
+      previousSlide() {
+        if (this.currentSlide > 0) {
+          this.currentSlide--;
+          this.updateCarousel();
+        }
+      }
+
+      nextSlide() {
+        const totalItems = this.resultsTrack.querySelectorAll('.store-locator-result-item-{{ gen_id }}').length;
+        const totalSlides = Math.ceil(totalItems / this.itemsPerSlide);
+        if (this.currentSlide < totalSlides - 1) {
+          this.currentSlide++;
+          this.updateCarousel();
+        }
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateCarousel();
+      }
+
+      updateCarousel() {
+        const items = this.resultsTrack.querySelectorAll('.store-locator-result-item-{{ gen_id }}');
+        if (items.length === 0) return;
+        
+        const itemHeight = items[0]?.offsetHeight || 130;
+        const offset = -this.currentSlide * this.itemsPerSlide * itemHeight;
+        
+        this.resultsTrack.style.transform = `translateY(${offset}px)`;
+        
+        // Update indicators
+        const indicatorElements = this.indicators.querySelectorAll('.store-locator-carousel-indicator-{{ gen_id }}');
+        indicatorElements.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        // Update button states
+        const totalSlides = Math.ceil(items.length / this.itemsPerSlide);
+        if (this.prevBtn) this.prevBtn.disabled = this.currentSlide === 0;
+        if (this.nextBtn) this.nextBtn.disabled = this.currentSlide === totalSlides - 1;
+      }
+
+      setupFormHandling() {
+        // Handle form submission
+        this.form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const searchValue = this.input.value.trim();
+          
+          if (this.button.classList.contains('clear-mode')) {
+            // Clear mode - clear the input
+            this.input.value = '';
+            this.updateButtonState();
+            this.clearResults();
+            return;
+          }
+          
+          if (!searchValue) {
+            this.input.focus();
+            return;
+          }
+
+          this.performSearch(searchValue);
+        });
+
+        // Handle button clicks
+        this.button.addEventListener('click', (event) => {
+          if (this.button.classList.contains('clear-mode')) {
+            event.preventDefault();
+            this.input.value = '';
+            this.updateButtonState();
+            this.clearResults();
+            this.input.focus();
+          }
+        });
+
+        // Handle real-time search as user types
+        this.input.addEventListener('input', (event) => {
+          const searchValue = event.target.value.trim();
+          
+          // Update button state based on input value
+          this.updateButtonState();
+          
+          // Clear previous timeout
+          if (this.searchTimeout) {
+            clearTimeout(this.searchTimeout);
+          }
+
+          // If input is too short, clear results
+          if (searchValue.length < this.minSearchLength) {
+            this.clearResults();
+            return;
+          }
+
+          // Set loading state immediately
+          this.setLoadingState(true);
+
+          // Debounce search - wait 500ms after user stops typing
+          this.searchTimeout = setTimeout(() => {
+            this.performSearch(searchValue);
+          }, 500);
+        });
+
+        // Handle enter key
+        this.input.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            // Clear timeout and search immediately
+            if (this.searchTimeout) {
+              clearTimeout(this.searchTimeout);
+            }
+            const searchValue = this.input.value.trim();
+            if (searchValue.length >= this.minSearchLength) {
+              this.performSearch(searchValue);
+            }
+          }
+        });
+
+        // Clear results when input is cleared
+        this.input.addEventListener('blur', () => {
+          if (!this.input.value.trim()) {
+            setTimeout(() => {
+              this.clearResults();
+            }, 200); // Small delay to allow for clicks on results
+          }
+        });
+      }
+
+      updateButtonState() {
+        const hasValue = this.input.value.trim().length > 0;
+        
+        if (hasValue) {
+          // Show clear mode
+          this.button.classList.add('clear-mode');
+          this.searchIcon.style.display = 'none';
+          this.clearIcon.style.display = 'block';
+          this.buttonText.textContent = 'Clear';
+          this.button.setAttribute('aria-label', 'Clear search');
+        } else {
+          // Show search mode
+          this.button.classList.remove('clear-mode');
+          this.searchIcon.style.display = 'block';
+          this.clearIcon.style.display = 'none';
+          this.buttonText.textContent = '{{ block.settings.button_text }}';
+          this.button.setAttribute('aria-label', 'Search stores');
+        }
+      }
+
+      initializeLeafletWhenReady() {
+        // Check if Leaflet is already loaded
+        if (typeof L !== 'undefined') {
+          this.isLeafletLoaded = true;
+          this.initializeMap();
+          return;
+        }
+
+        // Wait for Leaflet to load
+        const checkLeaflet = () => {
+          if (typeof L !== 'undefined') {
+            this.isLeafletLoaded = true;
+            this.initializeMap();
+          } else {
+            setTimeout(checkLeaflet, 100);
+          }
+        };
+        checkLeaflet();
+      }
+
+      initializeMap() {
+        if (!this.isLeafletLoaded) return;
+
+        // Try to get user's location, fallback to center of USA
+        const fallbackCenter = [39.8283, -98.5795]; // Center of USA
+        
+        // Initialize map with fallback center first
+        this.map = L.map(this.mapElement, {
+          center: fallbackCenter,
+          zoom: 4,
+          zoomControl: true,
+          scrollWheelZoom: true,
+          doubleClickZoom: true,
+          touchZoom: true
+        });
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 18
+        }).addTo(this.map);
+
+        this.mapLoading.style.display = 'none';
+
+        // Try to get user's actual location
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              // Successfully got user location
+              const userLat = position.coords.latitude;
+              const userLng = position.coords.longitude;
+              
+              // Update map center to user's location
+              this.map.setView([userLat, userLng], 11);
+              
+              // Optionally add a marker for user's location
+              const userMarker = L.marker([userLat, userLng], {
+                icon: L.divIcon({
+                  html: `<div style="background: #3b82f6; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>`,
+                  iconSize: [16, 16],
+                  iconAnchor: [8, 8],
+                  className: 'user-current-location-marker'
+                })
+              }).addTo(this.map);
+              
+              userMarker.bindPopup('<strong>Your Current Location</strong>');
+            },
+            (error) => {
+              // Error or user denied location access
+              console.log('Geolocation error:', error.message);
+              // Map stays at fallback center (USA center)
+            },
+            {
+              enableHighAccuracy: false,
+              timeout: 5000,
+              maximumAge: 0
+            }
+          );
+        }
+      }
+
+      setLoadingState(loading) {
+        if (loading) {
+          this.button.disabled = true;
+          this.loadingSpinner.style.display = 'block';
+          this.searchIcon.style.display = 'none';
+          this.clearIcon.style.display = 'none';
+          this.buttonText.textContent = 'Searching...';
+        } else {
+          this.button.disabled = false;
+          this.loadingSpinner.style.display = 'none';
+          this.updateButtonState();
+        }
+      }
+
+      async performSearch(searchQuery) {
+        if (!this.isLeafletLoaded) {
+          alert('Map is still loading. Please try again in a moment.');
+          return;
+        }
+
+        this.setLoadingState(true);
+
+        try {
+          // Always try to geocode first to get search location for distance calculation
+          const searchResults = await this.geocodeAddress(searchQuery);
+          let searchLocation = null;
+          
+          if (searchResults.length > 0) {
+            searchLocation = {
+              lat: parseFloat(searchResults[0].lat),
+              lng: parseFloat(searchResults[0].lon)
+            };
+          }
+
+          // Find nearby stores (includes both distance and text matching)
+          const matchingStores = this.findNearbyStores(searchLocation, searchQuery);
+          
+          if (matchingStores.length === 0) {
+            this.showNoResults();
+            return;
+          }
+
+          this.displayResults(matchingStores, searchLocation);
+          
+        } catch (error) {
+          console.error('Search error:', error);
+          this.showNoResults();
+        } finally {
+          this.setLoadingState(false);
+        }
+      }
+
+      findDirectMatches(searchQuery) {
+        const matchingStores = [];
+        const queryLower = searchQuery.toLowerCase();
+        const searchTerms = queryLower.split(/[,\s]+/).filter(term => term.length > 1);
+
+        STORE_DATA_{{ gen_id }}.forEach(store => {
+          const storeName = store.name.toLowerCase();
+          const storeAddress = store.address.toLowerCase();
+          
+          // Check for exact matches first
+          const exactMatch = storeName.includes(queryLower) || storeAddress.includes(queryLower);
+          
+          // Check for partial term matches
+          const termMatch = searchTerms.some(term => 
+            storeName.includes(term) || storeAddress.includes(term)
+          );
+
+          if (exactMatch || termMatch) {
+            matchingStores.push({
+              ...store,
+              distance: 0 // Set distance to 0 for direct matches
+            });
+          }
+        });
+
+        return matchingStores;
+      }
+
+      async geocodeAddress(address) {
+        try {
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1&addressdetails=1`
+          );
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error('Geocoding error:', error);
+          return [];
+        }
+      }
+
+      findNearbyStores(searchLocation, searchQuery) {
+        const searchRadius = 2000; // Increased to 1000km for broader coverage
+        const matchingStores = [];
+
+        STORE_DATA_{{ gen_id }}.forEach(store => {
+          const distance = this.calculateDistance(
+            searchLocation.lat, searchLocation.lng,
+            store.lat, store.lng
+          );
+
+          // Check if store is within radius or matches search text
+          const isWithinRadius = distance <= searchRadius;
+          const matchesText = store.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                             store.address.toLowerCase().includes(searchQuery.toLowerCase());
+
+          // Also check for partial city/state matches
+          const searchTerms = searchQuery.toLowerCase().split(/[,\s]+/).filter(term => term.length > 2);
+          const addressTerms = store.address.toLowerCase();
+          const hasPartialMatch = searchTerms.some(term => addressTerms.includes(term));
+
+          if (isWithinRadius || matchesText || hasPartialMatch) {
+            matchingStores.push({
+              ...store,
+              distance: Math.round(distance * 10) / 10 // Round to 1 decimal place
+            });
+          }
+        });
+
+        // Sort by distance
+        return matchingStores.sort((a, b) => a.distance - b.distance);
+      }
+
+      calculateDistance(lat1, lng1, lat2, lng2) {
+        // Haversine formula for calculating distance between two points
+        const R = 6371; // Earth's radius in km
+        const dLat = this.deg2rad(lat2 - lat1);
+        const dLng = this.deg2rad(lng2 - lng1);
+        const a = 
+          Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+          Math.sin(dLng/2) * Math.sin(dLng/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+      }
+
+      deg2rad(deg) {
+        return deg * (Math.PI/180);
+      }
+
+      displayResults(stores, searchLocation) {
+        this.clearMarkers();
+        this.showMapSection();
+
+        // Create bounds to fit all markers
+        const group = new L.featureGroup();
+
+        // Define custom marker icon using Leaflet's default marker
+        const customIcon = L.icon({
+          iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+          shadowSize: [41, 41]
+        });
+
+        // Add search location marker only if searchLocation is provided
+        if (searchLocation) {
+          const searchMarker = L.marker([searchLocation.lat, searchLocation.lng], {
+            icon: L.divIcon({
+              html: `<div style="background: #ef4444; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>`,
+              iconSize: [20, 20],
+              iconAnchor: [10, 10],
+              className: 'search-location-marker'
+            })
+          }).addTo(this.map);
+
+          searchMarker.bindPopup(`<div class="store-locator-popup-{{ gen_id }}"><p><strong>Your Search Location</strong></p></div>`);
+          group.addLayer(searchMarker);
+        }
+
+        // Add markers for each store
+        stores.forEach((store, index) => {
+          const marker = L.marker([store.lat, store.lng], {
+            icon: customIcon
+          }).addTo(this.map);
+          const popupContent = this.createPopupContent(store);
+          marker.bindPopup(popupContent);
+
+          marker.on('click', () => {
+            this.highlightResult(store.id);
+          });
+
+          this.markers.push(marker);
+          group.addLayer(marker);
+        });
+
+        // Safely fit map bounds with validation
+        try {
+          if (group.getLayers().length > 0) {
+            const bounds = group.getBounds();
+            if (bounds && bounds.isValid()) {
+              this.map.fitBounds(bounds, { padding: [20, 20] });
+            } else if (stores.length > 0) {
+              // Fallback: center on first store
+              this.map.setView([stores[0].lat, stores[0].lng], 12);
+            }
+          }
+        } catch (error) {
+          console.warn('Banner map bounds error:', error);
+          // Fallback: center on first store if available
+          if (stores.length > 0) {
+            this.map.setView([stores[0].lat, stores[0].lng], 12);
+          }
+        }
+        
+        // Always display the results list
+        this.displayResultsList(stores);
+      }
+
+      createPopupContent(store) {
+        return `
+          <div class="store-locator-popup-{{ gen_id }}">
+            <h3>${store.name}</h3>
+            <p><strong>Address:</strong><br>${store.address}</p>
+            <p><strong>Phone:</strong> ${store.phone}</p>
+            <p><strong>Hours:</strong><br>${store.hours}</p>
+          </div>
+        `;
+      }
+
+      displayResultsList(stores) {
+        const resultsHtml = stores.map((store, index) => `
+          <div class="store-locator-result-item-{{ gen_id }}" data-store-id="${store.id}" data-address="${encodeURIComponent(store.address)}">
+            <h4 class="store-locator-result-name-{{ gen_id }}">${index + 1}. ${store.name}</h4>
+            <p class="store-locator-result-address-{{ gen_id }}">${store.address}</p>
+            <div class="store-locator-result-details-{{ gen_id }}">
+              <span class="store-locator-result-distance-{{ gen_id }}">${store.distance} km away</span>
+              <span class="store-locator-result-phone-{{ gen_id }}">${store.phone}</span>
+            </div>
+          </div>
+        `).join('');
+
+        // Update results track with new HTML
+        this.resultsTrack.innerHTML = resultsHtml;
+        
+        // Show results list and hide no-results
+        this.resultsContainer.style.display = 'flex';
+        if (this.noResults) {
+          this.noResults.style.display = 'none';
+        }
+        
+        // Update header
+        const header = this.resultsContainer.querySelector('.store-locator-results-header-{{ gen_id }}');
+        if (header) {
+          header.querySelector('.store-locator-results-title-{{ gen_id }}').textContent = 
+            `Found ${stores.length} Location${stores.length !== 1 ? 's' : ''}`;
+        }
+
+        // Add click handlers for result items - redirect to Google Maps
+        this.resultsTrack.querySelectorAll('.store-locator-result-item-{{ gen_id }}').forEach((item) => {
+          item.addEventListener('click', () => {
+            const address = decodeURIComponent(item.dataset.address);
+            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(googleMapsUrl, '_blank');
+          });
+        });
+        
+        // INITIALIZE CAROUSEL - NEW
+        this.initializeCarousel(stores.length);
+      }
+
+      highlightResult(storeId) {
+        this.resultsContainer.querySelectorAll('.store-locator-result-item-{{ gen_id }}').forEach(item => {
+          item.classList.remove('active');
+          if (parseInt(item.dataset.storeId) === storeId) {
+            item.classList.add('active');
+          }
+        });
+      }
+
+      showMapSection() {
+        this.mapSection.classList.add('show');
+        setTimeout(() => {
+          this.mapSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Trigger map resize after transition
+          if (this.map) {
+            setTimeout(() => this.map.invalidateSize(), 100);
+          }
+        }, 100);
+      }
+
+      showNoResults() {
+        this.showMapSection();
+        this.resultsTrack.innerHTML = '';
+        
+        // Hide results list container
+        this.resultsContainer.style.display = 'none';
+        
+        // Show no results message
+        if (this.noResults) {
+          this.noResults.style.display = 'block';
+        }
+        
+        // Hide carousel controls
+        if (this.carouselControls) {
+          this.carouselControls.classList.remove('active');
+        }
+      }
+
+      clearMarkers() {
+        this.markers.forEach(marker => marker.remove());
+        this.markers = [];
+      }
+
+      clearResults() {
+        this.mapSection.classList.remove('show');
+        this.clearMarkers();
+        this.setLoadingState(false);
+        this.updateButtonState();
+        
+        // Clear carousel
+        if (this.resultsTrack) {
+          this.resultsTrack.innerHTML = '';
+        }
+        if (this.carouselControls) {
+          this.carouselControls.classList.remove('active');
+        }
+        
+        // Reset visibility states
+        if (this.resultsContainer) {
+          this.resultsContainer.style.display = 'flex';
+        }
+        if (this.noResults) {
+          this.noResults.style.display = 'none';
+        }
+      }
+    }
+
+    customElements.define('store-locator-banner-{{ gen_id }}', StoreLocatorBanner{{ gen_id }});
+  })();
+
+  // Global reset function for the reset button
+  window.resetStoreLocator{{ gen_id }} = function() {
+    const storeLocator = document.querySelector('store-locator-banner-{{ gen_id }}');
+    if (storeLocator) {
+      storeLocator.clearResults();
+      storeLocator.input.value = '';
+      storeLocator.updateButtonState();
+      storeLocator.input.focus();
+    }
+  };
+</script>
+
+{% schema %}
+{
+  "name": "Store locator banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background image (Mobile)",
+      "info": "Optional. If set, this image will be displayed on mobile devices instead of the desktop image."
+    },
+    {
+      "type": "color",
+      "id": "fallback_color",
+      "label": "Fallback background color",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Banner height",
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#1e40af"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Overlay opacity",
+      "default": 0.6
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find Our Store Locations"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover our stores near you and visit us for an exceptional shopping experience."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Search form"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder text",
+      "default": "Enter city, state, or ZIP code"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Search"
+    },
+    {
+      "type": "url",
+      "id": "search_action",
+      "label": "Search form action URL"
+    },
+    {
+      "type": "color",
+      "id": "search_bg_color",
+      "label": "Search background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "search_text_color",
+      "label": "Search text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "search_placeholder_color",
+      "label": "Placeholder text color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "search_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Search border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Search button"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#1e40af"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#1e3a8a"
+    },
+    {
+      "type": "header",
+      "content": "Map Styling"
+    },
+    {
+      "type": "color",
+      "id": "map_section_bg",
+      "label": "Map section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "map_section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Map section padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "min": 300,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Map height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "map_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Map border radius",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "map_title_color",
+      "label": "Map title color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "map_subtitle_color",
+      "label": "Map subtitle color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Results Styling"
+    },
+    {
+      "type": "color",
+      "id": "results_bg_color",
+      "label": "Results background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "results_header_bg",
+      "label": "Results header background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "results_title_color",
+      "label": "Results title color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "active_result_bg",
+      "label": "Active result background",
+      "default": "#eff6ff"
+    },
+    {
+      "type": "color",
+      "id": "result_name_color",
+      "label": "Result name color",
+      "default": "#1f2937"
+    },
+    {
+      "type": "color",
+      "id": "result_address_color",
+      "label": "Result address color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "result_distance_color",
+      "label": "Result distance color",
+      "default": "#059669"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store locator banner"
+    }
+  ]
+}
+{% endschema %}

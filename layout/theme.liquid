@@ -1,0 +1,827 @@
+<!doctype html>
+
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}" id="{{ localization.market.handle }}">
+  <head>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="MtrRLDofhDEaqUkuaKiYnA" async></script>
+<!-- Hotjar Tracking Code for nobl travel -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:6441610,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+    
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NVNFD6K5');</script>
+<!-- End Google Tag Manager -->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11380133821"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11380133821', {
+    'allow_enhanced_conversions': true
+  });
+
+  
+</script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '847518280448936');
+      fbq('track', 'PageView');
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=847518280448936&ev=PageView&noscript=1"
+    ></noscript>
+    <!-- End Meta Pixel Code -->
+
+    {% render 'replo-head' %}
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0"
+    >
+
+    <title>
+      {% if page_title == blank -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {{- page_title -}}
+        {%- if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif -%}
+      {%- endif %}
+    </title>
+    
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% if template contains 'collection' %}
+<link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+{% elsif template contains 'blog' %}
+<link rel="canonical" href="{{ shop.url }}{{ blog.url }}" />
+{% else %}
+<link rel="canonical" href="{{ canonical_url }}" />
+{% endif %}
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
+    {%- endif -%}
+
+    {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+
+    {%- unless settings.heading_font.system? -%}
+      <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- unless settings.text_font.system? -%}
+      <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- render 'social-meta-tags' -%}
+    {%- render 'microdata-schema' -%}
+    {%- render 'css-variables' -%}
+    {%- render 'js-variables' -%}
+
+    {%- if request.page_type == 'gift_card' -%}
+      <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    {%- endif -%}
+
+    <script async src="{{ 'es-module-shims.min.js' | asset_url }}"></script>
+
+    <script type="importmap">
+      {%- comment -%}On Safari 16.3 and lower, a polyfill is used to load importmap{%- endcomment -%}
+      {
+        "imports": {
+          "vendor": "{{ 'vendor.min.js' | asset_url }}",
+          "theme": "{{ 'theme.js' | asset_url }}",
+          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}"
+        }
+      }
+    </script>
+
+    <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
+    <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
+
+    {{ content_for_header }}
+
+    {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'base.min.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'mega-menu-styles.css' | asset_url | stylesheet_tag: preload: true -}}
+    {% comment %} {{ 'custom.min.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
+
+    {{ shop.metafields.loox.global_html_head }}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+
+    {% render 'gsf-conversion-pixels' %}
+    {% render 'geo' %}
+    {% include 'trackify_x' %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11380133821"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-11380133821');
+    </script>
+   
+    
+    {% comment %}  
+    <script data-obct type = "text/javascript">
+        /** DO NOT MODIFY THIS CODE**/
+        !function(_window, _document) {
+          var OB_ADV_ID = '00b2c51a82ced5b57fd707f6ddb1c4d189';
+          if (_window.obApi) {
+            var toArray = function(object) {
+              return Object.prototype.toString.call(object) === '[object Array]' ? object : [object];
+            };
+            _window.obApi.marketerId = toArray(_window.obApi.marketerId).concat(toArray(OB_ADV_ID));
+            return;
+          }
+          var api = _window.obApi = function() {
+            api.dispatch ? api.dispatch.apply(api, arguments) : api.queue.push(arguments);
+          };
+          api.version = '1.1';
+          api.loaded = true;
+          api.marketerId = OB_ADV_ID;
+          api.queue = [];
+          var tag = _document.createElement('script');
+          tag.async = true;
+          tag.src = '//amplify.outbrain.com/cp/obtp.js';
+          tag.type = 'text/javascript';
+          var script = _document.getElementsByTagName('script')[0];
+          script.parentNode.insertBefore(tag, script);
+        }(window, document);
+      
+        obApi('track', 'PAGE_VIEW');
+      obApi('track', 'Checkout Event Based');
+      obApi('track', 'Purchase Event Based');
+      obApi('track', 'Add to cart Event Based');
+      </script>
+      {% endcomment %}
+    <!-- Taboola Pixel Code -->
+      <script type='text/javascript'>
+        window._tfa = window._tfa || [];
+        window._tfa.push({notify: 'event', name: 'page_view', id: 1798169});
+        !function (t, f, a, x) {
+               if (!document.getElementById(x)) {
+                  t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+               }
+        }(document.createElement('script'),
+        document.getElementsByTagName('script')[0],
+        '//cdn.taboola.com/libtrc/unip/1798169/tfa.js',
+        'tb_tfa_script');
+      </script>
+    <!-- End of Taboola Pixel Code -->
+    <!-- Taboola Pixel Code -->
+      <script>
+          _tfa.push({notify: 'event', name: 'collection_view', id: 1798169});
+          _tfa.push({notify: 'event', name: 'start_checkout', id: 1798169});
+          _tfa.push({notify: 'event', name: 'add_to_cart', id: 1798169});
+          _tfa.push({notify: 'event', name: 'make_purchase', id: 1798169});
+          _tfa.push({notify: 'event', name: 'search_submitted', id: 1798169});
+          _tfa.push({notify: 'event', name: 'cart_view', id: 1798169});
+          _tfa.push({notify: 'event', name: 'product_view', id: 1798169});
+      </script>
+    <!-- End of Taboola Pixel Code -->
+    <!-- Dash.Fi Alpha -->
+    <script async src="https://pixel.dashfi.dev/static/js/pixel.dash.fi.js"></script>
+    <script>window.dashFiTracker = window.dashFiTracker ||
+    {};window.dashFiTracker['siteIdentifier'] = '1efdc5f5-e129-692f-a8ab-59e78a4df755';
+    </script>
+    <!-- End Dash.Fi Alpha -->
+    <script>
+  (function(w,d,t,r,u)
+  {
+    var f,n,i;
+    w[u]=w[u]||[],f=function()
+    {
+      var o={ti:"97176977", enableAutoSpaTracking: true};
+      o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+    },
+    n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+    {
+      var s=this.readyState;
+      s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+    },
+    i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+  })
+  (window,document,"script","//bat.bing.com/bat.js","uetq");
+</script>
+    <script>
+  (function(w,d,t,r,u)
+  {
+    var f,n,i;
+    w[u]=w[u]||[],f=function()
+    {
+      var o={ti:"97176977", enableAutoSpaTracking: true};
+      o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+    },
+    n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+    {
+      var s=this.readyState;
+      s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+    },
+    i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+  })
+  (window,document,"script","//bat.bing.com/bat.js","uetq");
+
+
+      window.uetq = window.uetq || [];
+window.uetq.push("event", "purchase", {});
+      function uet_report_conversion() {
+    window.uetq = window.uetq || [];
+    window.uetq.push("event", "purchase", {});
+  }
+      window.uetq = window.uetq || [];
+window.uetq.push("event", "Order Completed Event", {});
+      function uet_report_conversion() {
+    window.uetq = window.uetq || [];
+    window.uetq.push("event", "Order Completed Event", {});
+  }
+</script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const cartDrawer = document.querySelector("cart-drawer");
+
+    if (cartDrawer) {
+        // Wait for Shadow DOM to be available
+        const checkShadowDom = setInterval(() => {
+            if (cartDrawer.shadowRoot) {
+                clearInterval(checkShadowDom);
+
+                // Select the close button inside the Shadow DOM
+                const closeButton = cartDrawer.shadowRoot.querySelector("[is='dialog-close-button']");
+
+                if (closeButton) {
+                    closeButton.addEventListener("click", function () {
+                        // Remove "open" attribute
+                        cartDrawer.removeAttribute("open");
+
+                        // Update aria-modal to false
+                        cartDrawer.setAttribute("aria-modal", "false");
+
+                        // Restore scrolling
+                        document.body.style.overflow = "";
+                        document.documentElement.style.overflow = "";
+                    });
+                }
+            }
+        }, 100);
+    }
+});
+
+
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const headerSidebar = document.querySelector("header-sidebar");
+
+    if (headerSidebar) {
+        // Wait for Shadow DOM to be available
+        const checkShadowDom = setInterval(() => {
+            if (headerSidebar.shadowRoot) {
+                clearInterval(checkShadowDom);
+
+                // Select the close button inside the Shadow DOM
+                const closeButton = headerSidebar.shadowRoot.querySelector("[is='dialog-close-button']");
+
+                if (closeButton) {
+                    closeButton.addEventListener("click", function () {
+                        // Remove "open" attribute
+                        headerSidebar.removeAttribute("open");
+
+                        // Update aria-modal to false
+                        headerSidebar.setAttribute("aria-modal", "false");
+
+                        // Restore scrolling
+                        document.body.style.overflow = "";
+                        document.documentElement.style.overflow = "";
+                    });
+                }
+            }
+        }, 100);
+    }
+});
+    </script>
+ {% if current_tags %}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'vendors' %}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'types' %}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'all'%}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'new'%}
+<meta name=“robots” content=“noindex, follow”>
+   {% elsif handle contains 'all' %}
+<meta name=“robots” content=“noindex”>
+   {% elsif handle contains 'frontpage' %}
+<meta name=“robots” content=“noindex”>
+{% else %}
+<meta name="robots" content="index,follow">
+{% endif %}
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YSG36YLZQL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YSG36YLZQL');
+</script>
+
+<!-- Audiance Tracking from Best Luggage website -->
+<script>
+(function() {
+  const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  const domain = window.location.hostname;
+
+  // Get current UTMs from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  let utmString = '';
+
+  // If URL has UTMs now, store them
+  if (utmParams.some(param => urlParams.has(param))) {
+    utmString = '?' + utmParams
+      .filter(param => urlParams.has(param))
+      .map(param => `${param}=${encodeURIComponent(urlParams.get(param))}`)
+      .join('&');
+    sessionStorage.setItem('stickyUTM', utmString);
+  } else if (sessionStorage.getItem('stickyUTM')) {
+    utmString = sessionStorage.getItem('stickyUTM');
+  }
+
+  // If we have stored UTMs, update all internal links
+  if (utmString) {
+    document.querySelectorAll('a[href]').forEach(link => {
+      let href = link.getAttribute('href');
+
+      // Internal relative links
+      if (href && href.startsWith('/') && !href.includes('utm_') && !href.includes('/checkout') && !href.includes('/account')) {
+        link.setAttribute('href', href + (href.includes('?') ? '&' : '?') + utmString.substring(1));
+      }
+
+      // Absolute internal links
+      if (href && href.startsWith(`https://${domain}`) && !href.includes('utm_') && !href.includes('/checkout') && !href.includes('/account')) {
+        const urlObj = new URL(href);
+        urlObj.search += (urlObj.search ? '&' : '') + utmString.substring(1);
+        link.setAttribute('href', urlObj.toString());
+      }
+    });
+
+    // Replace current URL in browser bar with UTMs if missing
+    if (!window.location.search.includes('utm_')) {
+      window.history.replaceState({}, '', window.location.pathname + utmString + window.location.hash);
+    }
+  }
+})();
+</script>
+
+<!-- Audiance Tracking from Best Luggage website -->
+
+
+
+    <!--NeonPixel Tracking Pixel-->
+      <script type="text/javascript">
+        	(function(){"use strict";var e=null,b="4.0.0",
+        	n="42898",
+        	additional="term=value",
+        	t,r,i;try{t=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(o){t=document.referrer!==null?document.referrer.toString().substring(0,2048):""}try{r=window&&window.top&&document.location&&window.top.location===document.location?document.location:window&&window.top&&window.top.location&&""!==window.top.location?window.top.location:document.location}catch(u){r=document.location}try{i=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(a){try{i=r!==null?encodeURIComponent(r.toString().substring(0,2048)):""}catch(f){i=""}}var l,c=document.createElement("script"),h=null,p=document.getElementsByTagName("script"),d=Number(p.length)-1,v=document.getElementsByTagName("script")[d];if(typeof l==="undefined"){l=Math.floor(Math.random()*1e17)}h="dx.mountain.com/spx?"+"dxver="+b+"&shaid="+n+"&tdr="+t+"&plh="+i+"&cb="+l+additional;c.type="text/javascript";c.src=("https:"===document.location.protocol?"https://":"http://")+h;v.parentNode.insertBefore(c,v)})()
+        </script>
+    {{ 'weekender-bundle.css' | asset_url | stylesheet_tag}}
+    {{ 'cart-drawer.css' | asset_url | stylesheet_tag}}
+    {{ 'cart-upsell-section.css' | asset_url | stylesheet_tag}}
+
+ {% if template contains 'page.pdp2' %}
+      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+{{- 'pdp2.css' | asset_url | stylesheet_tag: preload: true -}}
+
+    {% endif %}
+
+
+
+
+{% comment %} Page-specific CSS Loading {% endcomment %}
+{% assign page_handle = page.handle | default: product.handle | default: collection.handle %}
+{% assign template_name = template.name %}
+{% assign page_class = '' %}
+
+{% comment %} Detect page class from body class or page handle {% endcomment %}
+{% if template_name == 'product' %}
+  {% case product.handle %}
+    {% when 'battery' %}
+      {% assign page_class = 'battery' %}
+    {% when 'power-bank' %}
+      {% assign page_class = 'power-bank' %}
+    {% when 'packing-cubes' %}
+      {% assign page_class = 'packing-cubes' %}
+    {% when 'packing-cubes-alter' %}
+      {% assign page_class = 'packing-cubes-alter' %}
+    {% when 'july-carry-on' %}
+      {% assign page_class = 'july-carry-on' %}
+    {% when 'fold-n-go-duffel' %}
+      {% assign page_class = 'fold-n-go-duffel' %}
+    {% when 'battery-variation-upsell' %}
+      {% assign page_class = 'battery-variation-upsell' %}
+    {% when 'july-9-28-inch-aio' %}
+      {% assign page_class = 'july-9-28-inch-aio' %}
+    {% when 'dec-15-large-all-in-one' %}
+      {% assign page_class = 'dec-15-large-all-in-one' %}
+    {% when 'final-5-in-1-carry-on' %}
+      {% assign page_class = 'final-5-in-1-carry-on' %}
+    {% when 'duo-carry' %}
+      {% assign page_class = 'duo-carry' %}
+    {% when 'cubes-bottle-bundle' %}
+      {% assign page_class = 'cubes-bottle-bundle' %}
+    {% when 'carry-smart-set' %}
+      {% assign page_class = 'carry-smart-set' %}
+    {% when 'ultimate-travel-set' %}
+      {% assign page_class = 'ultimate-travel-set' %}
+    {% when 'check-in-duo' %}
+      {% assign page_class = 'check-in-duo' %}
+    {% when 'c-weekender-bottle-bundle' %}
+      {% assign page_class = 'c-weekender-bottle-bundle' %}
+    {% when 'aluminum-carry-on' %}
+      {% assign page_class = 'aluminum-carry-on' %}
+    {% when 'feb-23-aluminum-large' %}
+      {% assign page_class = 'feb-23-aluminum-large' %}
+    {% when 'collapsible-carry-on' %}
+      {% assign page_class = 'collapsible-carry-on' %}
+    {% when 'final-collapsible-large' %}
+      {% assign page_class = 'final-collapsible-large' %}
+    {% when 'check-in-24' %}
+      {% assign page_class = 'check-in-24' %}
+    {% when 'a-b-test' %}
+      {% assign page_class = 'a-b-test' %}
+    {% when 'bundle-product' %}
+      {% assign page_class = 'bundle-product' %}
+    {% when 'expandable' %}
+      {% assign page_class = 'expandable' %}
+    {% when 'weekender-bag' %}
+      {% assign page_class = 'weekender-bag' %}
+    {% when 'water-bottles' %}
+      {% assign page_class = 'water-bottles' %}
+    {% when 'nobl-duo' %}
+      {% assign page_class = 'nobl-duo-bundle' %}
+    {% else %}
+      {% assign page_class = 'product-section' %}
+  {% endcase %}
+{% elsif template_name == 'collection' %}
+  {% assign page_class = 'collection-template' %}
+{% elsif template_name == 'index' %}
+  {% assign page_class = 'index-section' %}
+{% elsif template_name == 'cart' %}
+  {% assign page_class = 'cart-page' %}
+{% elsif template_name == 'page' %}
+  {% case page.handle %}
+    {% when 'affiliates' %}
+      {% assign page_class = 'affiliates' %}
+    {% when 'shipping' %}
+      {% assign page_class = 'shipping' %}
+    {% when 'listicles' %}
+      {% assign page_class = 'listicles' %}
+  {% endcase %}
+{% endif %}
+
+{% comment %} Load page-specific CSS {% endcomment %}
+{% if page_class != '' %}
+  {% case page_class %}
+    {% when 'battery' %}
+      {{ 'battery.css' | asset_url | stylesheet_tag }}
+    {% when 'power-bank' %}
+      {{ 'power-bank.css' | asset_url | stylesheet_tag }}
+    {% when 'packing-cubes' %}
+      {{ 'packing-cubes.css' | asset_url | stylesheet_tag }}
+    {% when 'packing-cubes-alter' %}
+      {{ 'packing-cubes-alter.css' | asset_url | stylesheet_tag }}
+    {% when 'july-carry-on' %}
+      {{ 'july-carry-on.css' | asset_url | stylesheet_tag }}
+    {% when 'fold-n-go-duffel' %}
+      {{ 'fold-n-go-duffel.css' | asset_url | stylesheet_tag }}
+    {% when 'battery-variation-upsell' %}
+      {{ 'battery-variation-upsell.css' | asset_url | stylesheet_tag }}
+    {% when 'final-5-in-1-carry-on' %}
+      {{ 'final-5-in-1-carry-on.css' | asset_url | stylesheet_tag }}
+    {% when 'aluminum-carry-on' %}
+      {{ 'aluminum-carry-on.css' | asset_url | stylesheet_tag }}
+    {% when 'weekender-bag' %}
+      {{ 'weekender-bag.css' | asset_url | stylesheet_tag }}
+    {% when 'water-bottles' %}
+      {{ 'water-bottles.css' | asset_url | stylesheet_tag }}
+    {% when 'affiliates' %}
+      {{ 'affiliates.css' | asset_url | stylesheet_tag }}
+    {% when 'shipping' %}
+      {{ 'shipping.css' | asset_url | stylesheet_tag }}
+    {% when 'listicles' %}
+      {{ 'listicles.css' | asset_url | stylesheet_tag }}
+    {% when 'collection-template' %}
+      {{ 'collection-template.css' | asset_url | stylesheet_tag }}
+    {% when 'product-section' %}
+      {{ 'product-section.css' | asset_url | stylesheet_tag }}
+    {% when 'index-section' %}
+      {{ 'index-section.css' | asset_url | stylesheet_tag }}
+    {% when 'cart-page' %}
+      {{ 'cart-page.css' | asset_url | stylesheet_tag }}
+    {% when 'july-9-28-inch-aio', 'dec-15-large-all-in-one', 'duo-carry', 'cubes-bottle-bundle', 'carry-smart-set', 'ultimate-travel-set', 'check-in-duo', 'c-weekender-bottle-bundle', 'feb-23-aluminum-large', 'collapsible-carry-on', 'final-collapsible-large', 'check-in-24', 'a-b-test', 'bundle-product', 'expandable', 'nobl-duo-bundle' %}
+      {{ 'multiple-product-pages.css' | asset_url | stylesheet_tag }}
+  {% endcase %}
+{% endif %}
+
+
+
+
+
+    
+  </head>
+
+  {% liquid
+    assign features_class = ''
+
+    if settings.show_button_transition
+      assign features_class = features_class | append: 'features--button-transition '
+    endif
+
+    if settings.show_image_zoom_on_hover
+      assign features_class = features_class | append: 'features--zoom-image '
+    endif
+
+    if settings.show_page_transition
+      assign features_class = features_class | append: 'features--page-transition '
+    endif
+  %}
+
+  <body
+    class="{{ features_class }}{% if template.name == 'product' %} page-{{ template.suffix }} product-{{ product.id }}{% endif %}"
+    id="page-{{ template.suffix }}"
+  >
+    {%- render 'shadow-dom-templates' -%}
+
+    <loading-bar class="loading-bar" aria-hidden="true"></loading-bar>
+    <a href="#main" allow-hash-change class="skip-to-content sr-only">
+      {{- 'general.accessibility.skip_to_content' | t -}}
+    </a>
+{% unless template contains 'page.pdp2' %}
+    {%- if request.page_type != 'password' -%}
+      {%- sections 'header-group' -%}
+      {%- sections 'overlay-group' -%}
+    {%- endif -%}
+{% endunless %}
+    {% if template contains 'index' %}
+      {% assign feature_image = 'index-section' %}
+    {% elsif template contains 'collection' %}
+      {% assign feature_image = 'collection-template' %}
+    {% elsif template contains 'blog' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'article' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'contact' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'product' %}
+      {% assign feature_image = 'product-section' %}
+    {% elsif template contains 'gallery' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'cart' %}
+      {% assign feature_image = 'cart-page' %}
+    {% elsif template contains 'details' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'faq' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'search' %}
+      {% assign feature_image = true %}
+    {% else %}
+      {% assign feature_image = false %}
+    {% endif %}
+
+    <main id="main" class="anchor {{ feature_image }} {% if template == 'index' %}index-page{% endif %}">
+      {{ content_for_layout }}
+    </main>
+{% unless template contains 'page.pdp2' %}
+    {%- if request.page_type != 'password' -%}
+      {%- sections 'footer-group' -%}
+    {%- endif -%}
+{% endunless %}
+    {{ shop.metafields.loox.global_html_body }}
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+        if(window.innerWidth < 699) {
+        $(".main-carousel").slick({
+          infinite: true,
+          arrow: false,
+          dots: true,
+          centerMode: true,
+          centerPadding: '20px',
+      });
+        }
+
+
+              $(document).ready(function(){
+                $('.scroll_a div').click(function(){
+                  var id = "#" + $(this).attr('goto');
+                  var top = $(id).position().top;
+                  $('html').scrollTop(top);
+                });
+              });
+
+
+
+        });
+    </script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVNFD6K5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!--
+      <script>
+      window.ezfyReadMore = window.ezfyReadMore || {};
+
+      ezfyReadMore = (function() {
+
+        const VIEW_MORE_TEXT = `View More`.trim();
+        const VIEW_LESS_TEXT = `View Less`.trim();
+        const DESCRIPTION_BLOCKED_CLASS = `product__description--blocked`;
+         const DESCRIPTION_BLOCKED_CLASS_Mobile = `product__description__mobile--blocked`;
+        const MIN_HEIGHT = `250`.trim();
+
+
+
+        function _isProductPage() {
+          return /product/.test(window.location.href);
+        }
+
+
+
+        function _waitForElement(selector, delay = 50, tries = 250) {
+          const element = document.querySelector(selector);
+
+          if (!window[`__${selector}`]) {
+            window[`__${selector}`] = 0;
+          }
+
+          function _search() {
+            return new Promise((resolve) => {
+              window[`__${selector}`]++;
+              setTimeout(resolve, delay);
+            });
+          }
+
+          if (element === null) {
+            if (window[`__${selector}`] >= tries) {
+              window[`__${selector}`] = 0;
+              return Promise.reject(null);
+            }
+
+            return _search().then(() => _waitForElement(selector));
+          } else {
+            return Promise.resolve(element);
+          }
+        }
+
+        function _addStyle(styleString) {
+          const style = document.createElement("style");
+          style.textContent = styleString;
+          document.head.append(style);
+        }
+
+
+
+        function blockDescription() {
+          const $description = document.querySelector(`.product__description, .product__description_mobile,  .product-single__description`);
+
+          if (!$description) {
+            return
+          }
+
+          const height = $description.offsetHeight;
+
+          if (height <= MIN_HEIGHT) {
+            return;
+          }
+
+          $description.classList.add(DESCRIPTION_BLOCKED_CLASS);
+
+          _addReadMoreButton($description);
+        }
+
+        async function _addReadMoreButton($description) {
+          const buttonHTML = `<button id="" class="ReadMoreEzfyButton ReadMoreEzfy">${VIEW_MORE_TEXT}</button>`;
+
+          $description.insertAdjacentHTML(`beforeend`, buttonHTML)
+
+          const $button = await _waitForElement(`.ReadMoreEzfyButton`);
+
+          $button.addEventListener('click', function() {
+
+            console.log('yes');
+
+            const isBlocked = [...$description.classList].includes('product__description--blocked');
+
+            if (isBlocked) {
+              $description.classList.remove(DESCRIPTION_BLOCKED_CLASS);
+              $button.textContent = VIEW_LESS_TEXT;
+            } else {
+              $description.classList.add(DESCRIPTION_BLOCKED_CLASS);
+              $button.textContent = VIEW_MORE_TEXT;
+            }
+
+
+          });
+
+        }
+
+        return {
+          init: function() {
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+
+              if (_isProductPage()) {
+                blockDescription();
+              }
+
+            });
+
+            window.addEventListener("resize", function() {});
+
+            window.addEventListener("load", function() {});
+
+            window.addEventListener("scroll", function() {});
+          },
+        };
+      })();
+
+      ezfyReadMore.init();</script>
+    -->
+
+    <!-- <script
+      async
+      type="text/javascript"
+      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Xr5qgY"
+    ></script> -->
+   {% comment %} <script type="module" src="{{ 'custom.min.js' | asset_url }}"></script> {% endcomment %}
+    <script>
+        // Disable right-click
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      function ctrlShiftKey(e, keyCode) {
+        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+      }
+
+      document.onkeydown = (e) => {
+        // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+        if (
+          event.keyCode === 123 ||
+          ctrlShiftKey(e, 'I') ||
+          ctrlShiftKey(e, 'J') ||
+          ctrlShiftKey(e, 'C') ||
+          (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+        )
+          return false;
+      };
+    </script>
+    <script
+      id="gorgias-chat-widget-install-v3"
+      src="https://config.gorgias.chat/bundle-loader/01JCK9N64MC1P368QYBN6RXDBM"
+    ></script>
+    <script src="{{ 'global-custom.js' | asset_url }}" defer></script>
+    <script>
+  window.ALBSS = {
+    event_key: '76cbb223-c9f2-4893-b7b6-8d6c3fbe25e0'
+  };
+</script>
+<script src="https://c.albss.com/p/l/loader.iife.js" async></script>
+  </body>
+</html>

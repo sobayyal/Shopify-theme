@@ -1,0 +1,531 @@
+<!doctype html>
+
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}" id="{{ localization.market.handle }}">
+  <head>
+
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0"
+    >
+
+    <title>
+      {% if page_title == blank -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {{- page_title -}}
+        {%- if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif -%}
+      {%- endif %}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% if template contains 'collection' %}
+<link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+{% elsif template contains 'blog' %}
+<link rel="canonical" href="{{ shop.url }}{{ blog.url }}" />
+{% else %}
+<link rel="canonical" href="{{ canonical_url }}" />
+{% endif %}
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
+    {%- endif -%}
+
+    {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+
+    {%- unless settings.heading_font.system? -%}
+      <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- unless settings.text_font.system? -%}
+      <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endunless -%} 
+
+
+     {% render 'meta-tags-lp' %}
+
+    
+    {%- render 'css-variables' -%}
+    {%- render 'js-variables' -%}
+ 
+ 
+
+    <script type="importmap">
+      {%- comment -%}On Safari 16.3 and lower, a polyfill is used to load importmap {%- endcomment -%}
+      {
+        "imports": {
+          "vendor": "{{ 'vendor.min.js' | asset_url }}",
+          "theme": "{{ 'theme.js' | asset_url }}",
+          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}"
+        }
+      }
+    </script>
+
+    <script type="module" src="{{ 'vendor.min.js' | asset_url }}" defer></script>
+    <script type="module" src="{{ 'theme.js' | asset_url }}" defer></script>
+
+ 
+
+    {{ content_for_header }}
+ 
+      {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}} 
+
+    {{ shop.metafields.loox.global_html_head }}
+ 
+ 
+  
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const cartDrawer = document.querySelector("cart-drawer");
+
+    if (cartDrawer) {
+        // Wait for Shadow DOM to be available
+        const checkShadowDom = setInterval(() => {
+            if (cartDrawer.shadowRoot) {
+                clearInterval(checkShadowDom);
+
+                // Select the close button inside the Shadow DOM
+                const closeButton = cartDrawer.shadowRoot.querySelector("[is='dialog-close-button']");
+
+                if (closeButton) {
+                    closeButton.addEventListener("click", function () {
+                        // Remove "open" attribute
+                        cartDrawer.removeAttribute("open");
+
+                        // Update aria-modal to false
+                        cartDrawer.setAttribute("aria-modal", "false");
+
+                        // Restore scrolling
+                        document.body.style.overflow = "";
+                        document.documentElement.style.overflow = "";
+                    });
+                }
+            }
+        }, 100);
+    }
+});
+
+
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const headerSidebar = document.querySelector("header-sidebar");
+
+    if (headerSidebar) {
+        // Wait for Shadow DOM to be available
+        const checkShadowDom = setInterval(() => {
+            if (headerSidebar.shadowRoot) {
+                clearInterval(checkShadowDom);
+
+                // Select the close button inside the Shadow DOM
+                const closeButton = headerSidebar.shadowRoot.querySelector("[is='dialog-close-button']");
+
+                if (closeButton) {
+                    closeButton.addEventListener("click", function () {
+                        // Remove "open" attribute
+                        headerSidebar.removeAttribute("open");
+
+                        // Update aria-modal to false
+                        headerSidebar.setAttribute("aria-modal", "false");
+
+                        // Restore scrolling
+                        document.body.style.overflow = "";
+                        document.documentElement.style.overflow = "";
+                    });
+                }
+            }
+        }, 100);
+    }
+});
+    </script>
+ {% if current_tags %}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'vendors' %}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'types' %}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'all'%}
+<meta name=“robots” content=“noindex, follow”>
+{% elsif template contains 'collection' and collection.handle == 'new'%}
+<meta name=“robots” content=“noindex, follow”>
+   {% elsif handle contains 'all' %}
+<meta name=“robots” content=“noindex”>
+   {% elsif handle contains 'frontpage' %}
+<meta name=“robots” content=“noindex”>
+{% else %}
+<meta name="robots" content="index,follow">
+{% endif %} 
+
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+   
+
+    {{ 'pdp_redesign.css' | asset_url | stylesheet_tag: preload: true }}
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" ></script>
+   <script src="{{ 'pdp_redesign.js' | asset_url }}" ></script>
+    {% render "assets_theme" %}
+    {% render "nonFlickerCode" %}
+ 
+  </head>
+
+  {% liquid
+    assign features_class = ''
+
+    if settings.show_button_transition
+      assign features_class = features_class | append: 'features--button-transition '
+    endif
+
+    if settings.show_image_zoom_on_hover
+      assign features_class = features_class | append: 'features--zoom-image '
+    endif
+
+    if settings.show_page_transition
+      assign features_class = features_class | append: 'features--page-transition '
+    endif
+  %}
+
+  <body
+    class="{{ features_class }}{% if template.name == 'product' %} page-{{ template.suffix }} product-{{ product.id }}{% endif %}"
+    id="page-{{ template.suffix }}"
+  >
+    {%- render 'shadow-dom-templates' -%}
+
+    <loading-bar class="loading-bar" aria-hidden="true"></loading-bar>
+    <a href="#main" allow-hash-change class="skip-to-content sr-only">
+      {{- 'general.accessibility.skip_to_content' | t -}}
+    </a>
+
+    {%- if request.page_type != 'password' -%}
+      {%- sections 'header-group-pdp' -%}
+      {%- sections 'overlay-group' -%}
+    {%- endif -%}
+
+    {% if template contains 'index' %}
+      {% assign feature_image = 'index-section' %}
+    {% elsif template contains 'collection' %}
+      {% assign feature_image = 'collection-template' %}
+    {% elsif template contains 'blog' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'article' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'contact' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'product' %}
+      {% assign feature_image = 'product-section' %}
+    {% elsif template contains 'gallery' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'cart' %}
+      {% assign feature_image = 'cart-page' %}
+    {% elsif template contains 'details' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'faq' %}
+      {% assign feature_image = true %}
+    {% elsif template contains 'search' %}
+      {% assign feature_image = true %}
+    {% else %}
+      {% assign feature_image = false %}
+    {% endif %}
+
+    <main id="main" class="anchor {{ feature_image }}">
+      {{ content_for_layout }}
+    </main>
+{% unless template contains 'page.pdp2' %}
+    {%- if request.page_type != 'password' -%}
+      {%- sections 'footer-group' -%}
+    {%- endif -%}
+{% endunless %}
+    {{ shop.metafields.loox.global_html_body }}
+
+
+
+    <script>
+        $(document).ready(function(){
+
+        if(window.innerWidth < 699) {
+        $(".main-carousel").slick({
+          infinite: true,
+          arrow: false,
+          dots: true,
+          centerMode: true,
+          centerPadding: '20px',
+      });
+        }
+
+
+              $(document).ready(function(){
+                $('.scroll_a div').click(function(){
+                  var id = "#" + $(this).attr('goto');
+                  var top = $(id).position().top;
+                  $('html').scrollTop(top);
+                });
+              });
+
+
+
+        });
+    </script>
+
+     
+     
+    <script>
+      //   // Disable right-click
+      // document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      // function ctrlShiftKey(e, keyCode) {
+      //   return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+      // }
+
+      // document.onkeydown = (e) => {
+      //   // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+      //   if (
+      //     event.keyCode === 123 ||
+      //     ctrlShiftKey(e, 'I') ||
+      //     ctrlShiftKey(e, 'J') ||
+      //     ctrlShiftKey(e, 'C') ||
+      //     (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+      //   )
+      //     return false;
+      // };
+    </script>
+  
+
+
+     <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Helper function to get the variant ID from the URL
+    const getVariantIdFromUrl = () => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("variant"); // Extract the variant parameter
+    };
+
+    // Function to toggle section visibility based on variant ID
+    const toggleSections = (variantId) => {
+        const sections = document.querySelectorAll("#dynamic-product-slider");
+
+        sections.forEach(section => {
+            const sectionVariantId = section.dataset.variantId;
+            const isDefault = section.dataset.default === "true";
+
+            if (variantId) {
+                section.style.display = sectionVariantId === variantId ? "block" : "none";
+            } else {
+                section.style.display = isDefault ? "block" : "none";
+            }
+        });
+    };
+
+    // Function to initialize the slider
+    const initializeSlider = (section) => {
+        const sliderContainer = section.querySelector(".slider-container");
+        const sliderItems = section.querySelectorAll(".slider-item");
+        const leftArrow = section.querySelector(".left-arrow");
+        const rightArrow = section.querySelector(".right-arrow");
+
+        if (!sliderContainer || sliderItems.length === 0 || !leftArrow || !rightArrow) {
+            console.warn("Required elements missing in this slider.");
+            return;
+        }
+
+        // Calculate maximum scrollable distance
+        const getMaxScrollLeft = () => sliderContainer.scrollWidth - sliderContainer.clientWidth;
+
+        // Update arrow visibility
+        const updateArrowVisibility = () => {
+            const maxScrollLeft = getMaxScrollLeft();
+            leftArrow.style.display = sliderContainer.scrollLeft > 0 ? "block" : "none";
+            rightArrow.style.display =
+                Math.ceil(sliderContainer.scrollLeft) >= maxScrollLeft ? "none" : "block";
+        };
+
+        // Scroll the slider
+        const scrollSlider = (direction) => {
+            const itemWidth = sliderItems[0].offsetWidth + parseFloat(getComputedStyle(sliderItems[0]).marginRight);
+            const maxScrollLeft = getMaxScrollLeft();
+            let targetScrollLeft = sliderContainer.scrollLeft;
+
+            if (direction === "left") {
+                targetScrollLeft = Math.max(0, targetScrollLeft - itemWidth);
+            } else if (direction === "right") {
+                targetScrollLeft = Math.min(maxScrollLeft, targetScrollLeft + itemWidth);
+            }
+
+            sliderContainer.scrollTo({
+                left: targetScrollLeft,
+                behavior: "smooth",
+            });
+
+            // Update arrow visibility after the scroll ends
+            setTimeout(updateArrowVisibility, 300);
+        };
+
+        // Attach event listeners
+        leftArrow.addEventListener("click", () => scrollSlider("left"));
+        rightArrow.addEventListener("click", () => scrollSlider("right"));
+        sliderContainer.addEventListener("scroll", updateArrowVisibility);
+
+        // Initial visibility update
+        updateArrowVisibility();
+    };
+
+    // Reset sliders for visible sections
+    const resetSliders = () => {
+        const visibleSections = document.querySelectorAll("#dynamic-product-slider[style='display: block;']");
+
+        visibleSections.forEach(section => {
+            if (!section.dataset.initialized) {
+                initializeSlider(section);
+                section.dataset.initialized = "true"; // Mark as initialized
+            }
+        });
+    };
+
+    // Function to observe URL changes for real-time updates
+    const observeUrlChanges = () => {
+        let lastUrl = window.location.href;
+
+        setInterval(() => {
+            const currentUrl = window.location.href;
+            if (currentUrl !== lastUrl) {
+                lastUrl = currentUrl;
+                const variantId = getVariantIdFromUrl();
+                toggleSections(variantId);
+                resetSliders();
+            }
+        }, 300); // Check every 300ms for URL changes
+    };
+
+    // Initialize
+    const initialVariantId = getVariantIdFromUrl();
+    toggleSections(initialVariantId);
+    resetSliders();
+    observeUrlChanges();
+});
+</script>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Helper function to get the variant ID from the URL
+    const getVariantIdFromUrl = () => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('variant'); // Extract the variant parameter
+    };
+
+    // Function to toggle visibility of blocks
+    const toggleBlocks = (variantId) => {
+        const blocks = document.querySelectorAll('.variant-block');
+        let defaultBlockDisplayed = false;
+
+        blocks.forEach(block => {
+            const isDefault = block.dataset.default === 'true'; // Check if it's the default block
+
+            if (variantId) {
+                // Show matching block if variantId exists
+                if (block.dataset.variantId === variantId) {
+                    block.style.display = 'block';
+                } else {
+                    block.style.display = 'none';
+                }
+            } else if (isDefault && !defaultBlockDisplayed) {
+                // Show the default block if no variantId and not already displayed
+                block.style.display = 'block';
+                defaultBlockDisplayed = true;
+            } else {
+                // Hide all non-matching and non-default blocks
+                block.style.display = 'none';
+            }
+        });
+    };
+
+    // Observe for real-time URL changes
+    const observeUrlChanges = () => {
+        let lastUrl = window.location.href;
+
+        setInterval(() => {
+            const currentUrl = window.location.href;
+            if (currentUrl !== lastUrl) {
+                lastUrl = currentUrl;
+                const variantId = getVariantIdFromUrl();
+                toggleBlocks(variantId); // Update blocks dynamically
+            }
+        }, 100); // Check every 100ms for URL changes
+    };
+
+    // Get initial variant ID and toggle blocks
+    const initialVariantId = getVariantIdFromUrl();
+    toggleBlocks(initialVariantId);
+
+    // Start observing URL changes
+    observeUrlChanges();
+});
+</script>
+
+
+  
+    <script>
+      // Add this to your theme.js file or create a new JS file and include it in your theme
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to handle form submission for add to cart buttons
+  function handleAddToCartSubmit() {
+    const addToCartForms = document.querySelectorAll('form[action="/cart/add"]');
+    
+    addToCartForms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        const addToCartButton = form.querySelector('#add-to-cart-button');
+        
+        // Only apply temp disabled to add-to-cart buttons, not sold-out buttons
+        if (addToCartButton) {
+          // We can still add the visual disabled class for feedback
+          addToCartButton.classList.add('button--disabled');
+          
+          // But we won't add the actual disabled attribute
+          // This prevents the issue with the attribute persisting
+          
+          // Reset the button after a short delay (for visual feedback)
+          setTimeout(() => {
+            addToCartButton.classList.remove('button--disabled');
+          }, 1000);
+        }
+      });
+    });
+  }
+  
+  // Initialize the handlers
+  handleAddToCartSubmit();
+  
+  // Re-initialize handlers after Shopify section updates
+  document.addEventListener('shopify:section:load', handleAddToCartSubmit);
+});
+    </script>
+    <script>
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    const offset = 50; // Change this to your desired offset
+    if (target) {
+      const topPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({
+        top: topPosition,
+        behavior: "smooth"
+      });
+    }
+  });
+});
+
+
+</script>
+    
+  <link rel="preload" href="{{ 'splide.min.js' | asset_url }}" as="script">
+    <script src="{{ 'splide.min.js' | asset_url }}"></script>
+   
+    
+  </body>
+</html>
