@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.water-bottles.json",
+  "context": {
+    "market": "australia"
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "custom_text_VfErJb": {
+          "settings": {
+            "custom_text": "Black Friday Sale: BUY ONE, GET ONE 25% OFF"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "settings": {
+            "text": "Free Shipping",
+            "text_out_of_stock": "Free Shipping"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "settings": {
+            "content": "<p>3-Day Shipping on all U.S. orders.<br/>30-Day risk-free returns</p>",
+          }
+        },
+      }
+    }
+  }
+}

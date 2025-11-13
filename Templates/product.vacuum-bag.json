@@ -1,0 +1,750 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "0e69516f-8b2b-4355-b944-a339bfcfdb1b": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 12,
+            "pattern": " 4.8/5 - [count] Verified Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84": {
+          "type": "badges",
+          "settings": {}
+        },
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "color_selector_type": "color"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "feature_with_icon_i8Br9C": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Fits all international carriers including European budget carriers",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/icons8-plane-50_acea6a2a-2041-4b52-b20d-11440bb2b0f0.png",
+            "icon_width": 32,
+            "background": "#f6f6f6",
+            "text_color": "#2273fd",
+            "border_color": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "shoppay_payment_QWR9j8": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "Payments of $22.11/month with"
+          }
+        },
+        "buy_buttons_b3mqRA": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_icon_price": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "8 Left in Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "Low Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "100-Day Returns",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/icons8-check_2.svg",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "360° Wheels",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Packs For 5-7 Day Trips",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/numberdays.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "81d66082-de22-4e38-9a78-f63819d3d0d4": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Interior compression",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/compression-pad.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Durable Aluminum Shell",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/shell_1.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "type": "feature_with_icon",
+          "settings": {
+            "text": "Dual TSA Combination Locks",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/lock.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Made to last with anti-stain materials",
+            "link": "",
+            "icon": "none",
+            "icon_width": 24,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "complementary_products": {
+          "type": "complementary_products",
+          "disabled": true,
+          "settings": {
+            "title": "Bundle and Save",
+            "products_count": 1,
+            "show_below_gallery": false,
+            "stack_products": false,
+            "show_quick_buy": true
+          }
+        },
+        "4c14dcc3-c016-4055-8b44-46147a8c86be": {
+          "type": "description_mobile",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "739f0039-d761-4e17-9e07-a6f64e029bee": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Details + Dimensions",
+            "content": "<h4>Carry-On Luggage</h4><ul><li>Durable aluminum hard shell</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system to help pack more</li><li>Hidden laundry bag to keep dirty clothing separate</li><li>Meets the airline requirements for all airlines including European</li></ul><h4><strong>Exterior measurements</strong> 19.5\" x 15.5\" x 8.5\"<br/><strong>Interior measurements</strong> 18.5\" x 13.5\" x 13.5\"<br/><strong>Weight</strong> 10.1 lbs<br/><strong>Capacity</strong> 35L<br/><em>Measurements do not include wheels.</em></h4><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>",
+            "page": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "show_below_gallery": false
+          }
+        },
+        "product_measurements_FCiHb7": {
+          "type": "product-measurements",
+          "settings": {
+            "variant_id": "46681508086060",
+            "variant_name": "Silver",
+            "is_default": true,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Durable aluminum hard shell</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system to help pack more</li><li>Hidden laundry bag to keep dirty clothing separate</li><li>Meets the airline requirements for all airlines including European</li></ul><p><strong>Exterior measurements</strong> 19.5\" x 15.5\" x 8.5\"<br/><strong>Interior measurements</strong> 18.5\" x 13.5\" x 13.5\"<br/><strong>Weight</strong> 12.3 lbs<br/><strong>Capacity</strong> 35L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "product_measurements_EVynrq": {
+          "type": "product-measurements",
+          "settings": {
+            "variant_id": "46681508118828",
+            "variant_name": "Black",
+            "is_default": false,
+            "measurement_title": "Details + Dimensions",
+            "measurement_content": "<h4>Carry-On Luggage</h4><ul><li>Durable aluminum hard shell</li><li>Dual TSA-approved combination locks for extra safety</li><li>360° spinner wheels that ensure a smooth ride</li><li>Slow-release handles for easy carrying</li><li>Interior compression system to help pack more</li><li>Hidden laundry bag to keep dirty clothing separate</li><li>Meets the airline requirements for all airlines including European</li></ul><p><strong>Exterior measurements</strong> 19.5\" x 15.5\" x 8.5\"<br/><strong>Interior measurements</strong> 18.5\" x 13.5\" x 13.5\"<br/><strong>Weight</strong> 12.35 lbs<br/><strong>Capacity</strong> 35L<br/><em>Measurements do not include wheels.</em></p><h4>TSA-approved combination lock</h4><p>Using this Travel Sentry® lock allows your luggage to be opened, inspected, and relocked by security authorities without damage. For more information, visit:<a href=\"https://www.travelsentry.org/\" target=\"_blank\">www.travelsentry.org</a></p>"
+          }
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Lifetime Warranty + Returns Policy",
+            "content": "<h3>Shipping</h3><p>Free Shipping for all suitcase orders. USA shipping is 3 business days.</p><h3><br/>Lifetime Guarantee</h3><p>We want you to love everything about Nobl, which is why we offer returns for the first 100 days. Our suitcases are guaranteed by a lifetime warranty that covers any damage to the shell, wheels, handles, zippers, and many other functional elements of our luggage.</p>",
+            "page": ""
+          }
+        },
+        "77375662-08de-4be2-9771-d610d6220f48": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<div class=\"custom_link\" style=\"margin-top: -1.5rem\">\n\n\n<div class=\"product-info__block-item\" data-block-type=\"accordion\"><details class=\"accordion  group \" is=\"accordion-disclosure\" aria-expanded=\"false\" style=\"border-top: 0;\">\n  <summary style=\"opacity: 1;\"><span class=\"scroll_a accordion__toggle h6\">\n<div goto=\"reviews\"><span>Reviews →</span></div></span>\n  </summary>\n\n</details></div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "0e69516f-8b2b-4355-b944-a339bfcfdb1b",
+        "title",
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d",
+        "price",
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84",
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c",
+        "variant_picker",
+        "feature_with_icon_i8Br9C",
+        "payment_terms",
+        "shoppay_payment_QWR9j8",
+        "buy_buttons_b3mqRA",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e",
+        "cb61f319-3e20-4814-8957-9ba6572cf837",
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e",
+        "81d66082-de22-4e38-9a78-f63819d3d0d4",
+        "a72f67a9-3657-444b-9cf4-d63c98705164",
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8",
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef",
+        "complementary_products",
+        "4c14dcc3-c016-4055-8b44-46147a8c86be",
+        "separator",
+        "quantity_selector",
+        "739f0039-d761-4e17-9e07-a6f64e029bee",
+        "description",
+        "product_measurements_FCiHb7",
+        "product_measurements_EVynrq",
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743",
+        "77375662-08de-4be2-9771-d610d6220f48"
+      ],
+      "custom_css": [
+        ".product-info__block-item:is( [data-block-type=\"inventory\"], [data-block-type=\"buy-buttons\"], [data-block-type=\"pickup-availability\"], [data-block-type=\"more-information\"], [data-block-type=\"offers\"] ) {--product-info-gap: 0.7rem;}",
+        ".text-success {color: black;}",
+        ".custom_link summary {opacity: 1 !important;}",
+        "@media screen and (max-width: 699px) {.feature-badge-list .feature-badge {padding: 0; font-size: 0.9rem; }}",
+        ".feature-badge-list {display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; width: 100%;}"
+      ],
+      "settings": {
+        "enable_badge": false,
+        "badge_text": "NEW!",
+        "show_breadcrumbs": false,
+        "enable_variant_tabs": false,
+        "container_size": "lg",
+        "product_info_size": 48,
+        "show_sticky_add_to_cart": true,
+        "custom_buy_button_text": "",
+        "custom_soldout_button_text": "Sold Out",
+        "pre_order_button_text": "PRE-ORDER",
+        "custom_loadmore_gallery_button_text": "Load More Images",
+        "custom_loadless_gallery_button_text": "Show Less",
+        "read_more_text": "Read more...",
+        "read_less_text": "Read less...",
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x",
+        "desktop_media_grid_gap": 10,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "enable_featured_review": false,
+        "content": "<p>I seriously can't get over the top-notch quality of this luggage! 🙌 I've tried so many brands, but this one is legit the first choice for any travel-savvy peep like me. Even after months of hardcore use and my nephew's luggage-throwing antics, these bags are still looking fresh. 100% would recommend Nobl – it's a total game-changer! </p>",
+        "author": "Jennifer P."
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 10,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "Related products",
+        "content": ""
+      }
+    },
+    "0388a64b-96d9-43d1-918d-73dce18e3337": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/shell_1.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>Aluminum Shell</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-customer-support",
+            "custom_icon": "shopify://shop_images/numberdays.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>Lifetime Warranty</p>"
+          }
+        },
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/compression-pad.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>Compression Pad</p>"
+          }
+        },
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 56,
+            "mobile_icon_width": 36,
+            "title": "",
+            "content": "<p>360° Wheels</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-1",
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-2",
+        "template--20910772224300__0388a64b-96d9-43d1-918d-73dce18e3337-item-3",
+        "81ab65db-3e08-4422-a16d-fbfa186bd37d"
+      ],
+      "custom_css": [
+        ".text-with-icons__inner.v-stack.gap-6.justify-items-center.sm\\:justify-items-start {gap: 8px; font-weight: 700; font-size: 12px; line-height: 12px; letter-spacing: 1px; text-transform: uppercase;}",
+        ".gap-6 {gap: 0.5rem;}",
+        ".h4,:where(.prose h4) {line-height: 1.6; font-size: 14px; text-align: center;}",
+        ".h2 {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "text": "Carry-On: Aluminum",
+        "heading_tag": "h2",
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "center"
+      }
+    },
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_rQdL6A": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_-_2024-02-12T202347.529.jpg",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "QUALITY YOU CAN TRUST",
+            "title": "Aluminum Means Business",
+            "heading_tag": "h1",
+            "content": "<p>With two TSA-approved combination locks, slow-release handles, and leather details. Rolling with a crew? No problem–our handles all rise to the same height, so you can roll two (or more) at once.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_rQdL6A",
+        "template--20910772224300__e291ec70-4bb1-41a9-a2b8-bbc6342b4eff-image_with_text-2"
+      ],
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}",
+        ".button {max-width: 380px; width: 100%;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "loox-product-reviews-app-section": {
+      "type": "apps",
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    },
+    "52e88a24-2cc8-4618-af70-db729dbddc4b": {
+      "type": "multi-column",
+      "blocks": {
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "LET’S ROLL",
+            "title": "The Best Wheels You’ve Never Seen",
+            "heading_tag": "h2",
+            "content": "<p>When we couldn't find the perfect wheels there was only one solution – design it ourselves. Introducing SilentMove 360° spinner wheels. Extremely quiet, they can handle the cobblestones of Europe, and have a lifetime guarantee.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "b38f9c30-20ff-4bb6-b614-e7a63c044b93": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/4x4 main hero.mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__52e88a24-2cc8-4618-af70-db729dbddc4b-image_with_text-1",
+        "b38f9c30-20ff-4bb6-b614-e7a63c044b93"
+      ],
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}",
+        ".button {max-width: 380px; width: 100%;}",
+        "@media screen and (max-width: 699px) {.multi-column__item:nth-child(1) {order: 2; }}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": true,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "multi_column_KraHrK": {
+      "type": "multi-column",
+      "blocks": {
+        "video_with_text_hbbQKA": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/Packing video lux_5a4e1063-b0a5-4d43-bfbe-bd95811d20b1.mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_jHTwTi": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "PERFECT ON THE INSIDE TOO",
+            "title": "Packing Made Easy",
+            "heading_tag": "h2",
+            "content": "<p>We've made it easy to pack more into your trip. Our Nobl Y-Strap Compression System provides a heavy-duty strap that pulls down to create more space in your case. All our lining is stain-resistant making any accidents easy to clean up too.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_with_text_hbbQKA",
+        "image_with_text_jHTwTi"
+      ],
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}",
+        ".button {max-width: 380px; width: 100%;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": true,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "fea502b0-0599-4675-b29d-ccac92668b06": {
+      "type": "text-with-icons",
+      "blocks": {
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/Untitled_design_9.jpg",
+            "icon_width": 104,
+            "mobile_icon_width": 104,
+            "title": "Lifetime Warranty",
+            "content": "<p>We stand by the quality of every Nobl product with unmatched warranty commitments. On any manufacturing fault, anywhere you are in the world, Nobl will repair or replace your product for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--20910772224300__fea502b0-0599-4675-b29d-ccac92668b06-item-1"
+      ],
+      "custom_css": [
+        ".bordered-section {background-color: #faf7f3; padding: 24px 0;}",
+        "@media only screen and (min-width: 768px) {.text-with-icons__inner {display: flex; align-items: flex-end; -webkit-justify-content: space-evenly; justify-content: space-evenly; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 80%; margin-left: auto; margin-right: auto; }}",
+        ".text-with-icons > :only-child {flex-basis: 100rem; color: black;}",
+        ".h4,:where(.prose h4) {font-size: var(--text-h1); line-height: 1.6; color: #000;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": true,
+        "testimonial_area": false,
+        "text": "",
+        "heading_tag": "h1",
+        "stack_on_mobile": false,
+        "icon_color": "",
+        "text_color": "#ffffff",
+        "text_alignment": "start"
+      }
+    },
+    "f77d32d1-051e-48bc-a779-f531075ea064": {
+      "type": "multiple-media-with-text",
+      "blocks": {
+        "de3efef3-9c2d-4aca-a143-d79c853617ce": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Packing video lux_5a4e1063-b0a5-4d43-bfbe-bd95811d20b1.mp4",
+            "rotation": 0
+          }
+        },
+        "8d0c5b63-1a32-45f9-b7de-c63ae32da724": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Lux.mp4",
+            "rotation": 0
+          }
+        }
+      },
+      "block_order": [
+        "de3efef3-9c2d-4aca-a143-d79c853617ce",
+        "8d0c5b63-1a32-45f9-b7de-c63ae32da724"
+      ],
+      "disabled": true,
+      "settings": {
+        "reveal_on_scroll": true,
+        "separate_section_with_border": true,
+        "media_position_desktop": "before_text",
+        "media_position_mobile": "before_text",
+        "media_layout": "separated",
+        "media_alignment": "center",
+        "media_alignment_offset": 0,
+        "media_mobile_alignment_offset": 0,
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "Unpack in Seconds",
+        "content": "<p>Write some content about your products, collections or brand. Use image or video to create an impactful layout.</p>",
+        "button_1_text": "",
+        "button_1_link": "",
+        "button_1_style": "solid",
+        "button_2_text": "",
+        "button_2_link": "",
+        "button_2_style": "solid",
+        "background": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "1707929929bb73b319": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_NdtFHk": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_NdtFHk"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "0388a64b-96d9-43d1-918d-73dce18e3337",
+    "e291ec70-4bb1-41a9-a2b8-bbc6342b4eff",
+    "loox-product-reviews-app-section",
+    "52e88a24-2cc8-4618-af70-db729dbddc4b",
+    "multi_column_KraHrK",
+    "fea502b0-0599-4675-b29d-ccac92668b06",
+    "f77d32d1-051e-48bc-a779-f531075ea064",
+    "1707929929bb73b319"
+  ]
+}

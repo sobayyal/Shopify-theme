@@ -1,0 +1,885 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "3233bcd4-14c7-4996-bc19-537ab342b394": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "contentSize": 12,
+            "pattern": " 4.7/5 - [count] Verified Reviews",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": true
+          }
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": true,
+            "rating_mode": "rating"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_value_in_price": false,
+            "total_value_text": "Total Value"
+          }
+        },
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84": {
+          "type": "badges",
+          "settings": {}
+        },
+        "custom_text_QwnMm7": {
+          "type": "custom_text",
+          "settings": {
+            "custom_text": "Black Friday Sale: BUY ONE, GET ONE 25% OFF",
+            "font_weight": "500"
+          }
+        },
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "",
+            "option_value_metafield": "",
+            "products": [],
+            "color_selector_type": "color"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_type": "block",
+            "color_selector_type": "color",
+            "size_chart_page": ""
+          }
+        },
+        "kaching_bundles_app_block_GektUi": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "693b040d-a148-49a2-9a93-76e011406d76": {
+          "type": "shoppay-payment",
+          "settings": {
+            "content": "Payments of $22.11/month with"
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g": {
+          "type": "inventory",
+          "settings": {
+            "show_delivery_date": true,
+            "show_return_text": false,
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "In Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "In Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_icon_price": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#000000",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "buy_buttons_default_NxjVrY": {
+          "type": "buy-buttons-default",
+          "disabled": true,
+          "settings": {
+            "default_payment_button": false,
+            "default_show_icon_price": false,
+            "default_show_gift_card_recipient": true,
+            "default_atc_button_background": "#1c1c1c",
+            "default_atc_button_text_color": "",
+            "default_payment_button_background": "",
+            "default_payment_button_text_color": ""
+          }
+        },
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "all_in_one_black_inventory_text": "Low Stock",
+            "all_in_one_white_inventory_text": "8 Left in Stock",
+            "all_in_one_forest_green_inventory_text": "5 Left in Stock",
+            "all_in_one_beige_inventory_text": "6 Left in Stock",
+            "all_in_one_baby_blue_inventory_text": "In Stock",
+            "all_in_one_pink_inventory_text": "Low Stock",
+            "check_in_all_in_one_inventory_text": "In Stock",
+            "check_in_all_in_one_forest_green_inventory_text": "Low Stock",
+            "check_in_all_in_one_default_inventory_text": "In Stock",
+            "default_instock_text": "In Stock",
+            "default_out_of_stock_text": "Out of stock",
+            "default_low_stock_text": "Low Stock",
+            "default_in__coming_stock_text": "In Coming Stock",
+            "low_inventory_threshold": 0,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50,
+            "text": "Free 3-Day Shipping",
+            "text_continue_selling": "Free Shipping",
+            "text_out_of_stock": "Free Shipping",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/nobl-checked.png",
+            "icon_width": 20,
+            "background": "#ffffff",
+            "text_color": "#6b6b6b",
+            "border_color": ""
+          }
+        },
+        "novel_shoppable_video_novel_product_pnKbV4": {
+          "type": "shopify://apps/novel-shoppable-video/blocks/novel-product/67e3531b-60c1-40d3-83d1-8f5aba7081ef",
+          "disabled": true,
+          "settings": {
+            "journeyid": "678178f30840100008e55430"
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "cb61f319-3e20-4814-8957-9ba6572cf837": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "360° Wheels",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/wheels.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Packs for 5-7 day trips",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/numberdays.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "81d66082-de22-4e38-9a78-f63819d3d0d4": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Interior compression",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/compression-pad.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "a72f67a9-3657-444b-9cf4-d63c98705164": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Unbreakable polycarbonate shell",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/shell_1.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Dual TSA combination locks",
+            "link": "",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/lock.png",
+            "icon_width": 32,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Made to last with anti-stain materials",
+            "link": "",
+            "icon": "none",
+            "icon_width": 24,
+            "background": "#ffffff",
+            "text_color": "#232323",
+            "border_color": ""
+          }
+        },
+        "complementary_products": {
+          "type": "complementary_products",
+          "disabled": true,
+          "settings": {
+            "title": "Bundle and Save",
+            "products_count": 1,
+            "show_below_gallery": false,
+            "stack_products": false,
+            "show_quick_buy": true
+          }
+        },
+        "4429c250-ff29-4e33-a9b7-440abad3e095": {
+          "type": "feature_with_icon",
+          "disabled": true,
+          "settings": {
+            "text": "Fits all international flights including European budget carriers",
+            "link": "",
+            "icon": "picto-plane",
+            "icon_width": 32,
+            "background": "#f6f6f6",
+            "text_color": "#3b6aed",
+            "border_color": ""
+          }
+        },
+        "4c14dcc3-c016-4055-8b44-46147a8c86be": {
+          "type": "description_mobile",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "show_below_gallery": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Details + Dimensions",
+            "content": "<h4>Vacuum + Bag</h4><ul><li>Compresses 15+ items down to 50% volume</li><li>Waterproof, odor-proof, and leak-resistant</li><li>Made with tear-resistant, anti-rip nylon</li><li>Airtight zipper with locking seal</li><li>Includes manual air pump (no outlet required)</li><li>Bag size: 19.5\" x 14.5\" x 6\" (before compression)</li></ul>",
+            "page": ""
+          }
+        },
+        "accordion_fATTXN": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Specs",
+            "content": "<p>Bag size: <strong>19.5\" x 14.5\" x 6\"</strong> (before compression)</p>",
+            "page": ""
+          }
+        },
+        "accordion_gEMjhr": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "Shipping and Returns",
+            "content": "<p>3-Day Shipping on all U.S. orders.<br/>30-Day risk-free returns</p>",
+            "page": ""
+          }
+        },
+        "accordion_byYenn": {
+          "type": "accordion",
+          "settings": {
+            "show_below_gallery": false,
+            "icon": "none",
+            "title": "What's Included",
+            "content": "<ul><li>1x Vacuum Compression Bag</li><li>1x Portable Vacuum</li></ul>",
+            "page": ""
+          }
+        },
+        "77375662-08de-4be2-9771-d610d6220f48": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<div class=\"custom_link\" style=\"margin-top: -1.5rem\">\n\n\n<div class=\"product-info__block-item\" data-block-type=\"accordion\"><details class=\"accordion  group \" is=\"accordion-disclosure\" aria-expanded=\"false\" style=\"border-top: 0;\">\n  <summary style=\"opacity: 1;\"><span class=\"scroll_a accordion__toggle h6\">\n<div goto=\"reviews\"><span>Reviews →</span></div></span>\n  </summary>\n\n</details></div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "3233bcd4-14c7-4996-bc19-537ab342b394",
+        "vendor",
+        "title",
+        "4908dc39-7912-4ee4-a7e5-f9c02a83861d",
+        "price",
+        "124dfe6d-ce62-48a9-8a5b-93288fd54d84",
+        "693b040d-a148-49a2-9a93-76e011406d76",
+        "custom_text_QwnMm7",
+        "dcee5d59-cd4f-4f0a-aea0-97a1d4b0825c",
+        "variant_picker",
+        "kaching_bundles_app_block_GektUi",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335g",
+        "buy_buttons",
+        "buy_buttons_default_NxjVrY",
+        "3a7e351d-40d8-4ced-b3c2-0150b75d335e",
+        "novel_shoppable_video_novel_product_pnKbV4",
+        "payment_terms",
+        "cb61f319-3e20-4814-8957-9ba6572cf837",
+        "31d963dc-d2d0-4f7a-a784-5dd52eeaf56e",
+        "81d66082-de22-4e38-9a78-f63819d3d0d4",
+        "a72f67a9-3657-444b-9cf4-d63c98705164",
+        "892f8a73-15cd-40b9-a1c2-142f7ad265d8",
+        "2f3629c4-cb5a-407d-873e-b4bc3cf588ef",
+        "complementary_products",
+        "4429c250-ff29-4e33-a9b7-440abad3e095",
+        "4c14dcc3-c016-4055-8b44-46147a8c86be",
+        "description",
+        "separator",
+        "quantity_selector",
+        "dd46ef4a-7f50-4a5c-abc8-63e4bc964743",
+        "accordion_fATTXN",
+        "accordion_gEMjhr",
+        "accordion_byYenn",
+        "77375662-08de-4be2-9771-d610d6220f48"
+      ],
+      "custom_css": [
+        ".product-info__block-item:is( [data-block-type=\"inventory\"], [data-block-type=\"buy-buttons\"], [data-block-type=\"pickup-availability\"], [data-block-type=\"more-information\"], [data-block-type=\"offers\"] ) {--product-info-gap: 0.7rem;}",
+        ".text-success {color: black;}",
+        ".custom_link summary {opacity: 1 !important;}",
+        "@media screen and (max-width: 699px) {.feature-badge-list .feature-badge {padding: 0; font-size: 0.9rem; }}",
+        ".feature-badge-list {display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: 20px; width: 100%;}"
+      ],
+      "settings": {
+        "enable_badge": false,
+        "badge_text": "NEW!",
+        "enable_warranty_icon": false,
+        "show_breadcrumbs": false,
+        "enable_variant_tabs": false,
+        "container_size": "lg",
+        "product_info_size": 45,
+        "show_sticky_add_to_cart": true,
+        "custom_buy_button_text": "Add to Cart",
+        "custom_soldout_button_text": "Sold Out",
+        "pre_order_button_text": "PRE-ORDER",
+        "custom_loadmore_gallery_button_text": "Load More Images",
+        "custom_loadless_gallery_button_text": "Show Less",
+        "read_more_text": "Read more...",
+        "read_less_text": "Read less...",
+        "center_basic_info": false,
+        "desktop_media_layout": "grid_2x",
+        "desktop_media_grid_gap": 10,
+        "mobile_controls": "dotsandarrows",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3.5,
+        "enable_featured_review": false,
+        "content": "<p>I seriously can't get over the top-notch quality of this luggage! 🙌 I've tried so many brands, but this one is legit the first choice for any travel-savvy peep like me. Even after months of hardcore use and my nephew's luggage-throwing antics, these bags are still looking fresh. 100% would recommend Nobl – it's a total game-changer! </p>",
+        "author": "Jennifer P."
+      }
+    },
+    "text_with_icons_pXrxP4": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_MnTYqj": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "custom_icon": "shopify://shop_images/11111.png",
+            "icon_width": 184,
+            "mobile_icon_width": 172,
+            "title": "Compact for your socks, cosmetics, underwear, and toiletries",
+            "content": "<p>SMALL</p>"
+          }
+        },
+        "item_pBcM4f": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-customer-support",
+            "custom_icon": "shopify://shop_images/2222.png",
+            "icon_width": 192,
+            "mobile_icon_width": 176,
+            "title": "Perfect for shoes, socks, cosmetics, underwear and accessories",
+            "content": "<p>MEDIUM</p>"
+          }
+        },
+        "item_LaeBAD": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/3333fixed.png",
+            "icon_width": 192,
+            "mobile_icon_width": 176,
+            "title": "Daily essentials: t-shirts, jeans, and sweaters",
+            "content": "<p>LARGE</p>"
+          }
+        },
+        "item_rx6kjG": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-award-gift",
+            "custom_icon": "shopify://shop_images/444444.png",
+            "icon_width": 200,
+            "mobile_icon_width": 200,
+            "title": "Easily fits entire outfits keeping them organized",
+            "content": "<p> EXTRA LARGE</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_MnTYqj",
+        "item_pBcM4f",
+        "item_LaeBAD",
+        "item_rx6kjG"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-spacing {background-color: #faf7f3;}",
+        ".prose .h2 {padding-bottom: 30px;}",
+        ".h4 {font-size: 16px; line-height: 1.5; padding: 0px 50px; font-weight: 400; text-transform: capitalize;}",
+        ".text-with-icons {gap: unset;}",
+        ".gap-6 {gap: 0.5rem;}",
+        ".text-with-icons__item {flex-basis: 25%;}",
+        ".prose p {font-size: 15px; color: #000000; line-height: 1.5; letter-spacing: 0.1px; font-weight: 500;}"
+      ],
+      "settings": {
+        "unique_class": "featured-sizes",
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "text": "Sizes That Fit Your Every Need",
+        "heading_tag": "h2",
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "center"
+      }
+    },
+    "image_with_text_block_UeXV9J": {
+      "type": "image-with-text-block",
+      "disabled": true,
+      "settings": {
+        "image_size": "auto",
+        "image": "shopify://shop_images/banner1black_a54d35e849_1.jpg",
+        "content_width": "sm",
+        "enable_parallax": false,
+        "remove_vertical_spacing": true,
+        "block_text_color": "",
+        "block_background": ""
+      }
+    },
+    "multi_column_Q7GRUp": {
+      "type": "multi-column",
+      "blocks": {
+        "video_with_text_mr44Vw": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/Untitled design (9).mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h2",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_zdVRTJ": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "SKIP THE MESS",
+            "title": "Find what you need, exactly when you need it.",
+            "heading_tag": "h2",
+            "content": "<p>Packing cubes simplify organizing your clothes and travel essentials. Designed for different needs, some cubes fit large items like jackets, others are perfect for shoes, and some are deeper for socks and underwear. No matter what you're packing, you'll find it with ease, wherever you are.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_with_text_mr44Vw",
+        "image_with_text_zdVRTJ"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multi-column__item {align-content: center;}"
+      ],
+      "settings": {
+        "unique_class": "features-1",
+        "separate_section_with_border": true,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "multi_column_TPHaqy": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_8LwDhV": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Add_a_heading_7_85c7360b-7e86-4665-a534-73bb5d88f528.jpg",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_nTfDa6": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "",
+            "title": "Maximize your travel potential",
+            "heading_tag": "h2",
+            "content": "<p>Our Packing Cubes are designed to fit seamlessly into every Nobl suitcase, optimizing your packing space for any journey.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "video_with_text_jQaifa": {
+          "type": "video_with_text",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Packing_Cells_2.mp4",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h2",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_8LwDhV",
+        "image_with_text_nTfDa6",
+        "video_with_text_jQaifa"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}"
+      ],
+      "settings": {
+        "unique_class": "features-2",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "start",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "multi_column_QXFACC": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_a9E3aw": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "COMPRESSIBLE DESIGN",
+            "title": "Save 18% more space",
+            "heading_tag": "h2",
+            "content": "<p>Save up to 18% more space in your suitcase with our innovative cubes. The compression system allows you to pack efficiently, keeping your clothes neatly folded and compact. With these cubes, you can fit more into your luggage, making travel easier and more organized.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_7TDt3a": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/Packing_cubes.webp",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_a9E3aw",
+        "image_with_text_7TDt3a"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}"
+      ],
+      "settings": {
+        "unique_class": "features-3",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "start",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "multi_column_TBKJKB": {
+      "type": "multi-column",
+      "blocks": {
+        "video_with_text_LnGjAe": {
+          "type": "video_with_text",
+          "settings": {
+            "video": "shopify://files/videos/NOBL-INH-1-00245-WebsiteVideoPacking-WS.mov",
+            "autoplay": true,
+            "loop": true,
+            "play_button_background": "#ffffff",
+            "title": "",
+            "heading_tag": "h2",
+            "content": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        },
+        "image_with_text_hrw66i": {
+          "type": "image_with_text",
+          "settings": {
+            "subheading": "SKIP THE MESS",
+            "title": "Find what you need, exactly when you need it.",
+            "heading_tag": "h2",
+            "content": "<p>Packing cubes simplify organizing your clothes and travel essentials. Designed for different needs, some cubes fit large items like jackets, others are perfect for shoes, and some are deeper for socks and underwear. No matter what you're packing, you'll find it with ease, wherever you are.</p>",
+            "page": "",
+            "link_url": "",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_with_text_LnGjAe",
+        "image_with_text_hrw66i"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multi-column__item {align-content: center; text-align: center;}",
+        "@media (max-width: 768px) {.multi-column__item:nth-child(1) {order: 2; }}"
+      ],
+      "settings": {
+        "unique_class": "features-1",
+        "separate_section_with_border": false,
+        "columns_per_row": 2,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "lg",
+        "subheading": "",
+        "title": "",
+        "content": ""
+      }
+    },
+    "text_with_icons_JBFBf4": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_tUpLnW": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-shield",
+            "custom_icon": "shopify://shop_images/download_9446482444.svg",
+            "icon_width": 160,
+            "mobile_icon_width": 92,
+            "title": "5 Year Warranty.",
+            "content": "<p>We stand by the quality of every July product with unmatched warranty commitments.</p><p>On any manufacturing fault, July will repair or replace your product for you. Our Packing Cells range has a 5 year quality guarantee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_tUpLnW"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-spacing {background-color: #000;}",
+        ".h4,.prose p {color: #fff;}",
+        ".text-with-icons__item {flex-basis: 1500px;}",
+        ".text-with-icons__inner {display: flex; align-items: center; justify-content: flex-start;}",
+        ".h4 {font-size: 42px; color: rgb(202, 122, 79); font-weight: 500; line-height: 2.18; letter-spacing: -1.11px; margin: 0 12px;}",
+        ".prose p {font-size: 21px; font-weight: 400; margin: 0 16px; margin-top: 0px; color: rgb(246, 243, 239); margin-top: 0 !important;}"
+      ],
+      "settings": {
+        "unique_class": "",
+        "separate_section_with_border": false,
+        "testimonial_area": false,
+        "text": "",
+        "heading_tag": "h2",
+        "stack_on_mobile": false,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "start"
+      }
+    },
+    "rich_text_bzQmgD": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_nCyypL": {
+          "type": "subheading",
+          "settings": {
+            "text": "REVIEWS"
+          }
+        },
+        "heading_A4CWhR": {
+          "type": "heading",
+          "settings": {
+            "text": "What our customers are saying.",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_rKctP3": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_nCyypL",
+        "heading_A4CWhR",
+        "richtext_rKctP3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".h6 {text-transform: uppercase; font-size: 13px; line-height: 60px; letter-spacing: 0.27px; text-align: center; color: #000000;}",
+        ".h2 {font-size: 32px; font-weight: 500; line-height: 1.1; letter-spacing: -1.17px; text-align: center; color: #000000; margin-top: 0 !important;}",
+        "@media only screen and (max-width: 767px) {.prose {padding: 0 32px; }}"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "172020961768c0bde5": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_KNHrGp": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_KNHrGp"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_with_icons_pXrxP4",
+    "image_with_text_block_UeXV9J",
+    "multi_column_Q7GRUp",
+    "multi_column_TPHaqy",
+    "multi_column_QXFACC",
+    "multi_column_TBKJKB",
+    "text_with_icons_JBFBf4",
+    "rich_text_bzQmgD",
+    "172020961768c0bde5"
+  ]
+}
