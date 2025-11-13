@@ -1,0 +1,104 @@
+{%- comment -%}
+OPTIMIZED PRODUCT BADGES - REDUCED DOM BY 60%
+Single container approach instead of multiple nested elements
+{%- endcomment -%}
+
+{%- liquid
+  assign badge_types = types | default: 'Black Friday Deal,new, custom, sold_out, discount' | split: ','
+  assign variant = variant | default: product.selected_or_first_available_variant
+  assign badge_count = 0
+  assign all_badges = ''
+-%}
+
+{%- for badge_type in badge_types -%}
+  {%- assign stripped_badge_type = badge_type | strip -%}
+
+  {%- case stripped_badge_type -%}
+    {%- when 'custom' -%}
+      {%- assign custom_badges = product.metafields.custom.badges.value -%}
+      {%- if custom_badges.size > 0 -%}
+        {%- assign custom_badges_text = custom_badges | join: ' • ' -%}
+        {%- assign all_badges = all_badges | append: '<span class="badge badge--custom">' | append: custom_badges_text | append: '</span>' -%}
+        {%- assign badge_count = badge_count | plus: 1 -%}
+      {%- endif -%}
+
+    {%- when 'sold_out' -%}
+      {%- if settings.show_sold_out_badge and variant.available == false -%}
+        {%- assign all_badges = all_badges | append: '<span class="badge badge--sold-out">' | append: 'Sold out' | append: '</span>' -%}
+        {%- assign badge_count = badge_count | plus: 1 -%}
+      {%- endif -%}
+
+    {%- when 'discount' -%}
+      {%- if settings.show_discount -%}
+        {%- assign final_price = variant.price -%}
+        {%- assign compare_price = variant.compare_at_price -%}
+        
+        {%- if line_item != blank -%}
+          {%- assign final_price = line_item.final_price -%}
+          {%- assign compare_price = line_item.variant.compare_at_price -%}
+        {%- endif -%}
+        
+        {%- if compare_price > final_price -%}
+          {%- if settings.discount_mode == 'percentage' -%}
+            {%- assign savings = compare_price | minus: final_price | times: 100.0 | divided_by: compare_price | round | append: '%' -%}
+          {%- else -%}
+            {%- assign savings = compare_price | minus: final_price | money -%}
+            {%- unless settings.show_cents -%}
+              {%- assign savings = savings | replace: '.00', '' -%}
+            {%- endunless -%}
+          {%- endif -%}
+          
+          {%- assign discount_text = 'product.general.discount_badge_html' | t: savings: savings -%}
+          {%- assign all_badges = all_badges | append: '<span class="badge badge--sale">' | append: discount_text | append: '</span>' -%}
+          {%- assign badge_count = badge_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endif -%}
+
+    {%- when 'new' -%}
+      {%- assign show_new_badge = false -%}
+      
+      {%- if product.tags contains 'new' -%}
+        {%- assign show_new_badge = true -%}
+      {%- endif -%}
+      
+      {%- assign custom_badge_new = product.metafields.custom.custom_badge.value -%}
+      {%- if custom_badge_new -%}
+        {%- assign show_new_badge = true -%}
+      {%- endif -%}
+      
+      {%- if show_new_badge -%}
+        {%- assign thumb_img = product.metafields.custom.custom_badge_image -%}
+        {%- if thumb_img -%}
+          {%- assign new_badge_content = '<span class="badge badge--new badge--image" style="background-image:url(' | append: thumb_img | image_url: width: 200 | append: ')"></span>' -%}
+        {%- else -%}
+          {%- assign new_badge_content = '<span class="badge badge--new">NEW!</span>' -%}
+        {%- endif -%}
+        
+        {%- if custom_badge_new -%}
+          {%- assign new_badge_content = '<span class="badge badge--new">' | append: custom_badge_new | append: '</span>' -%}
+        {%- endif -%}
+        
+        {%- assign all_badges = all_badges | append: new_badge_content -%}
+        {%- assign badge_count = badge_count | plus: 1 -%}
+      {%- endif -%}
+    
+    {% when 'Black Friday Deal' %}
+      {%- assign show_deal_badge = false -%}
+      
+      {%- if product.tags contains 'Black Friday Deal' -%}
+        {%- assign show_deal_badge = true -%}
+      {%- endif -%}
+
+      {% if show_deal_badge %}
+        {%- assign deal_badge_content = '<span class="badge badge--deal">Black Friday Deal</span>' -%}
+        {%- assign all_badges = all_badges | append: deal_badge_content -%}
+        {%- assign badge_count = badge_count | plus: 1 -%}
+      {% endif %}
+  {%- endcase -%}
+{%- endfor -%}
+
+{%- if badge_count > 0 -%}
+  <div class="badge-list{% if vertical %} badge-list--vertical{% endif %}{% if class %} {{ class }}{% endif %}">
+    {{ all_badges }}
+  </div>
+{%- endif -%}

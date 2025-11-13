@@ -1,0 +1,321 @@
+{%- comment -%}
+  ----------------------------------------------------------------------------------------------------------------------
+  SIMPLIFIED BUY BUTTONS - HTML ONLY
+  ----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+{% style %}
+.product-info__block-item[data-block-type="buy-buttons-bundle"] .buy-buttons {
+    gap: 0;
+}
+.product-info__block-item[data-block-type="buy-buttons-bundle"] button.restock-alerts-notify-button {
+    margin-bottom: 0;
+}
+{% endstyle %}
+{%- if product != blank -%}
+  {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+
+  {%- form 'product', product, is: 'product-form', id: form_id, class: 'product-form' -%}
+    <input id="variant_id" type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+    {% liquid
+      assign selected_variant = product.selected_or_first_available_variant
+      assign is_sold_out = false
+      assign button_class = "product-form__add-button button"
+
+      # Check bundle component availability for initial variant
+      assign is_bundle_unavailable = false
+      assign bundle_product_refs = product.metafields.custom.bundle_products.value
+      
+      if bundle_product_refs != blank
+        assign bundle_count = 0
+        for bp in bundle_product_refs
+          assign bundle_count = bundle_count | plus: 1
+        endfor
+        
+        if bundle_count > 0
+          # Check each bundle component for matching variant availability
+          for bundle_product in bundle_product_refs
+            assign found_matching_variant = false
+            assign matching_variant_available = false
+            
+            for component_variant in bundle_product.variants
+              assign option_match = false
+              
+              for comp_option in component_variant.options
+                assign comp_option_lower = comp_option | downcase | strip
+                
+                for selected_option in selected_variant.options
+                  assign selected_option_lower = selected_option | downcase | strip
+                  
+                  if comp_option_lower == selected_option_lower
+                    assign option_match = true
+                    break
+                  endif
+                endfor
+                
+                if option_match
+                  break
+                endif
+              endfor
+              
+              if option_match
+                assign found_matching_variant = true
+                if component_variant.available
+                  assign matching_variant_available = true
+                endif
+                break
+              endif
+            endfor
+            
+            if found_matching_variant and matching_variant_available == false
+              assign is_bundle_unavailable = true
+              break
+            endif
+          endfor
+        endif
+      endif
+
+      if selected_variant.available == false or product.tags contains 'gift_only' or is_bundle_unavailable
+        assign is_sold_out = true
+        assign button_content = 'product.general.sold_out_button' | t
+        assign button_class = button_class | append: ' button--disabled'
+      else
+        if product.template_suffix contains 'pre-order'
+          assign button_content = 'product.general.pre_order_button' | t
+        else
+          assign button_content = section.settings.custom_buy_button_text | default: 'Add to Cart'
+        endif
+      endif
+    %}
+
+    <div class="product-form__buy-buttons">
+      {%- if product.gift_card? and show_gift_card_recipient -%}
+        <gift-card-recipient class="gift-card-recipient">
+          {%- assign checkbox_label = 'gift_card.recipient.checkbox' | t -%}
+          {%- render 'checkbox', label: checkbox_label, name: 'properties[__shopify_send_gift_card_to_recipient]' -%}
+
+          <div class="gift-card-recipient__fields js:hidden">
+            <div class="fieldset">
+              {%- liquid
+                assign recipient_email_label = 'gift_card.recipient.email_label' | t
+                render 'input', type: 'email', label: recipient_email_label, name: 'properties[Recipient email]', value: form.email, required: true
+
+                assign recipient_name_label = 'gift_card.recipient.name_label' | t
+                render 'input', label: recipient_name_label, name: 'properties[Recipient name]', value: form.name
+
+                assign message_label = 'gift_card.recipient.message_label' | t
+                render 'input', label: message_label, name: 'properties[Recipient message]', value: form.message, multiline: 3, maxlength: 200, show_max_characters_count: true
+              -%}
+            </div>
+          </div>
+        </gift-card-recipient>
+      {%- endif -%}
+
+      <div class="buy-buttons {% if show_payment_button %}buy-buttons--has-dynamic{% endif %}">
+        {%- if show_payment_button and atc_button_background == blank and atc_button_text_color == blank -%}
+          {%- assign button_class = button_class | append: ' button--outline' -%}
+        {%- endif -%}
+
+        <button 
+          type="submit" 
+          name="add" 
+          id="product-submit-button"
+          class="{{ button_class }}"
+          {% if is_sold_out %}
+            disabled="disabled" 
+            data-button-status="sold-out"
+          {% else %}
+            data-button-status="available"
+          {% endif %}
+          {% if atc_button_background != blank and atc_button_text_color != blank %}
+            style="--button-background: {{ atc_button_background.rgb }}; --button-text-color: {{ atc_button_text_color.rgb }};"
+          {% elsif atc_button_background != blank %}
+            style="--button-background: {{ atc_button_background.rgb }};"
+          {% elsif atc_button_text_color != blank %}
+            style="--button-text-color: {{ atc_button_text_color.rgb }};"
+          {% endif %}
+        >
+          <span class="button__text">{{ button_content }}</span>
+          {% if show_icon_price %}
+            <span class="button__icon">
+              {%- render 'icon', icon: 'shopping-bag' -%}
+            </span>
+          {% endif %}
+        </button>
+
+        {%- if show_payment_button -%}
+          <div class="product-form__payment-container">
+            {{ form | payment_button }}
+          </div>
+
+          <style>
+            #shopify-section-{{ section.id }} .shopify-payment-button {
+              {%- if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' -%}
+                --button-background: {{ payment_button_background.rgb }};
+              {%- endif -%}
+
+              {%- if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' -%}
+                --button-text-color: {{ payment_button_text_color.rgb }};
+              {%- endif -%}
+
+              {%- unless selected_variant.available -%}
+                display: none;
+              {%- endunless -%}
+            }
+          </style>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endform -%}
+{%- else -%}
+  <div class="buy-buttons">
+    {%- assign button_content = section.settings.custom_buy_button_text | default: 'Add to Cart' -%}
+    <button 
+      type="submit" 
+      id="placeholder-button"
+      class="product-form__add-button button"
+      disabled="disabled"
+      {% if variant_picker_block.settings.atc_button_background != blank %}style="--button-background: {{ variant_picker_block.settings.atc_button_background.rgb }};"{% endif %}
+      {% if variant_picker_block.settings.atc_button_text_color != blank %}style="--button-text-color: {{ variant_picker_block.settings.atc_button_text_color.rgb }};"{% endif %}
+    >
+      <span class="button__text">{{ button_content }}</span>
+      {% if show_icon_price %}
+        <span class="button__icon">
+          {%- render 'icon', icon: 'shopping-bag' -%}
+        </span>
+      {% endif %}
+    </button>
+  </div>
+{%- endif -%}
+
+<script>
+(function() {
+  
+document.addEventListener('DOMContentLoaded', function() {
+  const productForm = document.querySelector('.product-info .product-form');
+  if (!productForm) return;
+
+  function checkBundleAvailability() {
+    const variantPicker = document.querySelector('.product-info variant-picker');
+    if (!variantPicker) return;
+
+    const selectedInputs = variantPicker.querySelectorAll('input[type="radio"]:checked');
+    const addToCartButton = document.getElementById('product-submit-button');
+    const stickyBarButton = document.querySelector('product-sticky-bar buy-buttons .button');
+    
+    if (!addToCartButton) return;
+
+    let isBundleUnavailable = false;
+    
+    // Check each selected input more thoroughly
+    for (let i = 0; i < selectedInputs.length; i++) {
+      const input = selectedInputs[i];
+      
+      // Method 1: Check via label[for] selector
+      const labelById = document.querySelector(`label[for="${input.id}"]`);
+      
+      // Method 2: Check via parent traversal (in case label wraps the input)
+      const parentLabel = input.closest('label');
+      
+      // Method 3: Check next sibling (in case label comes after input)
+      const siblingLabel = input.nextElementSibling;
+      
+      // Try all three methods
+      const label = labelById || parentLabel || siblingLabel;
+      
+      if (label) {
+        // Check for both classes (either one triggers unavailable state)
+        const hasUnavailable = label.classList.contains('is-bundle-unavailable');
+        const hasDisabled = label.classList.contains('is-disabled');
+        
+        // Also check if the label or any parent has these classes
+        const parentWithClass = label.closest('.is-bundle-unavailable, .is-disabled');
+        
+        if (hasUnavailable || hasDisabled || parentWithClass) {
+          isBundleUnavailable = true;
+          break;
+        }
+      }
+      
+      // Method 4: Check if input itself has data attribute
+      if (input.hasAttribute('data-bundle-unavailable') || input.disabled) {
+        isBundleUnavailable = true;
+        break;
+      }
+    }
+
+    const buyButtonsContainer = document.querySelector('.buy-buttons');
+    const customText = buyButtonsContainer?.getAttribute('data-custom-buy-button-text') || 'Add to Cart';
+    const buttonText = addToCartButton.querySelector('.button__text');
+    const paymentContainer = document.querySelector('.product-form__payment-container');
+
+    if (isBundleUnavailable) {
+      addToCartButton.classList.add('button--disabled');
+      addToCartButton.setAttribute('disabled', 'disabled');
+      addToCartButton.setAttribute('data-button-status', 'sold-out');
+      if (buttonText) buttonText.textContent = 'Sold Out';
+      if (paymentContainer) paymentContainer.style.display = 'none';
+
+      if (stickyBarButton) {
+        stickyBarButton.classList.add('button--disabled');
+        stickyBarButton.setAttribute('disabled', 'disabled');
+        stickyBarButton.setAttribute('data-button-status', 'sold-out');
+        stickyBarButton.textContent = 'Sold Out';
+      }
+    } else {
+      addToCartButton.classList.remove('button--disabled');
+      addToCartButton.removeAttribute('disabled');
+      addToCartButton.setAttribute('data-button-status', 'available');
+      if (buttonText) buttonText.textContent = customText;
+      if (paymentContainer) paymentContainer.style.display = '';
+
+      if (stickyBarButton) {
+        stickyBarButton.classList.remove('button--disabled');
+        stickyBarButton.removeAttribute('disabled');
+        stickyBarButton.setAttribute('data-button-status', 'available');
+        stickyBarButton.textContent = customText;
+      }
+    }
+  }
+
+  productForm.addEventListener('variant:change', function() {
+    setTimeout(checkBundleAvailability, 50);
+  });
+
+  const variantPicker = document.querySelector('variant-picker');
+  if (variantPicker) {
+    variantPicker.addEventListener('change', function(e) {
+      if (e.target.name && e.target.name.startsWith('option')) {
+        setTimeout(checkBundleAvailability, 50);
+      }
+    });
+    
+    // Only run initial check if selected variant has .is-bundle-unavailable class
+    const selectedInputs = variantPicker.querySelectorAll('input[type="radio"]:checked');
+    let shouldRunInitialCheck = false;
+    
+    for (let i = 0; i < selectedInputs.length; i++) {
+      const input = selectedInputs[i];
+      const labelById = document.querySelector(`label[for="${input.id}"]`);
+      const parentLabel = input.closest('label');
+      const siblingLabel = input.nextElementSibling;
+      const label = labelById || parentLabel || siblingLabel;
+      
+      if (label && label.classList.contains('is-bundle-unavailable')) {
+        shouldRunInitialCheck = true;
+        break;
+      }
+      
+      if (input.hasAttribute('data-bundle-unavailable')) {
+        shouldRunInitialCheck = true;
+        break;
+      }
+    }
+    
+    if (shouldRunInitialCheck) {
+      setTimeout(checkBundleAvailability, 150);
+    }
+  }
+});
+})();
+</script>

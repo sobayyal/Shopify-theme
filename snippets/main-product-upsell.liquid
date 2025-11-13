@@ -1,0 +1,254 @@
+{%- if product.available -%}
+  {%- capture form_id -%}product-form-2x-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+
+  {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+  
+
+  {%- if block.settings.title != blank
+    or block.settings.stack_products == false
+    and recommendations.products_count > 1
+  -%}
+    <div class="complementary-products__header {% if block.settings.show_below_gallery and block.settings.stack_products %}justify-center{% endif %}">
+      <p class="h4 text-strong">{{ block.settings.title }}</p>
+    </div>
+  {%- endif -%}
+
+  <div form="{{ form_id }}" class="upsell_product" data-product-id="{{ product.id}}">
+    <div class="">
+      <div class="line-item">
+  
+        {% liquid
+          assign product_form_id = form_id
+          assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+          assign filtered_indexes = null | sort
+
+          if product.variants.size > 1
+            for media in product.media
+              if media.alt contains '#' and media.alt != product.title
+                assign alt_parts = media.alt | split: '#'
+                assign media_group_parts = alt_parts.last | split: '_'
+                assign option = product.options_by_name[media_group_parts.first]
+                assign option_value = option.selected_value | downcase
+                assign downcase_group_value = media_group_parts.last | strip | downcase
+
+                if option_value != downcase_group_value and media != default_media
+                  assign media_position = media.position | sort
+                  assign filtered_indexes = filtered_indexes | concat: media_position
+                endif
+              endif
+            endfor
+          endif
+        %}
+
+        <product-gallery class="product-gallery" form="{{ product_form_id }}">
+          <div class="product-gallery__image-list">
+            <div class="contents">
+              <scroll-carousel class="product-gallery__carousel scroll-area is-scrollable" role="region">
+                {%- if product != blank -%}
+                  {%- liquid
+                    capture sizes
+                      echo '(max-width: 699px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), '
+
+                      assign media_ratio = 100 | minus: section.settings.product_info_size
+
+                      if desktop_layout == 'grid_2x'
+                        assign media_ratio = media_ratio | divided_by: 2
+                      endif
+
+                      if section.settings.container_size == 'full'
+                        echo 'calc(' | append: media_ratio | append: 'vw - 96px)'
+                      else
+                        assign media_ratio = 1260 | times: media_ratio | divided_by: 100 | round
+
+                        if desktop_layout == 'grid_2x'
+                          assign maximum_width = '260px'
+                        else
+                          assign maximum_width = '1100px'
+                        endif
+
+                        echo 'min(' | append: maximum_width | append: ', ' | append: media_ratio | append: 'px - 96px)'
+                      endif
+                    endcapture
+                  -%}
+
+                  {%- for media in product.media -%}
+                    <div
+                      class="product-gallery__media upsell_media snap-center {% if media == default_media %}is-initial{% endif %}"
+                      data-media-type="{{ media.media_type }}"
+                      data-media-id="{{ media.id }}"
+                      role="group"
+                      aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: media.position, count: product.media.size }}"
+                      {% if filtered_indexes contains media.position %}
+                        hidden
+                      {% endif %}
+                    >
+                      {%- if default_media == media -%}
+                        {%- assign preload = false -%}
+                      {%- else -%}
+                        {%- assign preload = false -%}
+                      {%- endif -%}
+
+                      {%- comment -%}
+                        NOTE: for the product gallery, the autoplay does not work in a similar way. It is always false at the product level,
+                        and the product-gallery component itself will autoplay (if needed)
+                      {%- endcomment -%}
+                      {%- render 'media',
+                        media: media,
+                        sizes: sizes,
+                        preload: preload,
+                        controls: true,
+                        playsinline: true,
+                        muted: enable_media_autoplay,
+                        loop: enable_video_looping,
+                        group: 'product'
+                      -%}
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for i in (1..3) -%}
+                    {%- capture placeholder_name -%}product-{{ i }}{%- endcapture -%}
+
+                    <div
+                      class="product-gallery__media upsell_media snap-center {% if forloop.first %}is-initial{% endif %}"
+                      data-media-type="{{ media.media_type }}"
+                      data-media-position="{{ media.position }}"
+                      data-media-id="{{ media.id }}"
+                      role="group"
+                      aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: 3 }}"
+                    >
+                      {{- placeholder_name | placeholder_svg_tag: 'placeholder' -}}
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+              </scroll-carousel>
+            </div>
+          </div>
+        </product-gallery>
+
+        <div class="line-item-info">
+          <span class="h6">{{ product.title }}</span>
+          {{- product_description | truncate: 30 -}}
+          {%- render 'price-list',
+            variant: product.selected_or_first_available_variant,
+            form_id: form_id,
+            hide_unit_price: true,
+            context: 'card'
+          -%}
+
+
+
+  {%- unless product.has_only_default_variant or hide_sold_out_variants and product.available == false -%}
+    <variant-picker
+      class="variant-picker v-stack gap-4"
+      handle="{{ product.handle }}"
+      form="{{ form_id }}"
+      {% if update_url %}
+        update-url
+      {% endif %}
+      {% if hide_sold_out_variants %}
+        hide-sold-out-variants
+      {% endif %}
+    >
+      {%- for option in product.options_with_values -%}
+        {% liquid
+          assign option_downcase = option.name | downcase
+          assign option_selector_type = 'block'
+
+          if color_label_list contains option_downcase
+            assign option_selector_type = 'color'
+
+            if option_selector_type == 'variant_image'
+              # To use this mode every variant must have an attached media
+
+              for variant in product.variants
+                unless variant.featured_media
+                  assign option_selector_type = 'color'
+                  break
+                endunless
+              endfor
+            endif
+          endif
+        %}
+
+        <fieldset class="variant-picker__option v-stack gap-2 no-js:hidden">
+          <div class="variant-picker__option-info h-stack justify-between gap-2">
+            <div class="h-stack gap-1">
+              <legend class="h6">{{ option.name }}:</legend>
+
+              {%- if option_selector_type == 'color' or option_selector_type == 'variant' -%}
+                <variant-option-value class="h6 text-strong" form="{{ form_id }}" for="option{{ option.position }}">
+               {{- option.selected_value -}}
+                </variant-option-value>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- assign name = 'option' | append: option.position -%}
+
+          {%- if option_selector_type == 'dropdown' -%}
+
+          {%- else -%}
+            {%- liquid
+              case option_selector_type
+                when 'color', 'variant', 'block', 'block_swatch'
+                  assign list_classes = 'h-stack gap-2 wrap'
+
+                else
+                  assign list_classes = ''
+              endcase
+            -%}
+
+            <div data-option-selector class="variant-picker__option-values {{ list_classes }}">
+              {%- for value in option.values -%}
+                {% liquid
+                  assign selected = false
+
+                  if value == option.selected_value
+                    assign selected = true
+                  endif
+
+                  case option_selector_type
+                    when 'variant'
+                      assign variant_for_value = product.variants | where: name, value | first
+                      render 'swatch' with 'media', value: value, media: variant_for_value.featured_media, selected: selected, name: name, form: form_id
+                    when 'color'
+                      render 'swatch' with 'color', value: value, selected: selected, name: name, form: form_id
+                    when 'block'
+                      render 'swatch' with 'block', value: value, selected: selected, name: name, form: form_id
+                    when 'block_swatch'
+                      render 'swatch' with 'block', value: value, selected: selected, name: name, form: form_id, show_color: true
+                  endcase
+                %}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </fieldset>
+      {%- endfor -%}
+
+      <noscript>
+        {%- assign input_label = 'product.general.variant' | t -%}
+
+        {%- capture select_options -%}
+        {%- for variant in product.variants -%}
+          <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+        {%- endfor -%}
+      {%- endcapture -%}
+
+        {%- render 'select', label: input_label, form: form_id, name: 'id', options: select_options -%}
+      </noscript>
+    </variant-picker>
+  {%- else -%}
+    <noscript>
+      <input type="hidden" name="id" form="{{ form_id }}" value="{{ product.selected_or_first_available_variant.id }}">
+    </noscript>
+  {%- endunless -%}
+  
+        </div>
+      </div>
+    </div>
+
+    {%- render 'main-upsell-buy-buttons', product: product, form_id: form_id, show_payment_button: false -%}
+  </div>
+  
+  
+{%- endif -%}

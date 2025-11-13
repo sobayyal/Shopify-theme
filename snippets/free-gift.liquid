@@ -1,0 +1,393 @@
+{% assign threshold_price = 10000 %}
+
+{% comment %}Main product IDs{% endcomment %}
+{% assign main_product = '8786604425461' %}
+{% assign purple_variant = '45859452518645' %}
+{% assign pink_variant = '45859015065845' %}
+{% assign black_variant = '45813753774325' %}
+
+{% comment %}Define arrays for better maintainability{% endcomment %}
+{% assign excluded_product_ids = "52063818449196,52063818416428,52112601973036,52112601940268,52112601907500,52118054601004,52095063064876,52095063032108,52083547898156,52083547930924,51743045976364,51743045943596,51743045910828,51324488646956,51324480815404,51324475212076,51324451979564,51324436480300,51907215655212,51907215687980,51907215720748,51907215753516,51814372737324,51814372704556,51814372671788,51780627661100,51780627628332,51780627595564,51780627562796,51794430951724,51794430918956,51794402279724,51794402246956,51794590990636,51794591056172,51794591023404,51780541317420,51780541251884,51780541284652,51741528424748,51741528391980,51741528326444,51741528293676,51741528359212,51780535288108,51707337638188,51707337670956,51707337703724,51331478520108,51330588573996,51331478487340,51331478552876,51513585303852,51513585238316,51513585172780,51513585107244,51513584976172,51513585041708,51323755364652,51323770110252,51323784429868,51323870970156,51323796947244,51323816214828,51323831157036,51323831189804,51323839250732,51254464971052,51254465069356,51254465167660,51254465265964,51254465364268,51254465462572,51300674896172,51300674928940,51300674961708,51300674994476,49518344044844,49155034710316,47233335656748,50472143159596,50472143192364,50472143225132,50472143257900,50472143290668,50472143323436,50624775127340,50914676343084,48224037667116,50908171698476,50710331719980,50710331752748,50710331785516,50710331818284,50710331851052,51032366186796,51032366219564,51032366252332,51032366285100,51032366350636,51032366317868,51032372773164,51032372805932,51032372838700,51032372871468,51032372904236,51032372937004,51109622350124,51192592662828,51192592695596,51192592728364,51192592761132,51251464634668,51258974503212,51258974535980,51258974568748,51258974601516,51258974634284,51262648418604,51262648385836,51262648451372,51262648484140,50016635191596,51275810177324,51275810079020,51275810111788,51275810144556,51279143305516,51279143338284,51296341688620,51296359579948,51296378093868,51296397525292,51296408404268,51296422166828,51296432357676,51305756983596,51309766213932,51309766246700,51309766279468,51309766312236,51326989205804" | split: "," %}
+
+{% comment %}Get product lists from theme settings{% endcomment %}
+{% assign gift_card_product_ids = "" %}
+{% assign gift_wrapping_product_ids = "" %}
+
+{% if settings.gift_card_products %}
+  {% for product in settings.gift_card_products %}
+    {% assign gift_card_product_ids = gift_card_product_ids | append: product.id | append: "," %}
+  {% endfor %}
+{% endif %}
+
+{% if settings.gift_wrapping_products %}
+  {% for product in settings.gift_wrapping_products %}
+    {% assign gift_wrapping_product_ids = gift_wrapping_product_ids | append: product.id | append: "," %}
+  {% endfor %}
+{% endif %}
+
+{% assign gift_card_product_ids = gift_card_product_ids | split: "," %}
+{% assign gift_wrapping_product_ids = gift_wrapping_product_ids | split: "," %}
+
+{% comment %}Build weekender variant IDs dynamically from selected products{% endcomment %}
+{% assign weekender_first_variant_ids = "" %}
+{% if settings.weekender_dust_cover_products %}
+  {% for product in settings.weekender_dust_cover_products %}
+    {% for variant in product.variants %}
+      {% if weekender_first_variant_ids == "" %}
+        {% assign weekender_first_variant_ids = variant.id | append: "" %}
+      {% else %}
+        {% assign weekender_first_variant_ids = weekender_first_variant_ids | append: "," | append: variant.id %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% comment %}Split weekender variant IDs into array only if not empty{% endcomment %}
+{% if weekender_first_variant_ids != "" %}
+  {% assign weekender_first_variant_ids = weekender_first_variant_ids | split: "," %}
+{% else %}
+  {% assign weekender_first_variant_ids = "" | split: "" %}
+{% endif %}
+
+{% comment %}Build weekender-only variant IDs dynamically from selected products{% endcomment %}
+{% assign weekender_only_variant_ids = "" %}
+{% if settings.weekender_only_gift_products %}
+  {% for product in settings.weekender_only_gift_products %}
+    {% for variant in product.variants %}
+      {% if weekender_only_variant_ids == "" %}
+        {% assign weekender_only_variant_ids = variant.id | append: "" %}
+      {% else %}
+        {% assign weekender_only_variant_ids = weekender_only_variant_ids | append: "," | append: variant.id %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% comment %}Split weekender-only variant IDs into array only if not empty{% endcomment %}
+{% if weekender_only_variant_ids != "" %}
+  {% assign weekender_only_variant_ids = weekender_only_variant_ids | split: "," %}
+{% else %}
+  {% assign weekender_only_variant_ids = "" | split: "" %}
+{% endif %}
+
+{% comment %}Build duffel variant IDs dynamically from selected products{% endcomment %}
+{% assign duffel_variant_ids = "" %}
+{% if settings.duffel_dust_cover_products %}
+  {% for product in settings.duffel_dust_cover_products %}
+    {% for variant in product.variants %}
+      {% if duffel_variant_ids == "" %}
+        {% assign duffel_variant_ids = variant.id | append: "" %}
+      {% else %}
+        {% assign duffel_variant_ids = duffel_variant_ids | append: "," | append: variant.id %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% comment %}Split duffel variant IDs into array only if not empty{% endcomment %}
+{% if duffel_variant_ids != "" %}
+  {% assign duffel_variant_ids = duffel_variant_ids | split: "," %}
+{% else %}
+  {% assign duffel_variant_ids = "" | split: "" %}
+{% endif %}
+
+{% comment %}Build full set variant IDs dynamically from selected products{% endcomment %}
+{% assign full_set_variant_ids = "" %}
+{% if settings.double_luggage_cover_products %}
+  {% for product in settings.double_luggage_cover_products %}
+    {% for variant in product.variants %}
+      {% if full_set_variant_ids == "" %}
+        {% assign full_set_variant_ids = variant.id | append: "" %}
+      {% else %}
+        {% assign full_set_variant_ids = full_set_variant_ids | append: "," | append: variant.id %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+{% comment %}Split variant IDs into array only if not empty{% endcomment %}
+{% if full_set_variant_ids != "" %}
+  {% assign full_set_variant_ids = full_set_variant_ids | split: "," %}
+{% else %}
+  {% assign full_set_variant_ids = "" | split: "" %}
+{% endif %}
+
+{% comment %}Gift IDs{% endcomment %}
+{% assign luggage_cover_id = linklists.free-gift.links.first.object.variants.first.id %}
+{% assign gift_wrapping_id = linklists.gift-wrapping.links.first.object.variants.first.id %}
+{% assign gift_card_id = linklists.free-gift-card.links.first.object.variants.first.id %}
+{% assign weekender_id = linklists.free-gift-weekender.links.first.object.variants.first.id %}
+{% assign duffel_id = linklists.free-gift-duffel.links.first.object.variants.first.id %}
+
+{% comment %}Initialize counters{% endcomment %}
+{% assign excluded_products_price = 0 %}
+{% assign luggage_cover_in_cart = 0 %}
+{% assign gift_wrapping_in_cart = 0 %}
+{% assign gift_card_in_cart = 0 %}
+{% assign weekender_in_cart = 0 %}
+{% assign duffel_in_cart = 0 %}
+{% assign count_for_duffel = 0 %}
+{% assign count_for_weekender = 0 %}
+{% assign count_for_weekender_only = 0 %}
+{% assign duffel_variant_in_cart = false %}
+{% assign count_for_giftWrap = 0 %}
+{% assign count_for_luggage_cover = 0 %}
+{% assign full_set_count = 0 %}
+{% assign gift_wrapping_count = 0 %}
+{% assign weekender_first_variant_in_cart = false %}
+{% assign weekender_only_variant_in_cart = false %}
+{% assign gift_card_product_in_cart = false %}
+{% assign gift_wrapping_product_in_cart = false %}
+
+{% comment %}Process cart items{% endcomment %}
+{% for item in cart.items %}
+  {% assign item_id_str = item.id | append: "" %}
+  {% assign variant_id_str = item.variant_id | append: "" %}
+  {% assign item_product_id = item.product.id | append: "" %}
+  
+  {% comment %}Check excluded products{% endcomment %}
+  {% if excluded_product_ids contains item_id_str %}
+    {% assign excluded_products_price = excluded_products_price | plus: item.line_price %}
+  
+  {% comment %}Check free gift products{% endcomment %}
+  {% elsif item.id == luggage_cover_id %}
+    {% assign luggage_cover_in_cart = item.quantity %}
+  {% elsif item.id == gift_wrapping_id %}
+    {% assign gift_wrapping_in_cart = item.quantity %}
+  {% elsif item.id == gift_card_id %}
+    {% assign gift_card_in_cart = item.quantity %}
+  {% elsif item.id == weekender_id %}
+    {% assign weekender_in_cart = item.quantity %}
+  {% elsif item.id == duffel_id %}
+    {% assign duffel_in_cart = item.quantity %}
+  {% comment %}Count items for luggage cover if not a gift or excluded product{% endcomment %}
+  {% else %}
+    {% assign count_for_luggage_cover = count_for_luggage_cover | plus: item.quantity %}
+    
+    {% comment %}Check if this item is one of the full-set variants{% endcomment %}
+    {% if full_set_variant_ids.size > 0 %}
+      {% for variant_id in full_set_variant_ids %}
+        {% assign variant_id_clean = variant_id | strip %}
+        {% if variant_id_clean != "" and variant_id_clean == variant_id_str %}
+          {% assign full_set_count = full_set_count | plus: item.quantity %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+  
+  {% comment %}Check for weekender variants{% endcomment %}
+  {% if weekender_first_variant_ids.size > 0 %}
+    {% for variant_id in weekender_first_variant_ids %}
+      {% assign variant_id_clean = variant_id | strip %}
+      {% if variant_id_clean != "" and variant_id_clean == variant_id_str %}
+        {% assign count_for_weekender = count_for_weekender | plus: item.quantity %}
+        {% assign count_for_giftWrap = count_for_giftWrap | plus: item.quantity %}
+        {% assign weekender_first_variant_in_cart = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% comment %}Check for weekender-only variants{% endcomment %}
+  {% if weekender_only_variant_ids.size > 0 %}
+    {% for variant_id in weekender_only_variant_ids %}
+      {% assign variant_id_clean = variant_id | strip %}
+      {% if variant_id_clean != "" and variant_id_clean == variant_id_str %}
+        {% assign count_for_weekender_only = count_for_weekender_only | plus: item.quantity %}
+        {% assign weekender_only_variant_in_cart = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% comment %}Check for duffel variants{% endcomment %}
+  {% if duffel_variant_ids.size > 0 %}
+    {% for variant_id in duffel_variant_ids %}
+      {% assign variant_id_clean = variant_id | strip %}
+      {% if variant_id_clean != "" and variant_id_clean == variant_id_str %}
+        {% assign count_for_duffel = count_for_duffel | plus: item.quantity %}
+        {% assign count_for_giftWrap = count_for_giftWrap | plus: item.quantity %}
+        {% assign duffel_variant_in_cart = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  {% comment %}Check for gift card and gift wrapping products{% endcomment %}
+  {% for gift_product_id in gift_card_product_ids %}
+    {% assign gift_product_id_str = gift_product_id | strip %}
+    {% if gift_product_id_str != "" and gift_product_id_str == item_product_id %}
+      {% assign gift_card_product_in_cart = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  
+  {% for gift_product_id in gift_wrapping_product_ids %}
+    {% assign gift_product_id_str = gift_product_id | strip %}
+    {% if gift_product_id_str != "" and gift_product_id_str == item_product_id %}
+      {% assign gift_wrapping_product_in_cart = true %}
+      {% assign gift_wrapping_count = gift_wrapping_count | plus: item.quantity %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% assign adjusted_total_price = cart.total_price | minus: excluded_products_price %}
+{% assign expected_luggage_cover_count = count_for_luggage_cover | plus: full_set_count %}
+
+{% comment %}Calculate expected gift counts - modified logic{% endcomment %}
+{% assign expected_gift_wrapping_count = 0 %}
+{% assign expected_gift_card_count = 0 %}
+{% assign expected_weekender_count = 0 %}
+{% assign expected_duffel_count = 0 %}
+
+{% comment %}Modified logic for weekender-related gifts{% endcomment %}
+{% if weekender_first_variant_in_cart %}
+  {% assign expected_gift_card_count = 1 %}
+  {% assign expected_gift_wrapping_count = count_for_giftWrap %}
+  {% assign expected_weekender_count = count_for_weekender %}
+{% endif %}
+
+{% comment %}Weekender-only products get weekender gift, but can also get card/wrapping if selected separately{% endcomment %}
+{% if weekender_only_variant_in_cart %}
+  {% assign expected_weekender_count = expected_weekender_count | plus: count_for_weekender_only %}
+{% endif %}
+
+{% if duffel_variant_in_cart %}
+  {% assign expected_gift_card_count = 1 %}
+  {% assign expected_gift_wrapping_count = count_for_giftWrap %}
+  {% assign expected_duffel_count = count_for_duffel %}
+{% endif %}
+
+{% comment %}Calculate gift wrapping (lifetime warranty) count{% endcomment %}
+
+{% assign triple_warranty_from_weekender_bundles = count_for_weekender_only | times: 1 %}
+
+{% comment %}From the second file - theme settings gifts{% endcomment %}
+{% if gift_wrapping_product_in_cart %}
+  {% assign expected_gift_wrapping_count = expected_gift_wrapping_count | plus: gift_wrapping_count | plus: full_set_count | plus: triple_warranty_from_weekender_bundles %}
+{% endif %}
+
+{% if gift_card_product_in_cart %}
+  {% assign expected_gift_card_count = 1 %}
+{% endif %}
+
+<style>
+  #updates_{{ luggage_cover_id }}, 
+  #updates_{{ gift_wrapping_id }}, 
+  #updates_{{ gift_card_id }}, 
+  #updates_{{ weekender_id }} { 
+    display: none; 
+  }
+</style>
+
+<script>
+  (function() {
+    const config = {
+      thresholdPrice: {{ threshold_price }},
+      adjustedCartValue: {{ adjusted_total_price }},
+      fullCartValue: {{ cart.total_price }},
+      weekenderFirstVariantInCart: {{ weekender_first_variant_in_cart }},
+      weekenderOnlyVariantInCart: {{ weekender_only_variant_in_cart }},
+      duffelVariantInCart: {{ duffel_variant_in_cart }},
+      giftCardProductInCart: {{ gift_card_product_in_cart }},
+      giftWrappingProductInCart: {{ gift_wrapping_product_in_cart }},
+      gifts: [
+        { id: {{ luggage_cover_id }}, current: {{ luggage_cover_in_cart }}, expected: {{ expected_luggage_cover_count }}, max: null, requiresAdjustedTotal: true, requiresTarget: false, targetProduct: null },
+        { id: {{ gift_wrapping_id }}, current: {{ gift_wrapping_in_cart }}, expected: {{ expected_gift_wrapping_count }}, max: null, requiresAdjustedTotal: false, requiresTarget: true, targetProduct: 'hasGiftWrappingTarget' },
+        { id: {{ gift_card_id }}, current: {{ gift_card_in_cart }}, expected: {{ expected_gift_card_count }}, max: 1, requiresAdjustedTotal: false, requiresTarget: true, targetProduct: 'hasGiftCardTarget' },
+        { id: {{ weekender_id }}, current: {{ weekender_in_cart }}, expected: {{ expected_weekender_count }}, max: null, requiresAdjustedTotal: false, requiresTarget: true, targetProduct: 'hasWeekenderVariant' },
+        { id: {{ duffel_id }}, current: {{ duffel_in_cart }}, expected: {{ expected_duffel_count }}, max: null, requiresAdjustedTotal: false, requiresTarget: true, targetProduct: 'hasduffelVariant' }
+      ]
+    };
+    
+    // Modified logic - consider both weekender types and separate gift eligibility
+    config.hasWeekenderVariant = config.weekenderFirstVariantInCart || config.weekenderOnlyVariantInCart;
+    config.hasduffelVariant = config.duffelVariantInCart;
+    config.hasGiftCardTarget = config.weekenderFirstVariantInCart || config.giftCardProductInCart || config.hasduffelVariant;
+    config.hasGiftWrappingTarget = config.weekenderFirstVariantInCart || config.giftWrappingProductInCart || config.duffelVariantInCart;
+
+    
+    
+    const GiftManager = {
+      updating: false,
+      updatePromise: Promise.resolve(),
+      
+      init() {
+        this.updateGifts = this.updateGifts.bind(this);
+        document.addEventListener('cart:refresh', () => this.queueUpdate(), {passive: true});
+        document.addEventListener('cart:updated', () => this.queueUpdate(), {passive: true});
+        window.addEventListener('load', () => this.queueUpdate(), {passive: true});
+        this.queueUpdate();
+      },
+      
+      queueUpdate() {
+        if (this.updating) return;
+        this.updatePromise = this.updatePromise.then(this.updateGifts).catch(() => { this.updating = false; });
+      },
+      
+      calculateUpdates() {
+        const updates = {};
+        let needsUpdate = false;
+        
+        config.gifts.forEach(gift => {
+          let shouldAdd = false;
+          
+          if (gift.requiresTarget && gift.targetProduct) {
+            shouldAdd = config[gift.targetProduct];
+          } else if (gift.requiresTarget) {
+            shouldAdd = false;
+          } else if (gift.requiresAdjustedTotal) {
+            shouldAdd = config.adjustedCartValue >= config.thresholdPrice;
+          } else {
+            shouldAdd = config.fullCartValue >= config.thresholdPrice;
+          }
+          
+          const targetQty = shouldAdd ? (gift.max ? Math.min(gift.expected, gift.max) : gift.expected) : 0;
+          
+          if (gift.current !== targetQty) {
+            updates[gift.id] = targetQty;
+            needsUpdate = true;
+          }
+        });
+        
+        return {updates, needsUpdate};
+      },
+      
+      async updateGifts() {
+        if (this.updating) return;
+        
+        const {updates, needsUpdate} = this.calculateUpdates();
+        if (!needsUpdate) return;
+        
+        this.updating = true;
+        
+        try {
+          const response = await fetch('/cart/update.js', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({updates}),
+            credentials: 'same-origin'
+          });
+          
+          if (!response.ok) throw new Error();
+          
+          config.gifts.forEach(gift => {
+            if (updates[gift.id] !== undefined) gift.current = updates[gift.id];
+          });
+          
+          requestAnimationFrame(() => {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {bubbles: true}));
+          });
+        } catch (error) {
+          // Silent fail
+        } finally {
+          this.updating = false;
+        }
+      }
+    };
+
+    GiftManager.init();
+  })();
+</script>

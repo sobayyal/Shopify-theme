@@ -1,0 +1,117 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+ACCORDION COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+This component is used to create an accordion (also called as collapsible). It internally uses the "details" HTML
+tag so that it can also be used without any JavaScript.
+
+********************************************
+Supported parameters
+********************************************
+
+* title: the title to use for the toggle button
+* content: the hidden content inside the accordion
+* icon: an optional icon name outputted before the title
+* custom_icon: an optional custom icon file outputted before the title
+* open: if set to true the accordion is open by default
+* prose_content: if set to true, the content is considered as prose and the associated class is added
+* show_title_as_text: if set to true the title is shown as text instead of using heading style
+* show_arrow: if set to true, the accordion will show an arrow instead of the standard + icon
+* size: can be "sm" or "lg" (if none is passed, the small size is used)
+* is: override the default custom element name
+* bleed: if set to true, the accordion will bleed on mobile
+* block: an optional block to output theme editor attributes
+{%- endcomment -%}
+<div id="product-measurements-accordion" class="{{ product.title }}-{{ product.id }}"
+  data-variant-id="{{ variant_id }}" 
+  data-default="{{ is_default | default: false }}"
+  >
+  
+
+<details class="accordion measurements-accordion {% if size %}accordion--{{ size }}{% endif %} group {% if bleed %}bleed sm:unbleed{% endif %}" is="{{ is | default: 'accordion-disclosure' }}" {% if open %}open aria-expanded="true"{% else %}aria-expanded="false"{% endif %} {{ block.shopify_attributes }}
+  >
+  <summary>
+    {%- comment -%}iOS 14 does not support flex on the summary itself, so we have to use this extra div{%- endcomment -%}
+    <span class="accordion__toggle {% if show_title_as_text %}text-lg{% else %}h6{% endif %}">
+        <span>{{ measurement_title }}</span>
+        {%- render 'icon' with 'chevron-down', class: 'group-expanded:rotate' -%}
+    </span>
+  </summary>
+
+  <div class="accordion__content prose">
+    {{- measurement_content -}}
+  </div>
+</details>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleMeasurementAccordions = (variantId) => {
+        const accordions = document.querySelectorAll('#product-measurements-accordion');
+        let defaultAccordionDisplayed = false;
+
+        accordions.forEach(accordion => {
+            const accordionVariantId = accordion.dataset.variantId; // Variant ID for this accordion
+            const isDefault = accordion.dataset.default === 'true'; // Check if it's default
+            const wrapper = accordion.closest('.product-info__block-item'); // Get the wrapping div
+            wrapper.classList.add('product-measurements-wrap');
+
+            if (variantId) {
+                if (accordionVariantId === variantId) {
+                    accordion.style.display = 'block';
+                    if (wrapper) wrapper.style.display = 'block'; // Show wrapper
+                    defaultAccordionDisplayed = true; // A matching accordion found
+                } else {
+                    accordion.style.display = 'none';
+                    if (wrapper) wrapper.style.display = 'none'; // Hide wrapper
+                }
+            } else if (isDefault) {
+                accordion.style.display = 'block';
+                if (wrapper) wrapper.style.display = 'block'; // Show default wrapper
+                defaultAccordionDisplayed = true;
+            } else {
+                accordion.style.display = 'none';
+                if (wrapper) wrapper.style.display = 'none'; // Hide wrapper
+            }
+        });
+
+        if (!defaultAccordionDisplayed) {
+            accordions.forEach(accordion => {
+                const isDefault = accordion.dataset.default === 'true';
+                const wrapper = accordion.closest('.product-info__block-item'); // Get the wrapping div
+                if (isDefault) {
+                    accordion.style.display = 'block';
+                    if (wrapper) wrapper.style.display = 'block'; // Show default wrapper
+                }
+            });
+        }
+    };
+
+    // Helper to get the variant ID from the URL
+    const getVariantIdFromUrl = () => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("variant");
+    };
+
+    // Observe URL changes for real-time updates
+    const observeUrlChanges = () => {
+        let lastUrl = window.location.href;
+
+        setInterval(() => {
+            const currentUrl = window.location.href;
+            if (currentUrl !== lastUrl) {
+                lastUrl = currentUrl;
+                const variantId = getVariantIdFromUrl();
+                toggleMeasurementAccordions(variantId);
+            }
+        }, 300);
+    };
+
+    // Initialize visibility on page load
+    const initialVariantId = getVariantIdFromUrl();
+    toggleMeasurementAccordions(initialVariantId);
+
+    // Start observing URL changes
+    observeUrlChanges();
+});
+</script>

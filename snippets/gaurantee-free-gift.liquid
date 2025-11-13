@@ -1,0 +1,622 @@
+<div class="free-gift-block gift-free__block {{ giftcard_price }}">
+  {% if block.settings.pre_order_days != blank and block.settings.order_by_text_after != blank %}
+  <div class="save56-product-order-wrap">
+    {%- if product -%}
+      {%- assign has_available_variant = false -%}
+      {%- for variant in product.variants -%}
+        {%- if variant.available -%}
+          {%- assign has_available_variant = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if has_available_variant -%}
+        {%- for variant in product.variants -%}
+          {%- liquid
+            assign variant_color = variant.options | first | downcase
+            assign ring_status = 'available'
+            assign ring_classes = 'save56-ring-container'
+
+            # Custom condition for product with handle 'check-in-all-in-one-28'
+            if product.handle == "check-in-all-in-one-28"
+              # Check for out of stock first (inventory <= 0 and deny policy)
+              if variant.inventory_quantity <= 0 and variant.inventory_policy == 'deny'
+                assign ring_status = 'sold-out'
+                assign ring_classes = ring_classes | append: ' sold-out'
+              elsif variant.available and variant.inventory_quantity > 0
+                case variant_color
+                  when 'forest green'
+                    assign ring_status = 'low-stock'
+                    assign ring_classes = ring_classes | append: ' low-stock'
+                  when 'black'
+                    assign ring_status = 'low-stock'
+                    assign ring_classes = ring_classes | append: ' low-stock'
+                  else
+                    assign ring_status = 'available'
+                endcase
+              elsif variant.inventory_quantity == 0 and variant.inventory_policy == 'continue'
+                assign ring_status = 'low-stock'
+                assign ring_classes = ring_classes | append: ' low-stock'
+              else
+                assign ring_status = 'low-stock'
+                assign ring_classes = ring_classes | append: ' low-stock'
+              endif
+
+            # Conditions for products with 'All-in-One' in title
+            elsif product.handle == "carry-on-all-in-one" or product.handle == "carry-on-all-in-one-copy"
+              # Check for out of stock first (inventory <= 0 and deny policy)
+              if variant.inventory_quantity <= 0 and variant.inventory_policy == 'deny'
+                assign ring_status = 'sold-out'
+                assign ring_classes = ring_classes | append: ' sold-out'
+              elsif variant.available and variant.inventory_quantity > 0
+                case variant_color
+                  when 'black'
+                    assign ring_status = 'low-stock'
+                    assign ring_classes = ring_classes | append: ' low-stock'
+                  when 'white'
+                    assign ring_status = 'available'
+                  when 'forest green'
+                    assign ring_status = 'low-stock'
+                    assign ring_classes = ring_classes | append: ' low-stock'
+                  when 'beige'
+                    assign ring_status = 'low-stock'
+                    assign ring_classes = ring_classes | append: ' low-stock'
+                  when 'baby blue'
+                    assign ring_status = 'available'
+                  when 'pink'
+                    assign ring_status = 'available'
+                  when 'silver'
+                    assign ring_status = 'available'
+                  when 'red'
+                    assign ring_status = 'available'
+                  when 'navy blue'
+                    assign ring_status = 'available'
+                  else
+                    # For any color not specifically defined, use default available
+                    assign ring_status = 'available'
+                endcase
+              elsif variant.inventory_quantity == 0 and variant.inventory_policy == 'continue'
+                assign ring_status = 'low-stock'
+                assign ring_classes = ring_classes | append: ' low-stock'
+              else
+                assign ring_status = 'low-stock'
+                assign ring_classes = ring_classes | append: ' low-stock'
+              endif
+
+            # Fallback for other products
+            else
+              if variant.inventory_quantity <= 0 and variant.inventory_policy == 'deny'
+                assign ring_status = 'sold-out'
+                assign ring_classes = ring_classes | append: ' sold-out'
+              elsif variant.available
+                if variant.inventory_quantity == 0 and variant.inventory_policy == 'continue'
+                  case variant_color
+                    when 'pink'
+                      assign ring_status = 'available'
+                    else
+                      assign ring_status = 'low-stock'
+                      assign ring_classes = ring_classes | append: ' low-stock'
+                  endcase
+                elsif variant.inventory_management and variant.inventory_policy == 'deny' and variant.inventory_quantity <= 5
+                  assign ring_status = 'low-stock'
+                  assign ring_classes = ring_classes | append: ' low-stock'
+                elsif variant.inventory_quantity <= 0 and variant.inventory_policy == 'continue'
+                  assign ring_status = 'low-stock'
+                  assign ring_classes = ring_classes | append: ' low-stock'
+                else
+                  assign ring_status = 'available'
+                endif
+              elsif variant.incoming
+                assign ring_status = 'low-stock'
+                assign ring_classes = ring_classes | append: ' low-stock'
+              else
+                assign ring_status = 'sold-out'
+                assign ring_classes = ring_classes | append: ' sold-out'
+              endif
+            endif
+          -%}
+
+          <div class="{{ ring_classes }} ring-variant" 
+               data-variant-id="{{ variant.id }}" 
+               data-ring-status="{{ ring_status }}"
+               {% unless variant == product.selected_or_first_available_variant %}style="display: none;"{% endunless %}>
+            <div class="save56-ring"></div>
+            <div class="save56-circle"></div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <div class="save56-ring-container sold-out ring-variant" data-ring-status="sold-out">
+          <div class="save56-ring"></div>
+          <div class="save56-circle"></div>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="save56-ring-container ring-variant" data-ring-status="available">
+        <div class="save56-ring"></div>
+        <div class="save56-circle"></div>
+      </div>
+    {%- endif -%}
+
+    {% assign date_now = 'now' | date: '%s' %}
+    {% assign seconds = block.settings.pre_order_days | times: 24 | times: 60 | times: 60 %}
+    {% assign future_date = date_now | plus: seconds | date: "%B %d" %}
+    <div class="save56-order-by" data-preorder-days="{{ block.settings.pre_order_days }}">
+      {{ heading }} <span class="dynamic--date">{{ future_date }}</span> {{ block.settings.order_by_text_after }}
+    </div>
+  </div>
+{% endif %}
+  {% comment %} OPTIMIZED: Reduced wrapper nesting {% endcomment %}
+  {% if sale_name != blank or block.settings.sale_heading_image != blank %}
+    <div class="save56-sale-name {%  if gift_img_five != blank %}five--gifts-header{% endif %} {%  if gift_img_four != blank and gift_img_five == blank %}four--gifts-header{% endif %}">
+      {% if block.settings.sale_heading_image != blank %}
+        <img
+          src="{{ block.settings.sale_heading_image | image_url: width: 34 }}"
+          alt="Sale heading"
+          width="17"
+          height="22"
+          loading="lazy"
+          decoding="async"
+        >
+      {% endif %}
+
+      {% if sale_name != blank %}
+        <span class="inner__text"> {{ block.settings.bold_text }}&nbsp;{{ sale_name }} </span>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% liquid
+    assign gift_items = ''
+    if gift_img_one != blank
+      assign gift_items = gift_items | append: '1,'
+    endif
+    if gift_img_two != blank
+      assign gift_items = gift_items | append: '2,'
+    endif
+    if gift_img_three != blank
+      assign gift_items = gift_items | append: '3,'
+    endif
+    if gift_img_four != blank
+      assign gift_items = gift_items | append: '4,'
+    endif
+    if gift_img_five != blank
+      assign gift_items = gift_items | append: '5,'
+    endif
+    assign gift_array = gift_items | split: ',' | compact
+  %}
+<div class="gift--blocks-outer {%  if gift_img_five != blank %}five--gifts-outer{% endif %} {%  if gift_img_four != blank %}four--gifts-outer{% endif %}">
+   <button class="gift-scroll-arrow gift-scroll-left" aria-label="Scroll left">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="gift-scroll-arrow gift-scroll-right" aria-label="Scroll right">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  {% comment %} OPTIMIZED: Gift cards with proper lazy loading {% endcomment %}
+  <div data-gift="container" class="save56-gift-blocks {%  if gift_img_five != blank %}five--gifts{% endif %}">
+   
+    {% liquid
+      assign gift_items = ''
+      if gift_img_one != blank
+        assign gift_items = gift_items | append: '1,'
+      endif
+      if gift_img_two != blank
+        assign gift_items = gift_items | append: '2,'
+      endif
+      if gift_img_three != blank
+        assign gift_items = gift_items | append: '3,'
+      endif
+      if gift_img_four != blank
+        assign gift_items = gift_items | append: '4,'
+      endif
+      if gift_img_five != blank
+        assign gift_items = gift_items | append: '5,'
+      endif
+      assign gift_array = gift_items | split: ',' | compact
+    %}
+
+    {% for item in gift_array %}
+      {% liquid
+        case item
+          when '1'
+            assign gift_img = gift_img_one
+            assign gift_price = block.settings.gift_one_price
+            assign gift_heading = gift_heading_one
+          when '2'
+            assign gift_img = gift_img_two
+            assign gift_price = block.settings.gift_two_price
+            assign gift_heading = gift_heading_two
+          when '3'
+            assign gift_img = gift_img_three
+            assign gift_price = block.settings.gift_three_price
+            assign gift_heading = gift_heading_three
+          when '4'
+            assign gift_img = gift_img_four
+            assign gift_price = block.settings.gift_four_price
+            assign gift_heading = gift_heading_four
+          when '5'
+            assign gift_img = gift_img_five
+            assign gift_price = block.settings.gift_five_price
+            assign gift_heading = gift_heading_five
+        endcase
+      %}
+
+      <div class="save56-gift-item" data-gift="{{ item }}">
+        {% comment %} OPTIMIZED: Intersection Observer lazy loading {% endcomment %}
+        <div class="save56-gift-card is-active">
+          <img
+            data-src="{{ gift_img | image_url: width: 300 }}"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23f5f3eb'/%3E%3C/svg%3E"
+            alt="Free gift {{ item }}"
+            class="save56-gift-image lazy-image"
+            width="300"
+            height="300"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <div class="save56-gift-overlay is-active"></div>
+
+          <div class="save56-gift-price-badge">
+            <div class="save56-text-block">
+              Free <span class="save56-strikethroughs">{{ gift_price }}</span>
+            </div>
+          </div>
+        </div>
+
+        {% if gift_heading != blank %}
+          <div class="save56-gift-title is-active">
+            <div class="save56-gift-title-text" id="{{ gift_heading }}">{{ gift_heading }}</div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+{% comment %} OPTIMIZED: Consolidated and efficient JavaScript {% endcomment %}
+<script>
+  (() => {
+      'use strict';
+
+      // OPTIMIZED: Single initialization function
+      const initFreeGiftBlock = () => {
+          // Date calculation optimization
+          const orderBy = document.querySelector('.save56-order-by');
+          if (orderBy) {
+              const preOrderDays = parseInt(orderBy.dataset.preorderDays) || 0;
+              const dynamicDate = orderBy.querySelector('.dynamic--date');
+
+              if (dynamicDate && preOrderDays > 0) {
+                  const currentDate = new Date();
+                  currentDate.setDate(currentDate.getDate() + preOrderDays);
+
+                  const options = { month: 'long', day: '2-digit' };
+                  const formattedDate = currentDate.toLocaleDateString(undefined, options);
+                  dynamicDate.textContent = formattedDate;
+              }
+          }
+
+          // OPTIMIZED: Intersection Observer for lazy loading
+          if ('IntersectionObserver' in window) {
+              const imageObserver = new IntersectionObserver((entries, observer) => {
+                  entries.forEach(entry => {
+                      if (entry.isIntersecting) {
+                          const img = entry.target;
+                          const src = img.dataset.src;
+
+                          if (src) {
+                              // Create new image for preloading
+                              const newImg = new Image();
+                              newImg.onload = () => {
+                                  img.src = src;
+                                  img.classList.add('loaded');
+                                  observer.unobserve(img);
+                              };
+                              newImg.src = src;
+                          }
+                      }
+                  });
+              }, {
+                  rootMargin: '50px 0px',
+                  threshold: 0.01
+              });
+
+              // Observe all lazy images
+              document.querySelectorAll('.lazy-image').forEach(img => {
+                  imageObserver.observe(img);
+              });
+          } else {
+              // Fallback for older browsers
+              document.querySelectorAll('.lazy-image').forEach(img => {
+                  const src = img.dataset.src;
+                  if (src) img.src = src;
+              });
+          }
+      };
+
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initFreeGiftBlock);
+      } else {
+          initFreeGiftBlock();
+      }
+  })();
+</script>
+
+{% comment %} OPTIMIZED: Consolidated and minified CSS {% endcomment %}
+<style>
+  @keyframes ringPulse{0%{transform:scale(0.5);opacity:0}50%{opacity:1}100%{transform:scale(1.0);opacity:0}}
+
+  .gift-free__block{margin-block:20px}
+
+  .save56-product-order-wrap{
+      grid-column-gap:.5rem;color:#fff;background-color:#F5F3EB;border-radius:8px;
+      align-items:center;padding:.7rem 1rem;font-size:.75rem;display:flex;
+      position:relative;margin:1rem 0rem
+  }
+
+  .save56-ring-container{position:relative;height:1rem;width:1rem;justify-content:center;align-items:center;display:flex}
+
+  .save56-ring{
+      border:1px solid #004f4f;border-radius:20px;height:18px;width:18px;position:absolute;
+      animation:ringPulse 1.1s ease-out infinite;opacity:0
+  }
+
+  .save56-circle{width:6px;height:6px;background-color:#004f4f;border-radius:50%;position:absolute}
+
+  .save56-order-by{color:#353535;font-size:.75rem;font-weight:500!important}
+
+  .save56-sale-name{
+      font-size:.65rem;text-align:center;margin:1rem 0rem;font-weight:900;
+      display:flex;align-items:center;justify-content:center;margin:1rem 0rem 1.8rem!important
+  }
+
+  .save56-sale-name img{width:17px;height:22px;margin-right:.3rem}
+
+  .inner__text{font-size:.75rem;text-align:center;font-weight:500;line-height:normal}
+  .inner__text b{font-weight:500;font-size:.7rem}
+
+  .save56-gift-blocks{
+      grid-column-gap:.45rem;display:flex;justify-content:space-between;
+      align-items:flex-start;margin-bottom:.5rem;position:relative
+  }
+
+  .save56-gift-item{display:flex;flex-direction:column;align-items:center;flex:1}
+
+  .save56-gift-card{
+      aspect-ratio:1/0.95;border-radius:22px;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;width:100%;height:100%;padding:4px;
+      transition:border-color .12s cubic-bezier(.645,.045,.355,1);position:relative;overflow:visible
+  }
+
+  .save56-gift-card.is-active{border-color:#000}
+
+  .save56-gift-image{
+      object-fit:contain;z-index:3;border-radius:4px;opacity:1;width:100%;height:100%;
+      display:block;position:absolute;top:0;bottom:0;left:0;right:0;overflow:hidden;padding:10px;
+      transition:opacity .3s ease
+  }
+
+  .save56-gift-image.loaded{opacity:1}
+
+  .save56-gift-overlay{
+      z-index:2;border-radius:20px;opacity:1;pointer-events:none;background-color:#F5F3EB;
+      width:100%;height:100%;transition:background-color .2s;position:absolute;
+      top:0;bottom:0;left:0;right:0
+  }
+
+  .save56-gift-price-badge{
+      z-index:5;justify-content:center;align-items:center;display:flex;
+      position:absolute;top:-13px;bottom:auto;left:0;right:0
+  }
+
+  .save56-text-block{
+      z-index:500;border-radius:17px;background-color:{{block.settings.label_bg}};
+      color:{{block.settings.label_text}};justify-content:center;align-items:center;
+      padding:.2rem 1rem;font-size:.8rem;font-weight:500;text-decoration:none;display:flex
+  }
+
+  .save56-strikethroughs{margin-left:.15rem;text-decoration:line-through}
+
+  .save56-gift-title{
+      z-index:2;color:#000;font-size:10px;font-weight:900;text-align:center;
+      justify-content:center;align-items:flex-start;width:100%;height:1rem;
+      display:flex;position:relative;margin-top:.5rem
+  }
+
+  .save56-gift-title-text{font-size:.6rem;text-transform:capitalize;font-weight:500}
+
+  .save56-product-breakline hr{margin:.75rem 0rem}
+
+  @media screen and (min-width:1200px){
+      .save56-text-block{min-width:109px}
+  }
+
+  @media screen and (max-width:786px){
+      .save56-gift-card{border-radius:16px}
+      .save56-gift-overlay{border-radius:14px}
+      .save56-gift-title-text{font-size:.55rem; line-height:normal;}
+      .save56-sale-name img{width:17px;height:22px;margin-right:.3rem}
+      .save56-gift-price-badge{top:-11px}
+      .save56-text-block{padding:.1rem .6rem;font-size:.6rem}
+  }
+
+  @media screen and (max-width:425px){
+      .inner__text{font-size:.6rem}
+      .inner__text b{font-size:.7rem}
+  }
+  .gift-scroll-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.gift-scroll-arrow:hover {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.gift-scroll-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.gift-scroll-left {
+  left: -8px;
+}
+
+.gift-scroll-right {
+  right: -8px;
+}
+
+.gift-scroll-arrow svg {
+  width: 18px;
+  height: 18px;
+  color: #353535;
+}
+
+@media screen and (max-width: 480px) {
+  .gift--blocks-outer.five--gifts-outer {
+    position: relative;
+  }
+
+  .gift--blocks-outer.four--gifts-outer img.save56-gift-image {
+    padding-top: 14px;
+    padding-bottom: 6px;
+}
+  
+  .gift--blocks-outer.five--gifts-outer .gift-scroll-arrow {
+    display: flex;
+  }
+  
+  .gift-scroll-arrow.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+  
+  @media screen and (max-width:480px){
+    .gift--blocks-outer.five--gifts-outer .save56-gift-item:first-child img.save56-gift-image {
+    padding-top: 14px;
+}
+    .save56-gift-blocks.five--gifts .save56-gift-item{
+      min-width: 28%;
+    }
+    .save56-gift-blocks.five--gifts{
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 10px 0 0;
+      
+    }
+    .save56-sale-name.five--gifts-header{
+      margin: 1rem 0rem 0.7rem !important;
+    }
+    .save56-sale-name.four--gifts-header{
+      margin: 1rem 0rem 1rem !important;
+    }
+  }
+  @media screen and (min-width:481px){
+  .gift-scroll-arrow{
+  display:none;
+  }
+
+}
+
+
+.four--gifts-outer .save56-text-block {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+}
+
+.four--gifts-outer.save56-gift-blocks {
+  grid-column-gap: 0.25rem;
+}
+
+
+@media screen and (min-width: 1200px) {
+  .four--gifts-outer .save56-text-block {
+    min-width: 80px;
+  }
+}
+
+@media screen and (max-width: 786px) {
+   .four--gifts-outer  .save56-gift-price-badge {
+    top: -6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .four--gifts-outer  .save56-text-block {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.5rem;
+  }
+}
+</style>
+<script>
+// Five gifts scroll arrows functionality
+(() => {
+  'use strict';
+  
+  const initGiftScrollArrows = () => {
+    const giftBlocksOuter = document.querySelector('.gift--blocks-outer.five--gifts-outer');
+    if (!giftBlocksOuter || window.innerWidth > 480) return;
+    
+    const giftBlocks = giftBlocksOuter.querySelector('.save56-gift-blocks.five--gifts');
+    const leftArrow = giftBlocksOuter.querySelector('.gift-scroll-left');
+    const rightArrow = giftBlocksOuter.querySelector('.gift-scroll-right');
+    
+    if (!giftBlocks || !leftArrow || !rightArrow) return;
+    
+    const scrollAmount = 200; // Adjust scroll distance
+    
+    // Update arrow visibility based on scroll position
+    const updateArrows = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = giftBlocks;
+      
+      leftArrow.classList.toggle('hidden', scrollLeft <= 0);
+      rightArrow.classList.toggle('hidden', scrollLeft + clientWidth >= scrollWidth - 1);
+    };
+    
+    // Scroll left
+    leftArrow.addEventListener('click', () => {
+      giftBlocks.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    
+    // Scroll right
+    rightArrow.addEventListener('click', () => {
+      giftBlocks.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+    
+    // Listen for scroll events
+    giftBlocks.addEventListener('scroll', updateArrows);
+    
+    // Initial check
+    updateArrows();
+  };
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGiftScrollArrows);
+  } else {
+    initGiftScrollArrows();
+  }
+  
+  // Re-initialize on window resize
+  window.addEventListener('resize', initGiftScrollArrows);
+})();
+</script>

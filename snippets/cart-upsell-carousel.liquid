@@ -1,0 +1,563 @@
+{%- assign upsell_products = section.settings.products -%}
+{%- assign cart_product_ids = cart.items | map: 'product_id' -%}
+{%- assign available_upsell_count = 0 -%}
+
+{%- for recommended_product in upsell_products -%}
+{%- assign product = recommended_product -%}
+{%- if product.available and cart_product_ids contains product.id -%}
+{%- continue -%}
+{%- endif -%}
+
+{%- if product.available -%}
+{%- assign available_upsell_count = available_upsell_count | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+
+{%- assign has_upsell = false -%}
+{%- assign displayed_upsell_count = 0 -%}
+
+{%- for cart_item in cart.items -%}
+  {%- assign cart_upsell_products = cart_item.product.metafields.custom.cart_upsell_products.value -%}
+
+  {%- for upsell_product in cart_upsell_products -%}
+    {%- assign product = upsell_product -%}
+
+    {%- if product.available and cart_product_ids contains product.id -%}
+      {%- continue -%} {# Skip if the upsell product is already in the cart #}
+    {%- endif -%}
+
+    {%- assign displayed_upsell_count = displayed_upsell_count | plus: 1 -%}
+
+    {%- if displayed_upsell_count > 0 -%}
+      {%- assign has_upsell = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if has_upsell -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if has_upsell -%}
+  <div class="cart-recommedations-container">
+   <div class="cart-drawer__recommendations car-drawer-recommendation-carousel {% if cart.item_count == 1 %} one-item-left {% endif %}" id="recommendations-section">
+  <h5 class="picked-for-you-title">{{ section.settings.recommendations_title }}</h5>
+
+  <div class="cart-upsell-carousel-wrapper">
+    
+    <scroll-carousel class="cart-upsell-carousel" id="carousel" role="region">
+      {%- assign upsell_count = 0 -%}
+      {%- for recommended_product in upsell_products -%}
+      {%- assign product = recommended_product -%}
+
+      {%- if product.available and cart_product_ids contains product.id -%}
+      {%- continue -%}
+      {%- endif -%}
+
+      {%- if product.available and upsell_count < 8 -%}
+      {%- capture form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+      <div form="{{ form_id }}" class="upsell_product {% if upsell_count == 1 %} cart-upsell-left-one {% endif %}" data-product-handle="{{ product.handle }}" id="upsell-product-{{ product.id }}">
+        <div class="line-item">
+          {% liquid
+          assign product_form_id = form_id
+          assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+          assign filtered_indexes = null | sort
+
+          if product.variants.size > 1
+            for media in product.media
+              if media.alt contains '#' and media.alt != product.title
+                assign alt_parts = media.alt | split: '#'
+                assign media_group_parts = alt_parts.last | split: '_'
+                assign option = product.options_by_name[media_group_parts.first]
+                assign option_value = option.selected_value | downcase
+                assign downcase_group_value = media_group_parts.last | strip | downcase
+
+                if option_value != downcase_group_value and media != default_media
+                  assign media_position = media.position | sort
+                  assign filtered_indexes = filtered_indexes | concat: media_position
+                endif
+              endif
+            endfor
+          endif
+        %}
+         
+          <product-gallery class="product-gallery" form="{{ product_form_id }}">
+             
+          <div class="product-gallery__image-list">
+            <div class="contents">
+              
+                 
+              <scroll-carousel class="product-gallery__carousel scroll-area upsell-product-gallery" role="region" id="carousel">
+                {%- if product != blank -%}
+                  {%- liquid
+                    capture sizes
+                      echo '(max-width: 699px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), '
+
+                      assign media_ratio = 100 | minus: section.settings.product_info_size
+
+                      if desktop_layout == 'grid_2x'
+                        assign media_ratio = media_ratio | divided_by: 2
+                      endif
+
+                      if section.settings.container_size == 'full'
+                        echo 'calc(' | append: media_ratio | append: 'vw - 96px)'
+                      else
+                        assign media_ratio = 1260 | times: media_ratio | divided_by: 100 | round
+
+                        if desktop_layout == 'grid_2x'
+                          assign maximum_width = '260px'
+                        else
+                          assign maximum_width = '1100px'
+                        endif
+
+                        echo 'min(' | append: maximum_width | append: ', ' | append: media_ratio | append: 'px - 96px)'
+                      endif
+                    endcapture
+                  -%}
+
+                  {%- for media in product.media -%}
+                    <div
+                      class="product-gallery__media upsell_media snap-center {% if media == default_media %}is-initial{% endif %}"
+                      data-media-type="{{ media.media_type }}"
+                      data-media-id="{{ media.id }}"
+                      role="group"
+                      aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: media.position, count: product.media.size }}"
+                      {% if filtered_indexes contains media.position %}
+                        hidden
+                      {% endif %}
+                    >
+                      {%- if default_media == media -%}
+                        {%- assign preload = false -%}
+                      {%- else -%}
+                        {%- assign preload = false -%}
+                      {%- endif -%}
+
+                      {%- comment -%}
+                        NOTE: for the product gallery, the autoplay does not work in a similar way. It is always false at the product level,
+                        and the product-gallery component itself will autoplay (if needed)
+                      {%- endcomment -%}
+                      {%- render 'media',
+                        media: media,
+                        sizes: sizes,
+                        preload: preload,
+                        controls: true,
+                        playsinline: true,
+                        muted: enable_media_autoplay,
+                        loop: enable_video_looping,
+                        group: 'product',
+                        class: 'line-item__media'
+                      -%}
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for i in (1..3) -%}
+                    {%- capture placeholder_name -%}product-{{ i }}{%- endcapture -%}
+
+                    <div
+                      class="product-gallery__media upsell_media snap-center {% if forloop.first %}is-initial{% endif %}"
+                      data-media-type="{{ media.media_type }}"
+                      data-media-position="{{ media.position }}"
+                      data-media-id="{{ media.id }}"
+                      role="group"
+                      aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: 3 }}"
+                    >
+                      {{- placeholder_name | placeholder_svg_tag: 'placeholder' -}}
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+              </scroll-carousel>
+                      
+                   
+            </div>
+          </div>
+        <!-- Add the navigation arrows -->
+                    
+                 
+
+                  
+        </product-gallery>
+        
+          {%- assign title_length = product.title | size -%}
+          <div class="line-item-info {% if title_length <= 24  %} long-title {% endif %}">
+            <div class="line-item-info-content">
+            <div class="v-stack justify-items-start gap-1">
+              {% case product.title %}
+              {% when 'Compressible Packing Cubes (6 Pieces)' %}
+               <a href="{{ product.url }}" class="h6">Packing Cubes</a>
+                {% when 'Check-in: All-in-One 28"' %}
+               <a href="{{ product.url }}" class="h6">Check-in: All-in-One</a>
+                {% when 'Check-in: Aluminum 28"' %}
+               <a href="{{ product.url }}" class="h6">Check-in: Aluminum</a>
+              {% else %}
+               <a href="{{ product.url }}" class="h6">{{ product.title }}</a>
+              {% endcase %}
+            </div>
+            {%- render 'price-list',
+            variant: product.selected_or_first_available_variant,
+            form_id: form_id,
+            hide_unit_price: true,
+            context: 'card'
+            -%}
+            <!-- Variant Picker -->
+            {%- render 'variant-picker', product: product, form_id: form_id, update_url: false, hide_sold_out_variants: true, selector_type: 'dropdown', color_selector_type: 'color' -%}
+            </div>
+            {%- render 'buy-buttons', product: product, form_id: form_id, show_payment_button: false -%}
+          </div>
+        </div>
+      </div>
+         
+
+      {%- assign upsell_count = upsell_count | plus: 1 -%}
+      {%- endif -%}
+      {%- endfor -%}
+    </scroll-carousel>
+               {% if upsell_count > 1 %}
+              <button is="carousel-prev-button" type="button" class="carousel-arrows-upsell prev-next-button prev-next-button--prev circle-button hover:animate-icon-inline" aria-controls="carousel" disabled>
+                    <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+                    {%- render 'icon' with 'arrow-left', direction_aware: true -%}
+                  </button>
+              <button is="carousel-next-button" type="button" class="carousel-arrows-upsell prev-next-button prev-next-button--next circle-button hover:animate-icon-inline" aria-controls="carousel">
+                    <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+                    {%- render 'icon' with 'arrow-right', direction_aware: true -%}
+                  </button>
+              {% endif %}
+  </div>
+</div>
+  </div>
+    {%- endif -%} 
+<!-- Carousel Styling -->
+<style>
+  cart-drawer button.prev-next-button.prev-next-button--prev {
+    left: -15px;
+  
+}
+  cart-drawer .carousel-arrows-upsell{
+    background-color: rgb(37 16 29 / 54%);
+    position: absolute;
+    z-index: 10000 !important;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    translate: 0px -50% !important;
+    border: none;
+
+
+
+  }
+  cart-drawer button.prev-next-button.prev-next-button--next {
+    right: 10px;
+   
+}
+  cart-drawer .carousel-arrows-upsell svg{
+    width:8px !important;
+    height:10px !important;
+  }
+  cart-drawer .carousel-arrows-upsell svg path{
+    stroke:#fff !important;
+    stroke-width: 4px;
+  }
+  cart-drawer .line-item-info .main-product-form{
+    margin-top:15px !important
+}
+
+
+  .upsell_product .color-swatch{
+    height:22.5px !important;
+    width:22.5px !important;
+  }
+  cart-drawer .variant-picker__option-info {
+    display:none !important
+}
+   scroll-carousel#carousel {
+    max-width: 430px !important;
+     width:100%;
+}
+  .cart-drawer::part(body){
+    padding-inline-end: 0px !important;
+  }
+  .cart-drawer:not(:has(.cart-drawer__footer:only-child))::part(footer) {
+    padding-block-start: 0px !important;
+}
+  @media(max-width:768px){
+    div#recommendations-section {
+    margin-left: -20px !important;
+    }
+    scroll-carousel#carousel {
+        max-width: 400px !important;
+    }
+    scroll-carousel#carousel {
+    max-width: 310px !important;
+}
+    .cart-upsell-carousel .line-item-info{
+      padding-top:12px !important;
+    }
+    /* cart-drawer .line-item-info.long-title .main-product-form{
+    margin-top:20px !important
+} */
+    /* .cart-upsell-carousel .main-product-form {
+    margin-top: 20px !important;
+} */
+  }
+   .car-drawer-recommendation-carousel .picked-for-you-title{
+    font-size: 16px !important;
+    margin-top: 0px;
+    margin-bottom: 11px !important;
+    font-weight:500 !important;
+ }
+  div#recommendations-section{
+    padding:15px 0px 20px 20px;
+    margin-left:-20px;
+    background:#F6F3EB !important;
+    
+  }
+
+  button#left-arrow svg {
+    rotate: 180deg;
+}
+   /* Carousel Wrapper */
+  .cart-upsell-carousel-wrapper {
+    position: relative;
+    width: 100%;
+  } 
+
+  /* Left and Right Arrows */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border: none;
+}
+
+  .carousel-arrow.left-arrow {
+    left: 10px;
+  }
+
+  .carousel-arrow.right-arrow {
+    right: 10px;
+  }
+
+  /* Hide arrows initially if there's nothing to scroll */
+  .carousel-arrow[hidden] {
+  }
+
+  /* Carousel Item Container */
+  .cart-upsell-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overflow-y: hidden;
+  }
+
+  .cart-upsell-carousel::-webkit-scrollbar {
+display:none !important
+  }
+
+  .cart-upsell-carousel::-webkit-scrollbar-thumb {
+    /* background-color: #000;
+    border-radius: 10px; */
+    display:none !important;
+  }
+
+  /* Individual Product Item */
+  .cart-upsell-carousel .upsell_product {
+    min-width: 350px;
+    max-width: 300px;
+    scroll-snap-align: start;
+    background: #fff;
+    border: none;
+    text-align: center;
+    padding: 0px 3px 3px 3px;
+    border-radius: 0px !important;
+  }
+  
+
+  .cart-upsell-carousel .line-item {
+    height:133px !important;
+    position: relative;
+    background: #fff;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    padding-top:3px !important;
+  }
+  .cart-upsell-carousel .line-item-info a.h6{
+    line-height:1.2 !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+  }
+ 
+
+  .cart-upsell-carousel img.line-item__media {
+    height: 130px !important;
+    width: 125px !important;
+    object-fit: cover;
+  }
+
+  .cart-upsell-carousel .line-item-info {
+    padding-right: 10px;
+    padding-top: 10px;
+    text-align: left;
+    width: 100%;
+  }
+  cart-drawer variant-picker.variant-picker.v-stack.gap-4{
+    position: relative;
+    top: 7px;
+}
+  }
+  .line-item-info-content {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-around;
+    gap: 4px;
+}
+
+  .cart-upsell-carousel .line-item-info span {
+    margin: 5px 0;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* Buy Button */
+  .cart-upsell-carousel .main-product-form{
+    margin-top:5px !important;
+  }
+  .cart-upsell-carousel .buy-buttons.buy-buttons button {
+    color: #000 !important;
+    cursor: pointer;
+    background-color: #fff !important;
+    padding: 6px 16px;
+    font-size: 14px;
+    border-radius: 100px;
+    border: 1px solid rgb(37, 16, 29);
+    text-transform: capitalize;
+    font-weight: 500;
+    letter-spacing: 0;
+    --initial-gradient: linear-gradient(rgb(255 255 255), rgb(255 255 255)) !important
+  }
+
+  .cart-upsell-carousel .buy-buttons.buy-buttons button:hover {
+    color: #fff !important;
+    background: #000 !important;
+    transition:none !important;
+  }
+  .cart-upsell-carousel .buy-buttons.buy-buttons button{
+     transition:none !important;
+  }
+
+  .shopify-product-form {
+    margin-top: 10px;
+  }
+
+      @media(max-width:768px){
+        .cart-upsell-carousel .upsell_product{
+          min-width:270px !important;
+        }
+        .cart-upsell-carousel::-webkit-scrollbar {
+        height: 10px;
+        }
+        .cart-upsell-carousel .upsell_product{
+          padding: 0px 4px 3px 4px !important;
+        }
+      .cart-upsell-carousel::-webkit-scrollbar-thumb {
+        background-color: #000;
+        border-radius: 10px;
+      }
+        .cart-upsell-carousel{
+          gap:10px !important;
+        }
+        
+        .cart-drawer__items .line-item {
+    --line-item-media-width: 5.6rem !important;
+}
+        .cart-upsell-carousel .buy-buttons.buy-buttons button{
+          padding: 2px 16px !important;
+          font-size: 12px !important;
+        }
+        
+        li.discount-badge.text-xs{
+          margin-top:0px !important;
+        }
+        .cart-upsell-carousel .variant-picker__option-values.h-stack.gap-2\.5.wrap{
+          gap:.3rem !important;
+        }
+        
+        
+     
+      }
+  .cart-drawer__footer.gap-1.cart-drawer-footer {
+    /* padding-top: 10px; */
+}
+  .cart-drawer__footer .button-group{
+    margin-top:10px !important;
+  }
+  .cart-drawer:not(:has(.cart-drawer__footer:only-child))::part(footer){
+    padding:12px 20px !important;
+  }
+  @media (max-width: 300px) {
+    .cart-upsell-carousel .upsell_product {
+        min-width: 234px !important;
+    }
+    .cart-upsell-carousel .main-product-form {
+    margin-top: 0px !important;
+}
+
+}
+  @media (max-width: 414px) {
+    scroll-carousel#carousel {
+        max-width: 340px !important;
+    }
+}
+
+  li.discount-badge.text-xs{
+          font-size:10px !important;
+          padding: .125rem 0.2rem 0px !important;
+          column-gap: .2rem !important;
+        }
+
+  p.h4.cart-drawer-header{
+  text-transform:capitalize;
+}
+
+        @media(max-width:414px){
+
+          .cart-upsell-carousel .upsell_product{
+            min-width:280px !important;
+          }
+   }
+  @media(max-width:430px){
+      cart-drawer .line-item-info .main-product-form{
+          margin-top: 10px !important;
+      }
+          .cart-upsell-carousel .upsell_product{
+            min-width:300px !important;
+          }
+    scroll-carousel#carousel {
+        max-width: 400px !important;
+    }
+   }
+
+  cart-drawer button.restock-alerts-notify-button{
+    opacity:0 !important;
+    display:none !important;
+  }
+</style>

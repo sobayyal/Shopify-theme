@@ -1,0 +1,433 @@
+<style>
+  .sold-out-button-container button.button.w-full {
+    justify-content: center;
+    background: rgb(255, 205, 88) !important;
+    color: rgb(0, 0, 0) !important;
+}
+  button#pre-order-button {
+    margin-top:-0.7rem;
+    -webkit-appearance: none;
+    appearance: none;
+    text-transform: var(--button-text-transform);
+    font: var(--button-font);
+    letter-spacing: var(--button-letter-spacing);
+    text-shadow: none;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(var(--button-text-color, var(--button-text-primary)));
+    border: 1px solid #000;
+    border-radius: var(--button-border-radius);
+    background: #000 !important;
+    background-image: var(--initial-gradient), var(--hover-gradient);
+    background-size: 100% 100%, 0 100%;
+    background-position: var(--initial-background-position);
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1.125rem;
+    padding: .4rem 1.75rem;
+    transition: background-size .45s cubic-bezier(.785,.135,.15,.86), background-position .45s step-end, color .45s cubic-bezier(.785,.135,.15,.86), border .45s cubic-bezier(.785,.135,.15,.86);
+    position: relative;
+    width: 100%;
+    line-height:1.3rem !important;
+  }
+  .pre-order-btn{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+  }
+  .pre-order-btn .add-preorder{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    color:#fff;
+    letter-spacing:0px;
+    font-size:16px !important;
+  }
+   .wait-save{
+    color:#fff;
+    font-size:12px;
+    align-items: center;
+     font-weight: 400 ;
+    align-items: center;
+    text-transform: none;
+     line-height: 1.1;
+     letter-spacing: 0px;
+  }
+  .in-stock{
+    color:#fff;
+    font-size:13px;
+    align-items: center;
+     font-weight: 400 ;
+    align-items: center;
+    text-transform: capitalize;
+     line-height: 1.4;
+  }
+  
+  @media screen and (max-width:768px){
+    button#pre-order-button {
+          padding: .4rem 1.75rem !important;
+    }
+     .wait-save {
+    color:#fff;
+    font-size:12px;
+       
+    }
+    .in-stock {
+    color:#fff;
+    font-size:12px;
+    }
+      .pre-order-price{
+        font-size:12px !important;
+      }  
+  }
+</style>
+
+{% assign metafield_product_handle = product.metafields.custom.pre_order_product %}
+
+{% if metafield_product_handle %}
+  {% assign metafield_product = all_products[metafield_product_handle] %}
+{% endif %}
+
+{% if metafield_product %}
+  <div id="pre-order-swatch-options">
+    {% for option in metafield_product.options_with_values %}
+      <div style="display:none;" class="swatch-group" data-option-position="{{ option.position }}">
+        <p>{{ option.name }}</p>
+        {% for value in option.values %}
+          {% assign id_prefix = "pre-order" %}
+          {% assign selected = false %}
+          {% if forloop.first %} {% assign selected = true %} {% endif %}
+
+          {% render 'swatch', 
+            id_prefix: id_prefix, 
+            name: option.name, 
+            value: value, 
+            selected: selected, 
+            swatch: 'color', 
+            show_color: true, 
+            form: 'pre-order-product' 
+          %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button class="pre-order-btn button w-full" id="pre-order-button" type="button" style="display:none;"  data-variant-id="{{ current_variant.id }}">
+      <span class="add-preorder">{{ section.settings.pre_order_button_text }}</span>
+      <span class="wait-save" id="pre-order-delivery-date"></span>
+    </button>
+  </div>
+
+ {% if product.handle == "carry-on-all-in-one" %}
+  <!-- Output JSON data for pre-order product variants button text -->
+  <script type="application/json" id="pre-order-variant-data">
+    {
+      "variants": [
+        {% for variant in metafield_product.variants %}
+          {
+            "id": "{{ variant.id }}",
+            "option1": "{{ variant.option1 }}",
+            "option2": "{{ variant.option2 }}",
+            "option3": "{{ variant.option3 }}",
+            "delivery_date": "{% if variant.option1 == 'Black' %}Ships Out 2/27{% elsif variant.option1 == 'Forest Green' %}Ships Out 2/27{% elsif variant.option1 == 'White' %}Ships Out 2/27{% elsif variant.option1 == 'Beige' %}Ships Out 2/27{% elsif variant.option1 == 'Baby Blue' %}In-Stock{% elsif variant.option1 == 'Pink' %}In-Stock {% elsif variant.option1 == 'Hot Pink' %}Ships Out 4/10 {% elsif variant.option1 == 'Lavender' %}Ships Out 4/10 {% elsif variant.option1 == 'Red' %}Ships Out 4/10 {% elsif variant.option1 == 'Silver' %}Ships Out 4/10 {% else %}InStock{% endif %}"
+          }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{% endif %}
+  {% if product.handle == "carry-on-all-in-one-copy" %}
+  <!-- Output JSON data for pre-order product variants button text -->
+  <script type="application/json" id="pre-order-variant-data">
+    {
+      "variants": [
+        {% for variant in metafield_product.variants %}
+          {
+            "id": "{{ variant.id }}",
+            "option1": "{{ variant.option1 }}",
+            "option2": "{{ variant.option2 }}",
+            "option3": "{{ variant.option3 }}",
+            "delivery_date": "{% if variant.option1 == 'Black' %}Ships Out 4/10{% elsif variant.option1 == 'Forest Green' %}Ships Out 4/10{% elsif variant.option1 == 'White' %}Ships Out 4/10{% elsif variant.option1 == 'Beige' %}Ships Out 4/10{% elsif variant.option1 == 'Baby Blue' %}In-Stock{% elsif variant.option1 == 'Pink' %}Ships Out 4/10 {% elsif variant.option1 == 'Hot Pink' %}Ships Out 4/10 {% elsif variant.option1 == 'Lavender' %}Ships Out 4/10 {% elsif variant.option1 == 'Red' %}Ships Out 4/10 {% elsif variant.option1 == 'Silver' %}Ships Out 4/10 {% else %}InStock{% endif %}"
+          }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{% endif %}
+  {% if product.handle == "check-in-all-in-one-28" %}
+  <!-- Output JSON data for pre-order product variants button text -->
+  <script type="application/json" id="pre-order-variant-data">
+    {
+      "variants": [
+        {% for variant in metafield_product.variants %}
+          {
+            "id": "{{ variant.id }}",
+            "option1": "{{ variant.option1 }}",
+            "option2": "{{ variant.option2 }}",
+            "option3": "{{ variant.option3 }}",
+            "delivery_date": "{% if variant.option1 == 'Black' %}IN STOCK{% elsif variant.option1 == 'Forest Green' %}IN STOCK{% elsif variant.option1 == 'White' %}IN STOCK{% elsif variant.option1 == 'Beige' %}IN STOCK{% elsif variant.option1 == 'Baby Blue' %}IN STOCK{% elsif variant.option1 == 'Pink' %}IN STOCK{% elsif variant.option1 == 'Hot Pink' %}Ships Out 4/13{% elsif variant.option1 == 'Lavender' %}Ships Out 4/13{% elsif variant.option1 == 'Red' %}Ships Out 4/13{% else %}IN STOCK{% endif %}"
+          }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{% endif %}
+  {% if product.handle == "large-aluminum" %}
+  <!-- Output JSON data for pre-order product variants button text -->
+  <script type="application/json" id="pre-order-variant-data">
+    {
+      "variants": [
+        {% for variant in metafield_product.variants %}
+          {
+            "id": "{{ variant.id }}",
+            "option1": "{{ variant.option1 }}",
+            "option2": "{{ variant.option2 }}",
+            "delivery_date": "{% if variant.option1 == 'Silver' %}Ships Out 4/13{% else %}IN STOCK{% endif %}"
+          }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  </script>
+{% endif %}
+
+{% endif %}
+
+{% comment %} CODE FOR ADDING PRODUCT TO THE CART ALONG WITH VARIANT SYNC OF MAIN PRODUCT {% endcomment %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const preOrderButton = document.getElementById("pre-order-button");
+  const mainProductSwatches = document.querySelectorAll("input[name='option1']");
+  const preOrderSwatches = document.querySelectorAll("input[name='Color']");
+  const preOrderVariantData = JSON.parse(document.getElementById("pre-order-variant-data").textContent);
+  const preOrderVariants = preOrderVariantData.variants;
+
+  function syncSwatches(selectedValue, sourceSwatches, targetSwatches) {
+    targetSwatches.forEach((swatch) => {
+      swatch.checked = swatch.value === selectedValue;
+    });
+  }
+
+  // Sync main product swatches with pre-order swatches
+  mainProductSwatches.forEach((swatch) => {
+    swatch.addEventListener("change", function () {
+      if (swatch.checked) {
+        syncSwatches(swatch.value, mainProductSwatches, preOrderSwatches);
+      }
+    });
+  });
+
+  preOrderSwatches.forEach((swatch) => {
+    swatch.addEventListener("change", function () {
+      if (swatch.checked) {
+        syncSwatches(swatch.value, preOrderSwatches, mainProductSwatches);
+      }
+    });
+  });
+
+  function addToCart(variantId, isPreOrder = false) {
+  const properties = isPreOrder
+    ? { '_is_preorder': true }
+    : {};
+
+  fetch("/cart/add.js", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: variantId,
+      quantity: 1,
+      properties: properties,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Request failed: " + response.statusText);
+      return response.json();
+    })
+    .then(() => {
+      // Fetch the updated cart data to ensure it reflects the added product
+      return fetch("/cart.js");
+    })
+    .then((response) => response.json())
+    .then((updatedCartData) => {
+      // Trigger the cart change event with the updated cart data
+      const cartChangeEvent = new CustomEvent("cart:change", {
+        detail: {
+          cart: updatedCartData,
+          baseEvent: "variant:add",
+        },
+      });
+      document.dispatchEvent(cartChangeEvent);
+    })
+    .catch((error) => alert("Error adding product to cart: " + error.message));
+}
+
+      preOrderButton.addEventListener("click", function () {
+      const selectedOptions = getSelectedOptions(preOrderSwatches);
+      const matchingVariant = findMatchingVariant(selectedOptions);
+    
+      if (matchingVariant) {
+        addToCart(matchingVariant.id, true); // Add pre-order with line item property
+      } else {
+        alert("Please select a valid variant for the pre-order product.");
+      }
+    });
+
+
+  function getSelectedOptions(swatches) {
+    return Array.from(swatches)
+      .filter((swatch) => swatch.checked)
+      .map((swatch) => swatch.value);
+  }
+
+  function findMatchingVariant(options) {
+    return preOrderVariants.find((variant) =>
+      options.every((option, index) => variant[`option${index + 1}`] === option)
+    );
+  }
+
+  const preOrderDeliveryDate = document.getElementById("pre-order-delivery-date");
+
+  function updateDeliveryDate(selectedValue) {
+    const matchingVariant = preOrderVariantData.variants.find(
+      (variant) => variant.option1 === selectedValue
+    );
+
+    if (matchingVariant && matchingVariant.delivery_date) {
+      preOrderDeliveryDate.textContent = `${matchingVariant.delivery_date}`;
+    } else {
+      preOrderDeliveryDate.textContent = "Estimated to Ship TBD";
+    }
+  }
+
+  // Update delivery date when main product swatches change
+  mainProductSwatches.forEach((swatch) => {
+    swatch.addEventListener("change", function () {
+      if (this.checked) {
+        updateDeliveryDate(this.value);
+      }
+    });
+  });
+
+  // Set initial delivery date
+  const initiallySelectedSwatch = document.querySelector("input[name='option1']:checked");
+  if (initiallySelectedSwatch) {
+    updateDeliveryDate(initiallySelectedSwatch.value);
+  }
+});
+</script>
+{% comment %} CODE FOR PRE-ORDER BUTTON DISPLAY CONDITION {% endcomment %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const preOrderButton = document.getElementById("pre-order-button");
+  const mainProductSwatches = document.querySelectorAll("input[name='option1']");
+  const mainProductVariantData = JSON.parse(document.getElementById("main-product-variant-data").textContent).variants;
+
+  // Define the variants where the button should be hidden explicitly
+  const hiddenVariantIds = [
+    "49246687625516", "49246687592748",
+    "49246687658284", "49246687723820", "49246687691052", "48997858640172"
+  ];
+
+  // Define the variants where the button should be shown
+  const shownVariantIds = [
+    // Check-in: New Colors
+    "50776507580716", "50776507613484", "50776507646252",
+   // Carry-on: New Colors
+    "50670056276268"
+  ];
+
+  function togglePreOrderButton(selectedValue) {
+    const matchingVariant = mainProductVariantData.find(variant => variant.option1 === selectedValue);
+
+    if (matchingVariant) {
+      // Explicitly check if the variant should be hidden
+      if (hiddenVariantIds.includes(matchingVariant.id)) {
+        preOrderButton.style.display = "none";
+        return; // Stop further execution
+      }
+
+      // If the variant is explicitly allowed or out of stock, show the button
+      if (shownVariantIds.includes(matchingVariant.id) || matchingVariant.inventory_quantity <= 0) {
+        preOrderButton.setAttribute("data-variant-id", matchingVariant.id);
+        preOrderButton.style.display = "flex";
+      } else {
+        preOrderButton.style.display = "none";
+      }
+    } else {
+      preOrderButton.style.display = "none";
+    }
+  }
+
+  // Attach event listeners to swatches
+  mainProductSwatches.forEach(swatch => {
+    swatch.addEventListener("change", function () {
+      if (this.checked) {
+        togglePreOrderButton(this.value);
+      }
+    });
+  });
+
+  // Ensure the correct button visibility when the page loads
+  function setInitialState() {
+    const initiallySelectedSwatch = document.querySelector("input[name='option1']:checked");
+    if (initiallySelectedSwatch) {
+      togglePreOrderButton(initiallySelectedSwatch.value);
+    } else if (mainProductSwatches.length > 0) {
+      togglePreOrderButton(mainProductSwatches[0].value);
+    }
+  }
+
+  setInitialState();
+});
+</script>
+{% comment %} CODE FOR SELECT VARIANT OPTION {% endcomment %}
+<script type="application/json" id="main-product-variant-data">
+{
+  "variants": [
+    {% for variant in product.variants %}
+      {
+        "id": "{{ variant.id }}",
+        "option1": "{{ variant.option1 }}",
+        "inventory_quantity": {{ variant.inventory_quantity }}
+      }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% comment %} CODE SYNC FOR PRE-SELECTED VARIANT ON RELOAD {% endcomment %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const variantIdFromUrl = urlParams.get("variant");
+
+  if (variantIdFromUrl) {
+    const preOrderVariantData = JSON.parse(document.getElementById("pre-order-variant-data").textContent);
+    const mainProductVariantData = JSON.parse(document.getElementById("main-product-variant-data").textContent).variants;
+
+    // Combine main and pre-order variants for easier handling
+    const allVariants = [...mainProductVariantData, ...preOrderVariantData.variants];
+    const matchingVariant = allVariants.find((variant) => variant.id === variantIdFromUrl);
+
+    if (matchingVariant) {
+      // Sync swatches for the selected variant
+      const options = [matchingVariant.option1, matchingVariant.option2, matchingVariant.option3].filter(Boolean);
+
+      options.forEach((option, index) => {
+        const mainSwatch = document.querySelector(`input[name="option${index + 1}"][value="${option}"]`);
+        const preOrderSwatch = document.querySelector(`input[name="Color"][value="${option}"]`);
+
+        if (mainSwatch) {
+          mainSwatch.checked = true;
+          mainSwatch.dispatchEvent(new Event("change")); // Trigger change event to update UI
+        }
+
+        if (preOrderSwatch) {
+          preOrderSwatch.checked = true;
+          preOrderSwatch.dispatchEvent(new Event("change")); // Trigger change event to sync with main swatches
+        }
+      });
+    }
+  }
+});
+</script>

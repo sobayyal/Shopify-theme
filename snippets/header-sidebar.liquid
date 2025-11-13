@@ -1,0 +1,656 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HEADER SIDEBAR COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+This snippet the navigation sidebar for the header. It is used for both the mobile menu and for the desktop menu when
+the merchant configures the drawer mode.
+
+********************************************
+Supported variables
+********************************************
+
+* menu: the menu to render
+* show_dividers: whether dividers are shown for the collapsible
+{%- endcomment -%}
+
+{%- comment -%}
+IMPLEMENTATION NOTE: while being a drawer, the sidebar has a completely different structure for the content. We are
+therefore using a different structure for the Shadow DOM template
+{%- endcomment -%}
+
+
+<template id="header-sidebar-template">
+  <div part="base">
+    <div part="overlay"></div>
+
+    <div part="content">
+      <header part="header">
+        <slot name="logoarea--sidebar"></slot>
+
+        <slot name="selectorarea--sidebar"></slot>
+      </header>
+      
+      <div part="panel-list">
+        {% if section.settings.enable_mobile_menu_banner %}
+
+          <slot name="sale--banner"></slot>
+
+      {% endif %}
+      <slot name="collections--area"></slot>
+        <slot name="main-panel"></slot>
+
+        {%- if menu.levels > 0 -%}
+          <slot name="collapsible-panel"></slot>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</template>
+
+<header-sidebar id="sidebar-menu" class="header-sidebar drawer drawer--sm" template="header-sidebar-template" open-from="left">
+  <div class="header--sidebar_logoarea" slot="logoarea--sidebar">
+    {%- capture sizes -%}{{ section.settings.logo_max_width }}px{%- endcapture -%}
+    {%- capture widths -%}{{ section.settings.logo_max_width | times: 2 | at_most: section.settings.logo.width }}, {{ section.settings.logo_max_width | times: 3 | at_most: section.settings.logo.width }}{%- endcapture -%}
+    {{- section.settings.sidebar_logo | image_url: width: section.settings.logo.width | image_tag: sizes: sizes, widths: widths, class: 'header__logo-image' -}}
+  </div>
+  <div class="sidebar--selector_with-button" slot="selectorarea--sidebar">
+    <div class="sidebar--header_button-with-selector">
+      {% if section.settings.show_selector_header %}
+        {%- liquid
+          if section.settings.show_country_selector and localization.available_countries.size > 1
+            assign show_country_selector = true
+          endif
+
+          if section.settings.show_locale_selector and localization.available_languages.size > 1
+            assign show_locale_selector = true
+          endif
+        -%}
+        <div class="sidebar--selectors-header" slot="selector--sidebar">
+          {%- if show_country_selector or show_locale_selector -%}
+            <div class="localization-selectors">
+              {%- if show_country_selector -%}
+                {%- render 'localization-selector', type: 'country', placement: 'top-start', show_country_name: false, show_country_flag: section.settings.show_country_flag, id_prefix: 'header-sidebar' -%}
+              {%- endif -%}
+
+              {%- if show_country_selector and show_locale_selector -%}
+                <span class="localization-selectors__separator" aria-hidden="true"></span>
+              {%- endif -%}
+
+              {%- if show_locale_selector -%}
+                {%- render 'localization-selector', type: 'locale', placement: 'top-start', id_prefix: 'header-sidebar' -%}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {% endif %}
+
+      <button type="button" is="dialog-close-button" part="close-button tap-area" aria-label="{{ 'general.accessibility.close' | t | escape }}">
+        {%- render 'icon' with 'close', width: 16 -%}
+      </button>
+    </div>
+  </div>
+  
+  <div class="header--sidebarcollections" slot="collections--area">
+    {% if section.settings.enable_search_sidebar %}
+      <div class="header--sidebar-search">
+          <predictive-search-sidebar data-min-chars="{{ section.settings.search_min_chars | default: 2 }}" data-min-words="{{ section.settings.search_min_words | default: 1 }}">
+            <form action="{{ routes.search_url }}" method="get" role="search">
+              <div class="header-search__form-control">
+                {%- render 'icon' with 'search', width: 25 -%}
+                <input type="search" name="q" spellcheck="false" class="header-search__input h5 sm:h4" aria-label="{{ 'search.general.title' | t | escape }}" placeholder="Search for All-in-One, Weekender">
+                <button class="icon--go" type="submit">
+                  {% render 'icon' with 'chevron-right' , width: 20 %}
+                </button>
+              </div>
+                <div id="predictive-search" tabindex="-1"></div>
+            </form>
+          </predictive-search-sidebar>
+      </div>    
+      {%- if predictive_search.performed -%}
+        <div id="predictive-search-results">
+          {%- if predictive_search.resources.products.size > 0 -%}
+            <h3 id="predictive-search-products">
+              Products
+            </h3>
+            <ul role="listbox" aria-labelledby="predictive-search-products">
+              {%- for product in predictive_search.resources.products -%}
+                <li role="option">
+                  <a href="{{ product.url }}">
+                    {{ product | image_url: width: 50 | image_tag }}
+                    <span>{{ product.title }}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+          <button>
+            Search for "{{ predictive_search.terms }}"
+          </button>
+        </div>
+      {%- endif -%}
+        <script>
+          class PredictiveSearch extends HTMLElement {
+            constructor() {
+              super();
+
+              this.input = this.querySelector('input[type="search"]');
+              this.predictiveSearchResults = this.querySelector('#predictive-search');
+              
+              // Get minimum requirements from data attributes
+              this.minChars = parseInt(this.dataset.minChars) || 2;
+              this.minWords = parseInt(this.dataset.minWords) || 1;
+
+              this.input.addEventListener('input', this.debounce((event) => {
+                this.onChange(event);
+              }, 300).bind(this));
+            }
+
+            onChange() {
+              const searchTerm = this.input.value.trim();
+
+              if (!searchTerm.length) {
+                this.close();
+                return;
+              }
+
+              // Check if search term meets minimum requirements
+              if (!this.meetsMinimumRequirements(searchTerm)) {
+                this.close();
+                return;
+              }
+
+              this.getSearchResults(searchTerm);
+            }
+
+            meetsMinimumRequirements(searchTerm) {
+              // Check character count
+              if (searchTerm.length < this.minChars) {
+                return false;
+              }
+
+              // Check word count if minimum words is greater than 1
+              if (this.minWords > 1) {
+                const wordCount = searchTerm.split(/\s+/).filter(word => word.length > 0).length;
+                if (wordCount < this.minWords) {
+                  return false;
+                }
+              }
+
+              return true;
+            }
+
+            getSearchResults(searchTerm) {
+              fetch(`/search/suggest?q=${searchTerm}&section_id=predictive-search`)
+                .then((response) => {
+                  if (!response.ok) {
+                    var error = new Error(response.status);
+                    this.close();
+                    throw error;
+                  }
+
+                  return response.text();
+                })
+                .then((text) => {
+                  const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
+                  this.predictiveSearchResults.innerHTML = resultsMarkup;
+                  this.open();
+                })
+                .catch((error) => {
+                  this.close();
+                  throw error;
+                });
+            }
+
+            open() {
+              this.predictiveSearchResults.style.display = 'block';
+            }
+
+            close() {
+              this.predictiveSearchResults.style.display = 'none';
+            }
+
+            debounce(fn, wait) {
+              let t;
+              return (...args) => {
+                clearTimeout(t);
+                t = setTimeout(() => fn.apply(this, args), wait);
+              };
+            }
+          }
+
+          customElements.define('predictive-search-sidebar', PredictiveSearch);
+        </script>
+    {% endif %}
+
+
+    
+
+    {%- liquid
+      assign mobile_collection_count = 0
+      for block in section.blocks
+        if block.type == 'mobile_collection'
+          assign mobile_collection_count = mobile_collection_count | plus: 1
+        endif
+      endfor
+    -%}
+
+    <div class="mobile-collections-container {% if mobile_collection_count == 0 %} no-mobile-collections{% endif %}" {% if mobile_collection_count == 0 %}style="padding:0;" {% endif %}>
+      <div class="mobile-collections-scroll">
+        {% for block in section.blocks %}
+          {% if block.type == 'mobile_collection' %}
+            <div class="mobile-collection-item" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.collection_link | default: '#' }}" class="mobile-collection-link">
+                <div class="mobile-collection-image">
+                  {% if block.settings.collection_image %}
+                    <img 
+                      src="{{ block.settings.collection_image | image_url: width: 200 }}" 
+                      alt="{{ block.settings.collection_title | escape }}"
+                      loading="lazy"
+                      width="200"
+                      height="200"
+                    >
+                  {% else %}
+                    <div class="mobile-collection-placeholder">
+                      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% endif %}
+                  
+                  {% if block.settings.save_text != blank %}
+                    <div class="mobile-collection-badge">
+                      {{ block.settings.save_text }}
+                    </div>
+                  {% endif %}
+                </div>
+                
+                <div class="mobile-collection-title">
+                  {{ block.settings.collection_title }} {% render 'icon' with 'icon--arrow', width: '15'%}
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% if section.settings.enable_mobile_menu_banner %}
+    <div class="sidebar--mobile-banner" slot="sale--banner" style="--sidebar-banner-bg:{{ section.settings.banner_bg }};">
+      <a class="sidebar--banner_link" href="{{ section.settings.banner_link }}">
+        <div class="banner--details">
+          {% if section.settings.banner_title != blank %}
+            <h2 class="sidebar--banner_title">{{ section.settings.banner_title }}</h2>
+          {% endif %}
+          {% if section.settings.banner_subtitle != blank %}
+            <p class="sidebar--banner_subtitle">{{ section.settings.banner_subtitle }}</p>
+          {% endif %}
+        </div>
+        {% if section.settings.banner_sale_image %}
+          <div class="banner--sale_image">
+            <img src="{{ section.settings.banner_sale_image | img_url : 'master' }}">
+          </div>
+        {% endif %}
+      </a>
+    </div>
+  {% endif %}
+  {%- comment -%}We are using a Shadow DOM where each panel has a slot, so we can directly render each level individually{%- endcomment -%}
+
+  {%- comment -%}Panel 1 is the first level{%- endcomment -%}
+  <div class="header-sidebar__main-panel" slot="main-panel">
+    <div class="header-sidebar__scroller">
+      <ul class="header-sidebar__linklist {% if show_dividers %}divide-y{% endif %} unstyled-list" role="list">
+        {%- for link in menu.links -%}
+          {%- liquid
+            assign link_title_downcase = link.title | strip | downcase
+            assign mega_menu_block = ''
+            assign has_mega_menu = false
+            assign mobile_tag_block = ''
+            assign has_mobile_tag = false
+
+            for block in section.blocks
+              assign menu_item_downcase = block.settings.menu_item | strip | downcase
+
+              if menu_item_downcase == link_title_downcase
+                case block.type
+                  when 'mega_menu'
+                    assign mega_menu_block = block
+                    if block.settings.enable_collection_list or block.settings.enable_product_list
+                      assign has_mega_menu = true
+                    endif
+                  when 'mobile_tag'
+                    assign mobile_tag_block = block
+                    assign has_mobile_tag = true
+                endcase
+              endif
+            endfor
+          -%}
+          <li>
+            {%- if link.links.size > 0 or has_mega_menu -%}
+              <button type="button" class="header-sidebar__linklist-button {% if section.settings.sidebar_text_font == 'heading' %}h6{% endif %}" aria-controls="header-panel-{{ forloop.index }}" aria-expanded="false">
+                <span class="menu-item-with-tag">
+                  {{- link.title -}}
+                  {%- if has_mobile_tag and mobile_tag_block.settings.tag_name != blank -%}
+                    <span class="mobile-menu-tag" 
+                          style="--tag-bg: {{ mobile_tag_block.settings.tag_bg | default: '#054b48' }}; --tag-text: {{ mobile_tag_block.settings.tag_text | default: '#FFFFFF' }};">
+                      {{ mobile_tag_block.settings.tag_name }}
+                    </span>
+                  {%- endif -%}
+                </span>
+                {%- render 'icon' with 'chevron-right', width: 12, direction_aware: true -%}
+              </button>
+            {%- else -%}
+              <a href="{{ link.url }}" class="header-sidebar__linklist-button {% if section.settings.sidebar_text_font == 'heading' %}h6{% endif %}">
+                <span class="menu-item-with-tag">
+                  {{- link.title -}}
+                  {%- if has_mobile_tag and mobile_tag_block.settings.tag_name != blank -%}
+                    <span class="mobile-menu-tag" 
+                          style="--tag-bg: {{ mobile_tag_block.settings.tag_bg | default: '#054b48' }}; --tag-text: {{ mobile_tag_block.settings.tag_text | default: '#FFFFFF' }};">
+                      {{ mobile_tag_block.settings.tag_name }}
+                    </span>
+                  {%- endif -%}
+                </span>
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {%- liquid
+      if section.settings.show_country_selector and localization.available_countries.size > 1
+        assign show_country_selector = true
+      endif
+
+      if section.settings.show_locale_selector and localization.available_languages.size > 1
+        assign show_locale_selector = true
+      endif
+    -%}
+    {% if section.settings.disable_sidebar_footer == false %}
+    {%- if shop.customer_accounts_enabled or show_country_selector or show_locale_selector -%}
+      <div class="header-sidebar__footer">
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{{ routes.account_url }}" class="text-with-icon smallcaps sm:hidden">
+            {%- render 'icon' with 'account', width: 20 -%}
+            {{- 'header.general.account' | t -}}
+          </a>
+        {%- endif -%}
+
+        {%- if show_country_selector or show_locale_selector -%}
+          <div class="localization-selectors">
+            {%- if show_country_selector -%}
+              {%- render 'localization-selector', type: 'country', placement: 'top-start', show_country_name: section.settings.show_country_name, show_country_flag: section.settings.show_country_flag, id_prefix: 'header-sidebar' -%}
+            {%- endif -%}
+
+            {%- if show_country_selector and show_locale_selector -%}
+              <span class="localization-selectors__separator" aria-hidden="true"></span>
+            {%- endif -%}
+
+            {%- if show_locale_selector -%}
+              {%- render 'localization-selector', type: 'locale', placement: 'top-start', id_prefix: 'header-sidebar' -%}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {% endif %}
+  </div>
+
+  {%- comment -%}Panel 2 holds all the second levels{%- endcomment -%}
+  {%- if menu.levels > 0 -%}
+    <header-sidebar-collapsible-panel class="header-sidebar__collapsible-panel" slot="collapsible-panel">
+      <div class="header-sidebar__scroller">
+        {%- for link in menu.links -%}
+          {%- liquid
+            assign link_title_downcase = link.title | strip | downcase
+            assign mega_menu_block = ''
+            assign has_mega_menu = false
+            assign mobile_tag_block = ''
+            assign has_mobile_tag = false
+
+            for block in section.blocks
+              assign menu_item_downcase = block.settings.menu_item | strip | downcase
+
+              if menu_item_downcase == link_title_downcase
+                case block.type
+                  when 'mega_menu'
+                    assign mega_menu_block = block
+                    if block.settings.enable_collection_list or block.settings.enable_product_list
+                      assign has_mega_menu = true
+                    endif
+                  when 'mobile_tag'
+                    assign mobile_tag_block = block
+                    assign has_mobile_tag = true
+                endcase
+              endif
+            endfor
+          -%}
+          {%- if link.links.size > 0 or has_mega_menu -%}
+            <div id="header-panel-{{ forloop.index }}" class="header-sidebar__sub-panel" hidden>
+              <button type="button" class="header-sidebar__back-button link-faded {% if show_dividers %}is-divided{% endif %} text-with-icon {% if section.settings.sidebar_text_font == 'heading' %}h6{% endif %} md:hidden" data-action="close-panel">
+                {%- render 'icon' with 'chevron-left', width: 12, direction_aware: true -%}
+                <span class="menu-item-with-tag">
+                  {{- link.title -}}
+                  {%- if has_mobile_tag and mobile_tag_block.settings.tag_name != blank -%}
+                    <span class="mobile-menu-tag" 
+                          style="--tag-bg: {{ mobile_tag_block.settings.tag_bg | default: '#054b48' }}; --tag-text: {{ mobile_tag_block.settings.tag_text | default: '#FFFFFF' }};">
+                      {{ mobile_tag_block.settings.tag_name }}
+                    </span>
+                  {%- endif -%}
+                </span>
+              </button>
+
+              <ul class="header-sidebar__linklist {% if show_dividers %}divide-y{% endif %} unstyled-list" role="list">
+                {%- for sub_link in link.links -%}
+                  <li>
+                    {%- if sub_link.links.size > 0 -%}
+                      <details is="accordion-disclosure" class="group">
+                        <summary class="header-sidebar__linklist-button {% if section.settings.sidebar_text_font == 'heading' %}h6{% endif %}">
+                          {{- sub_link.title -}}
+                          <span class="animated-plus group-expanded:rotate" aria-hidden="true"></span>
+                        </summary>
+
+                        <div class="header-sidebar__nested-linklist">
+                          {%- for sub_sub_link in sub_link.links -%}
+                            <a href="{{ sub_sub_link.url }}" class="link-faded-reverse">{{ sub_sub_link.title }}</a>
+                          {%- endfor -%}
+                        </div>
+                      </details>
+                    {%- else -%}
+                      <a href="{{ sub_link.url }}" class="header-sidebar__linklist-button {% if section.settings.sidebar_text_font == 'heading' %}h6{% endif %}">
+                        {{- sub_link.title -}}
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+
+              {%- liquid
+                assign link_title_downcase = link.title | strip | downcase
+                assign mega_menu_block = ''
+
+                for block in section.blocks
+                  assign menu_item_downcase = block.settings.menu_item | strip | downcase
+
+                  if menu_item_downcase == link_title_downcase and block.type == 'mega_menu'
+                    assign mega_menu_block = block
+                    break
+                  endif
+                endfor
+              -%}
+
+              {%- capture mega_menu_content -%}
+                {%- render 'mega-menu-images', context: 'sidebar', block: mega_menu_block -%}
+              {%- endcapture -%}
+              
+
+              {% assign block = mega_menu_block %}
+              {% if block.settings.enable_collection_list %}
+                {% assign collections = block.settings.collection_list %}
+                {% if block.settings.enable_custom_titles %}
+                  {% assign custom_titles_array = block.settings.custom_titles | split: ',' %}
+                {% endif %}
+                
+                <div class="mega_menu-collections">
+                  {% if block.settings.collection_list_title != blank %}
+                  <p class="mega_menu--collections_title">{{ block.settings.collection_list_title }}</p>
+                  {% endif %}
+                  <ul class="mega_menu--collections header-sidebar__linklist"> 
+                    {% for collection in collections %}
+                      <li class="collection_item-mega link-faded">
+                        <a class="collection_-item_link" href="{{ collection.url }}">
+                          {% if collection.image %}
+                            <div class="collection_image">
+                              <a class="collection_-image_link" href="{{ collection.url }}">
+                                <img src="{{ collection.image | img_url: '300x300' }}" 
+                                    alt="{{ collection.title | escape }}">
+                              </a>
+                            </div>
+                          {% elsif block.settings.enable_product_image and collection.products.first.featured_image %}
+                            <div class="collection_image">
+                              <a class="collection_-image_link" href="{{ collection.url }}">
+                                <img src="{{ collection.products.first.featured_image | img_url: '300x300' }}" 
+                                    alt="{{ collection.title | escape }}" >
+                              </a>
+                            </div>
+                          {% else %}
+                            <div class="collection_image">
+                              {%- capture placeholder_image -%}{% cycle 'placeholder': 'lifestyle-1', 'lifestyle-2' %}{%- endcapture -%}
+                              {{- placeholder_image | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' -}}
+                            </div>
+                          {% endif %}
+                          
+                          {% if block.settings.enable_collections_title %}
+                            <p class="collection_title">
+                              <a class="collection_-title_link {% if block.settings.titles_over_images %}mega-title_over--image{% endif %}" href="{{ collection.url }}">
+                                  {{ collection.title }}
+                              </a>
+                            </p>
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+
+
+              {% if block.settings.enable_product_list %}
+                {% assign products = block.settings.products_list %}
+                {% if block.settings.enable_custom_titles_pro %}
+                  {% assign custom_titles_array = block.settings.custom_titles_pro | split: ',' %}
+                {% endif %}
+                
+                <div class="mega_menu-collections mega_menu--products">
+                  {% if block.settings.product_list_title != blank %}
+                  <p class="mega_menu--collections_title">{{ block.settings.product_list_title }}</p>
+                  {% endif %}
+                  {% comment %} Split custom tags into array {% endcomment %}
+                  {% assign custom_tags_array = block.settings.custom_tags | split: ',' %}
+
+                  <ul class="mega_menu--collections header-sidebar__linklist">
+                    {% for product in products %}
+                      {% assign product_id_str = product.id | append: "" %}
+                      {% assign custom_image = nil %}
+                      
+                      {%- comment -%} Check each custom product ID setting {%- endcomment -%}
+                      {% if block.settings.custom_product_id_1 == product_id_str and block.settings.custom_product_image_1 != blank %}
+                        {% assign custom_image = block.settings.custom_product_image_1 %}
+                      {% elsif block.settings.custom_product_id_2 == product_id_str and block.settings.custom_product_image_2 != blank %}
+                        {% assign custom_image = block.settings.custom_product_image_2 %}
+                      {% elsif block.settings.custom_product_id_3 == product_id_str and block.settings.custom_product_image_3 != blank %}
+                        {% assign custom_image = block.settings.custom_product_image_3 %}
+                      {% elsif block.settings.custom_product_id_4 == product_id_str and block.settings.custom_product_image_4 != blank %}
+                        {% assign custom_image = block.settings.custom_product_image_4 %}
+                      {% endif %}
+                      
+                      <li class="collection_item-mega link-faded">
+                        <a class="collection_-item_link" href="{{ product.url }}">
+                        {% if custom_image != blank %}
+                          {%- comment -%} Use custom image from settings {%- endcomment -%}
+                          <div class="collection_image">
+                            <a class="collection_-image_link" href="{{ product.url }}">
+                              <img src="{{ custom_image | img_url: '300x300' }}" 
+                                  alt="{{ product.title | escape }}">
+                            </a>
+                          </div>
+                        {% elsif product.featured_image %}
+                          <div class="collection_image">
+                            <a class="collection_-image_link" href="{{ product.url }}">
+                              <img src="{{ product.featured_image | img_url: '300x300' }}" 
+                                  alt="{{ product.title | escape }}">
+                            </a>
+                          </div>
+                        {% else %}
+                          <div class="collection_image">
+                            {%- capture placeholder_image -%}{% cycle 'placeholder': 'lifestyle-1', 'lifestyle-2' %}{%- endcapture -%}
+                            {{- placeholder_image | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' -}}
+                          </div>
+                        {% endif %}
+                        
+                        {% if block.settings.enable_products_title %}
+                          <p class="collection_title {% if block.settings.enable_original_titles_mobile %}mobile--original--title{% endif %}">
+                            <a class="collection_-title_link {% if block.settings.titles_over_images %}mega-title_over--image{% endif %}" href="{{ product.url }}">
+                              {% if block.settings.enable_original_titles_mobile %}
+                                {{ product.title }}
+                              {% else %}
+                                {% if block.settings.enable_custom_titles_pro %}
+                                  {{ custom_titles_array[forloop.index0] | strip }}
+                                {% else %}
+                                  {{ product.title }}
+                                {% endif %}
+                              {% endif %}
+                            </a>
+                          </p>
+                        {% endif %}
+                        
+                        {% comment %} Custom Tags Section {% endcomment %}
+                        {% if block.settings.custom_tags != blank and custom_tags_array.size > 0 %}
+                          {% assign current_tag = custom_tags_array[forloop.index0] | strip %}
+                          {% if current_tag != blank %}
+                            <div class="product_custom-tag">
+                              <span class="mobile-menu-tag" 
+                                    style="--tag-bg: {{ block.settings.tag_bg | default: '#054b48' }}; --tag-text: {{ block.settings.tag_text | default: '#FFFFFF' }};">{{ current_tag }}</span>
+                            </div>
+                          {% endif %}
+                        {% endif %}
+                        </a>
+                      </li>
+                    {% endfor %}
+                    
+                    {% if block.settings.enable_last_item %}
+                      <li class="collection_item-mega collection_last-item">
+                        <a class="collection_-image_link" href="{{ block.settings.item_link }}">
+                          <div class="collection_last-item-image">
+                            <svg class="icon-display block stroke-current stroke-[1.8] w-auto max-w-full h-full fill-transparent" height="39" viewBox="0 0 39 39" width="39">
+                                <circle cx="19.5" cy="19.5" r="18.5"></circle>
+                                <g transform="translate(13, 13)">
+                                    <rect x="0" y="0" width="5" height="5" rx="1"></rect>
+                                    <rect x="7" y="0" width="5" height="5" rx="1"></rect>
+                                    <rect x="0" y="7" width="5" height="5" rx="1"></rect>
+                                    <rect x="7" y="7" width="5" height="5" rx="1"></rect>
+                                </g>
+                            </svg>
+                          </div>
+                          {% if block.settings.last_item_title != blank %}
+                            <p class="title--last {% if block.settings.enable_original_titles_mobile %}mobile--original--title{% endif %}">
+                              {{ block.settings.last_item_title }}
+                            </p>
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endif %}
+                  </ul>
+                </div>
+              {% endif %}
+              
+              {%- if mega_menu_content != blank -%}
+                <div class="header-sidebar__promo scroll-area bleed md:unbleed">
+                  {{- mega_menu_content -}}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </header-sidebar-collapsible-panel>
+  {%- endif -%}
+</header-sidebar>

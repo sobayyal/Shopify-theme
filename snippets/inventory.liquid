@@ -1,0 +1,688 @@
+{% comment %} Prestige theme  {% endcomment %}
+{% style %}
+  variant-inventory.return--text span.stock_value {
+      display: none;
+  }
+  .pdp-shipping--returns .feature-badge.feature-badge-new:last-child {
+      margin-right: 6px;
+      gap:7px;
+  }
+  .pdp-shipping--returns .feature-badge.feature-badge-new {
+      width: fit-content;
+  }
+  span.delivery-date {
+    color: #000000;
+    font-size:14px;
+  }
+  .free-shipping-img{
+    width:22px;
+        padding: 0 1px;
+
+  }
+  .return--text-inner{
+    padding-top: 1px;
+    /* width: 9rem; */
+    line-height:normal;
+  }
+  .pdp-shipping--returns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  } 
+  .pdp-shipping--returns .feature-badge.feature-badge-new:first-child img {
+    /* padding: 0px 1px; */
+    margin-bottom: 1px;
+    width:23px;
+}
+.pdp-shipping--returns .feature-badge.feature-badge-new:first-child {
+    gap: 6px;
+}
+  .inventory--with-delivery-date .feature-badge,
+  .inventory--with-delivery-date .pdp-shipping--returns{
+    display:none;
+  }
+  variant-inventory.inventory--with-delivery-date {
+    width: fit-content;
+    margin: auto;
+    line-height: normal;
+  }
+  @media screen and (max-width:405px){
+   
+    .pdp-shipping--returns .feature-badge {
+      font-size: 12px;
+    }
+    .product-section .inventory .stock_value, .product-section .inventory .delivery-date {
+      font-size: 13px;
+    }
+    
+  }
+  @media screen and (max-width:480px){
+     .free-shipping-img{
+      width:20px;
+    }
+    .pdp-shipping--returns .feature-badge.feature-badge-new:first-child img {
+    width:22px;
+}
+  }
+{% endstyle %}
+{%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+
+{%- comment -%} Get current market handle {%- endcomment -%}
+{%- assign current_market = localization.market.handle -%}
+{%- assign us_market_handle = '0a5ca24a-afcd-465e-b822-58498e2bbb6a' -%}
+
+{%- comment -%} Check if this product has bundle components {%- endcomment -%}
+{%- liquid
+  assign has_bundle_products = false
+  assign bundle_product_refs = product.metafields.custom.bundle_products.value
+  
+  if bundle_product_refs != blank
+    assign bundle_count = 0
+    for bp in bundle_product_refs
+      assign bundle_count = bundle_count | plus: 1
+    endfor
+    
+    if bundle_count > 0
+      assign has_bundle_products = true
+    endif
+  endif
+-%}
+
+{%- capture inventory_for_variants -%}
+  {%- assign inventory_default_status = '' -%}
+  {%- assign inventory_default_quantity = '' -%}
+
+  {%- if product -%}
+    {%- assign has_available_variant = false -%}
+    {%- for variant in product.variants -%}
+      {%- if variant.available -%}
+        {%- assign has_available_variant = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if has_available_variant -%}
+      {%- for variant in product.variants -%}
+        {%- liquid
+          assign variant_color = variant.options | first | downcase
+          assign custom_inventory = false
+          assign inventory_text = ''
+          assign inventory_status = 'success'
+          assign is_bundle_unavailable = false
+          assign bundle_min_inventory = 999999
+
+          # Check if variant is available in current market
+          assign variant_available_in_market = variant.available
+          assign variant_inventory_quantity = variant.inventory_quantity
+          assign variant_inventory_policy = variant.inventory_policy
+
+          # NEW: For bundle products, calculate minimum inventory across all components
+          assign bundle_debug_info = ''
+          assign all_components_continue = true
+          
+          if has_bundle_products
+            # Check main product variant's inventory and policy
+            assign main_variant_inventory = variant.inventory_quantity
+            assign main_variant_policy = variant.inventory_policy
+            assign bundle_min_inventory = 999999
+            
+            # If main product has continue selling OFF and is out of stock, mark as unavailable
+            if main_variant_policy == 'deny' and main_variant_inventory <= 0
+              assign is_bundle_unavailable = true
+              assign bundle_debug_info = 'Main:OUT_OF_STOCK(deny)|'
+            else
+              # If main product has continue selling OFF, include it in min inventory calculation
+              if main_variant_policy == 'deny'
+                assign bundle_min_inventory = main_variant_inventory
+                assign all_components_continue = false
+                assign bundle_debug_info = 'Main:' | append: main_variant_inventory | append: '(deny)|'
+              else
+                assign bundle_debug_info = 'Main:' | append: main_variant_inventory | append: '(continue-IGNORED)|'
+              endif
+              
+              for bundle_product in bundle_product_refs
+                assign found_matching_variant = false
+                assign matching_variant_inventory = 0
+                
+                for component_variant in bundle_product.variants
+                  assign option_match = false
+                  
+                  for comp_option in component_variant.options
+                    assign comp_option_lower = comp_option | downcase | strip
+                    assign variant_option_lower = variant.options[0] | downcase | strip
+                    
+                    if comp_option_lower == variant_option_lower
+                      assign option_match = true
+                      break
+                    endif
+                  endfor
+                  
+                  if option_match
+                    assign found_matching_variant = true
+                    assign matching_variant_inventory = component_variant.inventory_quantity
+                    assign matching_variant_policy = component_variant.inventory_policy
+                    
+                    # Add to debug info - escape the product title
+                    assign safe_title = bundle_product.title | replace: '"', '&quot;' | replace: "'", '&apos;'
+                    assign bundle_debug_info = bundle_debug_info | append: safe_title | append: ':' | append: matching_variant_inventory
+                    
+                    # Check if this component uses continue selling
+                    if matching_variant_policy == 'continue'
+                      assign bundle_debug_info = bundle_debug_info | append: '(continue)'
+                    else
+                      # At least one component does NOT use continue selling
+                      assign all_components_continue = false
+                      assign bundle_debug_info = bundle_debug_info | append: '(deny)'
+                      
+                      # Check if this component has lower inventory
+                      if matching_variant_inventory < bundle_min_inventory
+                        assign bundle_min_inventory = matching_variant_inventory
+                      endif
+                    endif
+                    
+                    assign bundle_debug_info = bundle_debug_info | append: '|'
+                    
+                    # If component is unavailable, mark as bundle unavailable
+                    unless component_variant.available
+                      assign is_bundle_unavailable = true
+                    endunless
+                    
+                    break
+                  endif
+                endfor
+                
+                # If no matching variant found, add to debug (with escaped title)
+                unless found_matching_variant
+                  assign safe_title = bundle_product.title | replace: '"', '&quot;' | replace: "'", '&apos;'
+                  assign bundle_debug_info = bundle_debug_info | append: safe_title | append: ':NO_MATCH|'
+                endunless
+              endfor
+              
+              # Determine final inventory based on continue selling status
+              if all_components_continue
+                # All components have continue selling - show as "In Stock"
+                assign bundle_min_inventory = 100
+                assign bundle_debug_info = bundle_debug_info | append: 'ALL_COMPONENTS_CONTINUE'
+              else
+                # At least one component has deny policy
+                if bundle_min_inventory == 999999
+                  # No deny-policy components found with inventory
+                  assign bundle_min_inventory = 0
+                  assign bundle_debug_info = bundle_debug_info | append: 'ERROR_NO_DENY_INVENTORY'
+                else
+                  assign bundle_debug_info = bundle_debug_info | append: 'MIN_FROM_DENY_POLICY'
+                endif
+              endif
+            endif
+            
+            # Use the calculated inventory from bundle components for display
+            assign variant_inventory_quantity = bundle_min_inventory
+          endif
+
+          # If bundle component is unavailable, override to out of stock
+          if is_bundle_unavailable
+            assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+            assign inventory_status = 'error'
+            assign custom_inventory = true
+          endif
+
+          # Only run standard inventory logic if NOT bundle unavailable
+          unless is_bundle_unavailable
+            # For bundle products, use simplified inventory logic based on minimum inventory
+            if has_bundle_products
+              assign custom_inventory = true
+              
+              if variant_inventory_quantity <= 0
+                assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                assign inventory_status = 'error'
+              elsif variant_inventory_quantity <= 5
+                assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                assign inventory_status = 'warning'
+              elsif variant_inventory_quantity <= 10
+                assign inventory_text = variant_inventory_quantity | append: " Left in Stock"
+                assign inventory_status = 'warning'
+              else
+                assign inventory_text = block.default_instock_text | default: "In Stock"
+                assign inventory_status = 'success'
+              endif
+              
+            # Market-specific logic for custom NON-BUNDLE products
+            elsif product.handle == "check-in-all-in-one-28"
+              assign custom_inventory = true
+              
+              unless variant_available_in_market
+                assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                assign inventory_status = 'error'
+              else
+                if variant_inventory_quantity <= 0 and variant_inventory_policy == 'deny'
+                  assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                  assign inventory_status = 'error'
+                elsif variant_available_in_market and variant_inventory_quantity > 0
+                  if current_market == us_market_handle
+                    case variant_color
+                      when 'forest green'
+                        assign inventory_text = block.check_in_all_in_one_forest_green_inventory_text | default: "Low Stock"
+                        assign inventory_status = 'warning'
+                      when 'black'
+                        assign inventory_text = block.check_in_all_in_one_black_inventory_text | default: "Low Stock"
+                        assign inventory_status = 'warning'
+                      else
+                        assign inventory_text = block.check_in_all_in_one_default_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                    endcase
+                  else
+                    if variant_inventory_quantity <= 5
+                      assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                      assign inventory_status = 'warning'
+                    else
+                      assign inventory_text = block.default_instock_text | default: "In Stock"
+                      assign inventory_status = 'success'
+                    endif
+                  endif
+                elsif variant_inventory_quantity == 0 and variant_inventory_policy == 'continue'
+                  assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                  assign inventory_status = 'warning'
+                else
+                  assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                  assign inventory_status = 'warning'
+                endif
+              endunless
+
+            elsif product.handle == "carry-on-all-in-one" or product.handle == "carry-on-all-in-one-copy"
+              assign custom_inventory = true
+              
+              unless variant_available_in_market
+                assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                assign inventory_status = 'error'
+              else
+                if variant_inventory_quantity <= 0 and variant_inventory_policy == 'deny'
+                  assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                  assign inventory_status = 'error'
+                elsif variant_available_in_market and variant_inventory_quantity > 0
+                  if current_market == us_market_handle
+                    case variant_color
+                      when 'black'
+                        assign inventory_text = block.all_in_one_black_inventory_text | default: "Low Stock"
+                        assign inventory_status = 'warning'
+                      when 'white'
+                        assign inventory_text = block.all_in_one_white_inventory_text | default: "8 Left in Stock"
+                        assign inventory_status = 'success'
+                      when 'forest green'
+                        assign inventory_text = block.all_in_one_forest_green_inventory_text | default: "5 Left in Stock"
+                        assign inventory_status = 'warning'
+                      when 'beige'
+                        assign inventory_text = block.all_in_one_beige_inventory_text | default: "6 Left in Stock"
+                        assign inventory_status = 'warning'
+                      when 'baby blue'
+                        assign inventory_text = block.all_in_one_baby_blue_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                      when 'pink'
+                        assign inventory_text = block.all_in_one_pink_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                      when 'silver'
+                        assign inventory_text = block.all_in_one_silver_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                      when 'red'
+                        assign inventory_text = block.all_in_one_red_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                      when 'navy blue'
+                        assign inventory_text = block.all_in_one_navy_blue_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                      else
+                        assign inventory_text = block.default_instock_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                    endcase
+                  else
+                    if variant_inventory_quantity <= 5
+                      assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                      assign inventory_status = 'warning'
+                    elsif variant_inventory_quantity <= 10
+                      assign inventory_text = variant_inventory_quantity | append: " Left in Stock"
+                      assign inventory_status = 'warning'
+                    else
+                      assign inventory_text = block.default_instock_text | default: "In Stock"
+                      assign inventory_status = 'success'
+                    endif
+                  endif
+                elsif variant_inventory_quantity == 0 and variant_inventory_policy == 'continue'
+                  assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                  assign inventory_status = 'warning'
+                else
+                  assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                  assign inventory_status = 'warning'
+                endif
+              endunless
+
+            else
+              unless variant_available_in_market
+                assign inventory_status = 'error'
+                assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+              else
+                if variant_inventory_quantity <= 0 and variant_inventory_policy == 'deny'
+                  assign inventory_status = 'error'
+                  assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                elsif variant_available_in_market
+                  if variant_inventory_quantity == 0 and variant_inventory_policy == 'continue'
+                    case variant_color
+                      when 'pink'
+                        assign inventory_text = block.all_in_one_pink_inventory_text | default: "In Stock"
+                        assign inventory_status = 'success'
+                      else
+                        assign inventory_status = 'warning'
+                        assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                    endcase
+                  elsif variant.inventory_management and variant_inventory_policy == 'deny' and variant_inventory_quantity <= 5
+                    assign inventory_status = 'warning'
+                    assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                  elsif variant_inventory_quantity <= 0 and variant_inventory_policy == 'continue'
+                    assign inventory_status = 'warning'
+                    assign inventory_text = block.default_low_stock_text | default: "Low Stock"
+                  else
+                    assign inventory_status = 'success'
+                    assign inventory_text = block.default_instock_text | default: "In Stock"
+                  endif
+                elsif variant.incoming
+                  assign inventory_status = 'warning'
+                  assign inventory_text = block.default_in_coming_stock_text | default: "Incoming Stock"
+                else
+                  assign inventory_status = 'error'
+                  assign inventory_text = block.default_out_of_stock_text | default: "Out of Stock"
+                endif
+              endunless
+            endif
+          endunless
+
+          if variant == product.selected_or_first_available_variant
+            assign inventory_default_status = inventory_status
+            assign inventory_default_quantity = variant_inventory_quantity | at_least: 0
+          endif
+        -%}
+
+        <span class="stock_value" 
+              {% unless variant == product.selected_or_first_available_variant %}hidden{% endunless %} 
+              data-variant-id="{{ variant.id }}" 
+              data-status="{{ inventory_status }}"
+              data-market="{{ current_market }}"
+              data-available="{{ variant_available_in_market }}"
+              data-inventory="{{ variant_inventory_quantity }}"
+              data-bundle-unavailable="{{ is_bundle_unavailable }}"
+              data-bundle-min-inventory="{{ bundle_min_inventory }}"
+              data-bundle-debug="{{ bundle_debug_info }}">
+          {{- inventory_text -}}
+        </span>
+      {%- endfor -%}
+    {%- else -%}
+      <span class="stock_value" data-status="error" data-market="{{ current_market }}">
+        {{ block.default_out_of_stock_text | default: "Out of Stock" }}
+      </span>
+    {%- endif -%}
+  {%- else -%}
+    <span data-status="success" data-market="{{ current_market }}">
+      {%- if show_in_stock_quantity -%}
+        {{- 'product.inventory.in_stock_with_quantity_count' | t: count: variant.inventory_quantity -}}
+      {%- else -%}
+        {{- 'product.inventory.in_stock' | t -}}
+      {%- endif -%}
+    </span>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%} Rest of the file remains the same {%- endcomment -%}
+{%- if inventory_for_variants != blank -%}
+  <variant-inventory
+    class="inventory text-{{ inventory_default_status }}  {% if block.show_delivery_date %}inventory--with-delivery-date {% else %}inventory-without-delivery-date{% endif %} {% if block.show_return_text %}return--text {% else %} without-return--text {% endif %}"
+    {% if form_id %}
+      form="{{ form_id }}"
+    {% endif %}
+    style="padding: 0 10px;"
+    data-market="{{ current_market }}"
+  >
+    {{- inventory_for_variants -}}
+
+    {%- if block.text != blank or block.icon != 'none' or block.custom_icon != blank -%}
+      {%- capture feature_content -%}
+        {%- if block.custom_icon != blank -%}
+          {%- capture sizes -%}{{ block.icon_width }}px{%- endcapture -%}
+          {%- capture widths -%}{{ block.icon_width }}, {{ block.icon_width | times: 2 | at_least: block.custom_icon.width }}{%- endcapture -%}
+          {%- capture style -%}--image-max-width: {{ block.icon_width }}px{%- endcapture -%}
+          {{- block.custom_icon | image_url: width: block.custom_icon.width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'constrained-image  free-shipping-img', style: style -}}
+        {%- else -%}
+          {%- render 'icon' with block.icon, width: block.icon_width -%}
+        {%- endif -%}
+
+        {%- for variant in product.variants -%}
+          {%- liquid
+            assign variant_available_in_market = variant.available
+            assign variant_inventory_quantity = variant.inventory_quantity
+            assign variant_inventory_policy = variant.inventory_policy
+            
+            assign is_bundle_unavailable_feature = false
+            if has_bundle_products
+              # Check main product first
+              if variant_inventory_policy == 'deny' and variant_inventory_quantity <= 0
+                assign is_bundle_unavailable_feature = true
+              else
+                for bundle_product in bundle_product_refs
+                  assign found_matching = false
+                  assign matching_available = false
+                  
+                  for comp_var in bundle_product.variants
+                    assign match = false
+                    
+                    for comp_opt in comp_var.options
+                      assign comp_opt_clean = comp_opt | downcase | strip
+                      assign variant_opt_clean = variant.options[0] | downcase | strip
+                      
+                      if comp_opt_clean == variant_opt_clean
+                        assign match = true
+                        break
+                      endif
+                    endfor
+                    
+                    if match
+                      assign found_matching = true
+                      if comp_var.available
+                        assign matching_available = true
+                      endif
+                      break
+                    endif
+                  endfor
+                  
+                  if found_matching and matching_available == false
+                    assign is_bundle_unavailable_feature = true
+                    break
+                  endif
+                endfor
+              endif
+            endif
+            
+            if is_bundle_unavailable_feature
+              assign feature_inventory_status = 'error'
+            elsif variant_available_in_market
+              if variant_inventory_quantity <= 0 and variant_inventory_policy == 'deny'
+                assign feature_inventory_status = 'error'
+              elsif variant_inventory_quantity == 0 and variant_inventory_policy == 'continue'
+                assign feature_inventory_status = 'warning'
+              else
+                assign feature_inventory_status = 'success'
+              endif
+            else
+              assign feature_inventory_status = 'error'
+            endif
+          -%}
+          
+          <p {% unless variant == product.selected_or_first_available_variant %}hidden{% endunless %} 
+             data-variant-id="{{ variant.id }}" 
+             data-status="{{ feature_inventory_status }}"
+             data-market="{{ current_market }}"> 
+              {%- if is_bundle_unavailable_feature -%}
+                {{ block.text_out_of_stock }}
+              {%- elsif variant_available_in_market -%}
+                {% if variant_inventory_quantity <= 0 and variant_inventory_policy == 'continue' %}
+                  {{ continue_selling_text }}
+                {% else %}
+                  {{ block.text }}
+                {% endif %}
+              {%- else -%}
+                {{ block.text_out_of_stock }}
+              {%- endif -%}
+          </p>
+        {%- endfor -%}
+      {%- endcapture -%}
+
+      {%- assign has_border = false -%}
+
+      {%- if block.border_color != blank and block.border_color != 'rgba(0,0,0,0)' -%}
+        {%- assign has_border = true -%}
+      {%- endif -%}
+
+      {% if block.show_delivery_date %}
+        {%- comment -%} Calculate delivery date (3 days from now) {%- endcomment -%}
+        {%- assign current_date = 'now' | date: '%s' -%}
+        {%- assign three_days_seconds = 259200 -%}
+        {%- assign delivery_timestamp = current_date | plus: three_days_seconds -%}
+        {%- assign delivery_date = delivery_timestamp | date: '%b %-d' -%}
+        
+        {%- comment -%} Create delivery date spans for each variant {%- endcomment -%}
+        {%- for variant in product.variants -%}
+          {%- liquid
+            assign variant_available_in_market = variant.available
+            assign variant_inventory_quantity = variant.inventory_quantity
+            assign variant_inventory_policy = variant.inventory_policy
+            
+            assign is_out_of_stock = false
+            
+            # Check if variant is out of stock
+            if variant_available_in_market == false or variant_inventory_quantity <= 0 and variant_inventory_policy == 'deny'
+              assign is_out_of_stock = true
+            endif
+            
+            # For bundle products, check bundle availability
+            if has_bundle_products
+              if variant_inventory_policy == 'deny' and variant_inventory_quantity <= 0
+                assign is_out_of_stock = true
+              else
+                for bundle_product in bundle_product_refs
+                  for comp_var in bundle_product.variants
+                    assign match = false
+                    
+                    for comp_opt in comp_var.options
+                      assign comp_opt_clean = comp_opt | downcase | strip
+                      assign variant_opt_clean = variant.options[0] | downcase | strip
+                      
+                      if comp_opt_clean == variant_opt_clean
+                        assign match = true
+                        break
+                      endif
+                    endfor
+                    
+                    if match and comp_var.available == false
+                      assign is_out_of_stock = true
+                      break
+                    endif
+                  endfor
+                endfor
+              endif
+            endif
+          -%}
+          
+          <span class="delivery-date" 
+                style="margin-left: 5px;"
+                data-variant-id="{{ variant.id }}"
+                {% unless variant == product.selected_or_first_available_variant %}hidden{% endunless %}>
+            {%- if is_out_of_stock -%}
+              
+            {%- else -%}
+              - Est. Delivery {{ delivery_date }}
+            {%- endif -%}
+          </span>
+        {%- endfor -%}
+        
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            // Find all delivery date elements that are NOT for out of stock items
+            const deliveryDateElements = document.querySelectorAll('.delivery-date');
+            
+            deliveryDateElements.forEach(function(element) {
+              // Only update if it contains "Est. Delivery" (not empty out of stock elements)
+              if (element.textContent.includes('Est. Delivery')) {
+                // Calculate date 3 days from now
+                const currentDate = new Date();
+                const deliveryDate = new Date(currentDate);
+                deliveryDate.setDate(currentDate.getDate() + 3);
+                
+                // Format the date (e.g., "Nov. 9")
+                const options = { month: 'short', day: 'numeric' };
+                const formattedDate = deliveryDate.toLocaleDateString('en-US', options);
+                
+                // Add dot after month name
+                const formattedDateWithDot = formattedDate.replace(/(\w+)\s/, '$1. ');
+                
+                // Update the element's content
+                element.textContent = `- Est. Delivery ${formattedDateWithDot}`;
+              }
+            });
+            
+            // Update delivery date when variant changes
+            const variantSelectors = document.querySelectorAll('input[name="option1"], select[name="option1"]');
+            variantSelectors.forEach(function(selector) {
+              selector.addEventListener('change', function() {
+                updateDeliveryDateVisibility();
+              });
+            });
+            
+            function updateDeliveryDateVisibility() {
+              // This function will be called when variant changes
+              // The delivery date visibility is already handled by data-variant-id matching
+            }
+          });
+        </script>
+      {% endif %}
+        <div class="pdp-shipping--returns">
+          {% if block.show_return_text %}
+            <div style="padding:0;"
+                class="feature-badge feature-badge-new {% if has_border %}border{% endif %}"
+                style="{% render 'surface', background: block.background, text_color: block.settings.text_color, border_color: block.settings.border_color %}">
+              {%- capture sizes -%}{{ block.icon_width }}px{%- endcapture -%}
+              {%- capture widths -%}{{ block.icon_width }}, {{ block.icon_width | times: 2 | at_least: block.custom_icon_returns.width }}{%- endcapture -%}
+              {%- capture style -%}--image-max-width: {{ block.icon_width }}px{%- endcapture -%}
+              {% comment %} {{- block.custom_icon_returns | image_url: width: block.custom_icon_returns.width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'constrained-image', style: style -}} {% endcomment %}
+               <img src="https://cdn.shopify.com/s/files/1/0715/3536/2348/files/Nobl_100_days_icon-02.webp?v=1762454555" 
+                alt="Returns" 
+                loading="lazy" 
+                class="constrained-image" 
+                style="{{ style }}" 
+                width="50">
+              <p class="return--text-inner">{{ block.return_text }}</p>
+            </div>
+          {% endif %}
+          {%- if block.link -%}
+            <a
+              href="{{ block.link }}"
+              class="feature-badge {% if has_border %}border{% endif %}"
+              style="{% render 'surface', background: block.background, text_color: block.text_color, border_color: block.border_color %}"
+            >
+              {{- feature_content -}}
+            </a>
+          {%- else -%}
+            <div
+              style="padding:0;"
+              class="feature-badge feature-badge-new {% if has_border %}border{% endif %}"
+              style="{% render 'surface', background: block.background, text_color: block.settings.text_color, border_color: block.settings.border_color %}"
+            >
+              {{- feature_content -}}
+            </div>
+          {%- endif -%}
+        </div>
+    {%- endif -%}
+
+    {%- if show_progress_bar -%}
+      <progress-bar
+        class="progress-bar"
+        animate-on-scroll
+        aria-valuenow="{{ inventory_default_quantity }}"
+        aria-valuemax="{{ progress_bar_max_value | default: 50 }}"
+      ></progress-bar>
+    {%- endif -%}
+  </variant-inventory>
+{%- endif -%}

@@ -1,0 +1,108 @@
+{% comment %}
+  Product Addon Variants Snippet
+  Usage: {% render 'product-addon-variants', addon_product: product, addon_index: 1 %}
+{% endcomment %}
+
+{% unless addon_product.has_only_default_variant %}
+  <div class="product-addon__variants" data-addon-variants="{{ addon_index }}" style="display: none;">
+    <div class="addon-variant-picker" data-product-id="{{ addon_product.id }}">
+      {% for option in addon_product.options_with_values %}
+        <div class="addon-variant-option">
+          <div class="addon-variant-info">
+            <span class="addon-variant-label">{{ option.name }}:</span>
+            <span class="addon-variant-value" data-option-position="{{ option.position }}">
+              {{ option.selected_value }}
+            </span>
+          </div>
+          
+          <div class="addon-variant-selector">
+            {% assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' %}
+            {% assign option_downcase = option.name | downcase %}
+            {% assign is_color_option = false %}
+            {% if color_label_list contains option_downcase %}
+                {% assign is_color_option = true %}
+            {% endif %}
+            {% for value in option.values %}
+              {% comment %} Check if any variants are available with this option value {% endcomment %}
+              {% assign has_available_variant = false %}
+              {% assign option_index = option.position | minus: 1 %}
+              
+              {% for variant in addon_product.variants %}
+                {% if variant.available and variant.options[option_index] == value %}
+                  {% assign has_available_variant = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              
+              {% if has_available_variant %}
+                {% assign swatch_id = 'addon' | append: addon_index | append: '-option' | append: option.position | append: '-' | append: value | handle %}
+                
+                <input type="radio" 
+                       id="{{ swatch_id }}"
+                       name="addon{{ addon_index }}-option{{ option.position }}"
+                       value="{{ value | escape }}"
+                       class="addon-variant-input"
+                       data-option-position="{{ option.position }}"
+                       data-addon-index="{{ addon_index }}"
+                       {% if value == option.selected_value %}checked{% endif %}>
+                
+                {% if is_color_option %}
+              
+
+                    {% liquid
+                    assign swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />'
+                    assign value_clean = value | downcase | strip | replace: '*', ''
+                    assign swatch_style = '--swatch-background:' | append: value_clean
+                    
+                    for swatch_item in swatch_config
+                        assign swatch_parts = swatch_item | split: ':'
+                        assign swatch_name = swatch_parts.first | downcase | strip
+                        
+                        if value_clean == swatch_name
+                        assign swatch_value = swatch_parts.last | strip
+                        
+                        if swatch_value contains '#'
+                            assign swatch_style = '--swatch-background:' | append: swatch_value
+                        elsif swatch_value contains 'linear-gradient('
+                            assign swatch_style = '--swatch-background:' | append: swatch_value
+                        elsif images[swatch_value] != blank
+                            assign swatch_image = images[swatch_value] | image_url: width: 72
+                            assign swatch_style = '--swatch-background:url(' | append: swatch_image | append: ')'
+                        endif
+                        break
+                        endif
+                    endfor
+                    
+                    assign swatch_classes = 'color-swatch'
+                    if settings.round_color_swatches
+                        assign swatch_classes = swatch_classes | append: ' rounded-full'
+                    endif
+                    
+                    assign white_label = 'general.label.white' | t | downcase
+                    if value_clean == white_label
+                        assign swatch_classes = swatch_classes | append: ' border'
+                    endif
+                    %}
+
+                    <label for="{{ swatch_id }}" 
+                        class="{{ swatch_classes }}"
+                        title="{{ value | escape }}"
+                        data-option-value="{{ value | escape }}"
+                        style="{{ swatch_style }}"
+                        aria-label="{{ value | escape }}">
+                    </label>
+                {% else %}
+                  <label for="{{ swatch_id }}" 
+                         class="addon-variant-button" 
+                         title="{{ value | escape }}">
+                    {{ value }}
+                  </label>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endunless %}

@@ -1,0 +1,214 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+MEGA MENU COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+Render the mega-menu. The mega-menu is a kind of menu optimized for showing a large number of items into several
+columns.
+
+********************************************
+Supported variables
+********************************************
+
+* link: the link from which we need to render the mega-menu. The link must always be a second level link, but it can
+        also be empty (no links), which is the case if the merchant only want to show images, for instance.
+* block: the block containing all the information about the menu to render
+{%- endcomment -%}
+
+<div class="mega-menu  {% if block.settings.images_position == 'left' %}mega-menu--reverse{% endif %}" {{ block.shopify_attributes }} 
+{% if block.settings.content_left %}style="justify-content:flex-start;"{% endif %}>
+  {%- if link.levels > 0 -%}
+    <ul class="mega-menu__linklist unstyled-list">
+      {%- for sub_link in link.links -%}
+        <li class="v-stack justify-items-start gap-5">
+          <a href="{{ sub_link.url }}" class="h6">{{ sub_link.title }}</a>
+
+          {%- if sub_link.links.size > 0 -%}
+            <ul class="v-stack gap-2.5 unstyled-list">
+              {%- for sub_sub_link in sub_link.links -%}
+                <li>
+                  <a href="{{ sub_sub_link.url }}" class="link-faded">{{ sub_sub_link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  {%- capture mega_menu_content -%}
+    {%- render 'mega-menu-images', context: 'menu', block: block -%}
+  {%- endcapture -%}
+
+  {% if block.settings.enable_collection_list %}
+    {% assign collections = block.settings.collection_list %}
+    {% if block.settings.enable_custom_titles %}
+      {% assign custom_titles_array = block.settings.custom_titles | split: ',' %}
+    {% endif %}
+    
+    <div class="mega_menu-collections" style="--image-opacity:{{ block.settings.images_opacity }};">
+      {% if block.settings.collection_list_title != blank %}
+      <p class="mega_menu--collections_title">{{ block.settings.collection_list_title }}</p>
+      {% endif %}
+      <div class="mega_menu--collections">
+        {% for collection in collections %}
+          <div class="collection_item-mega">
+            {% if collection.image %}
+              <div class="collection_image">
+                <a class="collection_-image_link" href="{{ collection.url }}">
+                  <img src="{{ collection.image | img_url: '300x300' }}" 
+                      alt="{{ collection.title | escape }}" loading="lazy">
+                </a>
+              </div>
+            {% elsif block.settings.enable_product_image and collection.products.first.featured_image %}
+              <div class="collection_image">
+                <a class="collection_-image_link" href="{{ collection.url }}">
+                  <img src="{{ collection.products.first.featured_image | img_url: '300x300' }}" 
+                      alt="{{ collection.title | escape }}" loading="lazy">
+                </a>
+              </div>
+            {% else %}
+              <div class="collection_image">
+                {%- capture placeholder_image -%}{% cycle 'placeholder': 'lifestyle-1', 'lifestyle-2' %}{%- endcapture -%}
+                {{- placeholder_image | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' -}}
+              </div>
+            {% endif %}
+            
+            {% if block.settings.enable_collections_title %}
+              <p class="collection_title">
+                <a class="collection_-title_link {% if block.settings.titles_over_images %}mega-title_over--image{% endif %}" href="{{ collection.url }}">
+                  {% if block.settings.enable_custom_titles %}
+                    {{ custom_titles_array[forloop.index0] | strip }}
+                  {% else %}
+                    {{ collection.title }}
+                  {% endif %}
+                </a>
+              </p>
+            {% endif %}
+          </div>
+        {% endfor %}
+        {% if block.settings.enable_last_item %}
+          <div class="collection_item-mega collection_last-item">
+            <a class="collection_-image_link" href="{{ block.settings.item_link }}">
+              <div class="collection_last-item-image">
+                <svg class="block stroke-current stroke-[1.8] w-auto max-w-full h-full fill-transparent" height="39" viewBox="0 0 39 39" width="39">
+                    <circle cx="19.5" cy="19.5" r="18.5">
+                    </circle>
+                    <g id="g" transform="translate(10.566667, 10.000000)">
+                        <line x1="8.9" x2="8.9" y1="1" y2="18">
+                        </line>
+                        <line x1="16.9" x2="1" y1="8.9" y2="8.9">
+                        </line>
+                    </g>
+                </svg>
+              </div>
+              {% if block.settings.last_item_title != blank %}
+                <p class="title--last">
+                  {{ block.settings.last_item_title }}
+                </p>
+              {% endif %}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+
+  {% if block.settings.enable_product_list %}
+  {% assign products = block.settings.products_list %}
+  {% if block.settings.enable_custom_titles_pro %}
+    {% assign custom_titles_array = block.settings.custom_titles_pro | split: ',' %}
+  {% endif %}
+  
+  <div class="mega_menu-collections mega_menu--products" style="--image-opacity:{{ block.settings.images_opacity }};">
+    {% if block.settings.product_list_title != blank %}
+    <p class="mega_menu--collections_title">{{ block.settings.product_list_title }}</p>
+    {% endif %}
+    <div class="mega_menu--collections">
+      {% for product in products %}
+        {% assign product_id_str = product.id | append: "" %}
+        {% assign custom_image = nil %}
+        
+        {%- comment -%} Check each custom product ID setting {%- endcomment -%}
+        {% if block.settings.custom_product_id_1 == product_id_str and block.settings.custom_product_image_1 != blank %}
+          {% assign custom_image = block.settings.custom_product_image_1 %}
+        {% elsif block.settings.custom_product_id_2 == product_id_str and block.settings.custom_product_image_2 != blank %}
+          {% assign custom_image = block.settings.custom_product_image_2 %}
+        {% elsif block.settings.custom_product_id_3 == product_id_str and block.settings.custom_product_image_3 != blank %}
+          {% assign custom_image = block.settings.custom_product_image_3 %}
+        {% elsif block.settings.custom_product_id_4 == product_id_str and block.settings.custom_product_image_4 != blank %}
+          {% assign custom_image = block.settings.custom_product_image_4 %}
+        {% endif %}
+        
+        <div class="collection_item-mega" data-product-id="{{ product.id }}">
+          {% if custom_image != blank %}
+            {%- comment -%} Use custom image from settings {%- endcomment -%}
+            <div class="collection_image">
+              <a class="collection_-image_link" href="{{ product.url }}">
+                <img src="{{ custom_image | img_url: '300x300' }}" 
+                    alt="{{ product.title | escape }}" loading="lazy">
+              </a>
+            </div>
+          {% elsif product.featured_image %}
+            {%- comment -%} Use product's featured image {%- endcomment -%}
+            <div class="collection_image">
+              <a class="collection_-image_link" href="{{ product.url }}">
+                <img src="{{ product.featured_image | img_url: '300x300' }}" 
+                    alt="{{ product.title | escape }}" loading="lazy">
+              </a>
+            </div>
+          {% else %}
+            {%- comment -%} Use placeholder {%- endcomment -%}
+            <div class="collection_image">
+              {%- capture placeholder_image -%}{% cycle 'placeholder': 'lifestyle-1', 'lifestyle-2' %}{%- endcapture -%}
+              {{- placeholder_image | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' -}}
+            </div>
+          {% endif %}
+          
+          {% if block.settings.enable_products_title %}
+            <p class="collection_title">
+              <a class="collection_-title_link {% if block.settings.titles_over_images %}mega-title_over--image{% endif %}" href="{{ product.url }}">
+                {% if block.settings.enable_custom_titles_pro %}
+                  {{ custom_titles_array[forloop.index0] | strip }}
+                {% else %}
+                  {{ product.title }}
+                {% endif %}
+              </a>
+            </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+      
+      {% if block.settings.enable_last_item %}
+        <div class="collection_item-mega collection_last-item">
+          <a class="collection_-image_link" href="{{ block.settings.item_link }}">
+            <div class="collection_last-item-image">
+              <svg class="icon-display block stroke-current stroke-[1.8] w-auto max-w-full h-full fill-transparent" height="39" viewBox="0 0 39 39" width="39">
+                  <circle cx="19.5" cy="19.5" r="18.5"></circle>
+                  <g transform="translate(13, 13)">
+                      <rect x="0" y="0" width="5" height="5" rx="1"></rect>
+                      <rect x="7" y="0" width="5" height="5" rx="1"></rect>
+                      <rect x="0" y="7" width="5" height="5" rx="1"></rect>
+                      <rect x="7" y="7" width="5" height="5" rx="1"></rect>
+                  </g>
+              </svg>
+            </div>
+            {% if block.settings.last_item_title != blank %}
+              <p class="title--last">
+                {{ block.settings.last_item_title }}
+              </p>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+  {%- if mega_menu_content != blank -%}
+    <div class="mega-menu__promo">
+      {{- mega_menu_content -}}
+    </div>
+  {%- endif -%}
+</div>

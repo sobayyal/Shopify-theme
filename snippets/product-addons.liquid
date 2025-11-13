@@ -1,0 +1,262 @@
+{% comment %}
+  Product Add-ons Snippet - Prestashop Theme Compatible with Dawn-style reliability
+  Usage: {% render 'product-addons', addon_title: block.settings.addon_title, addon_product_1: addon_product_1, etc... %}
+{% endcomment %}
+
+{{ 'product-addons.css' | asset_url | stylesheet_tag }}
+
+{% assign has_addons = false %}
+{% if addon_product_1 != blank or addon_product_2 != blank or addon_product_3 != blank %}
+  {% assign has_addons = true %}
+{% endif %}
+
+{% if has_addons %}
+  <div class="product-addons" data-section-id="{{ section.id }}" data-section-type="product-addons">
+    <div class="product-addons__container">
+      {% if addon_title != blank %}
+        <h3 class="product-addons__title">{{ addon_title }}</h3>
+      {% endif %}
+      
+      <div class="product-addons__list">
+        {% comment %} Loop through addon products {% endcomment %}
+        {% for i in (1..3) %}
+          {% assign current_product = nil %}
+          {% assign product_text = nil %}
+          
+          {% case i %}
+            {% when 1 %}
+              {% assign current_product = addon_product_1 %}
+              {% assign product_text = product_1_text %}
+            {% when 2 %}
+              {% assign current_product = addon_product_2 %}
+              {% assign product_text = product_2_text %}
+            {% when 3 %}
+              {% assign current_product = addon_product_3 %}
+              {% assign product_text = product_3_text %}
+          {% endcase %}
+          
+          {% if current_product != blank and current_product.available %}
+            {% render 'product-addon-item', 
+              addon_product: current_product,
+              addon_index: i,
+              section_id: section.id,
+              product_text: product_text
+            %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} JSON data for variant lookups {% endcomment %}
+  <script type="application/json" data-addon-variants-data>
+  {
+    {% if addon_product_1 != blank %}"{{ addon_product_1.id }}": {{ addon_product_1.variants | json }}{% if addon_product_2 != blank or addon_product_3 != blank %},{% endif %}{% endif %}
+    {% if addon_product_2 != blank %}"{{ addon_product_2.id }}": {{ addon_product_2.variants | json }}{% if addon_product_3 != blank %},{% endif %}{% endif %}
+    {% if addon_product_3 != blank %}"{{ addon_product_3.id }}": {{ addon_product_3.variants | json }}{% endif %}
+  }
+  </script>
+ <script>
+  (function() {
+    'use strict';
+    
+    function initAddons() {
+      const addonsContainer = document.querySelector('.product-addons[data-section-id="{{ section.id }}"]');
+      if (!addonsContainer) return;
+
+      const variantDataScript = document.querySelector('[data-addon-variants-data]');
+      const variantData = variantDataScript ? JSON.parse(variantDataScript.textContent) : {};
+      const productForm = document.querySelector('.product-form');
+
+      // Clone and replace main content elements to remove any existing listeners
+      const mainContents = addonsContainer.querySelectorAll('.product-addon__main-content');
+      
+      mainContents.forEach(mainContent => {
+        const newMainContent = mainContent.cloneNode(true);
+        mainContent.parentNode.replaceChild(newMainContent, mainContent);
+        
+        // Add click handler to the new element
+        newMainContent.addEventListener('click', function(e) {
+          e.preventDefault();
+          const checkboxId = this.dataset.addonCheckbox;
+          const checkbox = document.getElementById(checkboxId);
+          if (checkbox) {
+            checkbox.checked = !checkbox.checked;
+            checkbox.dispatchEvent(new Event('change'));
+          }
+        });
+      });
+
+      function toggleVariants(checkbox, show) {
+        const addonIndex = checkbox.dataset.addonIndex;
+        const variantsContainer = addonsContainer.querySelector(`[data-addon-variants="${addonIndex}"]`);
+        
+        if (variantsContainer) {
+          variantsContainer.style.display = show ? 'block' : 'none';
+        }
+      }
+
+      function findVariantByOptions(productId, selectedOptions) {
+        const variants = variantData[productId];
+        if (!variants) return null;
+
+        return variants.find(variant => {
+          return variant.available && variant.options.every((option, index) => {
+            return option === selectedOptions[index + 1];
+          });
+        });
+      }
+
+      function updateVariantImage(addonIndex, productId, selectedOptions) {
+        const gallery = addonsContainer.querySelector(`[data-addon-index="${addonIndex}"].product-addon__image-gallery`);
+        if (!gallery) return;
+
+        const variant = findVariantByOptions(productId, selectedOptions);
+        if (!variant) return;
+
+        const mediaElements = gallery.querySelectorAll('.addon-gallery__media');
+        mediaElements.forEach(media => media.setAttribute('hidden', ''));
+
+        let mediaToShow = null;
+
+        if (variant.featured_media) {
+          mediaToShow = gallery.querySelector(`[data-media-id="${variant.featured_media.id}"]`);
+        }
+
+        if (!mediaToShow && Object.keys(selectedOptions).length > 0) {
+          mediaElements.forEach(mediaEl => {
+            const img = mediaEl.querySelector('.product-addon__image');
+            if (img) {
+              const alt = img.alt ? img.alt.toLowerCase() : '';
+              
+              if (alt.includes('#')) {
+                const altParts = alt.split('#');
+                if (altParts.length > 1) {
+                  const mediaParts = altParts[1].split('_');
+                  if (mediaParts.length >= 2) {
+                    const optionValue = mediaParts[1].toLowerCase().replace('*', '');
+                    
+                    Object.values(selectedOptions).forEach(selectedValue => {
+                      if (selectedValue.toLowerCase() === optionValue && !mediaToShow) {
+                        mediaToShow = mediaEl;
+                      }
+                    });
+                  }
+                }
+              }
+            }
+          });
+        }
+
+        if (!mediaToShow) {
+          mediaToShow = gallery.querySelector('.is-initial') || mediaElements[0];
+        }
+
+        if (mediaToShow) {
+          mediaToShow.removeAttribute('hidden');
+        }
+      }
+
+      function updateVariant(addonIndex, productId) {
+        const variantInputs = addonsContainer.querySelectorAll(`[data-addon-index="${addonIndex}"].addon-variant-input:checked`);
+        const selectedOptions = {};
+        
+        variantInputs.forEach(input => {
+          selectedOptions[input.dataset.optionPosition] = input.value;
+        });
+
+        const variant = findVariantByOptions(productId, selectedOptions);
+        if (variant) {
+          const checkbox = addonsContainer.querySelector(`[data-addon-index="${addonIndex}"].product-addon__checkbox`);
+          if (checkbox) {
+            checkbox.dataset.variantId = variant.id;
+            checkbox.dataset.variantPrice = variant.price;
+          }
+
+          const priceElement = checkbox.closest('.product-addon__item').querySelector('.price__current');
+          if (priceElement) {
+            const price = variant.price / 100;
+            const currencySymbol = '{{ cart.currency.symbol | default: "$" }}';
+            
+            let formattedPrice;
+            if (price % 1 === 0) {
+              formattedPrice = currencySymbol + price.toString();
+            } else {
+              formattedPrice = currencySymbol + price.toFixed(2).replace(/\.?0+$/, '');
+            }
+            
+            priceElement.textContent = formattedPrice;
+          }
+
+          Object.keys(selectedOptions).forEach(position => {
+            const valueDisplay = addonsContainer.querySelector(`[data-addon-variants="${addonIndex}"] .addon-variant-value[data-option-position="${position}"]`);
+            if (valueDisplay) {
+              valueDisplay.textContent = selectedOptions[position];
+            }
+          });
+
+          updateVariantImage(addonIndex, productId, selectedOptions);
+        }
+
+        updateHiddenFields();
+      }
+
+      function updateHiddenFields() {
+        if (!productForm) return;
+
+        // Query checkboxes fresh each time to get current state
+        const checkboxes = addonsContainer.querySelectorAll('.product-addon__checkbox');
+        const selectedAddons = Array.from(checkboxes).filter(cb => cb.checked);
+
+        const existingFields = productForm.querySelectorAll('input[name^="items["]');
+        existingFields.forEach(field => field.remove());
+
+        selectedAddons.forEach((checkbox, index) => {
+          const variantId = checkbox.dataset.variantId;
+          const itemIndex = index + 1;
+          
+          const hiddenId = document.createElement('input');
+          hiddenId.type = 'hidden';
+          hiddenId.name = `items[${itemIndex}][id]`;
+          hiddenId.value = variantId;
+          
+          const hiddenQty = document.createElement('input');
+          hiddenQty.type = 'hidden';
+          hiddenQty.name = `items[${itemIndex}][quantity]`;
+          hiddenQty.value = '1';
+          
+          productForm.appendChild(hiddenId);
+          productForm.appendChild(hiddenQty);
+        });
+      }
+
+      // IMPORTANT: Query checkboxes AFTER cloning to get fresh references
+      const checkboxes = addonsContainer.querySelectorAll('.product-addon__checkbox');
+      
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          toggleVariants(this, this.checked);
+          updateHiddenFields();
+        });
+      });
+
+      addonsContainer.addEventListener('change', function(e) {
+        if (e.target.classList.contains('addon-variant-input')) {
+          const addonIndex = e.target.dataset.addonIndex;
+          const productId = e.target.closest('.addon-variant-picker').dataset.productId;
+          updateVariant(addonIndex, productId);
+        }
+      });
+
+      updateHiddenFields();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAddons);
+    } else {
+      initAddons();
+    }
+  })();
+</script>
+ 
+{% endif %}

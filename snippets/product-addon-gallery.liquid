@@ -1,0 +1,98 @@
+{% comment %}
+  Product Addon Gallery Snippet
+  Usage: {% render 'product-addon-gallery', addon_product: product, addon_index: 1, form_id: 'form-id' %}
+{% endcomment %}
+
+{% assign default_media = addon_product.selected_or_first_available_variant.featured_media | default: addon_product.featured_media %}
+{% assign filtered_indexes = '' %}
+
+{% comment %} Calculate filtered media for variant switching {% endcomment %}
+{% if addon_product.variants.size > 1 %}
+  {% for media in addon_product.media %}
+    {% if media.alt contains '#' and media.alt != addon_product.title %}
+      {% assign alt_parts = media.alt | split: '#' %}
+      {% assign media_group_parts = alt_parts.last | split: '_' %}
+      {% assign option = addon_product.options_by_name[media_group_parts.first] %}
+      
+      {% if option %}
+        {% assign option_value = option.selected_value | downcase | replace: '*', '' %}
+        {% assign downcase_group_value = media_group_parts.last | strip | downcase %}
+        
+        {% if option_value != downcase_group_value and media != default_media %}
+          {% assign filtered_indexes = filtered_indexes | append: media.position | append: ',' %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="product-addon__image-wrapper">
+  <product-gallery class="product-gallery product-addon__image-gallery" form="{{ form_id }}" data-addon-index="{{ addon_index }}">
+    <div class="product-gallery__image-list">
+      <div class="contents">
+        <scroll-carousel class="product-gallery__carousel scroll-area addon-product-gallery" role="region">
+          {% assign filtered_indexes_array = filtered_indexes | split: ',' %}
+          {% assign visible_media_count = 0 %}
+          
+          {% for media in addon_product.media %}
+            {% if media.media_type == 'image' %}
+              {% assign media_position_str = media.position | string %}
+              {% assign should_hide = false %}
+              
+              {% comment %} Check if media should be hidden {% endcomment %}
+              {% if media.alt == 'card-only' %}
+                {% assign selected_variant = addon_product.selected_or_first_available_variant %}
+                {% assign should_hide = true %}
+                
+                {% unless selected_variant.featured_media %}
+                  {% assign should_hide = false %}
+                {% endunless %}
+                
+                {% if selected_variant.featured_media.id == media.id %}
+                  {% assign should_hide = false %}
+                {% endif %}
+              {% endif %}
+              
+              {% if filtered_indexes_array contains media_position_str %}
+                {% assign should_hide = true %}
+              {% endif %}
+
+              {% unless should_hide %}
+                {% assign visible_media_count = visible_media_count | plus: 1 %}
+              {% endunless %}
+
+              <div class="product-gallery__media addon-gallery__media snap-center {% if media == default_media %}is-initial{% endif %}" 
+                   data-media-type="{{ media.media_type }}" 
+                   data-media-id="{{ media.id }}" 
+                   data-media-position="{{ media.position }}"
+                   role="group" 
+                   aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: media.position, count: addon_product.media.size }}"
+                   {% if should_hide %}hidden{% endif %}>
+                <img src="{{ media | image_url: width: 400 }}" 
+                     alt="{{ media.alt | escape }}"
+                     class="product-addon__image"
+                     width="400" 
+                     height="400"
+                     loading="lazy"
+                     style="object-fit: cover; width: 100%; height: auto;">
+              </div>
+            {% endif %}
+          {% endfor %}
+          
+          {% comment %} Fallback placeholder if no images are visible {% endcomment %}
+          {% if visible_media_count == 0 %}
+            <div class="product-gallery__media addon-gallery__media snap-center is-initial" role="group">
+              <div class="product-addon__image product-addon__image--placeholder">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21,15 16,10 5,21"/>
+                </svg>
+              </div>
+            </div>
+          {% endif %}
+        </scroll-carousel>
+      </div>
+    </div>
+  </product-gallery>
+</div>

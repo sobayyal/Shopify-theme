@@ -1,0 +1,471 @@
+{% comment %}
+  Shop Pay Installments cart banner with working popup functionality
+  Modified: Adds 3-month installments @15% APR for carts over $1000
+  Keeps default 4 interest-free payments for carts under $1000
+{% endcomment %}
+
+{%- if cart.total_price > 0 -%}
+  {% comment %} Calculate dynamic minimum for Shop Pay installments {% endcomment %}
+  {% assign shop_pay_minimum = 5000 %} {% comment %} Default $50.00 in cents {% endcomment %}
+  {% assign cart_qualifies_for_installments = false %}
+  {% assign dynamic_minimum_display = '$50' %}
+  
+  {% comment %} Determine if cart qualifies and what minimum to show {% endcomment %}
+  {% if cart.total_price >= shop_pay_minimum %}
+    {% assign cart_qualifies_for_installments = true %}
+  {% endif %}
+
+  {% comment %} Calculate installment amount (cart total divided by 4) for default logic {% endcomment %}
+  {% assign installment_amount_cents = cart.total_price | times: 100 | divided_by: 4 %}
+  {% assign installment_amount = installment_amount_cents | divided_by: 100.0 %}
+
+  {% assign cart_total = cart.total_price | divided_by: 100.0 %}
+  
+  {% comment %} Calculate monthly installments based on cart total {% endcomment %}
+  {% if cart.total_price > 170000 %}
+    {% comment %} Over $1700: 24-month plan at 15% APR {% endcomment %}
+    {% assign monthly_rate = 0.0125 %}
+    {% assign months = 24 %}
+    {% assign power_factor = 1.347351 %}
+    {% assign numerator = cart_total | times: monthly_rate | times: power_factor %}
+    {% assign denominator = power_factor | minus: 1 %}
+    {% assign monthly_installment = numerator | divided_by: denominator %}
+  {% elsif cart.total_price > 100000 %}
+    {% comment %} $1000-$1500: 18-month plan at 15% APR {% endcomment %}
+    {% assign monthly_rate = 0.0125 %}
+    {% assign months = 18 %}
+    {% assign power_factor = 1.251486 %}
+    {% assign numerator = cart_total | times: monthly_rate | times: power_factor %}
+    {% assign denominator = power_factor | minus: 1 %}
+    {% assign monthly_installment = numerator | divided_by: denominator %}
+  {% else %}
+    {% comment %} Default calculation for under $1000 {% endcomment %}
+    {% assign monthly_rate = 0.0125 %}
+    {% assign months = 12 %}
+    {% assign power_factor = 1.160754518 %}
+    {% assign numerator = cart_total | times: monthly_rate | times: power_factor %}
+    {% assign denominator = power_factor | minus: 1 %}
+    {% assign monthly_installment = numerator | divided_by: denominator %}
+  {% endif %}
+
+  {% comment %} Calculate next tier for dynamic minimum {% endcomment %}
+  {% if cart.total_price < 3500 %}
+    {% assign dynamic_minimum_display = '$35' %}
+    {% assign shop_pay_minimum = 3500 %}
+  {% elsif cart.total_price < 5000 and cart.total_price >= 3500 %}
+    {% assign dynamic_minimum_display = '$50' %}
+    {% assign installment_amount_cents = cart.total_price | times: 100 | divided_by: 2 %}
+    {% assign installment_amount = installment_amount_cents | divided_by: 100.0 %}
+    {% assign cart_qualifies_for_installments = true %}
+  {% elsif cart.total_price < 10000 %}
+    {% assign dynamic_minimum_display = '$50' %}
+    {% assign cart_qualifies_for_installments = true %}
+  {% else %}
+    {% assign dynamic_minimum_display = '$50' %}
+    {% assign cart_qualifies_for_installments = true %}
+  {% endif %}
+  
+  <div class="cart-payment-terms-wrapper">
+    <!-- Static Shop Pay Banner with dynamic content (no flickering) -->
+    <div class="shop-pay-banner-static {% if cart_qualifies_for_installments %}qualified{% else %}not-qualified{% endif %}" id="shop-pay-banner-clickable">
+      <div class="shop-pay-content">
+        {% if cart_qualifies_for_installments %}
+          
+      {% if cart.total_price > 100000 %}
+  {% comment %} Over $1000: Apply ~2.51% total interest, 3-month plan {% endcomment %}
+  {% comment %} {% assign cart_total = cart.total_price | divided_by: 100.0 %}
+  {%- assign months = 3 -%}
+  {%- assign interest = cart_total | times: 0.0251 -%}
+  {%- assign total_payment = cart_total | plus: interest -%}
+  {%- assign monthly_installment = total_payment | divided_by: months -%} {% endcomment %}
+
+  <span class="shop-pay-text">Payments of</span>
+  <span class="installment-amount">${{ monthly_installment | round: 2 }}/mo with</span>
+{% elsif cart.total_price >= 3500 and cart.total_price < 5000 %}
+        <span class="shop-pay-text">Payments of</span>
+  <span class="installment-amount">
+    <span class="installment-amount">
+      ${{ installment_amount | money_without_currency }} every 15 Days
+    </span>
+  </span>
+      {% elsif cart.total_price >= 5000 and cart.total_price < 15000 %}
+        <span class="shop-pay-text">Payments of</span>
+  <span class="installment-amount">
+    <span class="installment-amount">
+      ${{ installment_amount | money_without_currency }} every 2 Weeks
+    </span>
+  </span>
+      {% else %}
+  {% comment %} Default ≤ $1000: 4 interest-free payments {% endcomment %}
+  <span class="shop-pay-text">Payments of</span>
+  <span class="installment-amount">
+    <span class="installment-amount">
+      ${{ monthly_installment | round: 2 }}/mo
+    </span>
+  </span>
+{% endif %}
+
+          <div class="shop-pay-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 25" aria-label="Shop Pay" role="img" class="shop-pay-icon">
+              <path fill="currentColor" d="M70.842 7.915h2.25c1.561 0 2.328.642 2.328 1.715 0 1.074-.739 1.715-2.259 1.715h-2.32v-3.43ZM80.525 16.142c-.879 0-1.227-.474-1.227-.948 0-.642.725-.935 2.147-1.102l1.115-.125c-.07 1.227-.892 2.175-2.035 2.175Z"></path>
+              <path fill="currentColor" fill-rule="evenodd" d="M65.645.5a3.64 3.64 0 0 0-3.64 3.64V20.7a3.64 3.64 0 0 0 3.64 3.64h29.668a3.64 3.64 0 0 0 3.64-3.64V4.14A3.64 3.64 0 0 0 95.314.5H65.645Zm5.197 16.674v-4.197h2.64c2.412 0 3.695-1.353 3.695-3.402 0-2.05-1.283-3.277-3.695-3.277h-4.341v10.876h1.7Zm9.334.223c1.297 0 2.147-.572 2.538-1.548.112 1.088.767 1.645 2.189 1.269l.014-1.157c-.572.055-.683-.154-.683-.753v-2.845c0-1.673-1.102-2.663-3.138-2.663-2.008 0-3.165 1.004-3.165 2.705h1.562c0-.809.572-1.297 1.576-1.297 1.06 0 1.547.46 1.534 1.255v.363l-1.8.195c-2.021.223-3.137.99-3.137 2.329 0 1.101.781 2.147 2.51 2.147Zm9.906.32c-.711 1.73-1.855 2.245-3.64 2.245h-.766V18.54h.822c.977 0 1.45-.307 1.966-1.185L85.3 9.923h1.757l2.259 5.424 2.008-5.424h1.715l-2.956 7.795Z" clip-rule="evenodd"></path>
+              <path fill="currentColor" d="M6.992 11.055c-2.359-.509-3.41-.708-3.41-1.612 0-.85.711-1.274 2.134-1.274 1.25 0 2.165.544 2.839 1.61.05.081.155.11.241.066l2.655-1.335a.186.186 0 0 0 .076-.259c-1.102-1.9-3.137-2.94-5.818-2.94C2.188 5.311 0 7.037 0 9.781c0 2.915 2.664 3.651 5.027 4.16 2.362.51 3.417.709 3.417 1.613s-.769 1.33-2.303 1.33c-1.416 0-2.467-.644-3.102-1.896a.186.186 0 0 0-.251-.082L.14 16.21a.188.188 0 0 0-.083.253c1.051 2.102 3.207 3.285 6.087 3.285 3.668 0 5.885-1.698 5.885-4.527 0-2.83-2.677-3.651-5.037-4.16v-.007ZM21.218 5.311c-1.505 0-2.835.531-3.791 1.477-.06.057-.159.015-.159-.067V.687A.185.185 0 0 0 17.081.5h-3.322a.185.185 0 0 0-.187.187v18.73c0 .104.083.186.187.186h3.322a.185.185 0 0 0 .187-.186V11.2c0-1.587 1.223-2.804 2.87-2.804 1.649 0 2.843 1.191 2.843 2.804v8.216c0 .104.082.186.187.186h3.322a.185.185 0 0 0 .187-.186V11.2c0-3.452-2.274-5.89-5.459-5.89ZM33.415 4.774c-1.803 0-3.493.55-4.706 1.343a.186.186 0 0 0-.06.25l1.464 2.488c.054.089.168.12.257.066a5.853 5.853 0 0 1 3.052-.834c2.899 0 5.03 2.036 5.03 4.726 0 2.292-1.706 3.99-3.868 3.99-1.762 0-2.985-1.022-2.985-2.463 0-.825.352-1.502 1.27-1.98a.183.183 0 0 0 .073-.258l-1.381-2.327a.187.187 0 0 0-.226-.079c-1.85.683-3.15 2.327-3.15 4.533 0 3.338 2.67 5.83 6.396 5.83 4.35 0 7.478-3 7.478-7.303 0-4.612-3.64-7.982-8.644-7.982ZM51.776 5.283c-1.68 0-3.182.62-4.277 1.707a.093.093 0 0 1-.16-.066v-1.31a.185.185 0 0 0-.187-.186h-3.235a.185.185 0 0 0-.188.187v18.702c0 .104.083.186.188.186h3.32a.185.185 0 0 0 .188-.186v-6.133c0-.082.099-.123.16-.07 1.091 1.012 2.536 1.603 4.19 1.603 3.897 0 6.936-3.139 6.936-7.217 0-4.078-3.042-7.217-6.935-7.217Zm-.63 11.266c-2.215 0-3.895-1.754-3.895-4.074S48.928 8.4 51.147 8.4c2.22 0 3.893 1.726 3.893 4.075 0 2.348-1.651 4.074-3.896 4.074h.003Z"></path>
+            </svg>
+          </div>
+
+          <button class="learn-more-btn shop-pay-cta-btn" data-shop-pay-action="learn-more">
+            Learn more
+          </button>
+        
+        {% else %}
+          {% comment %} Show minimum order message when cart doesn't qualify {% endcomment %}
+          <span class="shop-pay-text">Pay with</span>
+          <div class="shop-pay-logo">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 25" aria-label="Shop Pay" role="img" class="shop-pay-icon">
+              <path fill="currentColor" d="M70.842 7.915h2.25c1.561 0 2.328.642 2.328 1.715 0 1.074-.739 1.715-2.259 1.715h-2.32v-3.43ZM80.525 16.142c-.879 0-1.227-.474-1.227-.948 0-.642.725-.935 2.147-1.102l1.115-.125c-.07 1.227-.892 2.175-2.035 2.175Z"></path>
+              <path fill="currentColor" fill-rule="evenodd" d="M65.645.5a3.64 3.64 0 0 0-3.64 3.64V20.7a3.64 3.64 0 0 0 3.64 3.64h29.668a3.64 3.64 0 0 0 3.64-3.64V4.14A3.64 3.64 0 0 0 95.314.5H65.645Zm5.197 16.674v-4.197h2.64c2.412 0 3.695-1.353 3.695-3.402 0-2.05-1.283-3.277-3.695-3.277h-4.341v10.876h1.7Zm9.334.223c1.297 0 2.147-.572 2.538-1.548.112 1.088.767 1.645 2.189 1.269l.014-1.157c-.572.055-.683-.154-.683-.753v-2.845c0-1.673-1.102-2.663-3.138-2.663-2.008 0-3.165 1.004-3.165 2.705h1.562c0-.809.572-1.297 1.576-1.297 1.06 0 1.547.46 1.534 1.255v.363l-1.8.195c-2.021.223-3.137.99-3.137 2.329 0 1.101.781 2.147 2.51 2.147Zm9.906.32c-.711 1.73-1.855 2.245-3.64 2.245h-.766V18.54h.822c.977 0 1.45-.307 1.966-1.185L85.3 9.923h1.757l2.259 5.424 2.008-5.424h1.715l-2.956 7.795Z" clip-rule="evenodd"></path>
+              <path fill="currentColor" d="M6.992 11.055c-2.359-.509-3.41-.708-3.41-1.612 0-.85.711-1.274 2.134-1.274 1.25 0 2.165.544 2.839 1.61.05.081.155.11.241.066l2.655-1.335a.186.186 0 0 0 .076-.259c-1.102-1.9-3.137-2.94-5.818-2.94C2.188 5.311 0 7.037 0 9.781c0 2.915 2.664 3.651 5.027 4.16 2.362.51 3.417.709 3.417 1.613s-.769 1.33-2.303 1.33c-1.416 0-2.467-.644-3.102-1.896a.186.186 0 0 0-.251-.082L.14 16.21a.188.188 0 0 0-.083.253c1.051 2.102 3.207 3.285 6.087 3.285 3.668 0 5.885-1.698 5.885-4.527 0-2.83-2.677-3.651-5.037-4.16v-.007ZM21.218 5.311c-1.505 0-2.835.531-3.791 1.477-.06.057-.159.015-.159-.067V.687A.185.185 0 0 0 17.081.5h-3.322a.185.185 0 0 0-.187.187v18.73c0 .104.083.186.187.186h3.322a.185.185 0 0 0 .187-.186V11.2c0-1.587 1.223-2.804 2.87-2.804 1.649 0 2.843 1.191 2.843 2.804v8.216c0 .104.082.186.187.186h3.322a.185.185 0 0 0 .187-.186V11.2c0-3.452-2.274-5.89-5.459-5.89ZM33.415 4.774c-1.803 0-3.493.55-4.706 1.343a.186.186 0 0 0-.06.25l1.464 2.488c.054.089.168.12.257.066a5.853 5.853 0 0 1 3.052-.834c2.899 0 5.03 2.036 5.03 4.726 0 2.292-1.706 3.99-3.868 3.99-1.762 0-2.985-1.022-2.985-2.463 0-.825.352-1.502 1.27-1.98a.183.183 0 0 0 .073-.258l-1.381-2.327a.187.187 0 0 0-.226-.079c-1.85.683-3.15 2.327-3.15 4.533 0 3.338 2.67 5.83 6.396 5.83 4.35 0 7.478-3 7.478-7.303 0-4.612-3.64-7.982-8.644-7.982ZM51.776 5.283c-1.68 0-3.182.62-4.277 1.707a.093.093 0 0 1-.16-.066v-1.31a.185.185 0 0 0-.187-.186h-3.235a.185.185 0 0 0-.188.187v18.702c0 .104.083.186.188.186h3.32a.185.185 0 0 0 .188-.186v-6.133c0-.082.099-.123.16-.07 1.091 1.012 2.536 1.603 4.19 1.603 3.897 0 6.936-3.139 6.936-7.217 0-4.078-3.042-7.217-6.935-7.217Zm-.63 11.266c-2.215 0-3.895-1.754-3.895-4.074S48.928 8.4 51.147 8.4c2.22 0 3.893 1.726 3.893 4.075 0 2.348-1.651 4.074-3.896 4.074h.003Z"></path>
+            </svg>
+          </div>
+          <span class="shop-pay-text">on orders over {{ dynamic_minimum_display }}</span>
+          <button class="learn-more-btn shop-pay-cta-btn" data-shop-pay-action="learn-more">
+            Learn more
+          </button>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Hidden but functional dynamic payment terms -->
+    <div class="payment-terms-hidden-functional" id="payment-terms-functional">
+      <payment-terms class="payment-terms cart-payment-terms">
+        {% form 'cart', cart %}
+        {{ form | payment_terms }}
+        {% endform %}
+      </payment-terms>
+    </div>
+  </div>
+
+
+  <style>
+    /* Main wrapper */
+    .cart-payment-terms-wrapper {
+      position: relative;
+    }
+
+    /* Static banner - always visible and clickable */
+    .shop-pay-banner-static {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .shop-pay-banner-static:hover {
+      opacity: 0.8;
+    }
+
+    .shop-pay-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .shop-pay-text {
+      line-height: 1;
+    }
+
+    .shop-pay-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .shop-pay-icon {
+      height: 14px;
+      width: 59px;
+      color: #5a31f4;
+    }
+
+    /* Learn more button */
+    .learn-more-btn {
+      background: none;
+      border: none;
+      color: #5a31f4;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      font-family: inherit;
+      margin-top:-2px;
+    }
+
+    .learn-more-btn:hover {
+      color: #4c2bc7;
+    }
+
+    /* Hidden but functional payment terms */
+    .payment-terms-hidden-functional {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      z-index: -1 !important;
+    }
+
+    /* Allow the shadow DOM buttons to work while hidden */
+    .payment-terms-hidden-functional payment-terms {
+      display: block !important;
+      position: absolute !important;
+      visibility: hidden !important;
+    }
+
+    /* Hide any other existing payment terms content */
+    #extracted-payment-terms,
+    #payment-content-display,
+    .cart-drawer__payment-terms.payment-terms-stable {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 767px) {
+      .shop-pay-content {
+        font-size: 12px;
+        gap: 4px;
+      }
+      
+      .shop-pay-icon {
+        height: 12px;
+        width: 50px;
+      }
+
+      .learn-more-btn {
+        font-size: 12px;
+      }
+    }
+
+    /* Make sure our banner takes priority */
+    .shop-pay-banner-static {
+      background: #fff;
+      border: none;
+      position: relative;
+      z-index: 999;
+    }
+    /* Only for iOS Safari (iPhone, iPad, Mac Safari) and screens < 600px */
+@supports (-webkit-touch-callout: none) {
+  @media screen and (max-width: 600px) {
+    .shop-pay-content .shop-pay-logo {
+      width: 50px !important;
+    }
+  }
+}
+
+  </style>
+
+  <script>
+// Override cart drawer's contains method during Shop Pay
+(function() {
+  let initialized = false;
+  let functionalButton = null;
+  let eventListenersAttached = false;
+  let originalContains = null;
+  let shopPayActive = false;
+
+  function findFunctionalButton() {
+    const paymentTermsContainer = document.getElementById('payment-terms-functional');
+    if (!paymentTermsContainer) return null;
+
+    const paymentTermsElement = paymentTermsContainer.querySelector('payment-terms');
+    if (!paymentTermsElement) return null;
+
+    let button = null;
+
+    if (paymentTermsElement.shadowRoot) {
+      button = paymentTermsElement.shadowRoot.querySelector('button[data-testid="shopify-installments-cta"]') ||
+               paymentTermsElement.shadowRoot.querySelector('button[id*="installments"]') ||
+               paymentTermsElement.shadowRoot.querySelector('button');
+    }
+
+    if (!button) {
+      const shopifyElement = paymentTermsElement.querySelector('shopify-payment-terms');
+      if (shopifyElement && shopifyElement.shadowRoot) {
+        button = shopifyElement.shadowRoot.querySelector('button[data-testid="shopify-installments-cta"]') ||
+                 shopifyElement.shadowRoot.querySelector('button[id*="installments"]') ||
+                 shopifyElement.shadowRoot.querySelector('button');
+      }
+    }
+
+    return button;
+  }
+
+  function overrideCartDrawerContains() {
+    const cartDrawer = document.querySelector('cart-drawer#cart-drawer') || 
+                      document.querySelector('cart-drawer');
+    
+    if (!cartDrawer || originalContains) return;
+    
+    originalContains = cartDrawer.contains;
+    
+    cartDrawer.contains = function(element) {
+      if (shopPayActive) {
+        return true;
+      }
+      return originalContains.call(this, element);
+    };
+  }
+
+  function restoreCartDrawerContains() {
+    const cartDrawer = document.querySelector('cart-drawer#cart-drawer') || 
+                      document.querySelector('cart-drawer');
+    
+    if (!cartDrawer || !originalContains) return;
+
+    cartDrawer.contains = originalContains;
+    originalContains = null;
+  }
+
+  function startShopPayMode() {
+    shopPayActive = true;
+    overrideCartDrawerContains();
+  }
+
+  function stopShopPayMode() {
+    shopPayActive = false;
+    restoreCartDrawerContains();
+  }
+
+  function monitorShopPayPopup() {
+    let noPopupCount = 0;
+    const maxNoPopupCount = 8; // 4 seconds of no popup
+    
+    const checkInterval = setInterval(() => {
+      // Look for visible modals/popups
+      const modals = document.querySelectorAll('iframe, [role="dialog"], [aria-modal="true"], .modal, [class*="modal"], [id*="modal"]');
+      let hasVisibleModal = false;
+      
+      for (let modal of modals) {
+        const rect = modal.getBoundingClientRect();
+        if (rect.width > 100 && rect.height > 100 && 
+            modal.style.display !== 'none' &&
+            !modal.hasAttribute('aria-hidden')) {
+          hasVisibleModal = true;
+          break;
+        }
+      }
+      
+      if (!hasVisibleModal) {
+        noPopupCount++;
+      } else {
+        noPopupCount = 0;
+      }
+      
+      // If no popup for several consecutive checks, stop Shop Pay mode
+      if (noPopupCount >= maxNoPopupCount && shopPayActive) {
+        stopShopPayMode();
+        clearInterval(checkInterval);
+        return;
+      }
+      
+      if ((checkInterval._count || 0) > 240) {
+        stopShopPayMode();
+        clearInterval(checkInterval);
+      }
+      
+      checkInterval._count = (checkInterval._count || 0) + 1;
+    }, 500);
+  }
+
+  function triggerShopPayPopup() {
+    functionalButton = findFunctionalButton();
+    
+    if (functionalButton) {
+      startShopPayMode();
+      functionalButton.click();
+      setTimeout(() => {
+        monitorShopPayPopup();
+      }, 2000);
+      
+    } else {
+      window.location.href = '/checkout';
+    }
+  }
+
+  function attachEventListeners() {
+    if (eventListenersAttached) return;
+
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('[data-shop-pay-action="learn-more"]') || 
+          e.target.closest('#shop-pay-banner-clickable')) {
+        e.preventDefault();
+        e.stopPropagation();
+        triggerShopPayPopup();
+      }
+    });
+
+    eventListenersAttached = true;
+  }
+
+  function initShopPayFunctionality() {
+    const staticBanner = document.getElementById('shop-pay-banner-clickable');
+    const learnMoreBtn = document.querySelector('.shop-pay-cta-btn');
+
+    if (!staticBanner || !learnMoreBtn) {
+      return false;
+    }
+
+    attachEventListeners();
+    initialized = true;
+    return true;
+  }
+
+  // Initialize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(initShopPayFunctionality, 300);
+    });
+  } else {
+    setTimeout(initShopPayFunctionality, 200);
+  }
+
+  // Re-initialize on cart events (but restore contains first)
+  ['cart:updated', 'cart:refresh', 'cart:change'].forEach(eventName => {
+    document.addEventListener(eventName, function() {
+      if (!shopPayActive) {
+        restoreCartDrawerContains();
+        initialized = false;
+        eventListenersAttached = false;
+        setTimeout(initShopPayFunctionality, 800);
+      }
+    });
+  });
+
+  // Hide competing content
+  setInterval(() => {
+    ['#extracted-payment-terms', '#payment-content-display', '.payment-terms-stable'].forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+        if (element && !element.closest('.cart-payment-terms-wrapper')) {
+          element.style.display = 'none';
+        }
+      });
+    });
+  }, 5000);
+})();
+  </script>
+{%- endif -%}

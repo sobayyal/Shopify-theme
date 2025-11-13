@@ -1,0 +1,46 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT CARD HORIZONTAL COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+This component is used in complementary product to show a condensed view of the product
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product to render
+* show_quick_buy: show or not the quick buy (which open a modal if the product contains more than 1 choice)
+{%- endcomment -%}
+
+<div class="horizontal-product-card">
+  <label>
+    <span class="bold_option_element">
+          <input
+            type="checkbox"
+            class="protection-plan"
+            name="properties[Protection Plan]"
+            value="Yes"
+            data-protection="{{ first_protection_product_id_var }}"
+          >
+          <input
+            type="hidden"
+            class="hidden_protection_info"
+            name="properties[_prot-product-title]"
+            value="{{ protection_product.title }}"
+          >
+        </span>
+  {%- if product.featured_media -%}
+    <a href="{{ product.url }}" class="horizontal-product-card__figure" data-instant>
+      {{- product.featured_media | image_url: width: product.featured_media.width | image_tag: loading: 'lazy', sizes: '100px', widths: '100,150,200,250,300', class: 'horizontal-product-card__image' -}}
+    </a>
+  {%- endif -%}
+
+  <div class="horizontal-product-card__info">
+    <div class="v-stack gap-1 justify-items-start">
+      <a href="{{ product.url }}" class="product-title h6" data-instant>{{ product.title }}</a>
+      {%- render 'price-list', product: product, context: 'card' -%}
+    </div>
+  </div>
+  </label>
+</div>

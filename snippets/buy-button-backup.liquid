@@ -1,0 +1,269 @@
+{%- comment -%}
+  ----------------------------------------------------------------------------------------------------------------------
+  BUY BUTTONS
+  ----------------------------------------------------------------------------------------------------------------------
+
+  This component is used to show the buy buttons
+
+  ********************************************
+  Supported variables
+  ********************************************
+
+  * product: the product from which to show the buttons (if empty, a placeholder is displayed)
+  * show_payment_button: if we show or not the dynamic checkout button
+  * show_gift_card_recipient: for gift card products, an optional message/email to be sent to the recipient
+  * atc_button_background: the background of the ATC button
+  * atc_button_text_color: the color of the ATC button
+  * payment_button_background: the background of the dynamic payment button
+  * payment_button_background: the color of the dynamic payment button
+  * form_id: if specified, define the form ID linked to this input
+{%- endcomment -%}
+
+{%- if product != blank -%}
+  {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+
+  {%- form 'product', product, is: 'product-form', id: form_id, class: 'main-product-form' -%}
+    <input id="variant_id" type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+
+    {% liquid
+      assign button_disabled = false
+
+      if product.selected_or_first_available_variant.available == false
+        assign button_disabled = true
+        assign button_content = 'product.general.sold_out_button' | t
+      
+      elsif product.tags contains 'gift_only'
+        assign button_disabled = true
+        assign button_content = 'product.general.sold_out_button' | t
+      else
+        if product.template_suffix contains 'pre-order'
+          assign button_content = 'product.general.pre_order_button' | t
+        else
+          assign button_content = section.settings.custom_buy_button_text | default: 'Add to Cart'
+        endif
+      endif
+    %}
+
+    {% comment %}
+    {% if product.metafields.custom.adon_product %}
+      {% liquid
+        assign protection_product = all_products[product.metafields.custom.adon_product]
+        assign protection_product_id = protection_product.id
+        assign first_protection_product_id_var = protection_product.selected_or_first_available_variant.id
+        for variant in protection_product.variants
+          if variant.id == first_protection_product_id_var
+            assign protection_product_price = variant.price | money_without_trailing_zeros
+          endif
+        endfor
+      %}
+  <div class="main_upsell">
+      <p class="h6"><b>{{ protection_product.title }}</b></p>
+
+      <div class="upsell-product-div">
+        {% capture random %}{{ 'now' | date: "%09N" }}{% endcapture %}
+        <label>
+          <div class="horizontal-product-card">
+            <span class="bold_option_element">
+              <input
+                type="checkbox"
+                class="protection-plan"
+                value="Yes"
+                data-protection="{{ first_protection_product_id_var }}"
+              >
+            </span>
+
+            <div class="horizontal-product-card__info gap-1">
+              <div class="h-stack gap-1 justify-items-start h6 title">
+                Include {{ protection_product.title }} {%- render 'price-list', product: protection_product, context: 'card' -%}
+              </div>
+             
+            </div>
+
+            {%- if protection_product.featured_media -%}
+              <a href="{{ protection_product.url }}" class="horizontal-product-card__figure" data-instant>
+                {{-
+                  protection_product.featured_media
+                  | image_url: width: protection_product.featured_media.width
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: '100px',
+                    widths: '100,150,200,250,300',
+                    class: 'horizontal-product-card__image'
+                -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </label>
+      </div>
+</div>
+    {% endif %}
+     {% endcomment %}
+
+    
+    <div class="v-stack gap-4">
+      {%- if product.gift_card? and show_gift_card_recipient -%}
+        <gift-card-recipient class="gift-card-recipient v-stack gap-3">
+          {%- assign checkbox_label = 'gift_card.recipient.checkbox' | t -%}
+          {%- render 'checkbox', label: checkbox_label, name: 'properties[__shopify_send_gift_card_to_recipient]' -%}
+
+          <div class="gift-card-recipient__fields js:hidden">
+            <div class="fieldset">
+              {%- liquid
+                assign recipient_email_label = 'gift_card.recipient.email_label' | t
+                render 'input', type: 'email', label: recipient_email_label, name: 'properties[Recipient email]', value: form.email, required: true
+
+                assign recipient_name_label = 'gift_card.recipient.name_label' | t
+                render 'input', label: recipient_name_label, name: 'properties[Recipient name]', value: form.name
+
+                assign message_label = 'gift_card.recipient.message_label' | t
+                render 'input', label: message_label, name: 'properties[Recipient message]', value: form.message, multiline: 3, maxlength: 200, show_max_characters_count: true
+              -%}
+            </div>
+          </div>
+        </gift-card-recipient>
+      {%- endif -%}
+
+      <buy-buttons
+        class="buy-buttons {% if show_payment_button %}buy-buttons--has-dynamic{% endif %}"
+        template="{{ product.template_suffix | escape }}"
+        form="{{ form_id }}"
+        data-custom-buy-button-text="{{ section.settings.custom_buy_button_text | default: 'Add to Cart' }}"
+
+      >
+        {%- if show_payment_button and atc_button_background == blank and atc_button_text_color == blank -%}
+          {%- assign atc_button_style = 'outline' -%}
+        {%- else -%}
+          {%- assign atc_button_style = 'solid' -%}
+        {%- endif -%}
+        
+        <div class="secondary-button-container">
+              <div class="sold-out-button-container">
+                {% assign content_sold_out = section.settings.custom_soldout_button_text %}
+                
+                {%- render 'button', content: content_sold_out, label: 'Sold Out', disabled: true, stretch: true -%}
+              </div>
+              <div class="add-to-cart-button-container">
+                 {%- render 'button',
+                    content: button_content,
+                    type: 'submit',
+                    show_icon_price: show_icon_price,
+                    disabled: button_disabled,
+                    style: atc_button_style,
+                    background: atc_button_background,
+                    text_color: atc_button_text_color,
+                    stretch: true
+                  -%}
+              </div>
+            </div>
+
+        {%- if show_payment_button -%}
+          {{- form | payment_button -}}
+
+          <style>
+            #shopify-section-{{ section.id }} .shopify-payment-button {
+              {%- if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' -%}
+                --button-background: {{ payment_button_background.rgb }};
+              {%- endif -%}
+
+              {%- if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' -%}
+                --button-text-color: {{ payment_button_text_color.rgb }};
+              {%- endif -%}
+
+              {%- unless product.selected_or_first_available_variant.available -%}
+                display: block;
+              {%- endunless -%}
+            }
+          </style>
+        {%- endif -%}
+      </buy-buttons>
+    </div>
+  {%- endform -%}
+{%- else -%}
+  <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
+    {%- assign button_content = section.settings.custom_buy_button_text | default: 'Add to Cart' -%}
+    {%- render 'button',
+      content: button_content,
+      show_icon_price: show_icon_price,
+      type: 'submit',
+      background: variant_picker_block.settings.atc_button_background,
+      text_color: variant_picker.settings.atc_button_text_color,
+      stretch: true
+    -%}
+  </buy-buttons>
+{%- endif -%}
+
+{% comment %} CODE FOR SLECTED VARIANT QUANTITY TRACKING {% endcomment %}
+<script type="application/json" id="product-variant-data">
+{
+  "variants": [
+    {% for variant in product.variants %}
+      {
+        "id": "{{ variant.id }}",
+        "option1": "{{ variant.option1 }}",
+        "inventory_quantity": {{ variant.inventory_quantity }},
+        "inventory_policy": "{{ variant.inventory_policy }}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "selected_variant_id": "{{ product.selected_or_first_available_variant.id }}"
+}
+</script>
+
+{% comment %} CODE FOR DISPLAYING SOLD-OUT AND ADD-TO-CART BUTTON CONDITIONALY {% endcomment %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const productData = JSON.parse(document.getElementById("product-variant-data").textContent);
+    const variantData = productData.variants;
+    const selectedVariantId = productData.selected_variant_id;
+    const swatches = document.querySelectorAll("input[name='option1']");
+    const addToCartContainer = document.querySelector(".add-to-cart-button-container");
+    const soldOutContainer = document.querySelector(".sold-out-button-container");
+
+    function toggleButtonContainers(selectedVariant) {
+        if (!selectedVariant) return; // Safety check in case no variant is found
+
+        console.log("Selected Variant:", selectedVariant); // Debugging: Check variant data in console
+
+        // Default behavior for other variants
+        if (selectedVariant.inventory_quantity > 0) {
+            addToCartContainer.style.display = "block";  // Show "Add to Cart"
+            soldOutContainer.style.display = "none";     // Hide "Sold Out"
+        } else {
+            addToCartContainer.style.display = "none";   // Hide "Add to Cart"
+            soldOutContainer.style.display = "block";    // Show "Sold Out"
+        }
+    }
+
+    function findVariantByOption(optionValue) {
+        return variantData.find(variant => variant.option1 === optionValue);
+    }
+
+    function getInitialVariant() {
+        // Find the initially selected variant from Liquid
+        const selectedVariant = variantData.find(variant => variant.id == selectedVariantId);
+        if (selectedVariant) return selectedVariant;
+
+        // Find the first in-stock variant
+        for (let variant of variantData) {
+            if (variant.inventory_quantity > 0) {
+                return variant;
+            }
+        }
+        return null; // No valid variant found
+    }
+
+    // Set the correct initial variant
+    const initialVariant = getInitialVariant();
+    toggleButtonContainers(initialVariant);
+
+    // Detect swatch changes and update button visibility
+    swatches.forEach(swatch => {
+        swatch.addEventListener("change", function () {
+            const selectedVariant = findVariantByOption(this.value);
+            toggleButtonContainers(selectedVariant);
+        });
+    });
+});
+
+</script>

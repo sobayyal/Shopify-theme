@@ -1,0 +1,57 @@
+{% comment %}
+  Individual Product Addon Item Snippet
+  Usage: {% render 'product-addon-item', addon_product: product, addon_index: 1, section_id: section.id, product_text: text %}
+{% endcomment %}
+
+{% assign form_id = 'addon-form-' | append: addon_product.id | append: '-' | append: section_id %}
+{% assign checkbox_id = 'addon-' | append: addon_product.id | append: '-' | append: section_id %}
+
+<div class="product-addon__item" data-product-id="{{ addon_product.id }}">
+  <div class="product-addon__main-content" data-addon-checkbox="{{ checkbox_id }}">
+    <div class="product-addon__checkbox-wrapper">
+      <input type="checkbox" 
+             id="{{ checkbox_id }}" 
+             class="product-addon__checkbox" 
+             data-variant-id="{{ addon_product.selected_or_first_available_variant.id }}"
+             data-product-title="{{ addon_product.title | escape }}"
+             data-variant-price="{{ addon_product.selected_or_first_available_variant.price }}"
+             data-addon-index="{{ addon_index }}"
+             data-product-handle="{{ addon_product.handle }}">
+      <label for="{{ checkbox_id }}" class="product-addon__checkbox-label"></label>
+    </div>
+    
+    {% render 'product-addon-gallery', 
+      addon_product: addon_product, 
+      addon_index: addon_index,
+      form_id: form_id 
+    %}
+    
+    <div class="product-addon__content">
+      <div class="product-addon_header">
+        <div class="product-addon_title">
+          <h4 class="product-addon__name">{{ addon_product.title }}</h4>
+        </div>    
+        <div class="product-addon__price">
+          <span class="price">
+            <span class="price__compare">
+              {{ addon_product.compare_at_price | money_without_trailing_zeros }}
+            </span>
+            <span class="price__current" data-addon-price="{{ addon_product.price }}">
+              {{ addon_product.price | money_without_trailing_zeros }}
+            </span>
+          </span>
+        </div>
+      </div>
+      {% if product_text != blank %}
+        <div class="product-addon__description">
+          {{ product_text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% render 'product-addon-variants', 
+    addon_product: addon_product, 
+    addon_index: addon_index 
+  %}
+</div>

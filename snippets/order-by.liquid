@@ -1,0 +1,98 @@
+<div class="save56-product-order-by-wrap-">
+    <div class="save-ring-order-by-container order-by-ring-variant">
+      <div class="save-ring"></div>
+      <div class="save-circle"></div>
+    </div>
+  {% assign date_now = 'now' | date: '%s' %}
+  {% assign seconds = block.settings.pre_order_days | times: 24 | times: 60 | times: 60 %}
+  {% assign future_date = date_now | plus: seconds | date: '%B %d' %}
+  <div class="save56-order-by" data-preorder-days="{{ block.settings.pre_order_days }}">
+    {{ block.settings.order_by_text }}
+    <span class="dynamic--date">{{ future_date }}</span> {{ block.settings.order_by_text_after }}
+  </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const orderBy = document.querySelector('.save56-order-by');
+
+    if (orderBy) {
+      const preOrderDays = parseInt(orderBy.dataset.preorderDays) || 0;
+      const dynamicDate = orderBy.querySelector('.dynamic--date');
+
+      if (dynamicDate) {
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + preOrderDays);
+
+        // Format date as: April 02, 2025
+        const options = { month: 'long', day: '2-digit' };
+        const formattedDate = currentDate.toLocaleDateString(undefined, options);
+
+        dynamicDate.textContent = formattedDate;
+      }
+    }
+  });
+</script>
+<style>
+               .save56-product-order-by-wrap- {
+        grid-column-gap: .5rem;
+        outline-offset: 0px;
+        color: #fff;
+        background-color: #F5F3EB;
+        /* border: 1px dashed #004f4f; */
+        border-radius: 8px;
+        align-items: center;
+        padding: .7rem 1rem;
+        font-size: .75rem;
+        display: flex;
+        position: relative;
+        margin: 1rem 0rem;
+        }
+        .save-ring-order-by-container {
+        position: relative;
+        height: 1rem;
+        width: 1rem;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+        .save-ring {
+        border: 1px solid #004f4f;
+        border-radius: 20px;
+        height: 18px;
+        width: 18px;
+        position: absolute;
+        animation: ringPulse 1.1s ease-out infinite;
+        opacity: 0;
+    }
+        .save-circle {
+        width: 6px;
+        height: 6px;
+        background-color: #004f4f;
+        border-radius: 50%;
+        position: absolute;
+    }
+        .save56-order-by {
+        color: #353535;
+        font-size: .75rem;
+        font-weight: 500 !important;
+    }
+    /* .product-info__block-item[data-block-type="order-by"]{
+      margin-bottom:40px;
+    } */
+    {% comment %} .save-ring-order-by-container.sold-out .save-ring {
+    border: 1px solid #ff0000 !important;
+  }
+
+  .save-ring-order-by-container.sold-out .save-circle {
+    background-color: #ff0000 !important;
+  }
+
+  /* Low stock state */
+  .save-ring-order-by-container.low-stock .save-ring {
+    border-color: #ff9500 !important;
+  }
+
+  .save-ring-order-by-container.low-stock .save-circle {
+    background-color: #ff9500 !important;
+  } {% endcomment %}
+</style>

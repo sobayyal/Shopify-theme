@@ -1,0 +1,206 @@
+{%- comment -%}
+  ----------------------------------------------------------------------------------------------------------------------
+  ENHANCED BUY BUTTONS - USING SHOPIFY NATIVE MECHANISMS
+  ----------------------------------------------------------------------------------------------------------------------
+
+  This component uses Shopify's native functionality to handle product buy buttons,
+  ensuring proper sold-out button state management.
+{%- endcomment -%}
+
+{%- if product != blank -%}
+  {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+
+  {%- form 'product', product, is: 'product-form', id: form_id, class: 'product-form' -%}
+    <input id="variant_id" type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+    {% liquid
+      assign selected_variant = product.selected_or_first_available_variant
+      assign is_sold_out = false
+      assign button_class = "product-form__add-button button"
+
+      # Ensure we're showing the correct button state
+      if selected_variant.available == false or product.tags contains 'gift_only'
+        assign is_sold_out = true
+        assign button_content = 'product.general.sold_out_button' | t
+        assign button_class = button_class | append: ' button--disabled'
+      else
+        if product.template_suffix contains 'pre-order'
+          assign button_content = 'product.general.pre_order_button' | t
+        else
+          assign button_content = section.settings.custom_buy_button_text | default: 'Add to Cart'
+        endif
+      endif
+    %}
+
+    <div class="product-form__buy-buttons">
+      {%- if product.gift_card? and show_gift_card_recipient -%}
+        <gift-card-recipient class="gift-card-recipient">
+          {%- assign checkbox_label = 'gift_card.recipient.checkbox' | t -%}
+          {%- render 'checkbox', label: checkbox_label, name: 'properties[__shopify_send_gift_card_to_recipient]' -%}
+
+          <div class="gift-card-recipient__fields js:hidden">
+            <div class="fieldset">
+              {%- liquid
+                assign recipient_email_label = 'gift_card.recipient.email_label' | t
+                render 'input', type: 'email', label: recipient_email_label, name: 'properties[Recipient email]', value: form.email, required: true
+
+                assign recipient_name_label = 'gift_card.recipient.name_label' | t
+                render 'input', label: recipient_name_label, name: 'properties[Recipient name]', value: form.name
+
+                assign message_label = 'gift_card.recipient.message_label' | t
+                render 'input', label: message_label, name: 'properties[Recipient message]', value: form.message, multiline: 3, maxlength: 200, show_max_characters_count: true
+              -%}
+            </div>
+          </div>
+        </gift-card-recipient>
+      {%- endif -%}
+
+      <buy-buttons
+        class="buy-buttons {% if show_payment_button %}buy-buttons--has-dynamic{% endif %}"
+        template="{{ product.template_suffix | escape }}"
+        form="{{ form_id }}"
+        data-custom-buy-button-text="{{ section.settings.custom_buy_button_text | default: 'Add to Cart' }}"
+      >
+        {%- if show_payment_button and atc_button_background == blank and atc_button_text_color == blank -%}
+          {%- assign atc_button_style = 'outline' -%}
+          {%- assign button_class = button_class | append: ' button--outline' -%}
+        {%- else -%}
+          {%- assign atc_button_style = 'solid' -%}
+        {%- endif -%}
+
+        <button 
+          type="submit" 
+          name="add" 
+          id="product-submit-button"
+          class="{{ button_class }}"
+          {% if is_sold_out %}
+            disabled="disabled" 
+            data-button-status="sold-out"
+          {% else %}
+            data-button-status="available"
+          {% endif %}
+          {% if atc_button_background != blank and atc_button_text_color != blank %}
+            style="--button-background: {{ atc_button_background.rgb }}; --button-text-color: {{ atc_button_text_color.rgb }};"
+          {% elsif atc_button_background != blank %}
+            style="--button-background: {{ atc_button_background.rgb }};"
+          {% elsif atc_button_text_color != blank %}
+            style="--button-text-color: {{ atc_button_text_color.rgb }};"
+          {% endif %}
+        >
+          <span class="button__text">{{ button_content }}</span>
+          {% if show_icon_price %}
+            <span class="button__icon">
+              {%- render 'icon', icon: 'shopping-bag' -%}
+            </span>
+          {% endif %}
+        </button>
+
+        {%- if show_payment_button -%}
+          <div class="product-form__payment-container">
+            {{ form | payment_button }}
+          </div>
+
+          <style>
+            #shopify-section-{{ section.id }} .shopify-payment-button {
+              {%- if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' -%}
+                --button-background: {{ payment_button_background.rgb }};
+              {%- endif -%}
+
+              {%- if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' -%}
+                --button-text-color: {{ payment_button_text_color.rgb }};
+              {%- endif -%}
+
+              {%- unless selected_variant.available -%}
+                display: none;
+              {%- endunless -%}
+            }
+          </style>
+        {%- endif -%}
+      </buy-buttons>
+    </div>
+  {%- endform -%}
+{%- else -%}
+  <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
+    {%- assign button_content = section.settings.custom_buy_button_text | default: 'Add to Cart' -%}
+    <button 
+      type="submit" 
+      id="placeholder-button"
+      class="product-form__add-button button"
+      disabled="disabled"
+      {% if variant_picker_block.settings.atc_button_background != blank %}style="--button-background: {{ variant_picker_block.settings.atc_button_background.rgb }};"{% endif %}
+      {% if variant_picker_block.settings.atc_button_text_color != blank %}style="--button-text-color: {{ variant_picker_block.settings.atc_button_text_color.rgb }};"{% endif %}
+    >
+      <span class="button__text">{{ button_content }}</span>
+      {% if show_icon_price %}
+        <span class="button__icon">
+          {%- render 'icon', icon: 'shopping-bag' -%}
+        </span>
+      {% endif %}
+    </button>
+  </buy-buttons>
+{%- endif -%}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Use Shopify's built-in variant:change event to update button state
+  const productForm = document.querySelector('.product-form');
+  if (!productForm) return;
+  
+  productForm.addEventListener('variant:change', function(event) {
+    if (!event.detail || !event.detail.variant) return;
+    
+    const variant = event.detail.variant;
+    const button = document.getElementById('product-submit-button');
+    if (!button) return;
+    
+    // Update button state based on variant availability
+    if (variant.available) {
+      button.classList.remove('button--disabled');
+      button.removeAttribute("disabled");
+      button.setAttribute("data-button-status", "available");
+      
+      const buttonText = button.querySelector('.button__text');
+      if (buttonText) {
+        const customText = document.querySelector("buy-buttons")?.getAttribute("data-custom-buy-button-text") || "Add to Cart";
+        buttonText.textContent = customText;
+      }
+      
+      // Show payment button if exists
+      const paymentContainer = document.querySelector('.product-form__payment-container');
+      if (paymentContainer) paymentContainer.style.display = "";
+    } else {
+      button.classList.add('button--disabled');
+      button.setAttribute("disabled", "disabled");
+      button.setAttribute("data-button-status", "sold-out");
+      
+      const buttonText = button.querySelector('.button__text');
+      if (buttonText) {
+        buttonText.textContent = "Sold Out";
+      }
+      
+      // Hide payment button
+      const paymentContainer = document.querySelector('.product-form__payment-container');
+      if (paymentContainer) paymentContainer.style.display = "none";
+    }
+  });
+  
+  // Ensure auto-selected variant is properly reflected in button state
+  // when page is loaded without a variant URL parameter
+  if (!window.location.search.includes('variant=')) {
+    setTimeout(function() {
+      const variantPicker = document.querySelector('variant-picker');
+      if (variantPicker) {
+        // Let the theme's built-in mechanisms to find the first available variant
+        const inputs = document.querySelectorAll('input[name="option1"]');
+        for (const input of inputs) {
+          if (!input.disabled && input.parentNode.style.display !== 'none') {
+            input.checked = true;
+            input.dispatchEvent(new Event('change', {bubbles: true}));
+            break;
+          }
+        }
+      }
+    }, 100);
+  }
+});
+</script>

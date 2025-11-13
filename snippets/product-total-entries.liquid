@@ -1,0 +1,170 @@
+{% if settings.sweeps_switch %}
+  {% liquid
+    assign accent1     = '#F6F3EB'
+    assign on_fg       = '#000'
+    assign global_mult = shop.metafields.sharedsweeps.global_multiplier | default: 1
+    assign ssr_total_entries = 0
+    assign ssr_total_bonus   = 0
+  %}
+
+  {% for item in cart.items %}
+    {% liquid
+      assign p = item.product
+      assign v = item.variant
+      assign local_price = item.final_price | divided_by: 100.0
+
+      assign currency = localization.country.currency.iso_code | default: cart.currency.iso_code | default: shop.currency
+
+      case currency
+        when 'USD'
+          assign fx_to_usd = 1
+        when 'CAD'
+          assign fx_to_usd = 0.73
+        when 'PKR'
+          assign fx_to_usd = 0.0036
+        when 'JPY'
+          assign fx_to_usd = 0.0069
+        when 'EUR'
+          assign fx_to_usd = 1.09
+        when 'GBP'
+          assign fx_to_usd = 1.28
+        else
+          assign fx_to_usd = 1
+      endcase
+
+      assign base_override = p.metafields.sharedsweeps.priceoverride
+      if base_override != blank
+        assign base_usd = base_override | plus: 0.0
+      else
+        assign base_usd = local_price | times: fx_to_usd
+      endif
+
+      assign product_mult = p.metafields.sharedsweeps.multiplier
+      assign mult = global_mult
+      if product_mult != blank and product_mult > global_mult
+        assign mult = product_mult
+      endif
+
+      assign bonus = p.metafields.sharedsweeps.bonusEntries | default: 0
+
+      assign line_entries = base_usd | times: mult | floor | times: item.quantity
+      assign line_bonus   = bonus | times: item.quantity
+
+      assign ssr_total_entries = ssr_total_entries | plus: line_entries
+      assign ssr_total_bonus   = ssr_total_bonus   | plus: line_bonus
+    %}
+
+    <span class="ss-line"
+          data-price="{{ base_usd }}"
+          data-qty="{{ item.quantity }}"
+          data-mult="{{ mult }}"
+          data-bonus="{{ bonus }}"
+          hidden></span>
+  {% endfor %}
+
+  <div class="ss-total-row">
+    <div class="ss-total-badge"
+         id="ss-total-entries"
+         data-ssr="{{ ssr_total_entries | plus: ssr_total_bonus }}"
+         style="--ss-accent1: {{ accent1 }}; --ss-fg: {{ on_fg }};">
+      <span class="ss-total-left">
+        Earn <span class="ss-total-value">{{ ssr_total_entries | plus: ssr_total_bonus }}</span> Total Entries
+      </span>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var badge = document.getElementById('ss-total-entries');
+      if (!badge) return;
+
+      function recalc() {
+        var total = 0;
+        document.querySelectorAll('.ss-line').forEach(function (el) {
+          var price = parseFloat(el.dataset.price) || 0;
+          var qty   = parseInt(el.dataset.qty, 10) || 0;
+          var mult  = parseFloat(el.dataset.mult) || 1;
+          var bonus = parseFloat(el.dataset.bonus) || 0;
+          var baseEntries = Math.floor(price * mult) * qty;
+          var bonusSum    = Math.floor(bonus) * qty;
+          total += baseEntries + bonusSum;
+        });
+        var out = badge.querySelector('.ss-total-value');
+        if (out) out.textContent = Number(total).toLocaleString();
+      }
+
+      var container = document.querySelector('#CartDrawer, .cart-drawer, .cart, form[action*="/cart"]') || document.body;
+      if ('MutationObserver' in window) {
+        var mo = new MutationObserver(function () { requestAnimationFrame(recalc); });
+        mo.observe(container, { childList: true, subtree: true, characterData: true });
+        window.__ssTotalObserver = mo;
+      }
+
+      document.addEventListener('cart:updated', function(){ requestAnimationFrame(recalc); }, { passive: true });
+      document.addEventListener('cart:refresh', function(){ requestAnimationFrame(recalc); }, { passive: true });
+      window.addEventListener('theme:cart:update', function(){ requestAnimationFrame(recalc); });
+      requestAnimationFrame(recalc);
+    })();
+  </script>
+
+  <style>
+    .ss-total-row{ display:block; margin-top:8px; }
+    .ss-total-badge{
+      --_accent1: var(--ss-accent1, #f6f3eb);
+      --_fg: var(--ss-fg, #000);
+      height:30px; padding:7px 13px; border-radius:999px; border:1px solid #000;
+      background:#f6f3eb; color:var(--_fg);
+      font-family:var(--heading-font-family); font-size:.6rem; line-height:1.2;
+      box-shadow:0 1px 4px rgba(0,0,0,.05);
+      transition:background .2s, box-shadow .2s, border-color .2s; box-sizing:border-box;
+    }
+    .ss-total-badge--full{ display:flex; align-items:center; justify-content:space-between; width:100%; }
+    .ss-total-badge:hover{
+      background:linear-gradient(0deg, rgba(159,214,209,.18), rgba(159,214,209,.18)), #f6f3eb;
+      box-shadow:0 2px 10px rgba(0,0,0,.06);
+    }
+    .ss-total-left{ display:inline-flex; align-items:center; gap:.35rem; letter-spacing:.2px; white-space:nowrap; color:#000; }
+    .ss-total-value{ color:#203E3C; font-weight:700; }
+    .ss-total-mult{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:34px; padding:.28rem .55rem; font-size:.6rem; line-height:1;
+      color:#fff; background:#203E3C; border:1px solid var(--_accent1);
+      border-radius:999px; box-shadow:0 1px 6px rgba(0,0,0,.08);
+    }
+    @media (max-width:640px){
+      .ss-total-badge{ height:30px; padding:7px 13px; font-size:.6rem; }
+      .ss-total-mult{ min-width:30px; font-size:.55rem; padding:.25rem .5rem; }
+    }
+
+    .cart-drawer .ss-total-badge {
+        border: none;
+        border-radius: 0;
+        background-color: #F7DA84;
+        padding-left: 7px;
+        padding-right: 13px;
+        clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+        width: fit-content;
+        gap: 10px;  
+    }
+    .cart-drawer .ss-total-badge:hover{
+        background-color: #F7DA84;
+        background: #F7DA84;
+    }
+    .cart-drawer .ss-total-badge .ss-total-left{
+      color: #203E3C ;
+      font-weight: 500;
+      gap:0.25rem;
+      line-height:1.6 !important;
+        {% comment %} font-size:12px; {% endcomment %}
+    }
+      .cart-drawer .ss-total-badge .ss-total-value{
+      font-weight:600;
+    }
+      .cart-drawer .ss-total-badge .ss-total-mult{
+      border:none;
+      padding: 3px 8px;
+    min-width: 30px;
+    color: #f7da84;
+    }
+  </style>
+{% endif %}

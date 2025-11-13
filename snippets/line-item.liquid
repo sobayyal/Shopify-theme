@@ -1,0 +1,338 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+LINE ITEM
+----------------------------------------------------------------------------------------------------------------------
+
+This component renders a single line item product information, and is used on order and cart page.
+
+********************************************
+Supported variables
+********************************************
+
+* line_item: the line item to render (required)
+* show_quantity_selector: if set to true, the quantity selector is displayed (useful for instance of mini-cart)
+{%- endcomment -%}
+{% assign luggagescale_product = all_products[settings.luggage_scale] %}
+{% assign luggagecover_product = all_products[settings.gift_one] %}
+{% assign giftcard_product = all_products[settings.gift_two] %}
+{% assign lifetime_warranty_product = all_products[settings.gift_three] %}
+{% assign dust_cover_product = all_products[settings.gift_four] %}
+{% assign duffel_dust_cover_product = all_products[settings.gift_five] %}
+
+{% assign id = linklists.gift-wrapping.links.first.object.variants.first.id %}
+{% assign id2 = linklists.free-gift.links.first.object.variants.first.id %}
+{% assign gift_card_id = linklists.free-gift-card.links.first.object.variants.first.id %}
+{% assign weekender_id = linklists.free-gift-weekender.links.first.object.variants.first.id %}
+{% assign duffel_id = linklists.free-gift-duffel.links.first.object.variants.first.id %}
+{% assign luggage_scale_id = linklists.luggage-scale.links.first.object.variants.first.id %}
+
+{% assign gift_wraps_in_cart = false %}
+{% assign gift_card_in_cart = false %}
+{% assign free_gift_in_cart = false %}
+{% assign weekender_gift_in_cart = false %}
+{% assign duffel_gift_in_cart = false %}
+
+{% if line_item.id == id %}
+  {% assign gift_wraps_in_cart = true %}
+{% endif %}
+{% if line_item.id == luggage_scale_id %}
+  {% assign luggage_scale_in_cart = true %}
+{% endif %}
+{% if line_item.id == gift_card_id %}
+  {% assign gift_card_in_cart = true %}
+{% endif %}
+{% if line_item.id == id2 %}
+  {% assign free_gift_in_cart = true %}
+{% endif %}
+{% if line_item.id == weekender_id %}
+  {% assign weekender_gift_in_cart = true %}
+{% endif %}
+{% if line_item.id == duffel_id %}
+  {% assign duffel_gift_in_cart = true %}
+{% endif %}
+<line-item class="line-item {% if line_item.title == luggagecover_product.title or line_item.title == luggagescale_product.title or line_item.title == giftcard_product.title or line_item.title == lifetime_warranty_product.title or line_item.title == dust_cover_product.title or line_item.title == duffel_dust_cover_product.title %}free_gift_item{% else %}line_item_product{% endif %}" id="{{ line_item.id }}">
+  {%- if line_item.image != blank -%}
+    {{- line_item.image | image_url: width: 320 | image_tag: sizes: '(max-width: 699px) 70px, (max-width: 1024px) 140px, 240px', widths: '70,140,240,360,480,720', class: 'line-item__media' -}}
+  {%- endif -%}
+
+  <div class="line-item-info">
+    {%- assign text_class = '' -%}
+
+    {%- if settings.product_card_text_font == 'heading' -%}
+      {%- assign text_class = 'h6' -%}
+    {%- endif -%}
+
+    <div class="v-stack justify-items-start gap-2 cart_item-details">
+      {%- if settings.show_vendor and line_item.vendor != blank -%}
+        {%- capture vendor_class -%}smallcaps {% if settings.product_card_text_font == 'heading' %}heading{% endif %}{% endcapture %}
+        {%- render 'vendor' with line_item.vendor, class: vendor_class -%}
+      {%- endif -%}
+      <div class="cart--drawer_infor-sec">
+      <div class="v-stack justify-items-start gap-1">
+        {%- if line_item.url != blank -%}
+            <a href="{{ line_item.url }}" class="{{ text_class }}">
+              {% if line_item.product.title == 'Carry-on + Check-in + Travel Kit' or line_item.product.title == 'Carry-on + Check-in'  %}
+                {{ line_item.product.title | default: line_item.title }}
+              {% elsif line_item.product.title contains "Carry-On" %}
+                Carry-On
+              {% elsif line_item.product.title contains "Check-in" %}
+                Check-In
+              {% elsif line_item.product.title contains "The NOBL 'Black Friday' Bundle 5.0" %}
+                NOBL Black Friday Bundle 5.0
+              {% elsif line_item.product.title contains "Compressible Packing Cubes (6 Pieces)" %}
+                Compressible Packing Cubes
+              {% else %}
+                {{ line_item.product.title | default: line_item.title }}
+              {% endif %}
+            </a>
+          {%- endif -%}
+  
+        <div class="product-info__block-group text-with-rating">
+         {%- render 'price-list', line_item: line_item, context: 'line_item' -%}
+         {% if free_gift_in_cart %}
+           <span class="badge badge--on-sale">{{ section.settings.free_gift_tag_text }}</span>
+          {% else %}
+         {%- render 'product-badges', product: line_item.product, variant: line_item.product.selected_or_first_available_variant, types: 'discount', form_id: product_form_id, line_item: line_item -%}       
+           {% endif %}
+        </div>
+        {%- unless line_item.product.has_only_default_variant or line_item.gift_card -%}
+         {% assign collection_title = "" %}
+          {% for collection in line_item.product.collections %}
+            {% if collection.title contains "Aluminum" %}
+              {% assign collection_title = "Aluminum" %}
+              {% break %}
+            {% elsif line_item.product.title contains "Carry-On" %}
+              {% assign collection_title = "All-in-one" %}
+              {% break %}
+            {% elsif line_item.product.title contains "Check-in" %}
+              {% assign collection_title = "All-in-one" %}
+              {% break %}
+              {% elsif line_item.product.title == 'Check-in: All-in-One 28"' %}
+               {% assign collection_title = "All-in-one" %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if collection_title == "" %}
+            {% assign collection_title = line_item.variant.title %}
+          {% endif %}
+          
+          <p class="smallcaps text-subdued line-item__price">
+            <span>{{ collection_title }}</span>
+          </p>
+        {%- endunless -%}
+      </div>
+
+      {%- capture secondary_information -%}
+        {%- if line_item.selling_plan_allocation -%}
+          <p class="text-subdued">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+        {%- endif -%}
+
+        {%- unless line_item.properties == blank -%}
+          <ul class="text-subdued">
+            {%- for property in line_item.properties -%}
+              {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
+
+              {%- if property.last == blank or first_character_in_key == '_' -%}
+                {%- continue -%}
+              {%- endif -%}
+
+              <li>
+                {%- if property.last contains '/uploads/' -%}
+                  <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                {%- else -%}
+                  {{ property.first }}: {{ property.last }}
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endunless -%}
+      {%- endcapture -%}
+
+      {%- if secondary_information != blank -%}
+        <div class="v-stack justify-items-start gap-1">
+          {{- secondary_information -}}
+        </div>
+      {%- endif -%}
+      </div>
+      {%- if show_quantity_selector -%}
+       
+        <line-item-quantity class="h-stack gap-4 justify-between{% if gift_wraps_in_cart or luggage_scale_in_cart or free_gift_in_cart or gift_card_in_cart or weekender_gift_in_cart or duffel_gift_in_cart %} free-gift-quantity{% endif %}{% if request.page_type == 'cart' %} sm:hidden{% endif %}">
+          {%- render 'quantity-selector', line_item: line_item, size: 'sm' -%}
+          <a href="{{ line_item.url_to_remove }}" class="link text-xs remove-icon">
+            
+   {{ 'cart.order.remove' | t }} 
+            {% comment %}{%- render 'icon' with 'remove' -%}{% endcomment %}
+          </a>
+        </line-item-quantity>
+     
+      {%- else -%}
+        <p class="text-subdued text-sm sm:hidden">{{ 'customer.order.quantity' | t }}: {{ line_item.quantity }}</p>
+      {%- endif -%}
+
+      {%- if line_item.line_level_discount_allocations != blank -%}
+        <ul class="v-stack justify-items-start gap-1 unstyled-list discount-tab" role="list">
+          {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+            <li class="discount-badge text-xs">
+              {%- render 'icon' with 'discount', width: 12 -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</line-item>
+{% unless gift_wraps_in_cart or luggage_scale_in_cart or free_gift_in_cart or gift_card_in_cart or weekender_gift_in_cart or duffel_gift_in_cart %}
+ {%- render 'inventory-drawer',
+                product: line_item.product,
+                variant_product : line_item.variant
+                low_threshold: 0,
+            -%}
+  {% endunless %}
+
+  <style>
+    
+/* #################### Cart Change ##############333 */
+  .cart-drawer_products-container .line_item_product .cart_item-details{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
+  .cart-drawer_products-container .line_item_product .line-item-info {
+    width: 100%;
+    padding-right: 12px;
+  }
+  .cart-drawer_products-container .line_item_product {
+    padding-right: 11px;
+  }
+  .cart-drawer_products-container .line-item .product-info__block-group.text-with-rating {
+    gap: 0.2rem 0.5rem !important;
+    margin-bottom: 4px;
+  }
+  .cart-drawer_products-container .cart-drawer__items{
+    gap:0.8rem;
+    padding-block-start:0;
+  }
+  .cart-drawer_products-container .quantity-selector__button svg {
+    width: 8px;
+  }
+  cart-drawer a.remove-icon {
+    display: none;
+  }
+  cart-drawer .line-item {
+    --line-item-media-width: 4.5rem;
+  }
+  @media screen and (max-width:480px){
+    .cart-drawer_products-container .line_item_product .line-item-info {
+      padding-right: 7px !important;
+    }
+    .cart-drawer_products-container .line-item{
+      column-gap: 0.5rem;
+    }
+  }
+  @media screen and (min-width:421px){
+
+    .cart-drawer_products-container .line_item_product .quantity-selector input.quantity-selector__input {
+      font-size: 13px;
+    }
+    .cart-drawer_products-container .line_item_product .quantity-selector__button {
+      padding: 8px;
+    }
+    .cart-drawer_products-container .line_item_product .quantity-selector__button:last-child {
+      padding-left: 6px;
+    }
+    
+    .cart-drawer_products-container .line_item_product .quantity-selector__button:first-child {
+      padding-right: 6px;
+    }
+    .cart-drawer_products-container .line_item_product .quantity-selector {
+      display: flex;
+      padding: 1.5px 0;
+      margin-top: 4px;
+    }
+    
+  }
+  @media screen and (max-width:420px){
+    .cart-drawer_products-container .quantity-selector__button svg {
+      width: 7px;
+    }
+    .cart-drawer_products-container .line_item_product .quantity-selector input.quantity-selector__input {
+      font-size: 12px;
+    }
+    .cart-drawer_products-container .line_item_product .quantity-selector {
+      display: flex;
+      padding: 2px 8px;
+      margin-top: 4px;
+    }
+  }
+  @media screen and (max-width:375px){
+    .cart-drawer_products-container .line-item on-sale-badge.badge.badge--on-sale,
+    .cart-drawer_products-container .line-item span.badge.badge--on-sale {
+      padding: 4px 9px 3px;
+    }
+  }
+  .cart-drawer_products-container .line_item_product line-item-quantity {
+    flex-direction: column;
+     gap:0.2rem !important;
+  }
+.badge--on-sale {
+    background: #F6F3EB !important;
+    color: #282828 !important;
+    border: 1px solid #282828 !important;
+}
+cart-drawer .discount-tab{
+  display:none !important;
+}
+
+.cart-drawer-footer .checkout-button {
+    width:100% !important;
+    display:block !important;
+}
+
+.cart-drawer__items line-item#\34 7971780690220 .text-with-rating {
+   
+    top: 15% !important;
+}
+cart-drawer variant-inventory.custom_inventory.inventory.text-success {
+    display: none;
+}
+cart-drawer a.remove-icon{
+  background: linear-gradient(to right, currentColor, currentColor) 0 min(100%, 1.35em) / 100% 1px no-repeat !important;
+    transition: background-size .3s ease-in-out !important;
+}
+cart-drawer a.remove-icon:hover{
+ background-size: 0 1px !important;
+}
+/* cart-drawer .quantity-selector{
+    border:none !important;
+} */
+
+
+.cart-drawer-footer .checkout-button {
+    display: block;
+    width: 100%;
+}
+.cart-drawer-footer .button-group form{
+  display: block;
+    width: 100%;
+}
+
+.cart-drawer::part(body) {
+    padding-inline-end: 0 !important;
+}
+p.h4.cart-drawer-header{
+  font-weight:500 !important;
+}
+
+/* .drawer::part(header){
+border-block-end:none !important;
+} */
+
+.smallcaps.text-subdued.line-item__price{
+  transform:none !important;
+}
+
+.line-item .product-info__block-group.text-with-rating{
+  top:0px !important;
+}
+  </style>

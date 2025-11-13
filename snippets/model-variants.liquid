@@ -1,0 +1,265 @@
+{% comment %}
+  Custom Model Pills - Sync Only
+  This creates custom pills that sync with your existing theme's model variant picker
+  No duplication of variant HTML - just pure sync functionality
+{% endcomment %}
+
+<!-- Custom Pills Section (Independent Structure) -->
+<div class="custom-model-pills-wrapper">
+  <div class="custom-pills-label">
+    <span>Select Model</span>
+  </div>
+  
+  <div class="custom-model-pills" data-sync-with="option2">
+    {% assign model_option_index = 1 %}
+    {% assign model_option = product.options_with_values[model_option_index] %}
+    
+    {% for value in model_option.values %}
+      {% assign option_available = false %}
+      {% for variant in product.variants %}
+        {% if variant.available and variant.options[model_option_index] == value %}
+          {% assign option_available = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      
+      <button 
+        type="button"
+        class="custom-pill-button {% if forloop.first %}active{% endif %}"
+        data-model-value="{{ value }}"
+        data-available="{{ option_available }}"
+      >
+        {{ value }}
+      </button>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+/* Custom Pills Styling */
+.custom-model-pills-wrapper {
+  margin: 20px 0;
+}
+
+.custom-pills-label {
+  margin-bottom: 12px;
+}
+
+.custom-pills-label span {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(40 40 40);
+  display: block;
+  font-family:Montserrat, sans-serif !important;
+}
+
+.custom-model-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.custom-pill-button {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    padding: 6px 25px !important;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2d3748;
+    margin-bottom: 0;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.custom-pill-button:hover {
+  border-color: #cbd5e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-pill-button.active {
+  border-color: #4a5568;
+  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.12);
+}
+
+.custom-pill-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+}
+
+/* Hide original variant picker completely */
+.original-variant-picker {
+  display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .custom-model-pills {
+    gap: 6px;
+  }
+  
+  .custom-pill-button {
+    padding: 6px 12px;
+    font-size: 13px;
+    min-width: 60px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const customPills = document.querySelector('.custom-model-pills');
+  
+  if (!customPills) return;
+  
+  const pillButtons = customPills.querySelectorAll('.custom-pill-button');
+  
+  // Function to find theme variant inputs (works with any theme structure)
+  function findThemeVariantInputs() {
+    // Try multiple selectors to find the theme's model variant inputs
+    const selectors = [
+      'input[name="option2"]', // Most common
+      'input[name="options[Model]"]', // Some themes
+      'select[name="option2"]', // Dropdown variants
+      '.theme-variant-input', // Your specific class
+      '.variant-picker input[type="radio"][name="option2"]' // More specific
+    ];
+    
+    for (let selector of selectors) {
+      const inputs = document.querySelectorAll(selector);
+      if (inputs.length > 0) {
+        return inputs;
+      }
+    }
+    return [];
+  }
+  
+  // Function to find variant option value display
+  function findVariantOptionValue() {
+    const selectors = [
+      'variant-option-value[for="option2"]',
+      '[data-option-value-display]',
+      '.variant-picker__option-info variant-option-value'
+    ];
+    
+    for (let selector of selectors) {
+      const element = document.querySelector(selector);
+      if (element) return element;
+    }
+    return null;
+  }
+  
+  // Function to sync with theme variant selection
+  function syncThemeVariant(selectedValue) {
+    const themeInputs = findThemeVariantInputs();
+    const variantOptionValue = findVariantOptionValue();
+    
+    // Find and select the corresponding theme variant input
+    const targetInput = Array.from(themeInputs).find(input => input.value === selectedValue);
+    
+    if (targetInput) {
+      // For radio inputs
+      if (targetInput.type === 'radio') {
+        targetInput.checked = true;
+      }
+      // For select dropdowns
+      else if (targetInput.tagName === 'SELECT') {
+        targetInput.value = selectedValue;
+      }
+      
+      // Trigger change events
+      targetInput.dispatchEvent(new Event('change', { bubbles: true }));
+      targetInput.dispatchEvent(new Event('input', { bubbles: true }));
+      
+      // Update variant option value display
+      if (variantOptionValue) {
+        variantOptionValue.textContent = selectedValue;
+      }
+      
+      // Trigger theme-specific events
+      document.dispatchEvent(new CustomEvent('variant:change', {
+        detail: {
+          optionName: 'Model',
+          optionValue: selectedValue,
+          optionPosition: 2
+        },
+        bubbles: true
+      }));
+      
+      // Trigger form change for Shopify themes
+      const productForm = document.querySelector('form[action*="/cart/add"], [data-product-form]');
+      if (productForm) {
+        productForm.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+  }
+  
+  // Function to update pill selection appearance
+  function updatePillSelection(selectedValue) {
+    pillButtons.forEach(button => {
+      button.classList.remove('active');
+      if (button.dataset.modelValue === selectedValue) {
+        button.classList.add('active');
+      }
+    });
+  }
+  
+  // Add click listeners to custom pills
+  pillButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      if (this.disabled || this.classList.contains('disabled')) {
+        return;
+      }
+      
+      const selectedValue = this.dataset.modelValue;
+      
+      // Update pill appearance
+      updatePillSelection(selectedValue);
+      
+      // Sync with theme variant system
+      syncThemeVariant(selectedValue);
+    });
+  });
+  
+  // Listen for theme variant changes (bidirectional sync)
+  document.addEventListener('change', function(e) {
+    // Check if it's a model variant change
+    if (e.target.name === 'option2' || 
+        (e.target.name && e.target.name.includes('Model')) ||
+        e.target.classList.contains('theme-variant-input')) {
+      
+      updatePillSelection(e.target.value);
+    }
+  });
+  
+  // Listen for external variant changes (custom events)
+  document.addEventListener('variant:change', function(e) {
+    if (e.detail && e.detail.optionValue && e.detail.optionPosition === 2) {
+      updatePillSelection(e.detail.optionValue);
+    }
+  });
+  
+  // Initialize with current selection
+  function initializePills() {
+    const themeInputs = findThemeVariantInputs();
+    const checkedInput = Array.from(themeInputs).find(input => 
+      input.checked || input.selected
+    );
+    
+    if (checkedInput) {
+      updatePillSelection(checkedInput.value);
+    }
+  }
+  
+  // Initialize after a short delay to ensure theme is ready
+  setTimeout(initializePills, 100);
+});
+</script>

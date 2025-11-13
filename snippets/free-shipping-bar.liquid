@@ -1,0 +1,92 @@
+{%- liquid
+  assign calculated_total_price = 0
+
+  for line_item in cart.items
+    if line_item.requires_shipping
+      assign calculated_total_price = calculated_total_price | plus: line_item.final_line_price
+    endif
+  endfor
+
+  assign total_cart_discount = 0
+
+  for discount_application in cart.cart_level_discount_applications
+    assign total_cart_discount = total_cart_discount | plus: discount_application.total_allocated_amount
+  endfor
+
+  assign calculated_total_price = calculated_total_price | minus: total_cart_discount
+
+  assign free_shipping_threshold = 99 | times: 100
+  assign remaining_amount = free_shipping_threshold | minus: calculated_total_price
+
+  assign spent_percentage = calculated_total_price | times: 100 | divided_by: free_shipping_threshold
+  assign previous_total_price = request.cookies.previous_total_price | default: 0
+  assign should_animate = 'false'
+
+  if previous_total_price != calculated_total_price
+    assign should_animate = 'true'
+  endif
+-%}
+
+{% if calculated_total_price > 0 %}
+<free-shipping-bar class="free-shipping-bar text-center">
+  {%- if calculated_total_price >= free_shipping_threshold -%}
+    <span class="text-success">{{ section.settings.freeshipping_title }}</span>
+  {%- else -%}
+    <span class="text-warning">{{ remaining_amount | money }} {{ section.settings.freeshipping_title_warning }} </span>
+  {%- endif -%}
+  
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-background">
+      <div class="progress-bar-fill" 
+           style="width: {{ spent_percentage | round }}%; 
+           transition: width 0.5s ease;">
+      </div>
+    </div>
+  </div>
+</free-shipping-bar>
+
+  <!-- Store the new total price in cookies for future comparison -->
+  <script>
+    document.cookie = "previous_total_price={{ calculated_total_price }}; path=/";
+  </script>
+{% endif %}
+
+<style>
+.cart-drawer .free-shipping-bar span.text-success {
+    color:#282828 !important;
+}
+.cart-drawer .free-shipping-bar {
+    padding-top: 5px !important;
+    text-align: left;
+    margin-inline-end: 0px !important;
+    font-family:'Montserrat', sans-serif !important;
+}
+
+/* Free Shipping Progress Bar */
+.progress-bar-container {
+  margin-top: 5px;
+  width: 100%;
+  background-color: #ffffff; /* Background color set to white */
+  border-radius: 10px;
+  height: 5px;
+}
+
+.progress-bar-background {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  background: white; /* Background color set to white */
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #282828;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #eee8d9;
+  border-radius: 10px;
+  width: 0%; 
+  transition: width 2s linear;
+}
+  </style>

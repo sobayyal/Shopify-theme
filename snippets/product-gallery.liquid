@@ -1,0 +1,572 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+FIXED PRODUCT GALLERY - VIDEO PLAYSINLINE ISSUE RESOLVED
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<style>
+  .shopify-section--main-product .product-gallery__media:has(img[alt="card-only"]) {
+    display: none !important;
+  }
+  .card--only-dot {
+    display: none !important;
+  }
+  
+  {%- if mobile_controls == 'free_scroll' -%}
+    @media screen and (max-width: 999px) {
+      #shopify-section-{{ section.id }} {
+        --product-gallery-carousel-grid: auto / auto-flow min(28rem, 75vw);
+        --product-gallery-carousel-gap: 0.125rem;
+        --product-gallery-carousel-scroll-snap-type: none;
+      }
+    }
+  {%- endif -%}
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} {
+      {%- if desktop_layout == 'carousel_thumbnails_left' or desktop_layout == 'grid' -%}
+        --product-gallery-flex-direction: row-reverse;
+        --product-gallery-thumbnail-list-grid-auto-flow: row;
+        {%- if desktop_layout == 'carousel_thumbnails_left' -%}
+          --product-gallery-thumbnail-list-max-height: 45rem;
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if desktop_layout contains 'grid' -%}
+        --product-gallery-carousel-grid: auto-flow dense / {% if desktop_layout == 'grid' %}auto{% else %}repeat(2, minmax(0, 1fr)){% endif %};
+        --product-gallery-carousel-scroll-snap-type: none;
+        --product-gallery-carousel-gap: {{ section.settings.desktop_media_grid_gap }}px;
+      {%- endif -%}
+    }
+
+    {%- if desktop_layout == 'grid_2x_highlighted' -%}
+      #shopify-section-{{ section.id }} .product-gallery__media:not([hidden]) {
+        grid-column: span 2;
+      }
+      #shopify-section-{{ section.id }} .product-gallery__media:not([hidden]) ~ .product-gallery__media {
+        grid-column: span 1;
+      }
+    {%- endif -%}
+  }
+
+/* CRITICAL: Immediate loading styles */
+.product-gallery__media.is-initial img {
+  content-visibility: visible !important;
+  contain: none !important;
+}
+
+/* VIDEO FIX: Ensure proper video display */
+.product-gallery__media video {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: cover;
+}
+
+/* OPTIMIZED NEW BADGE STYLES */
+.product-gallery {
+  position: relative !important;
+}
+
+.gallery-new-badge {
+  position: absolute;
+  z-index: 3;
+  background: linear-gradient(135deg, #054b48 0%, #054b48 100%);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 75px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 1000px) {
+  .gallery-new-badge {
+    left: 15px;
+    height: 28px !important;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .gallery-new-badge {
+    padding: 14px 8px;
+    height: 33px !important;
+    width: 45px;
+    top: 20px;
+    right: 15px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-new-badge {
+    padding: 7px 7px;
+    height: 26px !important;
+    width: 70px;
+    top: 20px;
+    right: 6px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+}
+
+.product-gallery__media {
+  position: relative !important;
+}
+
+/* MOBILE IMAGE SIZE OPTIMIZATION */
+@media screen and (max-width: 699px) {
+  .product-gallery__media img {
+    max-width: 100% !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+}
+
+/* Remove lazy loading for immediate display */
+.product-gallery__media img {
+  opacity: 1 !important;
+  transition: none !important;
+}
+</style>
+
+{%- comment -%} SIMPLIFIED: Calculate values immediately {%- endcomment -%}
+{% liquid
+  assign product_form_id = 'product-form-' | append: product.id | append: '-' | append: section.id
+  assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+  assign product_gallery_carousel_id = 'product-gallery-carousel-' | append: product.id | append: '-' | append: section.id
+  assign filtered_indexes = null | sort
+  assign card_only_image = false
+  
+  # FAST variant tracking - simplified
+  if product.variants.size > 1
+    for media in product.media
+      if media.alt contains '#' and media.alt != product.title
+        assign alt_parts = media.alt | split: '#'
+        assign media_group_parts = alt_parts.last | split: '_'
+        assign option = product.options_by_name[media_group_parts.first]
+        if option
+          assign option_value = option.selected_value | downcase | replace :'*',''
+          assign downcase_group_value = media_group_parts.last | strip | downcase
+          if option_value != downcase_group_value and media != default_media
+            assign media_position = media.position | sort 
+            assign filtered_indexes = filtered_indexes | concat: media_position
+            if media.alt == 'card-only'
+              assign card_only_image = true
+            endif
+          endif
+        endif
+      endif
+    endfor
+  endif
+
+  # FAST layout assignment
+  case desktop_layout
+    when 'grid'
+      assign gallery_layout = 'one-column-gallery'
+    when 'grid_2x'
+      assign gallery_layout = 'two-column-gallery'
+    when 'grid_2x_highlighted'
+      assign gallery_layout = 'two-column-gallery-with-highlighted'
+    when 'carousel_thumbnails_left'
+      assign gallery_layout = 'left-thumbnails-carousel-gallery'
+    when 'carousel_thumbnails_bottom'
+      assign gallery_layout = 'bottom-thumbnails-carousel-gallery'
+    when 'carousel_dots'
+      assign gallery_layout = 'dots-carousel-gallery'
+  endcase
+%}
+
+{%- comment -%} OPTIMIZED: Mobile-first image sizes {%- endcomment -%}
+{%- capture mobile_sizes -%}
+(max-width: 699px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), 600px
+{%- endcapture -%}
+
+{%- capture desktop_sizes -%}
+(max-width: 699px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), 
+{%- assign media_ratio = 100 | minus: section.settings.product_info_size -%}
+{%- if desktop_layout == 'grid_2x' -%}
+  {%- assign media_ratio = media_ratio | divided_by: 2 -%}
+{%- endif -%}
+{%- if section.settings.container_size == 'full' -%}
+  calc({{ media_ratio }}vw - 96px)
+{%- else -%}
+  {%- assign media_ratio = 1260 | times: media_ratio | divided_by: 100 | round -%}
+  {%- if desktop_layout == 'grid_2x' -%}
+    {%- assign maximum_width = '560px' -%}
+  {%- else -%}
+    {%- assign maximum_width = '1100px' -%}
+  {%- endif -%}
+  min({{ maximum_width }}, {{ media_ratio }}px - 96px)
+{%- endif -%}
+{%- endcapture -%}
+
+<product-gallery class="product-gallery {% if section.settings.enable_badge %}gallery-with-badge{% endif %} {{ gallery_layout }}" form="{{ product_form_id }}" {% if enable_media_autoplay %}autoplay-media{% endif %} {% if enable_image_zoom %}allow-zoom="{{ max_image_zoom_level }}"{% endif %}>
+
+  {%- comment -%} NEW BADGE - IMMEDIATE LOAD {%- endcomment -%}
+  {% if section.settings.enable_badge %}
+    <div class="gallery-new-badge">
+      {{ section.settings.badge_text | default: 'NEW' }}
+    </div>
+  {% endif %}
+
+  {%- if enable_image_zoom -%}
+    <button class="product-gallery__zoom-button circle-button circle-button--sm md:hidden" is="open-lightbox-button">
+      <span class="sr-only">{{ 'product.gallery.zoom' | t }}</span>
+      {%- render 'icon' with 'plus', stroke_width: 1 -%}
+    </button>
+  {%- endif -%}
+
+  {%- comment -%} SIMPLIFIED SCRIPTS - ONLY ESSENTIAL {%- endcomment -%}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // ONLY badge positioning - immediate
+      function updateNewBadge() {
+        if (window.innerWidth >= 1000) return;
+        
+        const badgeContainer = document.querySelector('.gallery-new-badge');
+        if (!badgeContainer) return;
+        
+        const firstVisibleImage = document.querySelector('.product .product-gallery__media:not([hidden]) img');
+        if (firstVisibleImage) {
+          const parentContainer = firstVisibleImage.closest('.product-gallery__media');
+          parentContainer.style.position = "relative";
+          parentContainer.appendChild(badgeContainer);
+        }
+      }
+      
+      // Run immediately
+      updateNewBadge();
+      
+      // Minimal event listeners
+      const variantSelectors = document.querySelectorAll("[name='id']");
+      variantSelectors.forEach(selector => {
+        selector.addEventListener("change", () => {
+          setTimeout(updateNewBadge, 50);
+        });
+      });
+      
+      // Resize handler
+      window.addEventListener('resize', () => {
+        setTimeout(updateNewBadge, 100);
+      });
+
+      // VIDEO FIX: Ensure videos play inline properly
+      function setupVideoPlayback() {
+        const videos = document.querySelectorAll('.product-gallery__media video');
+        videos.forEach(video => {
+          // Force playsinline attribute
+          video.setAttribute('playsinline', '');
+          video.setAttribute('webkit-playsinline', '');
+          
+          // Set proper video properties
+          video.muted = {{ enable_media_autoplay | default: false }};
+          video.loop = {{ enable_video_looping | default: true }};
+          video.controls = true;
+          video.preload = 'metadata';
+          
+          // Ensure video dimensions are correct
+          video.style.width = '100%';
+          video.style.height = 'auto';
+          video.style.maxWidth = '100%';
+          
+          // Add event listeners for better mobile support
+          video.addEventListener('loadedmetadata', function() {
+            this.setAttribute('playsinline', '');
+            this.setAttribute('webkit-playsinline', '');
+          });
+          
+          // Handle play/pause for mobile
+          video.addEventListener('click', function(e) {
+            if (this.paused) {
+              this.play();
+            } else {
+              this.pause();
+            }
+          });
+        });
+      }
+      
+      // Run video setup immediately
+      setupVideoPlayback();
+      
+      // Re-run when variants change
+      const variantInputs = document.querySelectorAll('input[name="id"], select[name="id"]');
+      variantInputs.forEach(input => {
+        input.addEventListener('change', () => {
+          setTimeout(setupVideoPlayback, 100);
+        });
+      });
+    });
+  </script>
+
+  <div class="product-gallery__image-list">
+    <div class="{% if mobile_controls == 'arrows' or mobile_controls == 'dotsandarrows' %}product-gallery--carousel product-gallery__carousel-with-arrows{% else %}contents{% endif %}">
+      
+      {%- if mobile_controls == 'arrows' or mobile_controls == 'dotsandarrows' -%}
+        <button type="button" class="tap-area sm:hidden" is="carousel-prev-button" aria-controls="{{ product_gallery_carousel_id }}">
+          <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+        </button>
+      {%- endif -%}
+
+      <scroll-carousel adaptive-height id="{{ product_gallery_carousel_id }}" class="product-gallery__carousel scroll-area {% unless mobile_controls == 'arrows' %}full-bleed md:unbleed{% endunless %}" role="region">
+        {%- if product != blank -%}
+          {%- for media in product.media -%}
+            {%- assign is_card_only_media = false -%}
+            {%- if media.alt == 'card-only' -%}
+              {%- assign is_card_only_media = true -%}
+            {%- endif -%}
+            
+            {%- assign is_initial = false -%}
+            {%- if clean_visible_media_list.size > 0 and clean_visible_media_list.first == media.id -%}
+              {%- assign is_initial = true -%}
+            {%- elsif media == default_media -%}
+              {%- assign is_initial = true -%}
+            {%- elsif forloop.first -%}
+              {%- assign is_initial = true -%}
+            {%- endif -%}
+
+            <div class="product-gallery__media snap-center {% if is_initial %}is-initial{% endif %}" 
+                 data-media-type="{{ media.media_type }}" 
+                 data-media-id="{{ media.id }}" 
+                 data-media-position="{{ media.position }}"
+                 role="group" 
+                 aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: media.position, count: product.media.size }}" 
+                 {% if filtered_indexes contains media.position or is_card_only_media or card_only_image %}hidden{% endif %}>
+              
+              {%- comment -%} FIXED: Proper video and image rendering {%- endcomment -%}
+              {%- if media.media_type == 'image' -%}
+                <img src="{{ media | image_url: width: 800 }}" 
+                     alt="{{ media.alt | escape }}"
+                     srcset="{{ media | image_url: width: 400 }} 400w,
+                             {{ media | image_url: width: 600 }} 600w,
+                             {{ media | image_url: width: 800 }} 800w,
+                             {{ media | image_url: width: 1200 }} 1200w"
+                     width="{{ media.width }}"
+                     height="{{ media.height }}"
+                     loading="{% if is_initial %}eager{% else %}lazy{% endif %}"
+                     fetchpriority="{% if is_initial %}high{% else %}auto{% endif %}"
+                     sizes="{{ mobile_sizes }}"
+                     {% if media.alt contains '#' %}data-variant-id="{{ media.id }}"{% endif %}>
+              
+              {%- elsif media.media_type == 'video' -%}
+                <video 
+                  width="{{ media.width }}" 
+                  height="{{ media.height }}"
+                  playsinline 
+                  webkit-playsinline
+                  {% if enable_media_autoplay %}muted autoplay{% else %}muted{% endif %}
+                  {% if enable_video_looping %}loop{% endif %}
+                  controls
+                  preload="{% if is_initial %}metadata{% else %}none{% endif %}"
+                  poster="{{ media.preview_image | image_url: width: 800 }}"
+                  style="width: 100%; height: auto; max-width: 100%; object-fit: cover;">
+                  <source src="{{ media.sources[1].url }}" type="{{ media.sources[1].mime_type }}">
+                  <source src="{{ media.sources[0].url }}" type="{{ media.sources[0].mime_type }}">
+                  <img src="{{ media.preview_image | image_url: width: 800 }}" alt="{{ media.alt | escape }}" loading="lazy">
+                </video>
+              
+              {%- elsif media.media_type == 'external_video' -%}
+                <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                  {%- if media.host == 'youtube' -%}
+                    <iframe 
+                      src="https://www.youtube.com/embed/{{ media.external_id }}?playsinline=1&autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                  {%- elsif media.host == 'vimeo' -%}
+                    <iframe 
+                      src="https://player.vimeo.com/video/{{ media.external_id }}?autoplay=0&muted=1&playsinline=1&controls=1&portrait=0&byline=0&title=0"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                  {%- endif -%}
+                </div>
+              
+              {%- else -%}
+                {%- comment -%} FALLBACK: Use original media rendering for other types {%- endcomment -%}
+                {%- render 'media', 
+                    media: media, 
+                    sizes: mobile_sizes, 
+                    preload: is_initial, 
+                    controls: true, 
+                    playsinline: true, 
+                    muted: enable_media_autoplay, 
+                    loop: enable_video_looping, 
+                    group: 'product' -%}
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..3) -%}
+            {%- capture placeholder_name -%}product-{{ i }}{%- endcapture -%}
+            <div class="product-gallery__media snap-center {% if forloop.first %}is-initial{% endif %}" data-media-type="image" data-media-position="{{ forloop.index }}" data-media-id="placeholder-{{ forloop.index }}" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: 3 }}">
+              {{- placeholder_name | placeholder_svg_tag: 'placeholder' -}}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </scroll-carousel>
+
+      {% if desktop_layout == 'grid_2x' %}
+        <button class="button view-more-btn">
+          <div class="view-more">{{ section.settings.custom_loadmore_gallery_button_text }}</div>
+          <div class="show-less">{{ section.settings.custom_loadless_gallery_button_text }}</div>
+        </button>
+      {% endif %}
+
+      {%- if mobile_controls == 'arrows' or mobile_controls == 'dotsandarrows' -%}
+        <button type="button" class="tap-area sm:hidden" is="carousel-next-button" aria-controls="{{ product_gallery_carousel_id }}">
+          <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+        </button>
+      {%- endif -%}
+
+      {%- comment -%} IMMEDIATE: Load review section {%- endcomment -%}
+      {% if section.settings.enable_featured_review %} 
+        <div class="custom_review_section sm-max:hidden"> 
+          <div class="review-container">
+            <div class="featured-review">
+              <svg width="31" height="21" viewBox="0 0 31 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.1121 20.7763C21.8321 20.7763 20.6961 20.4403 19.7041 19.7683C18.7121 19.0963 17.9281 18.1843 17.3521 17.0323C16.7761 15.8803 16.4881 14.6003 16.4881 13.1923C16.4881 10.8883 17.2401 8.6323 18.7441 6.4243C20.2801 4.1843 22.4401 2.3443 25.2241 0.904297L30.6001 3.7843C28.7761 4.6803 27.2241 5.7203 25.9441 6.9043C24.6961 8.0883 23.8481 9.4803 23.4001 11.0803C24.9041 11.2083 26.1201 11.6723 27.0481 12.4723C28.0081 13.2403 28.4881 14.3123 28.4881 15.6883C28.4881 17.0643 27.9921 18.2643 27.0001 19.2883C26.0401 20.2803 24.7441 20.7763 23.1121 20.7763ZM7.08005 20.7763C5.80005 20.7763 4.66405 20.4403 3.67206 19.7683C2.68005 19.0963 1.89605 18.1843 1.32005 17.0323C0.744055 15.8803 0.456055 14.6003 0.456055 13.1923C0.456055 10.8883 1.20805 8.6323 2.71205 6.4243C4.24805 4.1843 6.40805 2.3443 9.19205 0.904297L14.5681 3.7843C12.7441 4.6803 11.1921 5.7203 9.91206 6.9043C8.66405 8.0883 7.81605 9.4803 7.36805 11.0803C8.87206 11.2083 10.0881 11.6723 11.0161 12.4723C11.9761 13.2403 12.4561 14.3123 12.4561 15.6883C12.4561 17.0643 11.9601 18.2643 10.9681 19.2883C10.0081 20.2803 8.71205 20.7763 7.08005 20.7763Z" fill="white"></path>
+              </svg>
+              <div class="info">
+                <p>{{ section.settings.content }}</p>
+                <div class="bottom">
+                  <div class="author">
+                    <span>{{ section.settings.author }}</span>
+                    <svg width="73" height="15" viewBox="0 0 73 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.85148 2.53081C7.03489 2.15918 7.56481 2.15918 7.74822 2.53081L8.85217 4.76766C8.925 4.91523 9.06578 5.01752 9.22864 5.04118L11.6972 5.39988C12.1073 5.45947 12.271 5.96346 11.9743 6.25273L10.188 7.99387C10.0702 8.10874 10.0164 8.27424 10.0442 8.43644L10.4659 10.895C10.536 11.3034 10.1072 11.6149 9.74043 11.4221L7.53252 10.2613C7.38686 10.1847 7.21284 10.1847 7.06718 10.2613L4.85927 11.4221C4.49246 11.6149 4.06374 11.3034 4.1338 10.895L4.55547 8.43644C4.58329 8.27424 4.52951 8.10874 4.41167 7.99387L2.62544 6.25273C2.32868 5.96346 2.49243 5.45947 2.90254 5.39988L5.37106 5.04118C5.53391 5.01752 5.6747 4.91523 5.74753 4.76766L6.85148 2.53081Z" fill="white"></path>
+                      <path d="M21.4511 2.53081C21.6345 2.15918 22.1644 2.15918 22.3478 2.53081L23.4518 4.76766C23.5246 4.91523 23.6654 5.01752 23.8282 5.04118L26.2968 5.39988C26.7069 5.45947 26.8706 5.96346 26.5739 6.25273L24.7876 7.99387C24.6698 8.10874 24.616 8.27424 24.6438 8.43644L25.0655 10.895C25.1356 11.3034 24.7069 11.6149 24.34 11.4221L22.1321 10.2613C21.9865 10.1847 21.8124 10.1847 21.6668 10.2613L19.4589 11.4221C19.0921 11.6149 18.6633 11.3034 18.7334 10.895L19.1551 8.43644C19.1829 8.27424 19.1291 8.10874 19.0113 7.99387L17.225 6.25273C16.9283 5.96346 17.092 5.45947 17.5022 5.39988L19.9707 5.04118C20.1335 5.01752 20.2743 4.91523 20.3471 4.76766L21.4511 2.53081Z" fill="white"></path>
+                      <path d="M36.0517 2.53081C36.2351 2.15918 36.765 2.15918 36.9484 2.53081L38.0524 4.76766C38.1252 4.91523 38.266 5.01752 38.4288 5.04118L40.8974 5.39988C41.3075 5.45947 41.4712 5.96346 41.1745 6.25273L39.3882 7.99387C39.2704 8.10874 39.2166 8.27424 39.2444 8.43644L39.6661 10.895C39.7362 11.3034 39.3074 11.6149 38.9406 11.4221L36.7327 10.2613C36.5871 10.1847 36.413 10.1847 36.2674 10.2613L34.0595 11.4221C33.6927 11.6149 33.2639 11.3034 33.334 10.895L33.7557 8.43644C33.7835 8.27424 33.7297 8.10874 33.6119 7.99387L31.8256 6.25273C31.5289 5.96346 31.6926 5.45947 32.1027 5.39988L34.5713 5.04118C34.7341 5.01752 34.8749 4.91523 34.9477 4.76766L36.0517 2.53081Z" fill="white"></path>
+                      <path d="M50.6513 2.53081C50.8347 2.15918 51.3646 2.15918 51.548 2.53081L52.652 4.76766C52.7248 4.91523 52.8656 5.01752 53.0284 5.04118L55.497 5.39988C55.9071 5.45947 56.0708 5.96346 55.7741 6.25273L53.9878 7.99387C53.87 8.10874 53.8162 8.27424 53.844 8.43644L54.2657 10.895C54.3358 11.3034 53.907 11.6149 53.5402 11.4221L51.3323 10.2613C51.1867 10.1847 51.0126 10.1847 50.867 10.2613L48.6591 11.4221C48.2923 11.6149 47.8635 11.3034 47.9336 10.895L48.3553 8.43644C48.3831 8.27424 48.3293 8.10874 48.2115 7.99387L46.4252 6.25273C46.1285 5.96346 46.2922 5.45947 46.7023 5.39988L49.1709 5.04118C49.3337 5.01752 49.4745 4.91523 49.5473 4.76766L50.6513 2.53081Z" fill="white"></path>
+                      <path d="M65.2519 2.53081C65.4353 2.15918 65.9652 2.15918 66.1486 2.53081L67.2526 4.76766C67.3254 4.91523 67.4662 5.01752 67.629 5.04118L70.0975 5.39988C70.5077 5.45947 70.6714 5.96346 70.3747 6.25273L68.5884 7.99387C68.4706 8.10874 68.4168 8.27424 68.4446 8.43644L68.8663 10.895C68.9363 11.3034 68.5076 11.6149 68.1408 11.4221L65.9329 10.2613C65.7872 10.1847 65.6132 10.1847 65.4676 10.2613L63.2597 11.4221C62.8928 11.6149 62.4641 11.3034 62.5342 10.895L62.9559 8.43644C62.9837 8.27424 62.9299 8.10874 62.8121 7.99387L61.0258 6.25273C60.7291 5.96346 60.8928 5.45947 61.3029 5.39988L63.7714 5.04118C63.9343 5.01752 64.0751 4.91523 64.1479 4.76766L65.2519 2.53081Z" fill="white"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} IMMEDIATE: Load warranty {%- endcomment -%}
+    {% if section.settings.enable_warranty_icon %}
+      <div class="warranty-label-container warrenty_label" style="max-width:60px;">
+          <img src="https://cdn.shopify.com/s/files/1/0715/3536/2348/files/LIFETIME_WARRANTY.png?v=1699723539" alt="Warranty Label" class="warranty-label" loading="lazy">
+        </div>
+    {% endif %}
+
+    {%- assign first_3d_model = product.media | where: 'media_type', 'model' | first -%}
+    {%- if first_3d_model -%}
+      <link rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'; this.onload = null">
+      <button class="button w-full md:hidden" data-shopify-xr data-shopify-model3d-id="{{ first_3d_model.id }}" data-shopify-model3d-default-id="{{ first_3d_model.id }}" data-shopify-title="{{ product.title | escape }}" data-shopify-xr-hidden>
+        <span class="text-with-icon justify-center">
+          {%- render 'icon' with 'media-view-in-space' -%}
+          {{- 'product.general.view_in_space' | t -}}
+        </span>
+      </button>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} IMMEDIATE: Load controls {%- endcomment -%}
+  {%- if product.media.size > 1 or product == blank -%}
+    {%- liquid
+      assign show_thumbnails_mobile = false
+      assign show_thumbnails_desktop = false
+
+      if mobile_controls == 'thumbnails'
+        assign show_thumbnails_mobile = true
+      endif
+
+      if desktop_layout contains 'thumbnails' or desktop_layout == 'grid'
+        assign show_thumbnails_desktop = true
+      endif
+    -%}
+
+    {%- if show_thumbnails_mobile or show_thumbnails_desktop -%}
+      <safe-sticky class="product-gallery__thumbnail-list {% unless show_thumbnails_mobile %}hidden{% endunless %} {% unless show_thumbnails_desktop %}md:hidden{% else %}md:block{% endunless %}">
+        <product-gallery-navigation align-selected aria-controls="{{ product_gallery_carousel_id }}" class="product-gallery__thumbnail-scroller bleed md:unbleed">
+          {%- if product != blank -%}
+            {%- for media in product.media -%}
+              <button type="button" class="product-gallery__thumbnail" {% if filtered_indexes contains media.position %}hidden{% endif %} data-media-type="{{ media.media_type }}" data-media-position="{{ media.position }}" data-media-id="{{ media.id }}" aria-label="{{ 'general.accessibility.go_to_item' | t: index: forloop.index | escape }}">
+                {{- media | image_url: width: media.preview_image.width | image_tag: loading: 'lazy', sizes: '56px', widths: '56,112,168', class: 'object-contain' -}}
+                {%- unless media.media_type == 'image' -%}
+                  <div class="product-gallery__media-badge">
+                    {%- if media.media_type == 'model' -%}
+                      {%- render 'icon' with 'media-model-badge', width: 12 -%}
+                    {%- else -%}
+                      {%- render 'icon' with 'media-video-badge', width: 12 -%}
+                    {%- endif -%}
+                  </div>
+                {% endunless %}
+              </button>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for i in (1..3) -%}
+              {%- capture placeholder_name -%}product-{% cycle '1', '2', '3', '4', '5' %}{%- endcapture -%}
+              <button type="button" class="product-gallery__thumbnail" aria-label="{{ 'general.accessibility.go_to_item' | t: index: forloop.index | escape }}">
+                {{- placeholder_name | placeholder_svg_tag: 'placeholder object-contain' -}}
+              </button>
+            {%- endfor -%}
+          {%- endif -%}
+        </product-gallery-navigation>
+      </safe-sticky>
+    {%- endif -%}
+
+    {%- if mobile_controls == 'dots' or mobile_controls == 'dotsandarrows' or desktop_layout == 'carousel_dots' -%}
+      <carousel-navigation class="page-dots align-self-center {% unless mobile_controls == 'dots' or mobile_controls == 'dotsandarrows' %}md-max:hidden{% endunless %} {% unless desktop_layout == 'carousel_dots'%}md:hidden{% endunless %}" aria-controls="{{ product_gallery_carousel_id }}">
+        {%- if product != blank -%}
+          {%- assign first_visible_media_found = false -%}
+          {%- assign first_visible_media = null -%}
+          
+          {%- for media in product.media -%}
+            {%- assign is_card_only_check = false -%}
+            {%- if media.alt == 'card-only' -%}
+              {%- assign is_card_only_check = true -%}
+            {%- endif -%}
+            {%- unless filtered_indexes contains media.position or is_card_only_check or card_only_image -%}
+              {%- unless first_visible_media_found -%}
+                {%- assign first_visible_media = media -%}
+                {%- assign first_visible_media_found = true -%}
+              {%- endunless -%}
+            {%- endunless -%}
+          {%- endfor -%}
+          
+          {%- for media in product.media -%}
+            {%- assign is_card_only_dot = false -%}
+            {%- if media.alt == 'card-only' -%}
+              {%- assign is_card_only_dot = true -%}
+            {%- endif -%}
+            {%- assign is_current = false -%}
+            {%- if media == first_visible_media -%}
+              {%- assign is_current = true -%}
+            {%- endif -%}
+            <button type="button" class="tap-area {% if media.alt == 'card-only' %}card--only-dot{% endif %}"
+                    data-media-position="{{ media.position }}"
+                    {% if is_current %}aria-current="true"{% endif %}
+                    {% if filtered_indexes contains media.position or is_card_only_dot or card_only_image %}hidden{% endif %}>
+              <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: media.position }}</span>
+            </button>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..3) -%}
+            <button type="button" class="tap-area"
+                    data-media-position="{{ forloop.index }}"
+                    {% if forloop.first %}aria-current="true"{% endif %}>
+              <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: forloop.index }}</span>
+            </button>
+          {%- endfor -%}
+        {%- endif -%}
+      </carousel-navigation>
+    {%- endif -%}
+  {%- endif -%}
+</product-gallery>
