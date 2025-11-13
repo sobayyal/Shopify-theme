@@ -1,0 +1,301 @@
+<!-- promo-section-with-timer.liquid -->
+<section class="container container--xs">
+  <div class="promo-section">
+    <!-- Promo Image Section -->
+    <div class="promo-sec-width">
+    <div class="promo-section__image">
+      <img src="{{ section.settings.promo_image | img_url: 'large' }}" alt="Promo Image">
+    </div>
+    
+    <!-- Promo Text Section -->
+    <div class="promo-section__text">
+      <div class="sec-promo-gift">
+        <hr>
+      <p class="promo-gifts">{{ section.settings.subtext }}</p>
+        <hr>
+      </div>
+      <div class="heading__text">
+      <h2> <span class="promo-heading">{{ section.settings.promo_heading }} </span> <span class="promo-discount">{{ section.settings.promo_discount }} </span> </h2>
+      </div>
+      <!-- Button -->
+      <a href="{{ section.settings.button_link }}" class="custom-btn">
+          {{ section.settings.button_text }}
+          <span class="btn-icon"><img src="{{ section.settings.promo_btn_icon | img_url: 'small' }}" alt="Button Icon"></span>
+        </a>
+      
+      
+      <!-- Countdown Timer -->
+<p class="promo-timer">
+  <span class="promo-timer-text">DEAL ENDING IN:</span>
+  <span class="countdown-condensed__timer" style="display: flex; align-items: center;">
+    <countdown-timer class="countdown-condensed__timer" role="timer" aria-label="Deal Ending Countdown" expires-at="{{ section.settings.end_date | date: '%FT%T%:z' }}">
+      <span class="countdown-timer-promo" id="countdown-timer-{{ section.id }}" style="display: flex; gap: 1px;">
+        <span class="countdown-condensed__timer-item">
+          <countdown-timer-flip type="hours" class="custom-countdown-condensed__timer-flip" id="hours">00</countdown-timer-flip>
+        </span>
+        <span class="countdown-condensed__timer-item custom-separator">:</span>
+        <span class="countdown-condensed__timer-item">
+          <countdown-timer-flip type="minutes" class="custom-countdown-condensed__timer-flip" id="minutes">00</countdown-timer-flip>
+          
+        </span>
+        <span class="countdown-condensed__timer-item custom-separator">:</span>
+        <span class="countdown-condensed__timer-item">
+          <countdown-timer-flip type="seconds" class="custom-countdown-condensed__timer-flip" id="seconds">00</countdown-timer-flip>
+          
+        </span>
+      </span>
+    </countdown-timer>
+  </span>
+</p>
+
+
+
+
+
+      <!-- Risk and Shipping Info -->
+      <div class="promo-info">
+        <p>Sell Out Risk:<strong> <span style="color: #1c9ad6;">{{ section.settings.sell_out_risk }}</span> </strong></p>
+        <p class="promo-info-sep"></p>
+        <p> {{ section.settings.shipping_info }} </p>
+      </div>
+      
+      <!-- Guarantee Section -->
+      <p class="promo-guarantee">{{ section.settings.guarantee_text }}</p>
+    </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Promo Section with Timer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "promo_image",
+      "label": "Promo Image"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "FREE GIFTS WITH YOUR ORDER"
+    },
+    {
+      "type": "text",
+      "id": "promo_heading",
+      "label": "Promo Heading",
+      "default": "UP TO 56% OFF"
+    },
+    {
+      "type": "text",
+      "id": "promo_discount",
+      "label": "Promo Discount",
+      "default": "FOR A LIMITED TIME ONLY"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Select Scents"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_btn_icon",
+      "label": "Button Icon"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "Countdown End Date",
+      "default": "2024-12-31T23:59:59Z"
+    },
+    {
+      "type": "text",
+      "id": "sell_out_risk",
+      "label": "Sell Out Risk",
+      "default": "HIGH"
+    },
+    {
+      "type": "text",
+      "id": "shipping_info",
+      "label": "Shipping Info",
+      "default": "FREE Shipping"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "Dermatologist Tested - 100% Money Back Guarantee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Add some CSS to style the section -->
+<style>
+  .custom-countdown-condensed__timer-flip {
+    font-size: 14px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+  .promo-timer {
+    display: flex;
+    align-items: center; /* Aligns the timer text and countdown in the center */
+    justify-content: center; /* Center the timer horizontally */
+}
+  .custom-separator{
+    margin:0px;
+  }
+
+.countdown-condensed__timer {
+    display: flex; /* Ensures the timer items are in a row */
+    align-items: center; /* Vertically centers the timer items */
+}
+
+.countdown-condensed__timer-item {
+    font-weight: bold; /* Makes the timer numbers bold */
+}
+
+.separator {
+    font-weight: normal; /* Regular weight for separators */
+    margin: 0 5px; /* Adjust space around the separator */
+}
+
+  .promo-sec-width{
+    max-width: 400px;
+    border-radius: 20px;
+    border:1px dotted black;
+  }
+  .promo-section {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: -25px 0px 0px;
+}
+  .promo-section__image img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .promo-heading {
+    font-size: 1.25em;
+    color: #f36c21;
+    font-weight: 700;
+    margin: 10px 0;
+}
+  .promo-discount {
+    font-size: 1.25em;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .custom-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #00a6e8;
+    color: white;
+    padding: 18px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    width: 90%;
+    font-family: 'Montserrat';
+}
+
+  .custom-btn:hover {
+    background-color: #007bbd; /* Darker blue on hover */
+  }
+
+  .btn-icon {
+    margin-left: 10px;
+    font-size: 1.2em;
+    width: 20px;
+}
+  .promo-timer {
+    color: red;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight:800;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+  .promo-info p {
+    font-size: 11px;
+    display: inline-block;
+    margin-right: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+  .promo-guarantee {
+    font-size: 10px;
+    margin-bottom: 1.5rem;
+    color: #535353;
+}
+  .sec-promo-gift {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+  .sec-promo-gift hr {
+    border-color: #ccc;
+    width: 15%;
+    height: 1px;
+}
+  .promo-gifts {
+    width: auto;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #535353;
+    font-weight: 700;
+}
+  .heading__text {
+    display: flex;
+    justify-content: center;
+    padding: 22px 0px;
+}
+  .heading__text h2 {
+    max-width: 290px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height:30px;
+    
+}
+  .promo-timer-text{
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    justify-content: center;
+    font-weight:800;
+    color:#000;
+    margin-right:5px;
+  }
+  .promo-info {
+    background: #f36c211a;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    margin-bottom: .5rem;
+    font-size: 11px;
+    justify-content: center;
+}
+  .promo-info-sep{
+    border-left:1px solid black;
+  }
+</style>

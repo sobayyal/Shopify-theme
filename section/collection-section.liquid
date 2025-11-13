@@ -1,0 +1,301 @@
+<div class="shop-categories-section">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <div class="section-header">
+        <h2 class="section-heading">{{ section.settings.heading }}</h2>
+        {% if section.settings.subheading != blank %}
+          <p class="section-subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="categories-grid container">
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        <div class="category-item" {{ block.shopify_attributes }}>
+          <a href="{{ collection.url | default: '#' }}" class="category-link">
+            <div class="category-image">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 500 | image_tag: 
+                   loading: 'lazy',
+                   alt: block.settings.title,
+                   class: 'category-img'
+                }}
+              {% else %}
+                <div class="category-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21,15 16,10 5,21"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="category-content">
+              {% if block.settings.title != blank %}
+                <h3 class="category-title">{{ block.settings.title }}</h3>
+              {% elsif collection %}
+                <h3 class="category-title">{{ collection.title }}</h3>
+              {% endif %}
+              
+              {% if block.settings.description != blank %}
+                <p class="category-description">{{ block.settings.description }}</p>
+              {% elsif collection and collection.description != blank %}
+                <p class="category-description">{{ collection.description | truncate: 100 }}</p>
+              {% endif %}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.shop-categories-section {
+  padding: 40px 0 0;
+  background-color: {{ section.settings.background_color | default: '#ffffff' }};
+}
+
+.shop-categories-section .section-header {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-size: 32px;
+  text-transform: uppercase;
+  color: {{ section.settings.heading_color | default: '#000000' }};
+  line-height: normal;
+  margin: 0 0 2px 0;
+  letter-spacing: 0px;
+  font-weight:400;
+  
+}
+
+.section-subheading {
+  font-size: 18px;
+  color: {{ section.settings.subheading_color | default: '#090909' }};
+  margin: 0;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.category-item {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+.category-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-image {
+  position: relative;
+  width: 100%;
+  height: 20vw;
+  overflow: hidden;
+  background: #F6F5FA;
+}
+
+.category-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.category-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  color: #999;
+}
+
+.category-placeholder svg {
+  width: 60px;
+  height: 60px;
+}
+
+.category-content {
+  padding: 10px 0;
+  text-align: left;
+}
+
+.category-title {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 5px 0;
+  color: #000;
+}
+
+.category-description {
+  font-size: 0.95rem;
+  color: #000;
+  font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .shop-categories-section .section-heading{
+   font-size:22px;
+  }
+  .section-subheading{
+  font-size:14px;
+  }
+  .shop-categories-section {
+    padding: 30px 0 0;
+  }
+  
+  .section-heading {
+    font-size: 2rem;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .category-content{
+  padding:10px 0px 5px !important;
+  }
+  .category-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 2px 0;
+  }
+  .category-image {
+    height: 40vw;
+  }
+  
+  .category-description {
+    font-size: 14px;
+  }
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Shop by Categories",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Shop by Categories",
+      "label": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section Subheading",
+      "info": "Optional subheading text"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#666666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select a collection to link to"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "info": "Leave blank to use collection title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Category Description",
+          "info": "Leave blank to use collection description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Categories",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Ridge Wallets",
+            "description": "Slim, RFID-blocking, Guaranteed for Life."
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Wedding Bands",
+            "description": "Bold Designs. Built Tough."
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Hardshell Luggage",
+            "description": "Engineered For Adventure."
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Magnetic Power Bank",
+            "description": "Complete Your Tech Ecosystem."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

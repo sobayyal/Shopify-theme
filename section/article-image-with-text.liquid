@@ -1,0 +1,145 @@
+<!-- content-section-with-image.liquid -->
+<section class="content-section-with-image">
+  <div class="container container--xs">
+    <div class="content-section__item">
+
+      <div class="desktop-hidden">
+        <!-- Conditionally show the title if it's set -->
+        {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+      </div>
+      <!-- Conditionally show the image if it's set -->
+      {% if section.settings.image != blank %}
+        <div class="content-section__image">
+          <img src="{{ section.settings.image | img_url: 'large' }}" alt="Content Image">
+        </div>
+      {% endif %}
+      
+      <div class="content-section__text">
+        <div class="mobile-hidden">
+        <!-- Conditionally show the title if it's set -->
+        {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+        </div>
+        <!-- Conditionally show the description if it's set -->
+        {% if section.settings.article_description != blank %}
+          {{ section.settings.article_description }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Your Title Here"
+    },
+    {
+      "type": "richtext",
+      "id": "article_description",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content with Image",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Add some CSS to style the section -->
+<style>
+  .content-section__item {
+    display: flex;
+    align-items: flex-start !important;
+    margin: 30px 0  ;
+    padding: 18px 12px ;
+}
+  @media screen and (max-width:580px){
+        .content-section__item {
+        padding: 8px 6px ;
+    }
+  }
+  .content-section__image {
+    flex: 0 0 40%;
+    margin-right: 0 !important;
+  }
+  .content-section__image img {
+    width: 100%;
+    border-radius: 15px;
+  }
+  .content-section__text {
+    flex: 1;
+    margin-left: 14px;
+    padding: 0px 0px 1rem 0.3rem ;
+}
+  .content-section__text h2 {
+    font-family: 'Montserrat';
+    font-size: 1.7rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .content-section__text p {
+    font-family: 'Montserrat';
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+    max-width: 90%;
+}
+
+  @media screen and (max-width: 500px) {
+
+    .content-section__item {
+    flex-direction:column;
+    }
+    .mobile-hidden{
+      display:none;
+    }
+    .article-title {
+        width: 90vw !important;
+    }
+    .content-section__text {
+    margin-left: 0px !important;
+    padding: 15px 0px 0px !important;
+}
+  .content-section__item h2 {
+        padding-bottom: 15px;
+        font-family: 'Montserrat';
+        font-size: 1.7rem;
+        line-height: 1;
+        font-weight: 700;
+    }
+    .content-section__text p {
+    max-width: 100%;
+}
+}
+  @media screen and (min-width: 500px) {
+  .desktop-hidden{
+    display:none;
+  }
+    .article-title {
+        width: 100% !important;
+    }
+    .content-section__image img {
+    min-width: 300px !important;
+  }
+    
+  }
+  
+</style>

@@ -1,0 +1,362 @@
+{% comment %}
+  Featured In Section
+  Displays a heading with logos in a single row
+{% endcomment %}
+
+<div class="featured-in-section">
+  <div class="container">
+    {% if section.settings.heading != blank %}
+      <h2 class="featured-in-heading h2">{{ section.settings.heading }}</h2>
+    {% endif %}
+    <div class="featured-logos">
+      {% for block in section.blocks %}
+        <div class="logo-item" {{ block.shopify_attributes }}>
+          {% if block.settings.logo_link != blank %}
+            <a href="{{ block.settings.logo_link }}" target="_blank" rel="noopener">
+          {% endif %}
+          
+          {% if block.settings.logo_image != blank %}
+            <img 
+              src="{{ block.settings.logo_image | image_url: width: '1400x' }}" 
+              alt="{{ block.settings.logo_alt }}"
+              loading="lazy"
+              class="logo-image"
+            >
+          {% else %}
+            <div class="logo-placeholder">{{ block.settings.logo_alt }}</div>
+          {% endif %}
+          
+          {% if block.settings.logo_link != blank %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+
+  .featured-in-section .logo-item:nth-child(5) .logo-image {
+    max-width:110px !important;
+    }
+    .featured-in-section .logo-item:nth-child(4) .logo-image {
+    max-width:130px !important;
+    }
+.featured-in-section {
+  background-color: {{ section.settings.background_color }};
+  padding: 25px 0 45px;
+  margin-top: {{ section.settings.margin_top }}px;
+}
+.collection-template .featured-in-section {
+  padding:25px 0 25px !important;
+}
+
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.featured-in-heading {
+  text-align: center;
+  color: {{ section.settings.heading_color }};
+  margin-bottom: 28px;
+}
+
+.featured-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: {{ section.settings.logo_spacing }}px;
+}
+.logo-item {
+  flex: 0 0 auto;
+  width:165px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.logo-item a {
+  display: block;
+}
+.logo-image {
+  max-width: {{ section.settings.logo_max_width }}px;
+  height: auto;
+  display: block;
+  filter: grayscale({{ section.settings.grayscale_amount }}%);
+  opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+}
+.logo-placeholder {
+  padding: 20px 40px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  color: #999;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .featured-in-section .logo-item:nth-child(5) .logo-image{
+   max-width:55px !important;
+  }
+  .logo-item{
+   width:50px !important;
+   justify-content: center !important;
+  }
+  
+  .featured-logos{
+    align-items: center;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-around !important;
+  }
+  .featured-logos .logo-item:nth-child(4) .logo-image {
+    max-width:45px !important;
+  }
+  .logo-image {
+    max-width: 55px;
+  }
+  .featured-in-section {
+    padding: 15px 0 25px !important;
+    margin-top:25px;
+}
+.collection-template .featured-in-section{
+    padding: 15px 0 25px !important;
+    margin-top:0px !important;
+}
+.index-section .featured-in-section{
+  margin-top:0px !important;
+  padding:0px 0 25px !important;
+}
+
+.featured-in-section .container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+  .featured-in-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width:360px){
+  .featured-logos .logo-item:nth-child(4) .logo-image {
+    max-width: 45px !important;
+  }
+  .logo-image {
+    max-width: 50px;
+  }
+  .featured-logos .logo-item:nth-child(5) .logo-image {
+    max-width: 50px !important;
+  }
+}
+
+@media screen and (max-width:500px){
+  .featured-logos .logo-item:nth-child(5) .logo-image {
+    max-width: 45px !important;
+  }
+}
+@media(max-width:360px){
+  .featured-logos{
+  gap:10px !important;
+  }
+}
+@media(max-width:320px){
+  .featured-logos{
+  gap:5px !important;
+  }
+}
+
+.index-section .featured-in-section{
+  padding:0px 0 45px !important;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Featured In",
+  "tag": "section",
+  "class": "section-featured-in",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FEATURED IN:"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#7a7a7a"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ececec"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 60,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo max width",
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between logos",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Logo opacity",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "hover_opacity",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Logo hover opacity",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "grayscale_amount",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Grayscale filter",
+      "default": 100,
+      "info": "0% = full color, 100% = black & white"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Margin",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Logo alt text",
+          "default": "Brand name",
+          "info": "Describe the logo for accessibility"
+        },
+        {
+          "type": "url",
+          "id": "logo_link",
+          "label": "Logo link (optional)",
+          "info": "Leave blank for no link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured In",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "CNBC"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "FOX Business"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "TIME"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "CNN Money"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "US News"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

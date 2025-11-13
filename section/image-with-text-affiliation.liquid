@@ -1,0 +1,351 @@
+<div class="affiliate-second-section">
+  <div class="affiliate-image-wrapper desktop-hidden">
+      <img src="{{ section.settings.mobile_main_image | img_url: 'master' }}" alt="{{ section.settings.image_alt_text }}" class="affiliate-image" style="">
+    </div>
+  <div class="affiliate-second-content">
+
+    
+    
+    <span class="affiliate-heading">{{ section.settings.heading_text }}</span>
+    <span class="affiliate-heading-color">{{ section.settings.subheading_text }}</span>
+    
+    <div class="affiliate-second-buttons">
+      <a href="{{ section.settings.affiliate_link }}" target="_blank" class="affiliate-second-buttons primary-second-button">
+        {{ section.settings.affiliate_button_text }}
+      </a>
+      
+      <a href="{{ section.settings.agency_link }}" target="_blank" class="affiliate-second-buttons secondary-second-button">
+        {{ section.settings.agency_button_text }}
+      </a>
+    </div>
+  </div>
+  
+  <div class="affiliate-image-wrapper mobile-hidden">
+    <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="{{ section.settings.image_alt_text }}" class="affiliate-image" style="margin-bottom: 0rem;">
+  </div>
+</div>
+
+<!-- Schema -->
+{% schema %}
+{
+  "name": "Affiliate Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "mobile_main_image",
+      "label": "Mobile Section Image"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Become a TikTok Ads Affiliate"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading_text",
+      "label": "Second Heading Text",
+      "default": "Affiliate partners and agency partners apply to the separate links below. Business Center ID required for Agency program."
+    },
+    {
+      "type": "text",
+      "id": "affiliate_button_text",
+      "label": "Affiliate Button Text",
+      "default": "Join as affiliate"
+    },
+    {
+      "type": "url",
+      "id": "affiliate_link",
+      "label": "Affiliate Link"
+    },
+    {
+      "type": "text",
+      "id": "agency_button_text",
+      "label": "Agency Button Text",
+      "default": "Join as agency"
+    },
+    {
+      "type": "url",
+      "id": "agency_link",
+      "label": "Agency Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image Alt Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate Section"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+  .primary-second-button:hover {
+    background: #fff;
+    border-color: #000;
+    color: #000;
+}
+  .secondary-second-button:hover {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+}
+  
+  /* General Container */
+.affiliate-second-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 4rem;
+}
+  @media screen and (min-width:500px){
+    .affiliate-image-wrapper.desktop-hidden {
+    display: none;
+    }
+}
+
+  @media screen and (max-width:500px){
+    .affiliate-image-wrapper.mobile-hidden {
+    display: none;
+} 
+}
+@media (min-width: 768px) {
+  
+  
+  .affiliate-second-section {
+    flex-direction: row; /* Align side by side on desktop */
+    padding: 0rem 2rem;
+  }
+}
+
+/* Content Area */
+.affiliate-second-content,
+.affiliate-image-wrapper {
+  width: 100%; /* Full width on mobile */
+}
+
+@media (min-width: 768px) {
+  .affiliate-second-content{
+    width: 50%;
+  }
+  .affiliate-image-wrapper {
+    width: 50%; /* Equal width (50%) for both columns on desktop */
+  }
+}
+
+@media (min-width: 768px) {
+.affiliate-logo {
+  margin-bottom: 1.9rem !important;
+  max-width: 232px !important;
+}
+}
+  .affiliate-logo {
+    margin-bottom: 5.2rem;
+    max-width: 210px;
+}
+
+.affiliate-heading {
+    margin-bottom: 4rem;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #000;
+    line-height: 1.1;
+    font-family: TikTok Text, TikTok Display, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+  .affiliate-heading-color {
+    margin-bottom: 4rem;
+    font-weight: 700;
+    font-size: 4.3rem;
+    color: #000;
+    line-height: 1.1;
+    font-family: TikTok Text, TikTok Display, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  }
+
+  
+@media (min-width: 768px) {
+  .affiliate-heading {
+    margin-bottom: 0rem !important;
+    color: #000 !important;
+    font-size: 3.6rem !important;
+    line-height: 120% !important;
+    font-weight: bold !important;
+    letter-spacing: -0.5px !important;
+    font-family: TikTok Text, TikTok Display, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  }
+  .affiliate-heading-color {
+        margin-bottom: 0rem !important;
+        color: #000;
+        font-size: 84px !important;
+        line-height: 120% !important;
+        font-weight: bold !important;
+        letter-spacing: -0.5px !important;
+        font-family: TikTok Text, TikTok Display, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    }
+}
+  body{
+    font-family: TikTok Text, TikTok Display, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  }
+  
+/* Button Styling */
+
+
+@media (min-width: 768px) {
+  .affiliate-second-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 46vw;
+  }
+  .affiliate-second-buttons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .primary-second-button {
+    color: #fff;
+    text-align: center;
+    border-style: solid;
+    margin-top: 2.5rem;
+    cursor: pointer;
+    background-color: #000;
+    border-color: #000;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 9999px;
+    border-width: 2px;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.secondary-second-button {
+    margin-left: 0.4rem;
+    text-align: center;
+    border-style: solid;
+    cursor: pointer;
+    margin-top: 2.5rem;
+    border-color: #000;
+    color: #000;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 9999px;
+    border-width: 2px;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+}
+  @media screen and (max-width:786px){
+    .affiliate-second-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 46vw;
+  }
+    .affiliate-second-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0rem 0rem 3rem;
+    gap: 0rem;
+}
+    .primary-second-button {
+    color: #fff;
+    text-align: center;
+    border-style: solid;
+    margin-top: 2.5rem;
+    cursor: pointer;
+    background-color: #000;
+    border-color: #000;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 9999px;
+    border-width: 2px;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.secondary-second-button {
+    text-align: center;
+    border-style: solid;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    border-color: #000;
+    color: #000;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 9999px;
+    border-width: 2px;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+    .affiliate-second-content {
+    padding: 0rem 1.5rem;
+}
+  }
+ 
+  
+.affiliate-button:hover {
+  opacity: 0.9;
+}
+
+/* Image Styling */
+.affiliate-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.affiliate-image {
+    margin-bottom: 2.5rem;
+    width: 100%;
+    max-width: 40rem;
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .affiliate-image {
+    max-height: 37rem !important;
+  }
+   .affiliate-second-content {
+   display:flex;
+   flex-direction:column;
+    padding-right: 0rem;
+    padding-left: 5rem;
+    padding-top: 5.25rem;
+    padding-bottom: 5.25rem;
+}
+  .affiliate-second-buttons {
+    margin-top: auto;
+}
+}
+  .affiliate-second-section {
+  border-bottom: 1px solid lightgray;
+  }
+
+  
+</style>

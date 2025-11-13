@@ -1,0 +1,51 @@
+<!-- sections/announcement-bar-button.liquid -->
+
+<div class="announcement-bars" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-1400">
+    <a href="/"><span class="announcement-text">{{ section.settings.text }}</span></a>
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="announcement-button">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Top Bar with Button",
+  "class": "pos-stick",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement Text",
+      "default": "WOMEN'S FITNESS"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Find Out The Favourites"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Bar with Button",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

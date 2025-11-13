@@ -1,0 +1,339 @@
+{% comment %}
+  Comparison Image Section
+  Displays an image with text underneath, with separate settings for mobile and desktop
+{% endcomment %}
+
+<style>
+  .nobl_comparison-image {
+    width: 100%;
+    padding: 60px 20px 40px;
+  }
+
+  .nobl_comparison-image__container {
+    margin: 0 auto;
+  }
+
+  .nobl_comparison-image__title {
+    margin-bottom: 20px;
+  }
+  
+  .nobl_comparison-image__picture {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .nobl_comparison-image__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .nobl_comparison-image__img--desktop {
+    display: none;
+  }
+
+  .nobl_comparison-image__img--mobile {
+    display: block;
+  }
+
+  .nobl_comparison-image__text {
+    text-align: center;
+  }
+
+  .nobl_comparison-image__text-content {
+    margin: 0;
+  }
+
+  /* Desktop styles */
+  @media (min-width: 768px) {
+    .nobl_comparison-image__title br{
+      display:none;
+    }
+    
+    .nobl_comparison-image__img--desktop {
+      display: block;
+    }
+
+    .nobl_comparison-image__img--mobile {
+      display: none;
+    }
+  }
+  @media screen and (max-width:767px){
+    .nobl_comparison-image {
+        padding: 0px 20px 0px;
+    }
+    .nobl_comparison-image__title {
+      max-width: 19rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .nobl_comparison-image__title {
+      margin-bottom: 17px !important;
+    }
+  }
+  @media screen and (max-width:340px){
+  .nobl_comparison-image__title{
+    font-size:20px !important;
+  }
+}
+</style>
+
+<div class="nobl_comparison-image">
+  <div class="nobl_comparison-image__container">
+    {% if section.settings.title != blank %}
+      <h2 
+        class="nobl_comparison-image__title h2"
+        style="
+          text-align: {{ section.settings.title_alignment }};
+          color: {{ section.settings.title_color }};
+          font-size: {{ section.settings.title_font_size_mobile }}px;
+          font-weight: {{ section.settings.title_font_weight }};
+          margin-bottom: {{ section.settings.title_margin_bottom }}px;
+        "
+      >
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.image_desktop != blank or section.settings.image_mobile != blank %}
+      <div class="nobl_comparison-image__picture">
+        {% if section.settings.image_mobile != blank %}
+          <img
+            src="{{ section.settings.image_mobile | img_url : 'master' }}"
+            alt="{{ section.settings.image_mobile.alt | escape }}"
+            class="nobl_comparison-image__img nobl_comparison-image__img--mobile"
+            style="max-width: {{ section.settings.image_max_width_mobile }}px;margin:auto;"
+          >
+        {% endif %}
+        
+        {% if section.settings.image_desktop != blank %}
+          <img
+            src="{{ section.settings.image_desktop | img_url: 'master' }}"
+            alt="{{ section.settings.image_desktop.alt | escape }}"
+            class="nobl_comparison-image__img nobl_comparison-image__img--desktop"
+            style="max-width: {{ section.settings.image_max_width_desktop }}px;margin:auto;"
+          >
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.text_content != blank %}
+      <div class="nobl_comparison-image__text">
+        <div 
+          class="nobl_comparison-image__text-content"
+          style="
+            color: {{ section.settings.text_color }};
+            font-size: {{ section.settings.text_font_size_mobile }}px;
+          "
+        >
+          {{ section.settings.text_content }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+    .nobl_comparison-image__text{
+     max-width:{{ section.settings.image_max_width_mobile }}px;
+     margin:auto;
+    }
+  @media (min-width: 768px) {
+    .nobl_comparison-image__title {
+      font-size: {{ section.settings.title_font_size_desktop }}px !important;
+    }
+    
+    .nobl_comparison-image__text{
+     max-width:{{ section.settings.image_max_width_desktop }}px;
+     margin:auto;
+    }
+    .nobl_comparison-image__text-content {
+      font-size: {{ section.settings.text_font_size_desktop }}px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Comparison Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Comparison Title"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 12,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop Title Font Size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Title Font Size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Title Bottom Spacing",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Desktop Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "range",
+      "id": "image_max_width_desktop",
+      "min": 200,
+      "max": 2000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop Image Max Width",
+      "default": 1200
+    },
+    {
+      "type": "header",
+      "content": "Mobile Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "range",
+      "id": "image_max_width_mobile",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile Image Max Width",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "text_content",
+      "label": "Text Content",
+      "default": "<p>Add your comparison text here</p>"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_desktop",
+      "min": 6,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "min": 6,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile Font Size",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Image"
+    }
+  ]
+}
+{% endschema %}

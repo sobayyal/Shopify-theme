@@ -1,0 +1,221 @@
+<div class="section-spacing">
+  <section id="dynamic-variant-blocks">
+    <div class="container">
+      {% for block in section.blocks %}
+        <div class="variant-block"
+             data-variant-id="{{ block.settings.block_id }}"
+             data-default="{{ block.settings.is_default }}"
+             style="display: none;">
+          
+          {% if forloop.first %}
+            {%- comment -%} First/default block images load when visible {%- endcomment -%}
+            <!-- Desktop Image -->
+            <img src="{{ block.settings.desktop_image | img_url: 'master' }}" 
+                 alt="Desktop Image for {{ block.settings.block_id | escape }}" 
+                 class="desktop-image"
+                 loading="lazy"
+                 width="{{ block.settings.desktop_image.width | default: 1200 }}"
+                 height="{{ block.settings.desktop_image.height | default: 800 }}">
+
+            <!-- Mobile Image -->
+            <img src="{{ block.settings.mobile_image | img_url: 'master' }}" 
+                 alt="Mobile Image for {{ block.settings.block_id | escape }}" 
+                 class="mobile-image"
+                 loading="lazy"
+                 width="{{ block.settings.mobile_image.width | default: 800 }}"
+                 height="{{ block.settings.mobile_image.height | default: 1000 }}">
+          {% else %}
+            {%- comment -%} Other variant blocks use data-src for deferred loading {%- endcomment -%}
+            <!-- Desktop Image -->
+            <img data-src="{{ block.settings.desktop_image | img_url: 'master' }}" 
+                 alt="Desktop Image for {{ block.settings.block_id | escape }}" 
+                 class="desktop-image lazy-load-variant"
+                 loading="lazy"
+                 width="{{ block.settings.desktop_image.width | default: 1200 }}"
+                 height="{{ block.settings.desktop_image.height | default: 800 }}"
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='100%25' height='100%25' fill='%23f8f8f8'/%3E%3C/svg%3E">
+
+            <!-- Mobile Image -->
+            <img data-src="{{ block.settings.mobile_image | img_url: 'master' }}" 
+                 alt="Mobile Image for {{ block.settings.block_id | escape }}" 
+                 class="mobile-image lazy-load-variant"
+                 loading="lazy"
+                 width="{{ block.settings.mobile_image.width | default: 800 }}"
+                 height="{{ block.settings.mobile_image.height | default: 1000 }}"
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000'%3E%3Crect width='100%25' height='100%25' fill='%23f8f8f8'/%3E%3C/svg%3E">
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<style>
+/* Responsive images */
+.desktop-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.mobile-image {
+  display: none;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Lazy loading for variant images */
+.lazy-load-variant {
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
+}
+
+.lazy-load-variant.loaded {
+  opacity: 1;
+}
+
+/* Prevent layout shift */
+.variant-block {
+  min-height: 400px; /* Adjust based on your typical image height */
+}
+@media (max-width: 768px) {
+  .desktop-image {
+    display: none;
+  }
+  
+  .mobile-image {
+    display: block;
+  }
+  .variant-block {
+  min-height: 340px; /* Adjust based on your typical image height */
+}
+}
+</style>
+
+{%- comment -%} MINIMAL JAVASCRIPT FOR FUNCTIONALITY ONLY {%- endcomment -%}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for lazy loading (progressive enhancement)
+  if ('IntersectionObserver' in window) {
+    const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          if (lazyImage.dataset.src) {
+            lazyImage.src = lazyImage.dataset.src;
+            lazyImage.classList.add('loaded');
+            lazyImageObserver.unobserve(lazyImage);
+          }
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px 0px'
+    });
+
+    // Observe all lazy images
+    document.querySelectorAll('.lazy-load, .lazy-load-variant').forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+
+  // Variant switching functionality
+  function showVariantContent() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentVariant = urlParams.get('variant');
+    
+    // Handle slider sections
+    const sliderSections = document.querySelectorAll('#dynamic-product-slider');
+    sliderSections.forEach(function(section) {
+      const variantId = section.dataset.variantId;
+      const isDefault = section.dataset.default === 'true';
+      
+      if ((currentVariant && variantId === currentVariant) || (!currentVariant && isDefault)) {
+        section.style.display = 'block';
+        // Load images when section becomes visible
+        section.querySelectorAll('.lazy-load').forEach(function(img) {
+          if (img.dataset.src && !img.src.includes(img.dataset.src)) {
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+          }
+        });
+      } else {
+        section.style.display = 'none';
+      }
+    });
+
+    // Handle variant blocks
+    const variantBlocks = document.querySelectorAll('.variant-block');
+    variantBlocks.forEach(function(block) {
+      const variantId = block.dataset.variantId;
+      const isDefault = block.dataset.default === 'true';
+      
+      if ((currentVariant && variantId === currentVariant) || (!currentVariant && isDefault)) {
+        block.style.display = 'block';
+        // Load images when block becomes visible
+        block.querySelectorAll('.lazy-load-variant').forEach(function(img) {
+          if (img.dataset.src && !img.src.includes(img.dataset.src)) {
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+          }
+        });
+      } else {
+        block.style.display = 'none';
+      }
+    });
+  }
+
+  // Initialize on page load
+  showVariantContent();
+
+  // Listen for variant changes (if you have variant selectors)
+  document.addEventListener('variant:change', function() {
+    setTimeout(showVariantContent, 100);
+  });
+
+  // Listen for URL changes
+  window.addEventListener('popstate', showVariantContent);
+});
+</script>
+
+{% schema %}
+{
+    "name": "Dynamic Variant Blocks",
+    "blocks": [
+        {
+            "type": "block",
+            "name": "Image Block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "desktop_image",
+                    "label": "Desktop Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "mobile_image",
+                    "label": "Mobile Image"
+                },
+                {
+                    "type": "text",
+                    "id": "block_id",
+                    "label": "Variant ID",
+                    "info": "Enter the variant ID for which this block should be displayed"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "is_default",
+                    "label": "Default Block",
+                    "info": "Check this box if this block should be displayed by default when no variant ID is present in the URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Dynamic Variant Blocks",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

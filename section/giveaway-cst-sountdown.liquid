@@ -1,0 +1,591 @@
+{% style %}
+  .Nobl-cd-section {
+    background-color: {{ section.settings.background_color }};
+    padding: 0;
+  }
+
+  .Nobl-cd-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+
+  .Nobl-cd-content-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .Nobl-cd-image-side {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .Nobl-cd-desktop-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .Nobl-cd-mobile-image {
+    display: none;
+  }
+
+  .Nobl-cd-image-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .Nobl-cd-title {
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+
+  .Nobl-cd-subtitle {
+    font-size: {{ section.settings.subtitle_size }}px;
+    font-weight: 400;
+    color: {{ section.settings.subtitle_color }};
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+
+  .Nobl-cd-button-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    font-size: {{ section.settings.button_size }}px;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: {{ section.settings.button_radius }}px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+  }
+
+  .Nobl-cd-button-top:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .Nobl-cd-timer-label {
+    font-size: {{ section.settings.timer_label_size }}px;
+    font-weight: 600;
+    color: {{ section.settings.timer_label_color }};
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .Nobl-cd-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    
+  }
+
+  .Nobl-cd-time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+  }
+
+  .Nobl-cd-separator {
+    font-size: {{ section.settings.number_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.number_color }};
+    line-height: 0.8;
+    padding: 0 5px;
+  }
+
+  .Nobl-cd-time-value {
+    font-size: {{ section.settings.number_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.number_color }};
+    line-height: 1;
+  }
+
+  .Nobl-cd-time-label {
+    font-size: {{ section.settings.label_size }}px;
+    font-weight: 500;
+    color: {{ section.settings.label_color }};
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  /* Reverse layout option */
+  .Nobl-cd-wrapper.reverse {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .Nobl-cd-wrapper.reverse .Nobl-cd-content-side {
+    order: 2;
+  }
+
+  .Nobl-cd-wrapper.reverse .Nobl-cd-image-side {
+    order: 1;
+  }
+
+  @media (max-width: 768px) {
+    .Nobl-cd-wrapper,
+    .Nobl-cd-wrapper.reverse {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .Nobl-cd-separator {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 0.8;
+    padding: 0 5px;
+}
+
+    .Nobl-cd-content-side {
+      order: 2;
+      padding: 40px 20px;
+    }
+
+    .Nobl-cd-image-side {
+      order: 1;
+      min-height: 300px;
+    }
+
+    .Nobl-cd-desktop-image {
+      display: none;
+    }
+
+    .Nobl-cd-mobile-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .Nobl-cd-title {
+      font-size: {{ section.settings.title_size | minus: 10 }}px;
+    }
+
+    .Nobl-cd-subtitle {
+      font-size: {{ section.settings.subtitle_size | minus: 2 }}px;
+      margin-bottom: 25px;
+    }
+
+    .Nobl-cd-button-top {
+      font-size: {{ section.settings.button_size | minus: 2 }}px;
+      padding: 10px 24px;
+      margin-bottom: 25px;
+    }
+
+    .Nobl-cd-timer-label {
+      font-size: {{ section.settings.timer_label_size | minus: 2 }}px;
+      margin-bottom: 12px;
+    }
+
+    .Nobl-cd-timer {
+      gap: 10px;
+    }
+
+    .Nobl-cd-time-block {
+      min-width: 55px;
+    }
+
+    .Nobl-cd-time-value {
+      font-size: {{ section.settings.number_size | minus: 15 }}px;
+    }
+
+    .Nobl-cd-time-label {
+      font-size: {{ section.settings.label_size | minus: 2 }}px;
+    }
+
+    .Nobl-cd-image-overlay {
+      font-size: 16px;
+      padding: 6px 12px;
+      bottom: 15px;
+      right: 32px;
+    }
+  }
+{% endstyle %}
+
+<section class="Nobl-cd-section " >
+  <div class="Nobl-cd-wrapper {% if section.settings.image_position == 'left' %}reverse{% endif %}">
+    <div class="Nobl-cd-content-side">
+      {% if section.settings.title != blank %}
+        <h2 class="Nobl-cd-title">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="Nobl-cd-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+
+      {% if section.settings.show_button_top and section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="Nobl-cd-button-top">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.timer_label != blank %}
+        <div class="Nobl-cd-timer-label">{{ section.settings.timer_label }}</div>
+      {% endif %}
+
+      <div class="Nobl-cd-timer" id="nobl-countdown-{{ section.id }}">
+        <div class="Nobl-cd-time-block">
+          <div class="Nobl-cd-time-value" data-days>00</div>
+          <div class="Nobl-cd-time-label">{{ section.settings.days_label }}</div>
+        </div>
+        <div class="Nobl-cd-separator">:</div>
+        <div class="Nobl-cd-time-block">
+          <div class="Nobl-cd-time-value" data-hours>00</div>
+          <div class="Nobl-cd-time-label">{{ section.settings.hours_label }}</div>
+        </div>
+        <div class="Nobl-cd-separator">:</div>
+        <div class="Nobl-cd-time-block">
+          <div class="Nobl-cd-time-value" data-minutes>00</div>
+          <div class="Nobl-cd-time-label">{{ section.settings.minutes_label }}</div>
+        </div>
+        <div class="Nobl-cd-separator">:</div>
+        <div class="Nobl-cd-time-block">
+          <div class="Nobl-cd-time-value" data-seconds>00</div>
+          <div class="Nobl-cd-time-label">{{ section.settings.seconds_label }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Nobl-cd-image-side">
+      {% if section.settings.desktop_image != blank %}
+        <img 
+          src="{{ section.settings.desktop_image | img_url: 'master' }}" 
+          alt="{{ section.settings.title }}"
+          class="Nobl-cd-desktop-image"
+        >
+      {% endif %}
+
+      {% if section.settings.mobile_image != blank %}
+        <img 
+          src="{{ section.settings.mobile_image | img_url: 'master' }}" 
+          alt="{{ section.settings.title }}"
+          class="Nobl-cd-mobile-image"
+        >
+      {% endif %}
+
+      {% if section.settings.image_overlay_text != blank %}
+        <div class="Nobl-cd-image-overlay">{{ section.settings.image_overlay_text }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  function initCountdown() {
+    const countdownElement = document.getElementById('nobl-countdown-{{ section.id }}');
+    if (!countdownElement) return;
+
+    const endDate = new Date('{{ section.settings.end_date }}').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if (distance < 0) {
+        countdownElement.querySelector('[data-days]').textContent = '00';
+        countdownElement.querySelector('[data-hours]').textContent = '00';
+        countdownElement.querySelector('[data-minutes]').textContent = '00';
+        countdownElement.querySelector('[data-seconds]').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.querySelector('[data-days]').textContent = String(days).padStart(2, '0');
+      countdownElement.querySelector('[data-hours]').textContent = String(hours).padStart(2, '0');
+      countdownElement.querySelector('[data-minutes]').textContent = String(minutes).padStart(2, '0');
+      countdownElement.querySelector('[data-seconds]').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCountdown);
+  } else {
+    initCountdown();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Countdown Timer Split",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "COZY EARTH Prime Time Sale"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Win your choice of a Range Rover Sport, a 5 Star European Vacation or $100,000 cash! Don't miss out on this once in a lifetime offer."
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#333333"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "End Date & Time",
+      "info": "Format: YYYY-MM-DD HH:MM:SS (e.g., 2025-12-31 23:59:59)",
+      "default": "2025-12-31 23:59:59"
+    },
+    {
+      "type": "header",
+      "content": "Timer Settings"
+    },
+    {
+      "type": "text",
+      "id": "timer_label",
+      "label": "Timer Label",
+      "default": "TIME LEFT TO SHOP:"
+    },
+    {
+      "type": "range",
+      "id": "timer_label_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Timer Label Font Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "timer_label_color",
+      "label": "Timer Label Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "days_label",
+      "label": "Days Label",
+      "default": "DAYS"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours Label",
+      "default": "HRS"
+    },
+    {
+      "type": "text",
+      "id": "minutes_label",
+      "label": "Minutes Label",
+      "default": "MINS"
+    },
+    {
+      "type": "text",
+      "id": "seconds_label",
+      "label": "Seconds Label",
+      "default": "SECS"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 32,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Number Font Size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Label Font Size",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_top",
+      "label": "Show Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP ELIGIBLE PRODUCTS"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position (Desktop)",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "image_overlay_text",
+      "label": "Image Overlay Text (e.g., $100,000.)",
+      "default": "$100,000."
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF7F3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Timer Split",
+      "settings": {
+        "title": "COZY EARTH Prime Time Sale",
+        "subtitle": "Win your choice of a Range Rover Sport, a 5 Star European Vacation or $100,000 cash!",
+        "end_date": "2025-12-31 23:59:59",
+        "button_text": "SHOP ELIGIBLE PRODUCTS",
+        "timer_label": "TIME LEFT TO SHOP:",
+        "image_overlay_text": "$100,000."
+      }
+    }
+  ]
+}
+{% endschema %}

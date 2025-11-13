@@ -1,0 +1,744 @@
+{% style %}
+.faq--html-code {
+    margin-top: 10px;
+}
+.faq--html-code {
+    margin-top: 10px;
+}
+.faq--html-code iframe {
+    width: 100%;
+}
+/* ========== FAQ Sticky Sidebar ========== */
+.custom-faq .faq__content strong {
+  font-weight: 600;
+}
+
+.custom-faq .faq__category {
+  font-weight: 500 !important;
+}
+
+.custom-faq .text-with-icon {
+  font-size: 17px !important;
+}
+
+.custom-faq .faq {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 2rem;
+  position: relative;
+}
+
+.custom-faq .faq__content {
+  order: 1;
+  flex: 1 1 650px;
+  max-width: 650px;
+  min-width: 0;
+}
+
+.custom-faq .faq__sidebar {
+  order: 2;
+  flex: 0 0 300px;
+  min-width: 150px;
+  max-width: 300px;
+}
+
+.custom-faq .faq__toc-wrapper {
+  padding-right: 1.5rem;
+  border-right: 2px dashed #D9D9D9;
+  margin-bottom: 1.5rem;
+}
+
+.custom-faq .faq__toc {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.custom-faq .faq__toc-item {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #D9D9D9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-align: right;
+  width: 100%;
+}
+
+.custom-faq .faq__toc-item.is-active {
+  color: #000000;
+  font-weight: 600;
+}
+
+.custom-faq .faq__toc-item:hover {
+  color: #666666;
+}
+
+.custom-faq .faq__contact {
+  text-align: right;
+}
+
+.custom-faq .faq__contact-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666666;
+  margin-bottom: 0.5rem;
+}
+
+.custom-faq .faq__contact-email {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.custom-faq .faq__contact-email:hover {
+  color: #333333;
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .custom-faq .faq {
+    display: block !important;
+  }
+  .custom-faq .faq__sidebar {
+    width: auto;
+    margin-bottom: 1rem;
+  }
+  .custom-faq .faq__toc-wrapper {
+    border-right: none;
+    padding-right: 0;
+  }
+  .custom-faq .faq__contact,
+  .custom-faq .faq__toc-item {
+    text-align: left;
+  }
+}
+.faq__content strong {
+    font-weight: 600;
+}
+{% endstyle %}
+
+{% javascript %}
+(function () {
+  const sidebars = document.querySelectorAll('.custom-faq .faq__sidebar');
+  if (!sidebars.length) return;
+
+  const TOP_OFFSET = 30;
+
+  sidebars.forEach(sidebar => {
+    const container = sidebar.closest('.faq');
+    if (!container) return;
+
+    const toc = sidebar.querySelector('.faq__toc');
+    if (!toc) return;
+
+    const tocLinks = toc.querySelectorAll('.faq__toc-item');
+    const categories = [];
+
+    tocLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href?.startsWith('#')) {
+        const element = document.getElementById(href.substring(1));
+        if (element) categories.push({ link, element });
+      }
+    });
+
+    const rect = sidebar.getBoundingClientRect();
+    const initialLeft = rect.left;
+    const fixedWidth = rect.width;
+
+    function updateActiveLink() {
+      const triggerPoint = window.pageYOffset + TOP_OFFSET + 100;
+      let activeIndex = 0;
+
+      for (let i = 0; i < categories.length; i++) {
+        const currentTop = categories[i].element.getBoundingClientRect().top + window.pageYOffset;
+        const nextTop = categories[i + 1] ? categories[i + 1].element.getBoundingClientRect().top + window.pageYOffset : Infinity;
+
+        if (triggerPoint >= currentTop && triggerPoint < nextTop) {
+          activeIndex = i;
+          break;
+        }
+      }
+
+      categories.forEach((cat, index) => {
+        cat.link.classList.toggle('is-active', index === activeIndex);
+      });
+    }
+
+    function updateSidebar() {
+      if (window.innerWidth <= 767) {
+        sidebar.style.cssText = '';
+        return;
+      }
+
+      const docScroll = window.pageYOffset;
+      const containerTop = container.offsetTop;
+      const containerBottom = containerTop + container.offsetHeight;
+      const fixPoint = containerTop - TOP_OFFSET;
+      const stopFixPoint = containerBottom - TOP_OFFSET - sidebar.offsetHeight;
+
+      if (docScroll < fixPoint) {
+        sidebar.style.cssText = `position: absolute; top: 0; left: auto; right: 0; width: ${fixedWidth}px;`;
+      } else if (docScroll <= stopFixPoint) {
+        sidebar.style.cssText = `position: fixed; top: ${TOP_OFFSET}px; left: ${initialLeft}px; width: ${fixedWidth}px;`;
+      } else {
+        sidebar.style.cssText = `position: absolute; top: ${container.offsetHeight - sidebar.offsetHeight}px; left: auto; right: 0; width: ${fixedWidth}px;`;
+      }
+
+      updateActiveLink();
+    }
+
+    window.addEventListener('scroll', updateSidebar, { passive: true });
+    window.addEventListener('resize', updateSidebar);
+    
+    setTimeout(updateSidebar, 100);
+  });
+})();
+{% endjavascript %}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="section-spacing {{ section.settings.custom_class }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="container container--md">
+      <div class="section-stack">
+        {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content -%}
+
+        <div class="faq">
+          {%- assign categories_blocks = section.blocks | where: 'type', 'category' -%}
+
+          <div class="faq__content">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'category' -%}
+                  {%- if block.settings.title != blank -%}
+                    <p id="block-{{ block.id }}" class="faq__category h4" {{ block.shopify_attributes }}>
+                    {%- if block.settings.custom_icon != blank -%}
+                      {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                      {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                      {%- capture style -%}--image-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+
+                      {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'constrained-image', style: style -}}
+                    {%- elsif block.settings.icon != 'none' -%}
+                      {%- render 'icon' with block.settings.icon, width: block.settings.icon_width -%}
+                    {%- endif -%}
+
+                      {{- block.settings.title -}}
+                    </p>
+                  {%- endif -%}
+
+                {%- when 'question' -%}
+                  {%- if block.settings.question != blank and block.settings.answer != blank -%}
+                    {%- capture answer -%}
+                      <div class="prose">
+                        {{- block.settings.answer -}}
+                      </div>
+                    {%- endcapture -%}
+
+                    {%- render 'accordion', title: block.settings.question, content: answer, show_title_as_text: true, block: block -%}
+                  {%- endif -%}
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+          
+          {%- if section.settings.show_categories and categories_blocks.size > 0 -%}
+            <div class="faq__sidebar hidden md:block">
+              <div class="faq__toc-wrapper">
+                <div class="faq__toc">
+                  {%- for block in categories_blocks -%}
+                    <a class="faq__toc-item {% if forloop.first %}is-active{% endif %}" href="#block-{{ block.id }}">{{ block.settings.title }}</a>
+                  {%- endfor -%}
+                </div>
+              </div>
+              
+              {%- if section.settings.help_text != blank or section.settings.help_email != blank -%}
+                <div class="faq__contact">
+                  {%- if section.settings.help_text != blank -%}
+                    <div class="faq__contact-title">{{ section.settings.help_text }}</div>
+                  {%- endif -%}
+                  {%- if section.settings.help_email != blank -%}
+                    <a href="mailto:{{ section.settings.help_email }}" class="faq__contact-email">{{ section.settings.help_email }}</a>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+    {%- assign question_blocks = section.blocks | where: 'type', 'question' -%}
+
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in question_blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "t:sections.faq.name",
+  "class": "shopify-section--faq",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "t:global.section.separate_section_with_border",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class",
+      "info": "Add class for unique styles"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_categories",
+      "label": "t:sections.faq.show_categories"
+    },
+    {
+      "type": "header",
+      "content": "t:global.section.header_category"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "t:global.text.subheading",
+      "default": "Need help?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:global.text.heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:global.text.content"
+    },
+    {
+      "type": "header",
+      "content": "Help Contact Section"
+    },
+    {
+      "type": "text",
+      "id": "help_text",
+      "label": "Help text",
+      
+      "info": "Text shown above email address. Leave empty to hide."
+    },
+    {
+      "type": "text",
+      "id": "help_email",
+      "label": "Help email address",
+      
+      "info": "Email address for customer support. Leave empty to hide."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "t:sections.faq.blocks.category.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "t:global.text.title",
+          "default": "Category"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:global.icons.icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:global.icons.none"
+            },
+            {
+              "value": "picto-award-gift",
+              "label": "t:global.icons.award_gift",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-bag-handle",
+              "label": "t:global.icons.bag_handle",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-building",
+              "label": "t:global.icons.building",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-coupon",
+              "label": "t:global.icons.coupon",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-gift",
+              "label": "t:global.icons.gift",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-info",
+              "label": "t:global.icons.info",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-love",
+              "label": "t:global.icons.love",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-percent",
+              "label": "t:global.icons.percent",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-star",
+              "label": "t:global.icons.star",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-box",
+              "label": "t:global.icons.box",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-delivery-truck",
+              "label": "t:global.icons.delivery_truck",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-pin",
+              "label": "t:global.icons.pin",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-plane",
+              "label": "t:global.icons.plane",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-return",
+              "label": "t:global.icons.return",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-credit-card",
+              "label": "t:global.icons.credit_card",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-lock",
+              "label": "t:global.icons.lock",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-money",
+              "label": "t:global.icons.money",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-secure-profile",
+              "label": "t:global.icons.secure_profile",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-shield",
+              "label": "t:global.icons.shield",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-earth",
+              "label": "t:global.icons.earth",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-leaf",
+              "label": "t:global.icons.leaf",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-recycle",
+              "label": "t:global.icons.recycle",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-tree",
+              "label": "t:global.icons.tree",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-at-sign",
+              "label": "t:global.icons.at_sign",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-bluetooth",
+              "label": "t:global.icons.bluetooth",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-camera",
+              "label": "t:global.icons.camera",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-printer",
+              "label": "t:global.icons.printer",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-smart-watch",
+              "label": "t:global.icons.smart_watch",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-wifi",
+              "label": "t:global.icons.wifi",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-avatar",
+              "label": "t:global.icons.avatar",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-chat",
+              "label": "t:global.icons.chat",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-calendar",
+              "label": "t:global.icons.calendar",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-comment",
+              "label": "t:global.icons.comment",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-customer-support",
+              "label": "t:global.icons.customer_support",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-happy-face",
+              "label": "t:global.icons.happy_face",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-mailbox",
+              "label": "t:global.icons.mailbox",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-mobile-phone",
+              "label": "t:global.icons.mobile_phone",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-operator",
+              "label": "t:global.icons.operator",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-phone",
+              "label": "t:global.icons.phone",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-send",
+              "label": "t:global.icons.send",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-user",
+              "label": "t:global.icons.user",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-burger",
+              "label": "t:global.icons.burger",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-beer",
+              "label": "t:global.icons.beer",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-coffee",
+              "label": "t:global.icons.coffee",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-pizza",
+              "label": "t:global.icons.pizza",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-bottle",
+              "label": "t:global.icons.bottle",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-document",
+              "label": "t:global.icons.document",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-error",
+              "label": "t:global.icons.error",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-file",
+              "label": "t:global.icons.file",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-jewelry",
+              "label": "t:global.icons.jewelry",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-mask",
+              "label": "t:global.icons.mask",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-music",
+              "label": "t:global.icons.music",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-not-allowed",
+              "label": "t:global.icons.not_allowed",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-target",
+              "label": "t:global.icons.target",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-timer",
+              "label": "t:global.icons.timer",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-success",
+              "label": "t:global.icons.success",
+              "group": "t:global.icons.other_category"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "t:global.icons.custom_icon",
+          "info": "t:global.icons.custom_icon_info"
+        },
+        {
+          "type": "range",
+          "id": "icon_width",
+          "min": 12,
+          "max": 32,
+          "step": 4,
+          "unit": "px",
+          "label": "t:global.icons.icon_width",
+          "default": 16
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "t:sections.faq.blocks.question.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "question",
+          "label": "t:sections.faq.blocks.question.question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "t:sections.faq.blocks.question.answer",
+          "default": "<p>Write a clear and concise answer to guide your customers.</p>"
+        },
+        {
+          "type":"html",
+          "id":"html_code",
+          "label":"Html Code"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.faq.presets.faq.name",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Order"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship overseas?",
+            "answer": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long will it take to get my orders?",
+            "answer": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Any question?",
+            "answer": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

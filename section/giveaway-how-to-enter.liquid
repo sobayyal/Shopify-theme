@@ -1,0 +1,523 @@
+{% style %}
+  .Npbl-hte-section {
+    background-color: {{ section.settings.background_color }};
+    padding: 0;
+    position: relative;
+  }
+
+  .Npbl-hte-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .Npbl-hte-overlay {
+    background-color: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+  }
+
+  .Npbl-hte-wrapper {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .Npbl-hte-title {
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+
+  .Npbl-hte-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  .Npbl-hte-card {
+    background-color: {{ section.settings.card_bg_color }};
+    padding: 25px 35px 51px;
+
+    border-radius: {{ section.settings.card_radius }}px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+
+  .Npbl-hte-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .Npbl-hte-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 0 15px 0;
+    color: {{ section.settings.icon_color }};
+  }
+
+  .Npbl-hte-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .Npbl-hte-step-number {
+    font-size: 30px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .Npbl-hte-item-title {
+    font-size: {{ section.settings.item_title_size }}px;
+    font-weight: 500;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .Npbl-hte-item-text {
+    font-size: {{ section.settings.item_text_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    opacity: 0.9;
+  }
+
+  .Npbl-hte-disclaimer {
+    text-align: center;
+    font-size: {{ section.settings.disclaimer_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.disclaimer_color }};
+    /* max-width: 900px; */
+    margin: 0 auto;
+    padding: 20px;
+    font-style: italic;
+    background: #F5F0E8;
+    display: none;
+  }
+  
+
+  .Npbl-hte-disclaimer a {
+    color: {{ section.settings.disclaimer_link_color }};
+    text-decoration: underline;
+  }
+  @media(min-width: 1300px){
+    .Npbl-hte-section{
+    max-width: 80%;
+    margin: auto;
+  }
+  .Npbl-hte-wrapper{
+        padding-left: 60px;
+    padding-right: 60px;
+  }
+  }
+    .Npbl-hte-wrapper{
+        padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .Npbl-hte-wrapper {
+      padding-top: 40px;
+      padding-bottom: 40px;
+       padding-left: 20px;
+    padding-right: 20px;
+    }
+    .Npbl-hte-item-title {
+    margin-bottom: 10px;
+}
+
+    .Npbl-hte-title {
+      font-size: {{ section.settings.title_size | minus: 8 }}px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .Npbl-hte-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .Npbl-hte-card {
+              padding: 32px 22px 42px;
+    }
+
+    .Npbl-hte-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 12px;
+    }
+
+    .Npbl-hte-step-number {
+      font-size: 25px;
+    }
+
+    .Npbl-hte-item-title {
+      font-size: {{ section.settings.item_title_size | minus: 7 }}px;
+    }
+
+    .Npbl-hte-item-text {
+      font-size: {{ section.settings.item_text_size | minus: 5}}px;
+    }
+
+    .Npbl-hte-disclaimer {
+      font-size: {{ section.settings.disclaimer_size | minus: 5 }}px;
+      padding: 15px;
+    }
+    
+  }
+  .Npbl-hte-disclaimer{
+    font-size: 12px !important;
+
+  }
+  .Npbl-hte-row{
+    display: flex;
+    gap: 10px;
+        align-items: self-end;
+
+  }
+{% endstyle %}
+
+<section class="Npbl-hte-section">
+  <div class="Npbl-hte-background"
+    {% if section.settings.background_image != blank %}
+      style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');"
+    {% endif %}
+  >
+    <div class="Npbl-hte-overlay">
+      <div class="container">
+        <div class="Npbl-hte-wrapper">
+          {% if section.settings.title != blank %}
+            <h2 class="h2 text-center">{{ section.settings.title }}</h2>
+          {% endif %}
+
+          <div class="Npbl-hte-grid">
+            {% for block in section.blocks %}
+              <div class="Npbl-hte-card" {{ block.shopify_attributes }}>
+                {% if block.settings.icon_type != blank %}
+                  <div class="Npbl-hte-icon">
+                    {% case block.settings.icon_type %}
+                      {% when 'cart' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                      {% when 'checkout' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                      {% when 'gift' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
+                        </svg>
+                      {% when 'star' %}
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                      {% when 'check' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      {% when 'credit-card' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                        </svg>
+                      {% when 'trophy' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v6m0 0H9m3 0h3M3 6h6m12 0h-6m-9 6h2m14 0h-2M5 6v6a7 7 0 0014 0V6"/>
+                        </svg>
+                      {% when 'cash' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      {% when 'eyes' %}
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                    {% endcase %}
+                  </div>
+                {% endif %}
+                
+                {% if section.settings.show_numbers %}
+                  <div class="Npbl-hte-row">
+                  <div class="Npbl-hte-step-number">
+                    {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}:
+                  </div>
+                {% endif %}
+                
+                {% if section.settings.show_step_titles and block.settings.item_title != blank %}
+                  <h3 class="Npbl-hte-item-title">{{ block.settings.item_title }}</h3>
+                {% endif %}
+              </div>
+                {% if block.settings.item_text != blank %}
+                  <p class="Npbl-hte-item-text">{{ block.settings.item_text }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% if section.settings.disclaimer_text != blank %}
+            <div class="Npbl-hte-disclaimer">
+              {{ section.settings.disclaimer_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How to Enter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "HOW TO ENTER"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#2d2d2d"
+    },
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_numbers",
+      "label": "Show Step Numbers",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_step_titles",
+      "label": "Show Step Titles",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5f0e8"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 4
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#2d2d2d"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#2d2d2d"
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Text Font Size",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Disclaimer Settings"
+    },
+    {
+      "type": "html",
+      "id": "disclaimer_text",
+      "label": "Disclaimer Text",
+      "default": "If your item is on sale, you will be given the amount of entries matching the sale price. NO PURCHASE NECESSARY. Ends 12-31-24. Must be a legal U.S. resident 18+ or of majority or older. Subject to Official Rules. Questions? Age of majority or older. Subject to <a href='#'>Official Rules</a>. Void where prohibited."
+    },
+    {
+      "type": "range",
+      "id": "disclaimer_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Disclaimer Font Size",
+      "default": 11
+    },
+    {
+      "type": "color",
+      "id": "disclaimer_color",
+      "label": "Disclaimer Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "disclaimer_link_color",
+      "label": "Disclaimer Link Color",
+      "default": "#2d2d2d"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            {
+              "value": "cart",
+              "label": "Shopping Cart"
+            },
+            {
+              "value": "checkout",
+              "label": "Checkout/Document"
+            },
+            {
+              "value": "gift",
+              "label": "Gift Box"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "check",
+              "label": "Check Circle"
+            },
+            {
+              "value": "credit-card",
+              "label": "Credit Card"
+            },
+            {
+              "value": "trophy",
+              "label": "Trophy"
+            },
+            {
+              "value": "cash",
+              "label": "Cash/Dollar"
+            },
+            {
+              "value": "eyes",
+              "label": "Eyes/Looking"
+            }
+          ],
+          "default": "cart"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Step Title",
+          "default": "SHOP"
+        },
+        {
+          "type": "textarea",
+          "id": "item_text",
+          "label": "Step Description",
+          "default": "Browse the eligible products and add your favorites to the shopping cart!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Enter",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon_type": "cart",
+            "item_title": "SHOP",
+            "item_text": "Browse the eligible products and add your favorites to the shopping cart!"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon_type": "checkout",
+            "item_title": "CHECKOUT",
+            "item_text": "When you're done shopping, proceed to the checkout."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon_type": "trophy",
+            "item_title": "ENTRIES",
+            "item_text": "Every dollar spent earns 1 entry into the giveaway. The more you spend, the better your chances!"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

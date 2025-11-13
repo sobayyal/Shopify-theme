@@ -1,0 +1,620 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "countdown_condensed_AKFEkR": {
+      "type": "countdown-condensed",
+      "blocks": {
+        "content_EUhpjT": {
+          "type": "content",
+          "settings": {
+            "content": "Black Friday Sale - 58% OFF",
+            "link_url": "shopify://collections/our-best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "content_EUhpjT"
+      ],
+      "name": "t:sections.countdown_timer.presets.countdown_timer.name",
+      "settings": {
+        "autoplay": true,
+        "cycle_speed": 5,
+        "link_text": "",
+        "link_url": "shopify://collections/our-best-sellers",
+        "expiration_date": "2025-08-7 00:00:00",
+        "expiration_behavior": "loop",
+        "loop_count": 0,
+        "desktop_justification": "space-between",
+        "background": "#000000",
+        "text_color": "#ffffff"
+      }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message_NQW7Ga": {
+          "type": "message",
+          "settings": {
+            "text": "Nobl Day Sale - Up To 58% OFF",
+            "message_url": "shopify://collections/our-best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "message_NQW7Ga"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky": false,
+        "autoplay": true,
+        "cycle_speed": 4,
+        "desktop_font_size": 14,
+        "mobile_font_size": 12,
+        "background": "#000000",
+        "text_color": "#ffffff"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_UzGMQc": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "New Arrivals",
+            "images_opacity": 0.2,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": true,
+            "enable_custom_titles": true,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": true,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "check-in-trunk-suitcase-30",
+              "carry-on-trunk-suitcase-20",
+              "carry-on-all-in-one-wide-handle",
+              "carry-on-luggage-with-seat"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Check-In Trunk, Carry-On Trunk, Wide Handle, Luggage with Seat",
+            "custom_tags": "",
+            "tag_bg": "#000000",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All New Arrivals",
+            "item_link": "/collections/our-best-sellers?sort_by=created-descending",
+            "custom_product_id_1": "10099675988268",
+            "custom_product_image_1": "shopify://shop_images/Silver3.webp",
+            "custom_product_id_2": "10099674317100",
+            "custom_product_image_2": "shopify://shop_images/Nobl_Carry-on-Trunk_Green_07_fe2ee1ea-2886-464b-a856-c2e2d15c18c1.webp",
+            "custom_product_id_3": "10095617573164",
+            "custom_product_image_3": "shopify://shop_images/nobl_Carry-on-all-in-one-wide-handle_beige_08_1779a784-9168-4314-b90b-a4c05520e682.webp",
+            "custom_product_id_4": "10084547395884",
+            "custom_product_image_4": "shopify://shop_images/10_3ca2ecce-93e4-4d8e-8bea-338edddc3cc9.webp",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_FCaEd8": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Best-Sellers",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": false,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": false,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "carry-on-all-in-one",
+              "carry-on-all-in-one-expandable",
+              "check-in-all-in-one-28",
+              "packing-cubes"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Carry-On, Expandable, Check-In, Packing Cubes, Ultimate Set",
+            "custom_tags": "",
+            "tag_bg": "#000000",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Best Sellers",
+            "item_link": "shopify://collections/our-best-sellers",
+            "custom_product_id_1": "",
+            "custom_product_image_1": "shopify://shop_images/21_357a592b-7f32-4619-8b49-d5b7fb65210e.webp",
+            "custom_product_id_2": "",
+            "custom_product_id_3": "9474305032492",
+            "custom_product_image_3": "shopify://shop_images/5_3ec084da-0cf4-4b81-b89d-94e760d91363.webp",
+            "custom_product_id_4": "",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_YH9E8A": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Luggage",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": false,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": false,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "carry-on-all-in-one",
+              "check-in-all-in-one-28",
+              "carry-on-all-in-one-expandable",
+              "check-in-trunk-suitcase-30"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Carry-On, Check-In, Expandable, Check-In Trunk",
+            "custom_tags": "",
+            "tag_bg": "#054b48",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Luggage",
+            "item_link": "shopify://collections/hard-shell-luggage",
+            "custom_product_id_1": "8628446626092",
+            "custom_product_image_1": "shopify://shop_images/62_03b20d42-f431-40da-91ff-7d4ee97b53d6.webp",
+            "custom_product_id_2": "9474305032492",
+            "custom_product_image_2": "shopify://shop_images/37_25c782b0-1036-4113-9256-b97d4f7d4342.webp",
+            "custom_product_id_3": "",
+            "custom_product_id_4": "10099675988268",
+            "custom_product_image_4": "shopify://shop_images/Silver3.webp",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_tgr4GA": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Carry-On",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": false,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": false,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "carry-on-all-in-one",
+              "carry-on-all-in-one-expandable",
+              "duo-carry",
+              "carry-on-trunk-suitcase-20"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Carry-On, Expandable, Duo-Carry, Carry-On Trunk",
+            "custom_tags": "",
+            "tag_bg": "#054b48",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Carry-Ons",
+            "item_link": "shopify://collections/carry-on-luggage",
+            "custom_product_id_1": "8628446626092",
+            "custom_product_image_1": "shopify://shop_images/63_886cfd80-c9ba-4739-b161-d58acdcbd4e8.webp",
+            "custom_product_id_2": "10004420657452",
+            "custom_product_image_2": "shopify://shop_images/4_c959dca6-773b-40bc-9aeb-0b3a692cbcf6.webp",
+            "custom_product_id_3": "9995837669676",
+            "custom_product_image_3": "shopify://shop_images/1_d276cf71-5fa4-45f4-8954-55a19d8f067e.webp",
+            "custom_product_id_4": "10099674317100",
+            "custom_product_image_4": "shopify://shop_images/nobl_Carry-on-Trunk_Silver_05_webp.webp",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_Fj6CPf": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Check-In",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": false,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": false,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "check-in-all-in-one-28",
+              "check-in-trunk-suitcase-30",
+              "check-in-medium-all-in-one",
+              "large-aluminum"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Check-In, Check-In Trunk, Medium Check-In, Aluminum",
+            "custom_tags": "",
+            "tag_bg": "#054b48",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Check-Ins",
+            "item_link": "shopify://collections/checked-luggage",
+            "custom_product_id_1": "9474305032492",
+            "custom_product_image_1": "shopify://shop_images/51_ef97b819-bd69-4e5e-98c3-1336be9bf1e7.webp",
+            "custom_product_id_2": "10099675988268",
+            "custom_product_image_2": "shopify://shop_images/Silver3.webp",
+            "custom_product_id_3": "8800231227692",
+            "custom_product_image_3": "shopify://shop_images/Angle_5_AIO_Medium_4dff138f-6067-4c66-b613-4b72d6c35dfc.webp",
+            "custom_product_id_4": "",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_EVMjYQ": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Bags",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "",
+            "enable_collections_title": true,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection 1, Collection 2",
+            "enable_product_image": true,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "weekender-bag",
+              "large-cloud-duffel",
+              "fold-n-go-duffel",
+              "fold-n-go-trolley"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Weekender Bag,Cloud Duffel , Fold-n-Go Duffel ,Fold-n-Go Trolley,",
+            "custom_tags": "",
+            "tag_bg": "#054b48",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Bags",
+            "item_link": "shopify://collections/bags",
+            "custom_product_id_1": "9862137479468",
+            "custom_product_image_1": "shopify://shop_images/8_2506bd45-009a-4244-9ce8-6904accef196.webp",
+            "custom_product_id_2": "10063898313004",
+            "custom_product_id_3": "9555828080940",
+            "custom_product_id_4": "10041868779820",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_fFrcjA": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Accessories",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": false,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": false,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "packing-cubes",
+              "led-travel-makeup-case",
+              "water-bottle",
+              "essentials-toiletry-bag"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Packing Cubes, Makeup Case, Water Bottles,Toiletry Bag",
+            "custom_tags": "",
+            "tag_bg": "#054b48",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Accessories",
+            "item_link": "shopify://collections/accessories",
+            "custom_product_id_1": "8800790708524",
+            "custom_product_image_1": "shopify://shop_images/nobl-compressible-packing-cubes-forest-green.webp",
+            "custom_product_id_2": "10030839922988",
+            "custom_product_image_2": "shopify://shop_images/2_3168921a-c15a-4737-9621-caeb15fbbfd4.webp",
+            "custom_product_id_3": "9799405240620",
+            "custom_product_image_3": "shopify://shop_images/6_8bbc749f-3dc0-4bf1-9058-7f2ee4efdda1.webp",
+            "custom_product_id_4": "10051317563692",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mega_menu_N9DdeH": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Bundle & Save",
+            "images_opacity": 0,
+            "enable_collection_list": false,
+            "collection_list_title": "By Collection",
+            "enable_collections_title": false,
+            "enable_custom_titles": false,
+            "custom_titles": "Collection1, Collection2",
+            "enable_product_image": false,
+            "titles_over_images": false,
+            "collection_list": [],
+            "enable_product_list": true,
+            "product_list_title": "",
+            "products_list": [
+              "ultimate-travel-set",
+              "carry-on-check-in-travel-kit",
+              "carry-on-check-in",
+              "check-in-carry-on-weekender-bottle"
+            ],
+            "enable_products_title": true,
+            "enable_original_titles_mobile": true,
+            "enable_custom_titles_pro": true,
+            "custom_titles_pro": "Ultimate Set, Full Travel Set, Carry-On + Check-In, Complete Set, Carry Smart Set, Travel Essentials",
+            "custom_tags": "",
+            "tag_bg": "#054b48",
+            "tag_text": "#ffffff",
+            "content_left": false,
+            "enable_last_item": true,
+            "last_item_title": "All Bundles",
+            "item_link": "shopify://collections/luggage-sets",
+            "custom_product_id_1": "10016323404076",
+            "custom_product_image_1": "shopify://shop_images/green_0eb47468-89e6-4719-ac03-c68e713d7159.webp",
+            "custom_product_id_2": "9891967828268",
+            "custom_product_image_2": "shopify://shop_images/silver_3bd8efd6-c29d-4c70-9402-740d29b6af4a.webp",
+            "custom_product_id_3": "9891924869420",
+            "custom_product_image_3": "shopify://shop_images/4_463320fa-98cf-421b-add3-50f62e409604.webp",
+            "custom_product_id_4": "10015792529708",
+            "custom_product_image_4": "shopify://shop_images/6_253f11a9-9d87-47e2-8e04-efe852f54ddf.webp",
+            "images_position": "right",
+            "image_1_heading": "",
+            "image_1_text": "",
+            "image_1_link": "",
+            "image_2_heading": "",
+            "image_2_text": "",
+            "image_2_link": ""
+          }
+        },
+        "mobile_collection_Uhp4m8": {
+          "type": "mobile_collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/silver_1710d444-99c6-4670-9499-478cde696cef.webp",
+            "collection_title": "Black Friday Bundle",
+            "collection_link": "shopify://products/the-nobl-black-friday-bundle-5-0",
+            "save_text": "Save $1000"
+          }
+        },
+        "mobile_collection_mQxrwG": {
+          "type": "mobile_collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/nobl-bundle-silver.webp",
+            "collection_title": "New Arrivals",
+            "collection_link": "/collections/our-best-sellers?sort_by=created-descending",
+            "save_text": "Save $865"
+          }
+        },
+        "mobile_tag_XJEiya": {
+          "type": "mobile_tag",
+          "settings": {
+            "menu_item": "Best-Sellers",
+            "tag_name": "SALE",
+            "tag_bg": "#000000",
+            "tag_text": "#ffffff"
+          }
+        },
+        "mobile_tag_CBWW6g": {
+          "type": "mobile_tag",
+          "settings": {
+            "menu_item": "New Arrivals",
+            "tag_name": "NEW",
+            "tag_bg": "#000000",
+            "tag_text": "#ffffff"
+          }
+        },
+        "mobile_tag_kz938a": {
+          "type": "mobile_tag",
+          "settings": {
+            "menu_item": "Accessories",
+            "tag_name": "NEW",
+            "tag_bg": "#000000",
+            "tag_text": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_UzGMQc",
+        "mega_menu_FCaEd8",
+        "mega_menu_YH9E8A",
+        "mega_menu_tgr4GA",
+        "mega_menu_Fj6CPf",
+        "mega_menu_EVMjYQ",
+        "mega_menu_fFrcjA",
+        "mega_menu_N9DdeH",
+        "mobile_collection_Uhp4m8",
+        "mobile_collection_mQxrwG",
+        "mobile_tag_XJEiya",
+        "mobile_tag_CBWW6g",
+        "mobile_tag_kz938a"
+      ],
+      "settings": {
+        "enable_mobile_menu_banner": false,
+        "enable_search_sidebar": true,
+        "search_min_chars": 2,
+        "search_min_words": 1,
+        "banner_link": "",
+        "banner_title": "",
+        "banner_subtitle": "",
+        "banner_bg": "#d2cabe",
+        "sidebar_logo": "shopify://shop_images/Nobl_Logos_1_3d97ed16-2eeb-4c4b-b242-28cab2fe4ce7.svg",
+        "show_selector_header": true,
+        "disable_sidebar_footer": true,
+        "enable_sticky": false,
+        "show_separation_border": true,
+        "reduce_padding": true,
+        "logo": "shopify://shop_images/Nobl_Logos_1.svg",
+        "logo_max_width": 85,
+        "logo_mobile_max_width": 85,
+        "menu": "main-menu-new",
+        "sidebar_menu": "main-menu-new",
+        "menu_open_trigger": "hover",
+        "enable_search": true,
+        "sidebar_text_font": "heading",
+        "sidebar_show_dividers": true,
+        "layout": "logo_left_navigation_inline",
+        "show_icons": true,
+        "show_country_selector": true,
+        "show_country_name": false,
+        "show_country_flag": true,
+        "show_locale_selector": false,
+        "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify://shop_images/Nobl_Logos_1.png"
+      }
+    },
+    "20c19c42-3c56-4af3-9070-d8e77e173e46": {
+      "type": "text-with-icons-header",
+      "blocks": {
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-0": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>30-DAY SUCTION GUARANTEE</strong>",
+            "content": ""
+          }
+        },
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>FREE SHIPPING  $60+</strong>",
+            "content": ""
+          }
+        },
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-love",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>100.000+ HAPPY CUSTOMERS</strong>",
+            "content": ""
+          }
+        },
+        "f0e3e894-bc1c-44fb-a487-8a35fc626b6d": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-star",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>+1000 5-STAR REVIEWS</strong>",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-0",
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-1",
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-2",
+        "f0e3e894-bc1c-44fb-a487-8a35fc626b6d"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".benefitItem {display: flex; gap: 6px; align-items: center; justify-content: left; font-weight: 700; font-size: 12px; line-height: 12px; letter-spacing: 1px; text-transform: uppercase; width: 100%; min-width: 190px;}",
+        ".text-with-icons {row-gap: 4px;}",
+        "@media screen and (min-width: 1000px) {.text-with-icons:not(:has(> :nth-child(5))) {--text-with-icons-items-per-row: 4; --text-with-icons-column-gap: 1.75rem; }}"
+      ],
+      "settings": {
+        "separate_section_with_border": false,
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "start"
+      }
+    }
+  },
+  "order": [
+    "countdown_condensed_AKFEkR",
+    "announcement-bar",
+    "header",
+    "20c19c42-3c56-4af3-9070-d8e77e173e46"
+  ]
+}

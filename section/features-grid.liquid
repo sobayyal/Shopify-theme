@@ -1,0 +1,497 @@
+{{ 'section-features-grid.css' | asset_url | stylesheet_tag }}
+
+<div class="features-grid" 
+     style="--section-bg-color: {{ section.settings.background_color }};
+            --section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+            --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+            --section-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+            --section-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+            --section-heading-color: {{ section.settings.heading_color }};
+            --section-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+            --section-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+            --section-heading-weight: {{ section.settings.heading_font_weight }};
+            --section-description-color: {{ section.settings.description_color }};
+            --section-description-size-mobile: {{ section.settings.description_size_mobile }}px;
+            --section-description-size-desktop: {{ section.settings.description_size_desktop }}px;
+            --block-title-color: {{ section.settings.block_title_color }};
+            --block-title-size-mobile: {{ section.settings.block_title_size_mobile }}px;
+            --block-title-size-desktop: {{ section.settings.block_title_size_desktop }}px;
+            --block-title-weight: {{ section.settings.block_title_font_weight }};
+            --block-description-color: {{ section.settings.block_description_color }};
+            --block-description-size-mobile: {{ section.settings.block_description_size_mobile }}px;
+            --block-description-size-desktop: {{ section.settings.block_description_size_desktop }}px;
+            --icon-bg-color: {{ section.settings.icon_background_color }};
+            --icon-color: {{ section.settings.icon_color }};">
+  
+  <div class="features-grid__container page-width">
+    {%- comment -%} Section Header {%- endcomment -%}
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+      <div class="features-grid__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="features-grid__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="features-grid__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Features Grid {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="features-grid__items features-grid__items--{{ section.settings.columns_desktop }}-col">
+        {%- for block in section.blocks -%}
+          <div class="features-grid__item" 
+               {{ block.shopify_attributes }}
+               style="--block-icon-size-mobile: {{ block.settings.icon_size_mobile }}px;
+                      --block-icon-size-desktop: {{ block.settings.icon_size_desktop }}px;">
+            
+            {%- comment -%} Icon/Image {%- endcomment -%}
+            <div class="features-grid__icon-wrapper">
+              {%- if block.settings.svg_code != blank -%}
+                {%- comment -%} SVG Code {%- endcomment -%}
+                <div class="features-grid__icon features-grid__icon--svg">
+                  {{ block.settings.svg_code }}
+                </div>
+              {%- elsif block.settings.image != blank -%}
+                {%- comment -%} Image {%- endcomment -%}
+                <div class="features-grid__icon features-grid__icon--image {% if block.settings.image_mobile != blank and block.settings.image != blank %}has-both--images{% endif %}">
+                  <picture class="features-grid__picture">
+                    {%- if block.settings.image_mobile != blank -%}
+                      {{- block.settings.image_mobile | image_url: width: 200 | image_tag:
+                        loading: 'lazy',
+                        class: 'features-grid__img features-grid__img--mobile',
+                        widths: '50, 80, 100, 150, 200',
+                        sizes: '100px'
+                      -}}
+                    {%- endif -%}
+                    {%- if block.settings.image != blank -%}
+                      {{- block.settings.image | image_url: width: 200 | image_tag:
+                        loading: 'lazy',
+                        class: 'features-grid__img features-grid__img--desktop',
+                        widths: '50, 80, 100, 150, 200',
+                        sizes: '100px'
+                      -}}
+                    {%- elsif block.settings.image_mobile != blank -%}
+                      {{- block.settings.image_mobile | image_url: width: 200 | image_tag:
+                        loading: 'lazy',
+                        class: 'features-grid__img',
+                        widths: '50, 80, 100, 150, 200',
+                        sizes: '100px'
+                      -}}
+                    {%- endif -%}
+                  </picture>
+                </div>
+              {%- else -%}
+                {%- comment -%} Placeholder {%- endcomment -%}
+                <div class="features-grid__icon features-grid__icon--placeholder">
+                  {{ 'image' | placeholder_svg_tag: 'features-grid__placeholder' }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- comment -%} Content {%- endcomment -%}
+            <div class="features-grid__content">
+              {%- if block.settings.title != blank -%}
+                <h3 class="features-grid__item-title">
+                  {{ block.settings.title }}
+                </h3>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <div class="features-grid__item-description">
+                  {{ block.settings.description }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Features Grid",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Beliefs"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Every detail exists for a reason. We don't chase trends; we chase timeless perfection."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "options": [
+        {
+          "value": "2",
+          "label": "2 Columns"
+        },
+        {
+          "value": "3",
+          "label": "3 Columns"
+        },
+        {
+          "value": "4",
+          "label": "4 Columns"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "header",
+      "content": "Section Heading Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading Size (Desktop)",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "min": 18,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "label": "Description Size (Desktop)",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description Size (Mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Block Item Typography"
+    },
+    {
+      "type": "range",
+      "id": "block_title_size_desktop",
+      "label": "Block Title Size (Desktop)",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "block_title_size_mobile",
+      "label": "Block Title Size (Mobile)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "block_title_font_weight",
+      "label": "Block Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "block_description_size_desktop",
+      "label": "Block Description Size (Desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "block_description_size_mobile",
+      "label": "Block Description Size (Mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Section Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Section Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "block_title_color",
+      "label": "Block Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "block_description_color",
+      "label": "Block Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "icon_background_color",
+      "label": "Icon Background Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color (for SVG)",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon/Image"
+        },
+        {
+          "type": "html",
+          "id": "svg_code",
+          "label": "SVG Code",
+          "info": "Paste your SVG code here. This takes priority over images."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (Desktop)",
+          "info": "Used if SVG code is not provided"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image (Mobile)",
+          "info": "Optional. Falls back to desktop image if not set"
+        },
+        {
+          "type": "range",
+          "id": "icon_size_desktop",
+          "label": "Icon/Image Size (Desktop)",
+          "min": 30,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "icon_size_mobile",
+          "label": "Icon/Image Size (Mobile)",
+          "min": 30,
+          "max": 120,
+          "step": 5,
+          "unit": "px",
+          "default": 50
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Add a description for this feature item."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Grid",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Craftsmanship",
+            "description": "Every stitch, every rivet, every curve is intentional. We build luggage the way masters build instruments."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Obsessive Quality",
+            "description": "Good enough isn't good enough. We test, refine, and perfect until every product exceeds expectations."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Timeless Design",
+            "description": "Fashion fades. Function endures. We create pieces that look as relevant in 20 years as they do today."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

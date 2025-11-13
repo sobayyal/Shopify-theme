@@ -1,0 +1,951 @@
+{%- if section.settings.image != blank or section.blocks.size > 0 -%}
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  OPTIMIZED CSS - Reduced and consolidated
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --image-with-text-content-max-width: {% if section.settings.content_width == 'sm' %}430px{% elsif section.settings.content_width == 'md' %}780px{% else %}100%{% endif %};
+    }
+    
+    /* OPTIMIZED: Lazy loading styles */
+    .image-with-text .lazy-image {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background-color: #f5f5f5;
+    }
+    
+    .lazy-image.loaded {
+      opacity: 1;
+    }
+    
+    .image-placeholder {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  OPTIMIZED LIQUID - Performance enhanced
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <div class="main_section {{ section.settings.class }} {% unless section.settings.remove_vertical_spacing %}section-spacing{% endunless %} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <image-with-text class="image-with-text {% if section.settings.image_position == 'end' %}image-with-text--reverse{% endif %}">
+      
+      {%- comment -%} OPTIMIZED: Main image with proper lazy loading {%- endcomment -%}
+      {%- if section.settings.image != blank -%}
+        {%- liquid
+          assign is_above_fold = false
+          assign loading_strategy = 'lazy'
+          assign fetch_priority = 'auto'
+          
+          # Determine if this is likely above the fold
+          if section.index <= 2
+            assign is_above_fold = true
+            assign loading_strategy = 'eager'
+            assign fetch_priority = 'high'
+          endif
+          
+          assign sizes = '(max-width: 699px) 100vw, 50vw'
+        -%}
+        
+        <picture>
+          {%- if section.settings.mobile_image != blank -%}
+            <source
+                media="(max-width: 699px)"
+                srcset="{{ section.settings.mobile_image | image_url: width: '400x' }} 400w, {{ section.settings.mobile_image | image_url: width: '600x' }} 600w, {{ section.settings.mobile_image | image_url: width: '800x' }} 800w"
+                width="{{ section.settings.mobile_image.width }}"
+                height="{{ section.settings.mobile_image.height }}"
+            >
+          {%- endif -%}
+
+          {%- comment -%} OPTIMIZED: Responsive image with proper loading strategy {%- endcomment -%}
+          <img src="{% unless is_above_fold %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{{ section.settings.image.width }}' height='{{ section.settings.image.height }}'%3E%3Crect width='100%25' height='100%25' fill='%23f5f5f5'/%3E%3C/svg%3E{% else %}{{ section.settings.image | image_url: width: 800 }}{% endunless %}"
+               {% unless is_above_fold %}data-src="{{ section.settings.image | image_url: width: section.settings.image.width }}"{% endunless %}
+               alt="{{ section.settings.image.alt | escape }}"
+               class="{% unless is_above_fold %}lazy-image{% endunless %}"
+               width="{{ section.settings.image.width }}"
+               height="{{ section.settings.image.height }}"
+               loading="{{ loading_strategy }}"
+               fetchpriority="{{ fetch_priority }}"
+               decoding="async"
+               sizes="{{ sizes }}"
+               {% unless is_above_fold %}
+               srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{{ section.settings.image.width }}' height='{{ section.settings.image.height }}'%3E%3C/svg%3E"
+               data-srcset="{{ section.settings.image | image_url: width: 200 }} 200w, {{ section.settings.image | image_url: width: 400 }} 400w, {{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1000 }} 1000w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+               {% else %}
+               srcset="{{ section.settings.image | image_url: width: 200 }} 200w, {{ section.settings.image | image_url: width: 400 }} 400w, {{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 800 }} 800w, {{ section.settings.image | image_url: width: 1000 }} 1000w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+               {% endunless %}
+               {% if section.settings.reveal_on_scroll %}reveal-on-scroll{% endif %}>
+        </picture>
+      {%- else -%}
+        {{- 'lifestyle-1' | placeholder_svg_tag: 'placeholder' -}}
+      {%- endif -%}
+
+      <div class="prose text-center sm:text-start">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'subheading' -%}
+              {%- if block.settings.text != blank -%}
+                <h3 class="h6" {{ block.shopify_attributes }}>{{ block.settings.text }}</h3>
+              {%- endif -%}
+
+            {%- when 'heading' -%}
+              {%- if block.settings.text != blank -%}
+                <h2 class="{{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</h2>
+              {%- endif -%}
+
+            {%- when 'richtext' -%}
+              {%- if block.settings.content != blank -%}
+                <div {{ block.shopify_attributes }}>
+                  {{- block.settings.content -}}
+                </div>
+              {%- endif -%}
+              
+            {%- when 'image' -%}
+              {%- if block.settings.image != blank -%}
+                <div {{ block.shopify_attributes }}>
+                  {%- liquid
+                    assign image_style_attribute = ''
+                    if section.settings.text_position == 'center'
+                      assign image_style_attribute = 'margin-inline: auto;'
+                    elsif section.settings.text_position == 'end'
+                      assign image_style_attribute = 'margin-inline-start: auto;'
+                    endif
+                    
+                    # Determine if block image should be lazy loaded (always lazy for block images)
+                    assign block_loading = 'lazy'
+                    assign block_fetch_priority = 'auto'
+                  -%}
+
+                  {%- if block.settings.width_mode == 'custom' -%}
+                    {%- capture image_style_attribute -%}{{ image_style_attribute }} --image-max-width: {{ block.settings.max_width }}px; --image-mobile-max-width: {{ block.settings.mobile_max_width }}px{%- endcapture -%}
+                    {%- capture image_sizes_attribute -%}(max-width: 699px) min({{ block.settings.mobile_max_width }}px, 100vw), min({{ block.settings.max_width }}px, 100vw){%- endcapture -%}
+                    {%- capture image_widths -%}{{ block.settings.mobile_max_width }},{{ block.settings.mobile_max_width | times: 2 }},{{ block.settings.max_width }},{{ block.settings.max_width | times: 2 }}{%- endcapture -%}
+                  {%- else -%}
+                    {%- capture image_sizes_attribute -%}min(100vw, var(--page-width)){%- endcapture -%}
+                    {%- assign image_widths = '200,300,400,500,600,800,1000,1200' -%}
+                  {%- endif -%}
+
+                  {%- comment -%} OPTIMIZED: Block images always lazy loaded {%- endcomment -%}
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{{ block.settings.image.width }}' height='{{ block.settings.image.height }}'%3E%3Crect width='100%25' height='100%25' fill='%23f5f5f5'/%3E%3C/svg%3E"
+                       data-src="{{ block.settings.image | image_url: width: block.settings.image.width }}"
+                       alt="{{ block.settings.image.alt | escape }}"
+                       class="constrained-image lazy-image"
+                       width="{{ block.settings.image.width }}"
+                       height="{{ block.settings.image.height }}"
+                       loading="{{ block_loading }}"
+                       fetchpriority="{{ block_fetch_priority }}"
+                       decoding="async"
+                       sizes="{{ image_sizes_attribute }}"
+                       srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{{ block.settings.image.width }}' height='{{ block.settings.image.height }}'%3E%3C/svg%3E"
+                       data-srcset="{% for width in image_widths %}{{ block.settings.image | image_url: width: width }} {{ width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}"
+                       style="{{ image_style_attribute }}">
+                </div>
+              {%- endif -%}
+
+            {%- when 'feature_with_icon' -%}
+              {%- if block.settings.text != blank or block.settings.icon != 'none' or block.settings.custom_icon != blank -%}
+                {%- capture feature_content -%}
+                  {%- if block.settings.custom_icon != blank -%}
+                    {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
+                    {%- capture style -%}--image-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
+                    
+                    {%- comment -%} OPTIMIZED: Custom icons always lazy loaded {%- endcomment -%}
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{{ block.settings.icon_width }}' height='{{ block.settings.icon_width }}'%3E%3Crect width='100%25' height='100%25' fill='%23f5f5f5'/%3E%3C/svg%3E"
+                         data-src="{{ block.settings.custom_icon | image_url: width: block.settings.custom_icon.width }}"
+                         alt="Feature icon"
+                         class="constrained-image lazy-image"
+                         width="{{ block.settings.icon_width }}"
+                         height="{{ block.settings.icon_width }}"
+                         loading="lazy"
+                         decoding="async"
+                         sizes="{{ sizes }}"
+                         data-srcset="{% for width in widths %}{{ block.settings.custom_icon | image_url: width: width }} {{ width }}w{% unless forloop.last %}, {% endunless %}{% endfor %}"
+                         style="{{ style }}">
+                  {%- else -%}
+                    {%- render 'icon' with block.settings.icon, width: block.settings.icon_width -%}
+                  {%- endif -%}
+
+                  {%- if block.settings.text != blank -%}
+                    <p>{{ block.settings.text }}</p>
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {%- assign has_border = false -%}
+                {%- if block.settings.border_color != blank and block.settings.border_color != 'rgba(0,0,0,0)' -%}
+                  {%- assign has_border = true -%}
+                {%- endif -%}
+
+                {%- if block.settings.link -%}
+                  <a href="{{ block.settings.link }}" class="feature-badge {% if has_border %}border{% endif %}" style="{% render 'surface', background: block.settings.background, text_color: block.settings.text_color, border_color: block.settings.border_color %}">
+                    {{- feature_content -}}
+                  </a>
+                {%- else -%}
+                  <div class="feature-badge {% if has_border %}border{% endif %}" style="{% render 'surface', background: block.settings.background, text_color: block.settings.text_color, border_color: block.settings.border_color %}">
+                    {{- feature_content -}}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+
+            {%- when 'page' -%}
+              {%- if block.settings.page.content != blank -%}
+                <div {{ block.shopify_attributes }}>
+                  {{- block.settings.page.content -}}
+                </div>
+              {%- endif -%}
+
+            {%- when 'liquid' -%}
+              {%- if block.settings.liquid != blank -%}
+                <div {{ block.shopify_attributes }}>
+                  {{- block.settings.liquid -}}
+                </div>
+              {%- endif -%}
+
+            {%- when 'link' -%}
+              <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} class="link" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</a>
+
+            {%- when 'button' -%}
+              {%- if block.settings.text != blank -%}
+                {% render 'button', content: block.settings.text, href: block.settings.url, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </image-with-text>
+  </div>
+
+  {%- comment -%} OPTIMIZED: Intersection Observer for lazy loading {%- endcomment -%}
+  <script>
+  (() => {
+    'use strict';
+    
+    // Check if Intersection Observer is supported
+    if (!('IntersectionObserver' in window)) {
+      // Fallback for older browsers
+      document.querySelectorAll('.lazy-image').forEach(img => {
+        const src = img.dataset.src;
+        const srcset = img.dataset.srcset;
+        if (src) img.src = src;
+        if (srcset) img.srcset = srcset;
+        img.classList.add('loaded');
+      });
+      return;
+    }
+    
+    // Create intersection observer for lazy loading
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.dataset.src;
+          const srcset = img.dataset.srcset;
+          
+          if (src) {
+            // Create a new image to preload
+            const newImg = new Image();
+            
+            newImg.onload = () => {
+              // Update the actual image
+              img.src = src;
+              if (srcset) img.srcset = srcset;
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            };
+            
+            newImg.onerror = () => {
+              // Fallback if image fails to load
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            };
+            
+            // Start loading the image
+            newImg.src = src;
+            if (srcset) newImg.srcset = srcset;
+          }
+        }
+      });
+    }, {
+      rootMargin: '50px 0px', // Start loading 50px before entering viewport
+      threshold: 0.01
+    });
+    
+    // Function to initialize lazy loading
+    const initLazyLoading = () => {
+      document.querySelectorAll('.lazy-image').forEach(img => {
+        imageObserver.observe(img);
+      });
+    };
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLazyLoading);
+    } else {
+      initLazyLoading();
+    }
+    
+    // Re-initialize when Shopify sections are loaded
+    document.addEventListener('shopify:section:load', initLazyLoading);
+  })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.image_with_text.name",
+  "class": "shopify-section--image-with-text",
+  "tag": "section",
+  "max_blocks": 12,
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "t:global.section.separate_section_with_border",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:global.image.image",
+      "info": "t:sections.image_with_text.image_size_recommendation"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "t:global.image.mobile_image",
+      "info": "t:sections.image_with_text.mobile_image_size_recommendation"
+    },
+    {
+      "type": "checkbox",
+      "id": "reveal_on_scroll",
+      "label": "t:global.animation.reveal_image_on_scroll",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "t:sections.image_with_text.image_position",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:global.position.left"
+        },
+        {
+          "value": "end",
+          "label": "t:global.position.right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:global.sizes.content_width",
+      "options": [
+        {
+          "value": "sm",
+          "label": "t:global.sizes.small"
+        },
+        {
+          "value": "md",
+          "label": "t:global.sizes.medium"
+        },
+        {
+          "value": "lg",
+          "label": "t:global.sizes.large"
+        }
+      ],
+      "default": "sm"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_spacing",
+      "label": "t:global.spacing.remove_vertical_spacing",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "class",
+      "label": "Add Custom Class"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "t:sections.image_with_text.blocks.subheading.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:global.text.text",
+          "default": "Subheading"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.image_with_text.blocks.heading.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:global.text.text",
+          "default": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "t:global.text.style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h1"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "t:sections.image_with_text.blocks.paragraph.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:global.text.content",
+          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "t:sections.rich_text.blocks.image.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:global.image.image",
+          "info": "t:sections.rich_text.blocks.image.image_size_recommendation"
+        },
+        {
+          "type": "radio",
+          "id": "width_mode",
+          "label": "t:global.image.width",
+          "options": [
+            {
+              "value": "full_width",
+              "label": "t:global.image.width_options.full_width"
+            },
+            {
+              "value": "custom",
+              "label": "t:global.image.width_options.custom"
+            }
+          ],
+          "default": "custom"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "min": 100,
+          "max": 1000,
+          "step": 10,
+          "unit": "px",
+          "label": "t:global.image.maximum_width",
+          "default": 600
+        },
+        {
+          "type": "range",
+          "id": "mobile_max_width",
+          "min": 100,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "label": "t:global.image.mobile_maximum_width",
+          "default": 400
+        }
+      ]
+    },
+    {
+      "type": "feature_with_icon",
+      "name": "t:sections.main_product.blocks.feature_with_icon.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:global.text.text",
+          "default": "<p>Feature</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:global.text.link"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:global.icons.icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:global.icons.none"
+            },
+            {
+              "value": "picto-award-gift",
+              "label": "t:global.icons.award_gift",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-bag-handle",
+              "label": "t:global.icons.bag_handle",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-building",
+              "label": "t:global.icons.building",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-coupon",
+              "label": "t:global.icons.coupon",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-gift",
+              "label": "t:global.icons.gift",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-info",
+              "label": "t:global.icons.info",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-love",
+              "label": "t:global.icons.love",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-percent",
+              "label": "t:global.icons.percent",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-star",
+              "label": "t:global.icons.star",
+              "group": "t:global.icons.shop_category"
+            },
+            {
+              "value": "picto-box",
+              "label": "t:global.icons.box",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-delivery-truck",
+              "label": "t:global.icons.delivery_truck",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-pin",
+              "label": "t:global.icons.pin",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-plane",
+              "label": "t:global.icons.plane",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-return",
+              "label": "t:global.icons.return",
+              "group": "t:global.icons.shipping_category"
+            },
+            {
+              "value": "picto-credit-card",
+              "label": "t:global.icons.credit_card",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-lock",
+              "label": "t:global.icons.lock",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-money",
+              "label": "t:global.icons.money",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-secure-profile",
+              "label": "t:global.icons.secure_profile",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-shield",
+              "label": "t:global.icons.shield",
+              "group": "t:global.icons.payment_and_security_category"
+            },
+            {
+              "value": "picto-earth",
+              "label": "t:global.icons.earth",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-leaf",
+              "label": "t:global.icons.leaf",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-recycle",
+              "label": "t:global.icons.recycle",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-tree",
+              "label": "t:global.icons.tree",
+              "group": "t:global.icons.ecology_category"
+            },
+            {
+              "value": "picto-at-sign",
+              "label": "t:global.icons.at_sign",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-bluetooth",
+              "label": "t:global.icons.bluetooth",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-camera",
+              "label": "t:global.icons.camera",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-printer",
+              "label": "t:global.icons.printer",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-smart-watch",
+              "label": "t:global.icons.smart_watch",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-wifi",
+              "label": "t:global.icons.wifi",
+              "group": "t:global.icons.tech_category"
+            },
+            {
+              "value": "picto-avatar",
+              "label": "t:global.icons.avatar",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-chat",
+              "label": "t:global.icons.chat",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-calendar",
+              "label": "t:global.icons.calendar",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-comment",
+              "label": "t:global.icons.comment",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-customer-support",
+              "label": "t:global.icons.customer_support",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-happy-face",
+              "label": "t:global.icons.happy_face",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-mailbox",
+              "label": "t:global.icons.mailbox",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-mobile-phone",
+              "label": "t:global.icons.mobile_phone",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-operator",
+              "label": "t:global.icons.operator",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-phone",
+              "label": "t:global.icons.phone",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-send",
+              "label": "t:global.icons.send",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-user",
+              "label": "t:global.icons.user",
+              "group": "t:global.icons.communication_category"
+            },
+            {
+              "value": "picto-burger",
+              "label": "t:global.icons.burger",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-beer",
+              "label": "t:global.icons.beer",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-coffee",
+              "label": "t:global.icons.coffee",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-pizza",
+              "label": "t:global.icons.pizza",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-bottle",
+              "label": "t:global.icons.bottle",
+              "group": "t:global.icons.food_category"
+            },
+            {
+              "value": "picto-document",
+              "label": "t:global.icons.document",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-error",
+              "label": "t:global.icons.error",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-file",
+              "label": "t:global.icons.file",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-jewelry",
+              "label": "t:global.icons.jewelry",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-mask",
+              "label": "t:global.icons.mask",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-music",
+              "label": "t:global.icons.music",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-not-allowed",
+              "label": "t:global.icons.not_allowed",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-target",
+              "label": "t:global.icons.target",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-timer",
+              "label": "t:global.icons.timer",
+              "group": "t:global.icons.other_category"
+            },
+            {
+              "value": "picto-success",
+              "label": "t:global.icons.success",
+              "group": "t:global.icons.other_category"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "t:global.icons.custom_icon",
+          "info": "t:global.icons.custom_icon_info"
+        },
+        {
+          "type": "range",
+          "id": "icon_width",
+          "min": 12,
+          "max": 32,
+          "step": 4,
+          "unit": "px",
+          "label": "t:global.icons.icon_width",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "t:global.colors.background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:global.colors.text",
+          "default": "#6b6b6b"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "t:global.colors.border"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "t:sections.image_with_text.blocks.page.name",
+      "settings": [
+        {	
+          "type": "page",	
+          "id": "page",	
+          "label": "Page"	
+        }	
+      ]	
+    },	
+    {
+      "type": "liquid",
+      "name": "t:sections.image_with_text.blocks.liquid.name",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "liquid",
+          "label": "t:global.code.liquid",
+          "default": "<p>Write custom Liquid code to include widget or dynamic code.</p>"	
+        }	
+      ]	
+    },	
+    {	
+      "type": "link",
+      "name": "t:sections.image_with_text.blocks.link.name",
+      "settings": [
+        {	
+          "type": "text",	
+          "id": "text",	
+          "label": "t:global.text.text",
+          "default": "Text"	
+        },	
+        {	
+          "type": "url",	
+          "id": "url",	
+          "label": "t:global.text.link"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.image_with_text.blocks.button.name",
+      "settings": [
+        {	
+          "type": "select",	
+          "id": "style",	
+          "label": "t:global.text.style",
+          "options": [	
+            {	
+              "value": "outline",	
+              "label": "t:global.text.button_style_options.outline"
+            },	
+            {	
+              "value": "solid",
+              "label": "t:global.text.button_style_options.solid"
+            }	
+          ],	
+          "default": "solid"
+        },	
+        {	
+          "type": "text",	
+          "id": "text",	
+          "label": "t:global.text.text",
+          "default": "Button text"	
+        },	
+        {	
+          "type": "url",	
+          "id": "url",	
+          "label": "t:global.text.link"
+        },	
+        {	
+          "type": "color",	
+          "id": "background",	
+          "label": "t:global.colors.background"
+        },	
+        {	
+          "type": "color",	
+          "id": "text_color",	
+          "label": "t:global.text.text"
+        }	
+      ]	
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image_with_text.presets.image_with_text.name",
+      "blocks": [
+        {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text"
+          }
+        },
+        {
+          "type": "richtext"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

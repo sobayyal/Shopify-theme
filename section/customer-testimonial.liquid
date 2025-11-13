@@ -1,0 +1,643 @@
+{{ 'section-customer-testimonial.css' | asset_url | stylesheet_tag }}
+
+<div class="customer-testimonial" 
+     style="--section-bg-color: {{ section.settings.background_color }};
+            --section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+            --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+            --section-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+            --section-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+            --section-heading-color: {{ section.settings.heading_color }};
+            --section-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+            --section-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+            --section-heading-weight: {{ section.settings.heading_font_weight }};
+            --section-description-color: {{ section.settings.description_color }};
+            --section-description-size-mobile: {{ section.settings.description_size_mobile }}px;
+            --section-description-size-desktop: {{ section.settings.description_size_desktop }}px;
+            --quote-text-color: {{ section.settings.quote_text_color }};
+            --quote-text-size-mobile: {{ section.settings.quote_text_size_mobile }}px;
+            --quote-text-size-desktop: {{ section.settings.quote_text_size_desktop }}px;
+            --author-name-color: {{ section.settings.author_name_color }};
+            --author-name-size-mobile: {{ section.settings.author_name_size_mobile }}px;
+            --author-name-size-desktop: {{ section.settings.author_name_size_desktop }}px;
+            --author-name-weight: {{ section.settings.author_name_font_weight }};
+            --author-title-color: {{ section.settings.author_title_color }};
+            --author-title-size-mobile: {{ section.settings.author_title_size_mobile }}px;
+            --author-title-size-desktop: {{ section.settings.author_title_size_desktop }}px;
+            --stat-number-color: {{ section.settings.stat_number_color }};
+            --stat-number-size-mobile: {{ section.settings.stat_number_size_mobile }}px;
+            --stat-number-size-desktop: {{ section.settings.stat_number_size_desktop }}px;
+            --stat-number-weight: {{ section.settings.stat_number_font_weight }};
+            --stat-text-color: {{ section.settings.stat_text_color }};
+            --stat-text-size-mobile: {{ section.settings.stat_text_size_mobile }}px;
+            --stat-text-size-desktop: {{ section.settings.stat_text_size_desktop }}px;
+            --rating-text-color: {{ section.settings.rating_text_color }};
+            --rating-text-size-mobile: {{ section.settings.rating_text_size_mobile }}px;
+            --rating-text-size-desktop: {{ section.settings.rating_text_size_desktop }}px;
+            --star-color: {{ section.settings.star_color }};
+            --card-bg-color: {{ section.settings.card_background_color }};">
+  
+  <div class="customer-testimonial__container page-width">
+    {%- comment -%} Section Header {%- endcomment -%}
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+      <div class="customer-testimonial__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="customer-testimonial__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="customer-testimonial__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Content Wrapper {%- endcomment -%}
+    <div class="customer-testimonial__wrapper customer-testimonial__wrapper--{{ section.settings.layout }}">
+      
+      {%- comment -%} Quote Card {%- endcomment -%}
+      <div class="customer-testimonial__quote-card">
+        {%- if section.settings.quote_text != blank -%}
+          <blockquote class="customer-testimonial__quote">
+            {{ section.settings.quote_text }}
+          </blockquote>
+        {%- endif -%}
+
+        {%- comment -%} Author Info {%- endcomment -%}
+        <div class="customer-testimonial__author">
+          {%- if section.settings.author_image != blank -%}
+            <div class="customer-testimonial__author-image">
+              {{- section.settings.author_image | image_url: width: 120 | image_tag:
+                loading: 'lazy',
+                class: 'customer-testimonial__author-img',
+                widths: '60, 80, 120',
+                sizes: '60px'
+              -}}
+            </div>
+          {%- endif -%}
+
+          <div class="customer-testimonial__author-info">
+            {%- if section.settings.author_name != blank -%}
+              <div class="customer-testimonial__author-name">
+                {{ section.settings.author_name }}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.author_title != blank -%}
+              <div class="customer-testimonial__author-title">
+                {{ section.settings.author_title }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Stats Card {%- endcomment -%}
+      <div class="customer-testimonial__stats-card">
+        {%- if section.settings.stat_number != blank -%}
+          <div class="customer-testimonial__stat-number">
+            {{ section.settings.stat_number }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.stat_text != blank -%}
+          <div class="customer-testimonial__stat-text">
+            {{ section.settings.stat_text }}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Rating {%- endcomment -%}
+        {%- if section.settings.show_rating -%}
+          <div class="customer-testimonial__rating">
+            <div class="customer-testimonial__stars">
+              {%- liquid
+                assign rating = section.settings.rating_value
+                assign full_stars = rating | floor
+                assign decimal = rating | modulo: 1
+                assign has_half = false
+                if decimal >= 0.5
+                  assign has_half = true
+                endif
+              -%}
+              
+              {%- for i in (1..5) -%}
+                {%- assign next_star = full_stars | plus: 1 -%}
+                {%- if i <= full_stars -%}
+                  <span class="customer-testimonial__star customer-testimonial__star--full">★</span>
+                {%- elsif i == next_star and has_half -%}
+                  <span class="customer-testimonial__star customer-testimonial__star--half">★</span>
+                {%- else -%}
+                  <span class="customer-testimonial__star customer-testimonial__star--empty">★</span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+            {%- if section.settings.rating_text != blank -%}
+              <div class="customer-testimonial__rating-text">
+                {{ section.settings.rating_text }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Testimonial",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer Obsession"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Feedback shapes innovation. We listen, refine, and rebuild until we get it right."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Content Layout",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal (Side by Side)"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical (Stacked)"
+        }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "header",
+      "content": "Quote Content"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "\"This isn't just luggage. It's engineering poetry. Every detail shows they actually care about the traveler experience.\""
+    },
+    {
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "Author Image"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author Name",
+      "default": "Sarah Chen"
+    },
+    {
+      "type": "text",
+      "id": "author_title",
+      "label": "Author Title",
+      "default": "Frequent Business Traveler"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "text",
+      "id": "stat_number",
+      "label": "Stat Number",
+      "default": "500,000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_text",
+      "label": "Stat Description",
+      "default": "Travellers worldwide trust Nobl"
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show Rating",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_value",
+      "label": "Rating Value",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "default": 4.5
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "4.9/5 average rating"
+    },
+    {
+      "type": "header",
+      "content": "Section Heading Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading Size (Desktop)",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "min": 18,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "label": "Description Size (Desktop)",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description Size (Mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Quote Typography"
+    },
+    {
+      "type": "range",
+      "id": "quote_text_size_desktop",
+      "label": "Quote Text Size (Desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "quote_text_size_mobile",
+      "label": "Quote Text Size (Mobile)",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Author Typography"
+    },
+    {
+      "type": "range",
+      "id": "author_name_size_desktop",
+      "label": "Author Name Size (Desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "author_name_size_mobile",
+      "label": "Author Name Size (Mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "author_name_font_weight",
+      "label": "Author Name Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "author_title_size_desktop",
+      "label": "Author Title Size (Desktop)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "author_title_size_mobile",
+      "label": "Author Title Size (Mobile)",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Statistics Typography"
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size_desktop",
+      "label": "Stat Number Size (Desktop)",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size_mobile",
+      "label": "Stat Number Size (Mobile)",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "stat_number_font_weight",
+      "label": "Stat Number Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "stat_text_size_desktop",
+      "label": "Stat Text Size (Desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "stat_text_size_mobile",
+      "label": "Stat Text Size (Mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "rating_text_size_desktop",
+      "label": "Rating Text Size (Desktop)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "rating_text_size_mobile",
+      "label": "Rating Text Size (Mobile)",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Section Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Section Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "quote_text_color",
+      "label": "Quote Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "author_name_color",
+      "label": "Author Name Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "author_title_color",
+      "label": "Author Title Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Stat Number Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "stat_text_color",
+      "label": "Stat Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "rating_text_color",
+      "label": "Rating Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Testimonial"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,480 @@
+{% style %}
+  .Nobl-cst-rev-section {
+    background-color: {{ section.settings.background_color }};
+    padding: 0;
+  }
+
+  .Nobl-cst-rev-wrapper {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .Nobl-cst-rev-title {
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: {{ section.settings.title_weight }};
+    color: {{ section.settings.title_color }};
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .Nobl-cst-rev-slider {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  .Nobl-cst-rev-slide {
+    background: {{ section.settings.card_bg_color }};
+    border-radius: {{ section.settings.card_radius }}px;
+    overflow: hidden;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); */
+    transition: transform 0.3s ease;
+    height: 514px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dedede;
+  }
+
+
+  .Nobl-cst-rev-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .Nobl-cst-rev-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .Nobl-cst-rev-content {
+    padding: {{ section.settings.card_padding }}px;
+    flex: 1;
+    display: flex;
+    /* align-items: center; */
+  }
+
+  .Nobl-cst-rev-text {
+    font-size: {{ section.settings.text_size }}px;
+    color: {{ section.settings.text_color }};
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Swiper Navigation */
+  .Nobl-cst-rev-button-prev,
+  .Nobl-cst-rev-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: {{ section.settings.arrow_bg_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .Nobl-cst-rev-button-prev {
+    left: 5px;
+  }
+
+  .Nobl-cst-rev-button-next {
+    right: 5px;
+  }
+
+  .Nobl-cst-rev-button-prev svg,
+  .Nobl-cst-rev-button-next svg {
+    width: 20px;
+    height: 20px;
+    color: {{ section.settings.arrow_color }};
+  }
+
+  .Nobl-cst-rev-button-prev.swiper-button-disabled,
+  .Nobl-cst-rev-button-next.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* Swiper Pagination */
+  .Nobl-cst-rev-pagination {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .Nobl-cst-rev-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: {{ section.settings.pagination_color }};
+    opacity: 0.3;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+  }
+
+  .Nobl-cst-rev-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .Nobl-cst-rev-wrapper {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .Nobl-cst-rev-title {
+      font-size: {{ section.settings.title_size | minus: 14 }}px;
+      margin-bottom: 35px;
+    }
+
+    .Nobl-cst-rev-image-wrapper {
+      overflow: hidden;
+    }
+
+    .Nobl-cst-rev-content {
+      padding: {{ section.settings.card_padding | minus: 5 }}px;
+    }
+
+    .Nobl-cst-rev-text {
+      font-size: {{ section.settings.text_size | minus: 1 }}px;
+    }
+
+    .Nobl-cst-rev-button-prev,
+    .Nobl-cst-rev-button-next {
+     
+    }
+  }
+  .Nobl-cst-rev-section .swiper-pagination-bullets.swiper-pagination-horizontal{
+        bottom: auto !important
+
+  }
+{% endstyle %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<section class="Nobl-cst-rev-section ">
+  <div class="container">
+    <div class="Nobl-cst-rev-wrapper">
+      {% if section.settings.title != blank %}
+        <h2 class="h2 text-center" >{{ section.settings.title }}</h2>
+      {% endif %}
+
+      <div class="Nobl-cst-rev-slider swiper" id="Nobl-cst-rev-swiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <div class="Nobl-cst-rev-slide">
+                {% if block.settings.image != blank %}
+                  <div class="Nobl-cst-rev-image-wrapper">
+                    <img 
+                      src="{{ block.settings.image | img_url: 'large' }}" 
+                      alt="{{ block.settings.review_text | escape }}"
+                      class="Nobl-cst-rev-image"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                
+                {% if block.settings.review_text != blank %}
+                  <div class="Nobl-cst-rev-content">
+                    <p class="Nobl-cst-rev-text">{{ block.settings.review_text }}</p>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if section.settings.show_arrows %}
+          <div class="Nobl-cst-rev-button-prev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </div>
+          <div class="Nobl-cst-rev-button-next">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_pagination %}
+        
+        {% endif %}
+      </div>
+        <div class="Nobl-cst-rev-pagination swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+(function() {
+  function initSwiper() {
+    const swiper = new Swiper('#Nobl-cst-rev-swiper-{{ section.id }}', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: {{ section.settings.enable_loop }},
+      autoplay: {{ section.settings.enable_autoplay }} ? {
+        delay: {{ section.settings.autoplay_delay | times: 1000 }},
+        disableOnInteraction: false,
+      } : false,
+      navigation: {
+        nextEl: '.Nobl-cst-rev-button-next',
+        prevEl: '.Nobl-cst-rev-button-prev',
+      },
+      pagination: {
+        el: '.Nobl-cst-rev-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        }
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSwiper);
+  } else {
+    initSwiper();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Customer Reviews Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Reviews From Customers Like You"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF7F3"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Text Padding",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Review Text Size",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_loop",
+      "label": "Enable Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay Delay",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Arrow Hover Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow Icon Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination Dots",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "pagination_color",
+      "label": "Pagination Dot Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Review Image"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "Love this product! It exceeded my expectations and the quality is amazing."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews Slider",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Love this product! It exceeded my expectations and the quality is amazing. Highly recommend to everyone!"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Best purchase I've made this year. The customer service was outstanding and shipping was super fast."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Absolutely worth it! Great value for money and exactly as described. Will definitely buy again."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Five stars! The quality is incredible and it arrived perfectly packaged. So happy with this purchase."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

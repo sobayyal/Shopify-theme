@@ -1,0 +1,221 @@
+{% comment %}
+Comparison Table using dynamic blocks
+{% endcomment %}
+<div class="container-1400">
+
+ <div class="section-header-pdp">
+   
+    {% if section.settings.heading %}
+      <h2 class="font-32">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtext_1 %}
+      <div class="rte">{{ section.settings.subtext_1 }}</div>
+    {% endif %}
+  
+  </div>
+<div class="con-flex">
+  <div class="com-first">
+     {% for block in section.blocks limit:1 %}
+        {% assign image = block.settings.image %}
+        {% assign image2 = block.settings.image2 %}
+        {% assign title = block.settings.title %}
+        {% assign description = block.settings.description %}
+        
+        <li class="splide__slide loop-1">
+          <div class="comparison-entry">
+            {% if image %}
+              <img class="over-img" src="{{ image | image_url: width: 200 }}" alt="{{ title }}"  />
+            {% endif %}
+            {% if image2 %}
+              <img class="over-bottom" src="{{ image2 | image_url: width: 200 }}" alt="{{ title }}"  />
+            {% endif %}
+            {% if title %}
+              <h3 style="margin: 10px 0;">{{ title }}</h3>
+            {% endif %}
+            {% if description %}
+              <div class="description">{{ description }}</div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+  </div>
+<div class="comparison-slider splide" role="group" aria-label="Comparison Slider">
+  <div class="splide__track">
+    <ul class="splide__list">
+      {% assign loop_index = 1 %}
+
+      {% for block in section.blocks offset:1 %}
+        {% assign loop_index = loop_index | plus: 1 %}
+
+        {% assign image = block.settings.image %}
+        {% assign image2 = block.settings.image2 %}
+        {% assign title = block.settings.title %}
+        {% assign description = block.settings.description %}
+        
+        <li class="splide__slide loop-{{ loop_index }}">
+          <div class="comparison-entry">
+            {% if image %}
+              <img class="over-img" src="{{ image | image_url: width: 200 }}" alt="{{ title }}"  />
+            {% endif %}
+            {% if image2 %}
+              <img class="over-bottom" src="{{ image2 | image_url: width: 200 }}" alt="{{ title }}"  />
+            {% endif %}
+            {% if title %}
+              <h3 style="margin: 10px 0;">{{ title }}</h3>
+            {% endif %}
+            {% if description %}
+              <div class="description">{{ description }}</div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+   <div class="custom-arrows">
+  <button class="splide-prevs" aria-label="Previous">
+   <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="11" cy="11" r="10.5" stroke="black"/>
+<path d="M8.64647 11.3536C8.45121 11.1583 8.45121 10.8417 8.64647 10.6464L11.8284 7.46447C12.0237 7.2692 12.3403 7.2692 12.5356 7.46447C12.7308 7.65973 12.7308 7.97631 12.5356 8.17157L9.70713 11L12.5356 13.8284C12.7308 14.0237 12.7308 14.3403 12.5356 14.5355C12.3403 14.7308 12.0237 14.7308 11.8284 14.5355L8.64647 11.3536ZM9.00012 11V11.5H9.00002V11V10.5H9.00012V11Z" fill="black"/>
+</svg>
+
+  </button>
+
+  <!-- Dots will be auto-injected here -->
+  <div class="splide__pagination dost-insides"> </div>
+
+  <button class="splide-nexts" aria-label="Next">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="11" cy="11" r="10.5" stroke="black"/>
+<path d="M13.3537 11.3536C13.5489 11.1583 13.5489 10.8417 13.3537 10.6464L10.1717 7.46447C9.97641 7.2692 9.65983 7.2692 9.46457 7.46447C9.2693 7.65973 9.2693 7.97631 9.46457 8.17157L12.293 11L9.46457 13.8284C9.2693 14.0237 9.2693 14.3403 9.46457 14.5355C9.65983 14.7308 9.97641 14.7308 10.1717 14.5355L13.3537 11.3536ZM13 11V11.5H13.0001V11V10.5H13V11Z" fill="black"/>
+</svg>
+
+  </button>
+</div>
+</div>
+</div>
+    {% assign block_count = section.blocks.size %}
+
+<style>
+   
+   #shopify-section-{{section.id}} .splide__pagination.dost-insides > li:nth-child(1n + {{ block_count  }}) {
+    display: none;
+}
+</style>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  var splides = new Splide('.comparison-slider', {
+    type: 'loop',
+    perPage: 4,
+    perMove: 1,
+    autoplay: false,
+    gap: '42px',
+    pagination: true,
+    arrows: false,
+    breakpoints: {
+      1180: {
+      gap: '15px',
+    },
+    992: {
+      gap: '15px',
+    },
+      767: {
+        perPage: 1,
+        perMove: 1,
+        gap: '15px',
+      },
+    },
+  });
+
+  splides.mount();
+
+  // Optional: Custom arrow buttons outside the slider
+  var prevBtns = document.querySelector('.splide-prevs');
+  var nextBtns = document.querySelector('.splide-nexts');
+
+  if (prevBtns && nextBtns) {
+    prevBtns.addEventListener('click', function () {
+      splides.go('<');
+    });
+
+    nextBtns.addEventListener('click', function () {
+      splides.go('>');
+    });
+  }
+});
+
+</script>
+
+</div>
+{% schema %}
+{
+  "name": "Comparison Table",
+  "settings": [
+    
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Trusted by People Who Actually Travel"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext_1",
+      "label": "Subtext Line 1",
+    }
+  ],
+  "blocks": [
+    {
+      "type": "entry",
+      "name": "Comparison Entry",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }, 
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image 2"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "entry"
+        },
+        {
+          "type": "entry"
+        },
+        {
+          "type": "entry"
+        },
+        {
+          "type": "entry"
+        },
+        {
+          "type": "entry"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

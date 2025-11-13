@@ -1,0 +1,390 @@
+{%- comment -%}
+This countdown section can only be added on the header group (as a condensed section). For the bigger countdown section
+usable in the main template, please look at the "countdown.liquid" section instead.
+{%- endcomment -%}
+
+<style>
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} {
+      --countdown-condensed-justify-content: {{ section.settings.desktop_justification }};
+    }
+  }
+
+  countdown-timer-alt .countdown-condensed__timer-item{
+    color:black;
+  }
+</style>
+
+<div class="countdown-condensed" style="{% render 'surface', background: section.settings.background, text_color: section.settings.text_color %}">
+  <div class="countdown-condensed__text {% if section.settings.icon_image %}countdown-with-icon{% endif %}">
+    
+    {%- if section.blocks.size > 0 -%}
+      {%- assign countdown_carousel_id = 'countdown-carousel-' | append: section.id -%}
+
+      <announcement-bar-carousel 
+        allow-swipe 
+        {% if section.settings.autoplay %}autoplay="{{ section.settings.cycle_speed }}"{% endif %} 
+        id="{{ countdown_carousel_id }}" 
+        class="countdown-content-carousel">
+        
+        {%- for block in section.blocks -%}
+          <div class="prose countdown-carousel-item {% if forloop.first %}is-selected{% endif %}" {{ block.shopify_attributes }}>
+            {% if block.settings.icon_image %}
+              <div class="countdown-timer--image-icon">
+                <img src="{{ block.settings.icon_image | img_url : 'master' }}">
+              </div>
+            {% endif %}
+            {% if localization.market.handle == "0a5ca24a-afcd-465e-b822-58498e2bbb6a" or localization.market.handle == "canada" %}
+              <a href="{{ block.settings.link_url }}" class="h6 link sm-max:hidden">
+                <p class="h6">{{ block.settings.content }}</p>
+              </a>
+            {% else %}
+              <p class="h6">{{ block.settings.content }}</p>
+            {% endif %}
+          </div>
+        {%- endfor -%}
+      </announcement-bar-carousel>
+    {%- endif -%}
+
+    {%- if section.settings.link_text != blank -%}
+      <a href="{{ section.settings.link_url }}" class="h6 link sm-max:hidden">{{ section.settings.link_text }}</a>
+    {%- endif -%}
+  </div>
+
+  {%- assign accessibility_expiration_date = section.settings.expiration_date | date: format: 'date_at_time' -%}
+  {%- assign accessibility_text = 'sections.countdown_timer.expires_accessibility_text' | t: expiration_date: accessibility_expiration_date -%}
+
+  <countdown-timer-alt 
+    class="countdown-condensed__timer" 
+    role="timer" 
+    aria-label="{{ accessibility_text | escape }}" 
+    data-use-local-timezone="true"
+    expiration-behavior="{{ section.settings.expiration_behavior }}"
+    loop-count="{{ section.settings.loop_count | default: 0 }}"
+    store-timezone="{{ shop.timezone | escape }}">
+    <div id="countdown-timer-{{ section.id }}" class="countdown-condensed__timer">
+    
+    <div class="countdown-condensed__timer-item" aria-hidden="true">
+      <countdown-timer-flip type="hours" class="countdown-condensed__timer-flip" id="hours" style="font-weight:600 !important">00</countdown-timer-flip>
+      <span class="countdown-condensed__timer-unit" style="font-weight:600 !important">{{ 'sections.countdown_timer.hours' | t }}</span>
+    </div>
+
+    <span class="countdown-condensed__timer-item-separator" aria-hidden="true">:</span>
+
+    <div class="countdown-condensed__timer-item" aria-hidden="true">
+      <countdown-timer-flip type="minutes" class="countdown-condensed__timer-flip" id="minutes" style="font-weight:600 !important">00</countdown-timer-flip>
+      <span class="countdown-condensed__timer-unit" style="font-weight:600 !important">{{ 'sections.countdown_timer.minutes' | t }}</span>
+    </div>
+
+    <span class="countdown-condensed__timer-item-separator" aria-hidden="true">:</span>
+
+    <div class="countdown-condensed__timer-item" aria-hidden="true">
+      <countdown-timer-flip type="seconds" class="countdown-condensed__timer-flip" id="seconds" style="font-weight:600 !important">00</countdown-timer-flip>
+      <span class="countdown-condensed__timer-unit" style="font-weight:600 !important">{{ 'sections.countdown_timer.seconds' | t }}</span>
+    </div>
+    </div>
+  </countdown-timer-alt>
+</div>
+
+<style>
+  .countdown-condensed__text a{
+  font-size:14px !important;
+  }
+  .countdown-content-carousel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 380px;
+  }
+  @media(max-width:768px){
+  .countdown-content-carousel{
+    width:100% !important;
+  }
+  }
+
+  .countdown-carousel-item {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    gap: 10px;
+  }
+
+  .countdown-carousel-item.is-selected {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .countdown-carousel-nav {
+    flex-shrink: 0;
+    margin: 0 8px;
+  }
+
+  .countdown-condensed__text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .shopify-section-group-header-group.shopify-section--countdown-condensed .countdown-condensed__text p{
+  font-weight:500 !important;
+  }
+</style>
+
+<script>
+(function() {
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLocalTimezone);
+  } else {
+    initLocalTimezone();
+  }
+
+  function initLocalTimezone() {
+    // Find all countdown timers that should use local timezone
+    const timers = document.querySelectorAll('countdown-timer-alt[data-use-local-timezone="true"]');
+    
+    timers.forEach(function(timer) {
+      // Override the constructor to use local timezone
+      if (timer._localTimezoneInitialized) return;
+      timer._localTimezoneInitialized = true;
+      
+      // Store references
+      const flips = Array.from(timer.querySelectorAll("countdown-timer-flip"));
+      const expirationBehavior = timer.getAttribute("expiration-behavior") || 'loop';
+      const loopCount = parseInt(timer.getAttribute("loop-count") || "0");
+      
+      let targetDate;
+      let currentLoopIteration = 0;
+      let interval;
+      
+      // Calculate next local midnight
+      function calculateNextLocalMidnight() {
+        const now = new Date();
+        const nextMidnight = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate() + 1,
+          0, 0, 0, 0
+        );
+        targetDate = nextMidnight.getTime();
+        currentLoopIteration = 0;
+      }
+      
+      // Start next loop
+      function startNextLoop() {
+        currentLoopIteration++;
+        const currentTarget = new Date(targetDate);
+        const nextMidnight = new Date(
+          currentTarget.getFullYear(),
+          currentTarget.getMonth(),
+          currentTarget.getDate() + 1,
+          0, 0, 0, 0
+        );
+        targetDate = nextMidnight.getTime();
+      }
+      
+      // Update timer display
+      function updateTimer() {
+        const now = new Date().getTime();
+        let remainingTime = targetDate - now;
+
+        if (remainingTime <= 0) {
+          if (expirationBehavior === 'hide') {
+            timer.style.display = 'none';
+            clearInterval(interval);
+            return;
+          } else if (expirationBehavior === 'loop') {
+            if (loopCount === 0 || currentLoopIteration < loopCount) {
+              startNextLoop();
+              remainingTime = targetDate - now;
+            } else {
+              remainingTime = 0;
+            }
+          } else {
+            remainingTime = 0;
+          }
+        }
+
+        const hours = Math.floor((Math.max(0, remainingTime) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((Math.max(0, remainingTime) % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((Math.max(0, remainingTime) % (1000 * 60)) / 1000);
+
+        updateFlips(hours, minutes, seconds);
+      }
+      
+      // Update flip displays
+      function updateFlips(hours, minutes, seconds) {
+        const hoursFlip = flips.find(flip => flip.getAttribute("type") === "hours");
+        const minutesFlip = flips.find(flip => flip.getAttribute("type") === "minutes");
+        const secondsFlip = flips.find(flip => flip.getAttribute("type") === "seconds");
+        
+        if (hoursFlip && hoursFlip.updateValue) hoursFlip.updateValue(hours);
+        if (minutesFlip && minutesFlip.updateValue) minutesFlip.updateValue(minutes);
+        if (secondsFlip && secondsFlip.updateValue) secondsFlip.updateValue(seconds);
+      }
+      
+      // Initialize
+      calculateNextLocalMidnight();
+      updateTimer();
+      interval = setInterval(updateTimer, 1000);
+      
+      // Cleanup on disconnect
+      const originalDisconnect = timer.disconnectedCallback;
+      timer.disconnectedCallback = function() {
+        clearInterval(interval);
+        if (originalDisconnect) originalDisconnect.call(timer);
+      };
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.countdown_timer.name",
+  "class": "shopify-section--countdown-condensed",
+  "tag": "section",
+  "limit": 1,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content Message",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "label": "t:global.text.content",
+          "default": "Promote your current offer"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "t:global.text.link_url"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.countdown_timer.timezone_information"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-rotate between messages",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "sec",
+      "label": "Cycle speed",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "t:global.text.link_text",
+      "info": "t:sections.countdown_timer.link_text_info"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:global.text.link_url"
+    },
+    {
+      "type": "text",
+      "id": "expiration_date",
+      "label": "t:sections.countdown_timer.expiration_date",
+      "placeholder": "2025-07-27 23:59:59",
+      "info": "Not used when local timezone is enabled - timer always counts to user's local midnight"
+    },
+    {
+      "type": "select",
+      "id": "expiration_behavior",
+      "label": "t:sections.countdown_timer.expiration_behavior",
+      "options": [
+        {
+          "value": "hide",
+          "label": "t:sections.countdown_timer.expiration_behavior_options.hide"
+        },
+        {
+          "value": "leave",
+          "label": "t:sections.countdown_timer.expiration_behavior_options.leave"
+        },
+        {
+          "value": "loop",
+          "label": "Loop"
+        }
+      ],
+      "default": "loop"
+    },
+    {
+      "type": "number",
+      "id": "loop_count",
+      "label": "Loop Count",
+      "info": "How many times should the timer loop after expiration? (0 = infinite loop, only applies when expiration behavior is 'Loop')",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "desktop_justification",
+      "label": "t:sections.countdown_timer.desktop_justification",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:sections.countdown_timer.desktop_justification_options.center"
+        },
+        {
+          "value": "space-between",
+          "label": "t:sections.countdown_timer.desktop_justification_options.space_between"
+        },
+        {
+          "value": "space-evenly",
+          "label": "t:sections.countdown_timer.desktop_justification_options.space_evenly"
+        }
+      ],
+      "default": "space-between"
+    },
+    {
+      "type": "header",
+      "content": "t:global.colors.category"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:global.colors.background",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:global.colors.text",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.countdown_timer.presets.countdown_timer.name"
+    }
+  ]
+}
+{% endschema %}

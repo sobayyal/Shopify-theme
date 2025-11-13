@@ -1,0 +1,74 @@
+{% schema %}
+{
+  "name": "Parallax Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "parallax_image",
+      "label": "Parallax Image"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height (px)",
+      "min": 200,
+      "max": 1200,
+      "step": 50,
+      "default": 600
+    }
+  ],
+  "presets": [
+    {
+      "name": "Parallax Image",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+.parallax-section {
+  position: relative;
+  width: 100%;
+  height: {{ section.settings.section_height }}px;
+  overflow: hidden;
+}
+
+.parallax-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* a bit taller so it has room to move */
+  background-image: url({{ section.settings.parallax_image | img_url: '2000x' }});
+  background-size: cover;
+  background-position: center center;
+  will-change: transform;
+}
+{% endstyle %}
+
+<div class="parallax-section">
+  <div class="parallax-image"></div>
+</div>
+
+{% javascript %}
+document.addEventListener("DOMContentLoaded", function() {
+  const parallax = document.querySelector(".parallax-section .parallax-image");
+
+  function updateParallax() {
+    let scrolled = window.pageYOffset;
+    let sectionTop = parallax.parentElement.offsetTop;
+    let sectionHeight = parallax.parentElement.offsetHeight;
+    let windowHeight = window.innerHeight;
+
+    // only run while section is in view
+    if (scrolled + windowHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+      let yOffset = (scrolled - sectionTop) * 0.4; // parallax speed
+      parallax.style.transform = `translateY(${yOffset}px)`;
+    }
+    requestAnimationFrame(updateParallax);
+  }
+
+  requestAnimationFrame(updateParallax);
+});
+{% endjavascript %}

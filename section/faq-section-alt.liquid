@@ -1,0 +1,349 @@
+<!-- Tailwind CSS CDN -->
+<div class="faq-section-alt" js-faq-section>
+<div class="bg-gray text-white">
+  <div class="section-spacing">
+  <div class="container">
+    <div class="tt4b-faq-module--black">
+            <div class="flex flex-col md:pr-24 faq-section-left">
+                <div>
+                    <div class="cabin-36">{{ section.settings.faq_head }}</div>
+                  <div class="faq-subheading">
+                    {{ section.settings.faq_subhead }}
+                  </div>
+                </div>
+            </div>
+        <div class="s-accordian">
+          {% for block in section.blocks %}
+    <div class="accordion-item faq-section-items">
+      <!-- Accordion Title -->
+          <details class="accordion {% if size %}accordion--{{ size }}{% endif %} group {% if bleed %}bleed sm:unbleed{% endif %}" is="{{ is | default: 'accordion-disclosure' }}" {% if open %}open aria-expanded="true"{% else %}aria-expanded="false"{% endif %} {{ block.shopify_attributes }}>
+         <summary>       
+          <span class="accordion__toggle {% if show_title_as_text %}text-lg{% else %}h6{% endif %}">        
+        <span>{{ block.settings.faq_question }}</span>
+        {%- render 'icon' with 'chevron-down', class: 'group-expanded:rotate' -%}
+        </span>
+  </summary>  
+      <!-- Accordion Content -->
+      <div class="accordion__content {% if prose_content %}prose{% endif %}">
+        <p>{{ block.settings.faq_answer }}</p>
+      </div>
+        </details>
+        </div>
+  {% endfor %}
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<style>
+  .cabin-36{
+    font-size:22px !important;
+  }
+  .faq-section-items summary .accordion__toggle{
+    font-size:20px !important;
+  }
+  .shopify-section--image-with-text-alt .section-paragraph{
+    padding: 30px 0px !important;
+  }
+  .image-wrapper-container{
+    padding-top:0px !important;
+  }
+  .shopify-section--rich-text-new{
+    display:none !important;
+  }
+  #section_who-we-are{
+    display:none !important;
+  }
+  .instagram-feed {
+    gap: 10.667px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .instagram-feed-head{
+    padding:20px 0px !important;
+  }
+  #page-index .faq-section-left {
+    max-width: unset;
+  }
+  #page-index .faq-section-alt .tt4b-faq-module--black .s-accordian {
+    padding-inline: 15px;
+  }
+  #page-index .faq-section-alt[js-faq-section] .faq-subheading{
+    color: rgb(153, 153, 153) !important;
+    font-size: 21px;
+    font-style: italic;
+  }
+  #page-index .faq-section-alt[js-faq-section] .cabin-36 {
+    font-size: 46px !important;
+  }
+  .faq-section-alt .section-spacing {
+    margin-block-start: 0px !important;
+    margin-block-end: 0px !important;
+}
+.faq-section-alt .tt4b-faq-module--black .s-accordian {
+  padding-left:60px;
+}
+  .shopify-section--image-with-text-alt .image-with-text {
+    --image-with-text-gap: 0 !important;
+}
+  .shopify-section--image-with-text-alt .prose.text-center.sm\:text-start {
+    text-align:center !important;
+}
+  .faq-section-items details{
+    border-top:0px !important;
+  }
+
+  p.review-stars {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    margin-bottom:20px;
+    gap:8px;
+}
+.cabin-36 {
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    line-height: 44px !important;
+    letter-spacing: .72px !important;
+   color:#282828 !important;
+}
+.bg-gray{
+ background-color: {{ section.settings.background_color }};
+ padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+}
+.faq-section-items .accordion__content,
+.faq-section-items summary{
+   color:#000 !important;
+}
+.faq-section-items .accordion__content,
+ .faq-subheading{
+  font-size:16px;
+  color:#282828 !important;
+  font-weight:400;
+}
+.faq-section-items summary .accordion__toggle{
+  color:#000;
+  font-size:20px !important;
+  margin-bottom: 0px;
+  padding: 12px 0;
+    
+}
+.faq-section-items details{
+  border-bottom: 2px solid black;
+}
+.faq-section-left{
+  max-width: 400px;
+}
+
+.faq-section-items .accordion :is(svg){
+  border:none !important;
+  border-radius:0px !important;
+  stroke-width: 1.5px !important;
+}
+
+.faq-subheading {
+    margin-top: 20px;
+}
+  .tt4b-faq-module--black {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    /* align-items: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
+    padding: 60px 0px;
+    padding-left: 0;
+    align-items:end;
+}
+.collection-template .tt4b-faq-module--black {
+  padding:20px 0;
+}
+  @media (min-width: 768px) {
+    .faq-affiliate_heading{
+        font-size: 3.8rem;
+        line-height: 1.1;
+      font-weight: 700;
+      margin-top: 0;
+    margin-bottom: 0;
+    } 
+    h3.md\:text-40.text-30.font-bold.my-0.py-5.sec-title.whitespace-pre-wrap {
+    font-size: 2.5rem;
+    line-height: 1.1;
+}
+  }
+  @media (max-width:768px){
+    .collection-template .tt4b-faq-module--black{
+  padding:10px 0px !important;
+}
+    .collection-template .faq-section-alt .bg-gray {
+        padding: 0px 0 20px !important;
+    }
+    .tt4b-faq-module--black{
+    grid-template-columns: 1fr;
+    padding: 0px 10px 20px 10px;
+    }
+    .faq-section-alt .bg-gray {
+     padding:20px 0 20px; 
+    }
+    .cabin-36{
+    font-size:22px !important;
+    line-height:32px !important;
+    }
+    .faq-section-items .accordion__content{
+      padding-inline-end:0px !important;
+      margin-block-start:unset !important;
+      font-size:14px !important;
+    }
+    .faq-section-alt .tt4b-faq-module--black .s-accordian{
+     padding-left:0px !important;
+    }
+    .faq-section-items summary .accordion__toggle{
+      font-size:14px !important;
+    }
+    .faq-subheading{
+    margin-top:5px !important;
+    margin-bottom:20px !important;
+    }
+
+    .faq-affiliate_heading {
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    }
+    .text-base {
+    font-size: 1.2rem !important;
+    }
+    .sec-title.whitespace-pre-wrap {
+    font-size: 2.3rem;
+    line-height: 1.1;
+    }
+    .tt4b-faq-module-section__button {
+    width: 43vw !important;
+    padding: 1.3rem 1.4rem !important;
+    font-size: 20px !important;
+}
+  }
+  .icon-color{
+    color:#fff;
+  }
+  .tt4b-faq-module-section__header{
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .tt4b-faq-module-section:last-child {
+    border-bottom: 1px solid #fff;
+}
+  .tt4b-wrapper>div {
+    max-width: 1440px;
+}
+  .tt4b-wrapper>div {
+    margin: auto;
+}
+  .tt4b-faq-module-section__button {
+    display: flex;
+    flex-direction: row;
+    background-color: #e81155;
+    width: 13vw;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border-radius: 50px;
+    
+}
+  svg.tt4b-icon {
+    stroke: #fff;
+}
+  .tt4b-faq-module-section__button:hover{
+    background-color: #fff;
+    color: #000;
+      svg.tt4b-icon {
+        stroke: #000;
+    }
+  }
+  
+  
+</style>
+</div>
+
+{% schema %}
+  {
+  "name": "FAQ Section Alt",
+  "settings": [
+    {
+      "type": "textarea",
+      "id":"faq_head",
+      "label": "fAQ Head",
+      "default": "Have more questions about the TikTok For Business Affiliate Program?"
+    },
+    {
+      "type": "textarea",
+      "id":"faq_subhead",
+      "label": "fAQ Subhead",
+      "default":"Here are some of the most commonly asked questions about the TikTok For Business Affiliate Program."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ececec"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+    
+  ],
+  "blocks": [
+    
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "faq_question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "faq_answer",
+          "label": "Answer"
+        },
+        {
+          "type": "url",
+          "id": "button-url",
+          "label": "Button URL"
+        },
+        {
+          "type": "text",
+          "id": "button-text",
+          "label": "Button Text",
+          "default":"Read article"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section Alt"
+    }
+  ]
+}
+{% endschema %}

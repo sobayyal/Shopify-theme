@@ -1,0 +1,499 @@
+{{ 'section-images-with-text.css' | asset_url | stylesheet_tag }}
+
+<div class="images-with-text" 
+     style="--section-bg-color: {{ section.settings.background_color }};
+            --section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+            --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+            --section-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+            --section-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+            --heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+            --heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+            --heading-font-weight: {{ section.settings.heading_font_weight }};
+            --heading-color: {{ section.settings.heading_color }};
+            --description-size-mobile: {{ section.settings.description_size_mobile }}px;
+            --description-size-desktop: {{ section.settings.description_size_desktop }}px;
+            --description-color: {{ section.settings.description_color }};
+            --tagline-size-mobile: {{ section.settings.tagline_size_mobile }}px;
+            --tagline-size-desktop: {{ section.settings.tagline_size_desktop }}px;
+            --tagline-color: {{ section.settings.tagline_color }};
+            --tagline-weight: {{ section.settings.tagline_font_weight }};
+            --button-bg-color: {{ section.settings.button_bg_color }};
+            --button-text-color: {{ section.settings.button_text_color }};
+            --button-hover-bg-color: {{ section.settings.button_hover_bg_color }};">
+  
+  <div class="images-with-text__container page-width">
+    <div class="images-with-text__wrapper images-with-text__wrapper--{{ section.settings.layout }} images-with-text__wrapper--content-{{ section.settings.content_position }}">
+      
+      {%- comment -%} Images Column {%- endcomment -%}
+      <div class="images-with-text__images">
+        {%- comment -%} Image 1 {%- endcomment -%}
+        {%- if section.settings.image_1 != blank or section.settings.image_1_mobile != blank -%}
+          <div class="images-with-text__image-wrapper images-with-text__image-wrapper--1">
+            <picture class="images-with-text__picture">
+              {%- if section.settings.image_1_mobile != blank -%}
+                {{- section.settings.image_1_mobile | image_url: width: 750 | image_tag:
+                  loading: 'lazy',
+                  class: 'images-with-text__img images-with-text__img--mobile',
+                  widths: '375, 550, 750',
+                  sizes: '(max-width: 749px) 100vw, 750px',
+                  media: '(max-width: 749px)'
+                -}}
+              {%- endif -%}
+              {%- if section.settings.image_1 != blank -%}
+                {{- section.settings.image_1 | image_url: width: 1600 | image_tag:
+                  loading: 'lazy',
+                  class: 'images-with-text__img images-with-text__img--desktop',
+                  widths: '375, 550, 750, 1100, 1500, 1600',
+                  sizes: '(min-width: 1200px) 600px, (min-width: 990px) 50vw, (min-width: 750px) 45vw, 100vw'
+                -}}
+              {%- elsif section.settings.image_1_mobile != blank -%}
+                {{- section.settings.image_1_mobile | image_url: width: 750 | image_tag:
+                  loading: 'lazy',
+                  class: 'images-with-text__img',
+                  widths: '375, 550, 750',
+                  sizes: '100vw'
+                -}}
+              {%- endif -%}
+            </picture>
+          </div>
+        {%- else -%}
+          <div class="images-with-text__image-wrapper images-with-text__image-wrapper--1">
+            {{ 'image' | placeholder_svg_tag: 'images-with-text__placeholder' }}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Image 2 {%- endcomment -%}
+        {%- if section.settings.image_2 != blank or section.settings.image_2_mobile != blank -%}
+          <div class="images-with-text__image-wrapper images-with-text__image-wrapper--2">
+            <picture class="images-with-text__picture">
+              {%- if section.settings.image_2_mobile != blank -%}
+                {{- section.settings.image_2_mobile | image_url: width: 750 | image_tag:
+                  loading: 'lazy',
+                  class: 'images-with-text__img images-with-text__img--mobile',
+                  widths: '375, 550, 750',
+                  sizes: '(max-width: 749px) 100vw, 750px',
+                  media: '(max-width: 749px)'
+                -}}
+              {%- endif -%}
+              {%- if section.settings.image_2 != blank -%}
+                {{- section.settings.image_2 | image_url: width: 1600 | image_tag:
+                  loading: 'lazy',
+                  class: 'images-with-text__img images-with-text__img--desktop',
+                  widths: '375, 550, 750, 1100, 1500, 1600',
+                  sizes: '(min-width: 1200px) 600px, (min-width: 990px) 50vw, (min-width: 750px) 45vw, 100vw'
+                -}}
+              {%- elsif section.settings.image_2_mobile != blank -%}
+                {{- section.settings.image_2_mobile | image_url: width: 750 | image_tag:
+                  loading: 'lazy',
+                  class: 'images-with-text__img',
+                  widths: '375, 550, 750',
+                  sizes: '100vw'
+                -}}
+              {%- endif -%}
+            </picture>
+          </div>
+        
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Text Content Column {%- endcomment -%}
+      <div class="images-with-text__content images-with-text__content--align-{{ section.settings.text_alignment }}">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="images-with-text__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="images-with-text__description rte">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.tagline != blank -%}
+          <div class="images-with-text__tagline">
+            {{ section.settings.tagline }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <div class="images-with-text__button-wrapper">
+            <a href="{{ section.settings.button_link }}" class="images-with-text__button button">
+              {{ section.settings.button_label }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Images with Text",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "image-left",
+          "label": "Image Left"
+        },
+        {
+          "value": "image-right",
+          "label": "Image Right"
+        }
+      ],
+      "default": "image-left"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content Position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1 (Desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1_mobile",
+      "label": "Image 1 (Mobile)",
+      "info": "Optional. If not set, desktop image will be used."
+    },
+    {
+      "type": "header",
+      "content": "Desktop Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2 (Desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2_mobile",
+      "label": "Image 2 (Mobile)",
+      "info": "Optional. If not set, desktop image will be used."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Origin Story"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Two underdog founders looked at the luggage industry and saw something broken. Same shapes, no creativity, no soul. Just mass-produced mediocrity.</p><p>We believed travel gear could be different. Functional, beautiful, and built with the kind of obsessive attention to detail that changes everything.</p><p>So we started from scratch. No compromises. No shortcuts. Just relentless pursuit of what luggage could become.</p>"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline / Caption",
+      "info": "Optional bottom line text (e.g., 'Designed and Assembled in North America')"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading Size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "label": "Description Size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Mobile Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size",
+      "min": 18,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description Size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Tagline Typography"
+    },
+    {
+      "type": "range",
+      "id": "tagline_size_desktop",
+      "label": "Tagline Size (Desktop)",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "tagline_size_mobile",
+      "label": "Tagline Size (Mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "tagline_font_weight",
+      "label": "Tagline Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "tagline_color",
+      "label": "Tagline Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Button Hover Background Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images with Text"
+    }
+  ]
+}
+{% endschema %}

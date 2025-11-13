@@ -1,0 +1,323 @@
+{%- comment -%}
+PRODUCT FEATURES SLIDER - BLOCKS APPROACH WITH LAZY LOADING (10 FEATURES)
+{%- endcomment -%}
+
+{% for block in section.blocks %}
+<section 
+    id="dynamic-product-slider" 
+    data-variant-id="{{ block.settings.variant_id }}" 
+    data-default="{{ block.settings.is_default }}"
+    style="display: none;"
+    {{ block.shopify_attributes }}>
+  <div class="container">
+    <h2 class="scroll-sec-heading h1">
+      {{ block.settings.heading }}
+    </h2>
+  </div>
+  <div class="container product-features-slider">
+    <button class="slider-arrow left-arrow" aria-label="Previous slide">
+      <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" 
+           alt="Left Arrow" 
+           class="arrow-icon"
+           loading="lazy"
+           width="24" 
+           height="24">
+    </button>
+    <div class="slider-container">
+      {% assign features_list = 'feature_1,feature_2,feature_3,feature_4,feature_5,feature_6,feature_7,feature_8,feature_9,feature_10' | split: ',' %}
+      
+      {% for feature_name in features_list %}
+        {% assign feature_image_key = feature_name | append: '_image' %}
+        {% assign feature_title_key = feature_name | append: '_title' %}
+        {% assign feature_description_key = feature_name | append: '_description' %}
+        
+        {% assign feature_image = block.settings[feature_image_key] %}
+        {% assign feature_title = block.settings[feature_title_key] %}
+        {% assign feature_description = block.settings[feature_description_key] %}
+        
+        {% if feature_image != blank and feature_title != blank %}
+          {%- comment -%} Only show this feature if both image and title are provided {%- endcomment -%}
+        <div class="slider-item" {% unless forloop.first %}data-lazy="true"{% endunless %}>
+          <div class="slider-image">
+            <img
+              data-src="{{ feature_image | img_url: '900x900' }}"
+              alt="{{ feature_title | escape }}"
+              width="900"
+              height="900"
+              loading="lazy"
+              class="lazy-load"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E">
+          </div>
+          <div class="slider-content">
+            <h3 class="slider-title h6">{{ feature_title }}</h3>
+            <p>{{ feature_description }}</p>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <button class="slider-arrow right-arrow" aria-label="Next slide">
+      <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" 
+           alt="Right Arrow" 
+           class="arrow-icon"
+           loading="lazy"
+           width="24" 
+           height="24">
+    </button>
+  </div>
+</section>
+{% endfor %}
+
+<style>
+/* Lazy loading styles */
+.lazy-load {
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Prevent layout shift during loading */
+.slider-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.slider-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product Features",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "variant_slider",
+      "name": "Variant Slider",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "OUR 5-STAR FUNCTIONS"
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "Variant ID",
+          "info": "Enter the variant ID for which this section should be displayed."
+        },
+        {
+          "type": "checkbox",
+          "id": "is_default",
+          "label": "Default Box",
+          "default": false,
+          "info": "Check this box if this section should be displayed when no variant ID is present in the URL."
+        },
+        {
+          "type": "header",
+          "content": "Feature 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_1_image",
+          "label": "Feature 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_title",
+          "label": "Feature 1 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_1_description",
+          "label": "Feature 1 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_2_image",
+          "label": "Feature 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_title",
+          "label": "Feature 2 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_2_description",
+          "label": "Feature 2 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_3_image",
+          "label": "Feature 3 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_title",
+          "label": "Feature 3 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_3_description",
+          "label": "Feature 3 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_4_image",
+          "label": "Feature 4 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_4_title",
+          "label": "Feature 4 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_4_description",
+          "label": "Feature 4 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_5_image",
+          "label": "Feature 5 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_5_title",
+          "label": "Feature 5 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_5_description",
+          "label": "Feature 5 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_6_image",
+          "label": "Feature 6 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_6_title",
+          "label": "Feature 6 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_6_description",
+          "label": "Feature 6 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 7"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_7_image",
+          "label": "Feature 7 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_7_title",
+          "label": "Feature 7 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_7_description",
+          "label": "Feature 7 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 8"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_8_image",
+          "label": "Feature 8 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_8_title",
+          "label": "Feature 8 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_8_description",
+          "label": "Feature 8 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 9"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_9_image",
+          "label": "Feature 9 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_9_title",
+          "label": "Feature 9 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_9_description",
+          "label": "Feature 9 Description"
+        },
+        {
+          "type": "header",
+          "content": "Feature 10"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_10_image",
+          "label": "Feature 10 Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_10_title",
+          "label": "Feature 10 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_10_description",
+          "label": "Feature 10 Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Features",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

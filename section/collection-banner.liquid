@@ -1,0 +1,880 @@
+{%- if collection.image == blank and section.settings.image == blank -%}
+  {%- assign show_image = false -%}
+{%- else -%}
+  {%- assign show_image = true -%}
+{%- endif -%}
+
+{%- capture collection_breadcrumb -%}
+  {%- if section.settings.show_breadcrumb -%}
+    <nav class="breadcrumb breadcrumb--floating" aria-label="{{ 'general.breadcrumb.label' | t | escape }}">
+      <ol class="breadcrumb__list unstyled-list">
+        <li class="breadcrumb__list-item">
+          <a href="{{ routes.root_url }}" class="smallcaps {% unless show_image %}link-faded{% endunless %}">{{ 'general.breadcrumb.home' | t }}</a>
+        </li>
+
+        <li class="breadcrumb__list-item">
+          <a href="{{ routes.all_products_collection_url }}" class="smallcaps {% unless show_image %}link-faded{% endunless %}">{{ 'general.breadcrumb.shop' | t }}</a>
+        </li>
+
+        <li class="breadcrumb__list-item">
+          <a href="{{ collection.url }}" aria-current="page" class="smallcaps {% unless show_image %}link-faded{% endunless %}">{{ collection.title }}</a>
+        </li>
+      </ol>
+    </nav>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture collection_content -%}
+  {%- if section.settings.banner_subtitle != blank -%}
+    <p class="banner-subtitle" style="font-size: var(--subtitle-font-size);">{{ section.settings.banner_subtitle }}</p>
+  {%- endif -%}
+
+  {%- if section.settings.banner_title != blank -%}
+    <h2 class="banner-title" style="font-size: var(--title-font-size);">{{ section.settings.banner_title }}</h2>
+  {%- endif -%}
+
+ {%- if section.settings.sub_heading != blank -%}
+    <h2 class="banner-subtitle banner-sub-heading" style="font-size: var(--subtitle-font-size);">{{ section.settings.sub_heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.show_collection_title -%}
+    <h1 class="h1">{{ collection.title }}</h1>
+  {%- endif -%}
+
+  {%- if section.settings.show_collection_description -%}
+    <div class="collection-description">
+      {{- collection.description -}}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}---------------- BUTTON ----------------{%- endcomment -%}
+  {%- if section.settings.button_text != blank -%}
+    <div class="collection-banner-button-wrapper">
+      {%- render 'button', href: section.settings.button_link, content: section.settings.button_text, style: section.settings.button_style, background: section.settings.button_background, text_color: section.settings.button_text_color -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}---------------- DISCOUNT CODE BLOCK ----------------{%- endcomment -%}
+  {%- if section.settings.show_discount_codes -%}
+    <div class="collection-banner-discount-codes">
+      <div class="collection-discount-codes-wrapper">
+        {%- if section.settings.discount_1_amount != blank -%}
+          <div class="collection-discount-code-item">
+            <div class="collection-discount-amount">
+              {{ section.settings.discount_1_amount }}
+            </div>
+            <div class="collection-discount-condition">
+              {{ section.settings.discount_1_condition }}
+            </div>
+            <div class="collection-discount-code-badge">
+              {{ section.settings.discount_1_code }}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.discount_2_amount != blank -%}
+          <div class="collection-discount-code-item">
+            <div class="collection-discount-amount">
+              {{ section.settings.discount_2_amount }}
+            </div>
+            <div class="collection-discount-condition">
+              {{ section.settings.discount_2_condition }}
+            </div>
+            <div class="collection-discount-code-badge">
+              {{ section.settings.discount_2_code }}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if show_image -%}
+  <style>
+    #shopify-section-{{ section.id }} {
+      --content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+      --content-over-media-content-max-width: var(--container-{{ section.settings.content_width }}-max-width);
+      --title-font-size: {{ section.settings.title_font_size_desktop }}px;
+      --subtitle-font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    }
+
+    @media screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .banner-sub-heading {
+      margin: 0px !important;
+      line-height: 1.4;
+      letter-spacing:1.6px;
+    }
+
+      #shopify-section-{{ section.id }} {
+        --title-font-size: {{ section.settings.title_font_size_mobile }}px;
+        --subtitle-font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+      }
+      #shopify-section-{{ section.id }} .banner-title {
+        margin: 0.6rem 0 !Important;
+      }
+    } 
+
+    #shopify-section-{{ section.id }} .banner-title {
+      margin: 0rem 0;
+      font-weight: {{ section.settings.title_font_weight }};
+      line-height: 1.2;
+      letter-spacing:0;
+    }
+
+    #shopify-section-{{ section.id }} .banner-subtitle {
+      margin: .8rem 0 0.8rem 0;
+      line-height: 1.4;
+      letter-spacing:1.6px;
+    }
+
+    /* Button Styling */
+    #shopify-section-{{ section.id }} .collection-banner-button-wrapper {
+      margin: 1.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Collection Banner Discount Codes Styling */
+    #shopify-section-{{ section.id }} .collection-banner-discount-codes {
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .collection-discount-codes-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .collection-discount-code-item {
+      flex: 0 1 auto;
+      min-width: 160px;
+      max-width: 220px;
+      text-align: center;
+      margin-block-start: 0 !important;
+    }
+
+    #shopify-section-{{ section.id }} .collection-discount-amount {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+
+    #shopify-section-{{ section.id }} .collection-discount-condition {
+      font-size: 1rem;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      margin-block-start: 0 !important;
+    }
+
+    #shopify-section-{{ section.id }} .collection-discount-code-badge {
+      background-color: #fff;
+      color: #000;
+      padding: 0.625rem 1.25rem;
+      border-radius: 25px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-block-start: 0 !important;
+      white-space: nowrap;
+    }
+
+    #shopify-section-{{ section.id }} .content-over-media .prose {
+      {%- case section.settings.text_position_desktop -%}
+        {%- when 'top-left' -%}
+          justify-content: flex-start;
+          align-items: flex-start;
+          text-align: left;
+        {%- when 'top-center' -%}
+          justify-content: flex-start;
+          align-items: center;
+          text-align: center;
+        {%- when 'top-right' -%}
+          justify-content: flex-start;
+          align-items: flex-end;
+          text-align: right;
+        {%- when 'middle-left' -%}
+          justify-content: center;
+          align-items: flex-start;
+          text-align: left;
+        {%- when 'middle-center' -%}
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        {%- when 'middle-right' -%}
+          justify-content: center;
+          align-items: flex-end;
+          text-align: right;
+        {%- when 'bottom-left' -%}
+          justify-content: flex-end;
+          align-items: flex-start;
+          text-align: left;
+        {%- when 'bottom-center' -%}
+          justify-content: flex-end;
+          align-items: center;
+          text-align: center;
+        {%- when 'bottom-right' -%}
+          justify-content: flex-end;
+          align-items: flex-end;
+          text-align: right;
+      {%- endcase -%}
+          width: fit-content;
+          max-width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          margin-right: auto;
+    }
+
+    /* Mobile Responsive Styles */
+    @media screen and (max-width: 767px) {
+       #shopify-section-{{ section.id }} .content-over-media .prose {
+        width:100%;
+      }
+      .collection-banner-button-wrapper .button{
+       padding: 0.3rem .5rem;
+       font-size:.7rem !important;
+      }
+      #shopify-section-{{ section.id }} .banner-subtitle{
+        margin-bottom:0;
+        letter-spacing:1.2px;
+      }
+
+      #shopify-section-{{ section.id }} .collection-banner-button-wrapper {
+        margin: .5rem 0;
+      }
+
+      #shopify-section-{{ section.id }} .collection-banner-discount-codes {
+        margin-top: .5rem;
+      }
+
+      #shopify-section-{{ section.id }} .collection-discount-codes-wrapper {
+        gap: 0.5rem;
+        justify-content: center;
+        flex-wrap: nowrap !important;
+      }
+      
+      #shopify-section-{{ section.id }} .collection-discount-code-item {
+        min-width: 100px;
+        max-width: 180px;
+        text-align:center !important;
+      }
+
+      #shopify-section-{{ section.id }} .collection-discount-amount {
+        font-size: .9rem;
+      }
+
+      #shopify-section-{{ section.id }} .collection-discount-condition {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+      }
+
+      #shopify-section-{{ section.id }} .collection-discount-code-badge {
+        font-size: 0.75rem;
+        padding: 0.2rem .5rem;
+        border-radius: 20px;
+        margin-top: 0.5rem !important;
+      }
+
+      
+
+      #shopify-section-{{ section.id }} .content-over-media .prose {
+        {%- case section.settings.text_position_mobile -%}
+          {%- when 'top-left' -%}
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+          {%- when 'top-center' -%}
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+          {%- when 'top-right' -%}
+            justify-content: flex-start;
+            align-items: flex-end;
+            text-align: right;
+          {%- when 'middle-left' -%}
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+          {%- when 'middle-center' -%}
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          {%- when 'middle-right' -%}
+            justify-content: center;
+            align-items: flex-end;
+            text-align: right;
+          {%- when 'bottom-left' -%}
+            justify-content: flex-end;
+            align-items: flex-start;
+            text-align: left;
+          {%- when 'bottom-center' -%}
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+          {%- when 'bottom-right' -%}
+            justify-content: flex-end;
+            align-items: flex-end;
+            text-align: right;
+        {%- endcase -%}
+        padding-top:30px;
+      }
+      .collection-banner .banner-subtitle, html#canada .collection-banner .banner-subtitle{
+      font-size:12px !important;
+      }
+       .collection-banner .banner-title, html#canada .collection-banner .banner-title{
+      font-size:20px !important;
+      }
+
+    }
+
+    @media screen and (max-width:768px){
+     .collection-banner .banner-title, html#canada .collection-banner .banner-title{
+    font-size:28px !important;
+    }
+     .collection-banner .banner-subtitle, html#canada .collection-banner .banner-subtitle{
+    font-size:14px !important;
+    }
+    }
+    @media(max-width:375px){
+  .collection-banner .banner-title{
+    font-size:24px !important;
+  }
+  .collection-banner .sub-title{
+    font-size:12px !important;
+  }
+  .collection-banner .content-over-media .prose{
+   padding-top:15px !important;
+   gap:0px;
+  }
+}
+@media(max-width:390px){
+  .collection-banner .content-over-media .prose{
+   padding-top:20px !important;
+  }
+}
+@media(max-width:360px){
+  .collection-banner .banner-title{
+    font-size:22px !important;
+  }
+  .collection-banner .sub-title{
+    font-size:10px !important;
+  }
+  .collection-banner .content-over-media .prose{
+   padding-top:10px !important;
+  }
+}
+
+    /* Tablet Responsive Styles */
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      #shopify-section-{{ section.id }} .collection-discount-amount {
+        font-size: 1.625rem;
+      }
+
+      #shopify-section-{{ section.id }} .collection-discount-condition {
+        font-size: 0.9375rem;
+      }
+
+      #shopify-section-{{ section.id }} .collection-discount-code-badge {
+        font-size: 0.8125rem;
+        padding: 0.5625rem 1.125rem;
+      }
+    }
+
+    @media screen and (min-width:1700px){
+    
+      #shopify-section-{{ section.id }} .banner-title{
+            --title-font-size: 37px;
+      }
+      #shopify-section-{{ section.id }} .collection-discount-amount{
+        font-size:
+      }
+      #shopify-section-{{ section.id }} .collection-discount-codes-wrapper{
+            justify-content: center;
+      }
+      #shopify-section-{{ section.id }} .banner-title {
+    margin: 0.7rem 0;
+      }
+    }
+  </style>
+
+  <collection-banner {% if section.settings.reveal %}reveal-on-scroll="true"{% endif %} class="collection-banner" {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %} style="{% render 'surface', background: section.settings.background, text_color: section.settings.text_color %}">
+    {%- unless section.settings.allow_transparent_header -%}
+      {{- collection_breadcrumb -}}
+    {%- endunless -%}
+
+    <div class="content-over-media content-over-media--{{ section.settings.image_size }}">
+      <picture>
+        {%- if section.settings.enable_parallax -%}
+          {%- assign is_attribute = 'image-parallax' -%}
+        {%- endif -%}
+
+        {%- if section.settings.mobile_image != blank -%}
+          <source
+              media="(max-width: 699px)"
+              srcset="{{ section.settings.mobile_image | image_url: width: '400x' }} 400w, {{ section.settings.mobile_image | image_url: width: '600x' }} 600w, {{ section.settings.mobile_image | image_url: width: '800x' }} 800w, {{ section.settings.mobile_image | image_url: width: '1000x' }} 1000w"
+              width="{{ section.settings.mobile_image.width }}"
+              height="{{ section.settings.mobile_image.height }}"
+          >
+        {%- endif -%}
+
+        {%- assign image = section.settings.image | default: collection.image -%}
+        {{- image | image_url: width: image.width | image_tag: loading: 'lazy', is: is_attribute -}}
+      </picture>
+
+      <div class="prose">
+        {{ collection_content }}
+      </div>
+    </div>
+  </collection-banner>
+{%- elsif collection_content != blank -%}
+  <div class="relative section-spacing section-spacing--tight">
+    <div class="container container--{{ section.settings.content_width }}">
+      {{- collection_breadcrumb -}}
+
+      <div class="prose text-center">
+        {{- collection_content -}}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.collection_banner.name",
+  "class": "shopify-section--collection-banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:global.image.image",
+      "info": "t:sections.collection_banner.image_info"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "t:global.image.mobile_image",
+      "info": "t:sections.collection_banner.mobile_image_info"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "t:global.image.size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:global.sizes.original_image_ratio"
+        },
+        {
+          "value": "xs",
+          "label": "t:global.sizes.x_small"
+        },
+        {
+          "value": "sm",
+          "label": "t:global.sizes.small"
+        },
+        {
+          "value": "md",
+          "label": "t:global.sizes.medium"
+        },
+        {
+          "value": "lg",
+          "label": "t:global.sizes.large"
+        }
+      ],
+      "info": "t:global.image.ratio_avoid_cropping_info",
+      "default": "auto"
+    },
+    {
+      "type": "checkbox",
+      "id": "allow_transparent_header",
+      "label": "t:global.section.allow_transparent_header",
+      "info": "t:global.section.allow_transparent_header_info",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "reveal",
+      "label": "t:sections.collection_banner.reveal",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "t:sections.collection_banner.enable_parallax",
+      "info": "t:sections.collection_banner.enable_parallax_info",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Banner Text"
+    },
+    {
+      "type": "text",
+      "id": "banner_subtitle",
+      "label": "Subtitle",
+      "default": "BIGGEST OFFER OF THE YEAR"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Title",
+      "default": "Early Black Friday Sale"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title Font Size (Desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "label": "Subtitle Font Size (Desktop)",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle Font Size (Mobile)",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Text Position"
+    },
+    {
+      "type": "select",
+      "id": "text_position_desktop",
+      "label": "Text Position (Desktop)",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top Center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "middle-left",
+          "label": "Middle Left"
+        },
+        {
+          "value": "middle-center",
+          "label": "Middle Center"
+        },
+        {
+          "value": "middle-right",
+          "label": "Middle Right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom Center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        }
+      ],
+      "default": "middle-center"
+    },
+    {
+      "type": "select",
+      "id": "text_position_mobile",
+      "label": "Text Position (Mobile)",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top Center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "middle-left",
+          "label": "Middle Left"
+        },
+        {
+          "value": "middle-center",
+          "label": "Middle Center"
+        },
+        {
+          "value": "middle-right",
+          "label": "Middle Right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom Center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        }
+      ],
+      "default": "middle-center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_title",
+      "label": "t:sections.collection_banner.show_collection_title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "label": "t:sections.collection_banner.show_collection_description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "t:sections.collection_banner.show_breadcrumb",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:global.sizes.content_width",
+      "options": [
+        {
+          "value": "xs",
+          "label": "t:global.sizes.x_small"
+        },
+        {
+          "value": "sm",
+          "label": "t:global.sizes.small"
+        },
+        {
+          "value": "md",
+          "label": "t:global.sizes.medium"
+        },
+        {
+          "value": "lg",
+          "label": "t:global.sizes.large"
+        },
+        {
+          "value": "xl",
+          "label": "t:global.sizes.x_large"
+        }
+      ],
+      "default": "xs"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "link",
+          "label": "Link"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Discount Codes"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discount_codes",
+      "label": "Show discount codes",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "discount_1_amount",
+      "label": "Discount 1 Amount",
+      "default": "$150 Off",
+      "info": "e.g., $150 Off, 20% Off"
+    },
+    {
+      "type": "text",
+      "id": "discount_1_condition",
+      "label": "Discount 1 Condition",
+      "default": "Orders over $750",
+      "info": "e.g., Orders over $750"
+    },
+    {
+      "type": "text",
+      "id": "discount_1_code",
+      "label": "Discount 1 Code",
+      "default": "Use Code NOBLDAY150",
+      "info": "e.g., Use Code NOBLDAY150"
+    },
+    {
+      "type": "text",
+      "id": "discount_2_amount",
+      "label": "Discount 2 Amount",
+      "default": "$100 Off",
+      "info": "e.g., $100 Off, 15% Off"
+    },
+    {
+      "type": "text",
+      "id": "discount_2_condition",
+      "label": "Discount 2 Condition",
+      "default": "Orders over $500",
+      "info": "e.g., Orders over $500"
+    },
+    {
+      "type": "text",
+      "id": "discount_2_code",
+      "label": "Discount 2 Code",
+      "default": "Use Code NOBLDAY100",
+      "info": "e.g., Use Code NOBLDAY100"
+    },
+    {
+      "type": "header",
+      "content": "t:global.colors.category",
+      "info": "t:sections.collection_banner.colors_category_info"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "t:global.colors.background",
+      "info": "t:sections.collection_banner.background_info",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:global.colors.text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:global.colors.overlay_color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:global.colors.overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 30
+    }
+  ]
+}
+{% endschema %}

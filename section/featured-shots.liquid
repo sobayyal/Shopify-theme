@@ -1,0 +1,142 @@
+{%- comment -%}
+PRODUCT FEATURES SLIDER - OPTIMIZED WITH LAZY LOADING
+{%- endcomment -%}
+
+<section 
+    id="dynamic-product-slider" 
+    data-variant-id="{{ section.settings.variant_id }}" 
+    data-default="{{ section.settings.is_default }}"
+    style="display: none;">
+  <div class="container">
+    <h2 class="scroll-sec-heading h1">
+      {{ section.settings.heading }}
+    </h2>
+  </div>
+  <div class="container product-features-slider">
+    <button class="slider-arrow left-arrow" aria-label="Previous slide">
+      <img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" 
+           alt="Left Arrow" 
+           class="arrow-icon"
+           loading="lazy"
+           width="24" 
+           height="24">
+    </button>
+    <div class="slider-container">
+      {% for block in section.blocks %}
+      <div class="slider-item" {% unless forloop.first %}data-lazy="true"{% endunless %}>
+        <div class="slider-image">
+          {% if forloop.first %}
+            {%- comment -%} First image loads immediately when section becomes visible {%- endcomment -%}
+            <img src="{{ block.settings.image | img_url: '900x900' }}" 
+                 alt="{{ block.settings.title | escape }}"
+                 width="900" 
+                 height="900"
+                 loading="eager">
+          {% else %}
+            {%- comment -%} Other images use lazy loading {%- endcomment -%}
+            <img data-src="{{ block.settings.image | img_url: '900x900' }}" 
+                 alt="{{ block.settings.title | escape }}"
+                 width="900" 
+                 height="900"
+                 loading="lazy"
+                 class="lazy-load"
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E">
+          {% endif %}
+        </div>
+        <div class="slider-content">
+          <h3 class="slider-title h6">{{ block.settings.title }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="slider-arrow right-arrow" aria-label="Next slide">
+      <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" 
+           alt="Right Arrow" 
+           class="arrow-icon"
+           loading="lazy"
+           width="24" 
+           height="24">
+    </button>
+  </div>
+</section>
+
+<style>
+/* Lazy loading styles */
+.lazy-load {
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Prevent layout shift during loading */
+.slider-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.slider-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product Features Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "OUR 5-STAR FUNCTIONS"
+    },
+    {
+      "type": "text",
+      "id": "variant_id",
+      "label": "Variant ID",
+      "info": "Enter the variant ID for which this section should be displayed."
+    },
+    {
+      "type": "checkbox",
+      "id": "is_default",
+      "label": "Default Box",
+      "default": false,
+      "info": "Check this box if this section should be displayed when no variant ID is present in the URL."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Features Slider",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

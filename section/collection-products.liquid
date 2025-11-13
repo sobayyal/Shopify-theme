@@ -1,0 +1,259 @@
+{%- if section.blocks.size > 0 -%}
+  <style>
+    #shopify-section-{{ section.id }} {
+      --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+      --product-list-horizontal-spacing-factor: {{ section.settings.horizontal_spacing_factor }};
+      --product-list-vertical-spacing-factor: {{ section.settings.vertical_spacing_factor }};
+    }
+
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} {
+        --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+      }
+    }
+    
+    /* Custom styles for product tags */
+    /* .product-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index:2;
+    } */
+    @media(max-width:768px){
+      .product-tag {
+    top: 5px !important;
+    left: 5px !important;
+    }
+      .shopify-section--featured-products .product-tag.badge{
+      padding: 5px 7px !important;
+    }
+          .shopify-section--featured-products on-sale-badge-alt,
+      .shopify-section--featured-products .badge--sold-out{
+        padding: 4px 7px 2px 7px !important;
+    }
+      .product-badge_custom {
+    gap: .1125rem !important;
+    top:4px !important;
+    left:4px !important;
+    }
+    }
+    /* .shopify-section--featured-products sold-out-badge-alt.badge.badge--sold-out{
+      display:none;
+    } */
+    .product-badge_custom {
+    flex-wrap: wrap;
+    gap: .3125rem;
+    width: 90%;
+    display: flex;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 2;
+    flex-direction: column;
+}
+  </style>
+
+  <div class="section-spacing {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="container">
+      <div class="section-stack">
+        <div class="v-stack justify-self-center gap-4 text-center sm:gap-5">
+          {%- if section.settings.subheading != blank -%}
+            <p class="h6 text-center">{{- section.settings.subheading -}}</p>
+          {%- endif -%}
+
+          <p class="h2">{{ section.settings.title | default: 'Featured Products' }}</p>
+        </div>
+
+        <div class="featured-products">
+          <product-list class="product-list {% if section.settings.hide_product_information %}product-list--compact{% endif %} justify-center">
+            {%- assign should_reveal = settings.stagger_products_apparition -%}
+            
+            {%- for block in section.blocks -%}
+              {%- if block.settings.product != blank -%}
+                <div class="product-card__wrapper" style="position: relative;">
+                  {%- render 'product-card-alt', product: block.settings.product, reveal: should_reveal, hide_product_information: section.settings.hide_product_information, block: block, custom-tag: block.settings.custom_tag -%}
+                </div>
+              {%- else -%}
+                {%- render 'product-card-placeholder', reveal: should_reveal, loop_index: forloop.index0, hide_product_information: section.settings.hide_product_information -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </product-list>
+
+          {%- if section.settings.link_text != blank -%}
+            {%- assign button_link = section.settings.link_url | default: '#' -%}
+
+            <div class="justify-self-center">
+              {%- render 'button', href: button_link, content: section.settings.link_text -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+<style>
+ #page-sale-collection .featured-products product-list {
+    column-gap: 2px !important;
+    justify-content: center !important;
+}
+</style>
+{% schema %}
+{
+  "name": "Featured Products",
+  "class": "shopify-section--featured-products",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "Separate section with border",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_product_information",
+      "label": "Hide product information",
+      "info": "Show only product images"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "select",
+      "id": "products_per_row_mobile",
+      "label": "Products per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 6,
+      "label": "Products per row (desktop)",
+      "info": "The actual number of products per row may vary depending on screen size",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Spacing",
+      "info": "Controls spacing between products"
+    },
+    {
+      "type": "range",
+      "min": 0.2,
+      "max": 2,
+      "step": 0.1,
+      "id": "horizontal_spacing_factor",
+      "label": "Horizontal spacing factor",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "min": 0.2,
+      "max": 2,
+      "step": 0.1,
+      "id": "vertical_spacing_factor",
+      "label": "Vertical spacing factor",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Button text",
+      "default": "View all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "custom_tag",
+          "label": "Product Tag",
+          "info": "Add custom tag like 'Mom's Favorite' or 'Most Popular Gift'"
+        },
+        {
+          "type": "color",
+          "id": "tag_background_color",
+          "label": "Tag Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "tag_text_color",
+          "label": "Tag Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "tag_border_color",
+          "label": "Tag Border Color",
+          "default": "#dddddd"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

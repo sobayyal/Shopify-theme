@@ -1,0 +1,133 @@
+{% comment %}
+Final Recommendation Section - Dynamic Content
+{% endcomment %}
+
+<div class="container-1400">
+  <div class="final-top">
+{% if section.settings.title %}
+        <h2 class="font-32">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.description %}
+        <div style="margin-bottom: 20px;">{{ section.settings.description }}</div>
+      {% endif %}
+     
+  </div>
+  <div class="final-flex">
+    
+    <!-- Left Content: Image + Icons -->
+    <div class="final-left">
+      {% if section.settings.main_image %}
+        <img src="{{ section.settings.main_image | image_url: width: 1000 }}" alt="Main Image" style="max-width: 100%; height: auto;" />
+      {% endif %}
+    </div>
+
+    <!-- Right Content: Textual Info -->
+    <div class="final-right">
+      
+      
+      {% if section.settings.rating_text %}
+        <div  class="f-star"><svg width="102" height="18" viewBox="0 0 102 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z" fill="#080808"/>
+<path d="M30 0L32.0206 6.21885H38.5595L33.2694 10.0623L35.2901 16.2812L30 12.4377L24.7099 16.2812L26.7306 10.0623L21.4405 6.21885H27.9794L30 0Z" fill="#080808"/>
+<path d="M51 0L53.0206 6.21885H59.5595L54.2694 10.0623L56.2901 16.2812L51 12.4377L45.7099 16.2812L47.7306 10.0623L42.4405 6.21885H48.9794L51 0Z" fill="#080808"/>
+<path d="M72 0L74.0206 6.21885H80.5595L75.2694 10.0623L77.2901 16.2812L72 12.4377L66.7099 16.2812L68.7306 10.0623L63.4405 6.21885H69.9794L72 0Z" fill="#080808"/>
+<path d="M93 0L95.0206 6.21885H101.56L96.2694 10.0623L98.2901 16.2812L93 12.4377L87.7099 16.2812L89.7306 10.0623L84.4405 6.21885H90.9794L93 0Z" fill="#080808"/>
+</svg>
+ {{ section.settings.rating_text }}</div>
+      {% endif %}
+      {% if section.settings.heading_text %}
+        <h3 class="font-33">{{ section.settings.heading_text }}</h3>
+      {% endif %}
+      {% if section.settings.subtext %}
+        <p class="rte">{{ section.settings.subtext }}</p>
+      {% endif %}
+
+      {% if section.settings.button_label and section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="button btn-full">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.warranty_text %}
+        <div class="war-text">
+          <img src="https://cdn.shopify.com/s/files/1/0715/3536/2348/files/image_8.png?v=1747319733">
+          <div class="war-right">
+          <h4>{{ section.settings.warranty_heading }}</h4>
+         <p>{{ section.settings.warranty_text }}</p> 
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Final Recommendation",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Heading",
+      "default": "Our Final Take: We Can Recommend NOBL Now — Without Hesitation"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (Paragraph 1)"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "★★★★★ 4.7 / 5.0 | 14,972 Verified Reviews"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Product Heading",
+      "default": "Carry-On: All-in-One"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Product Description",
+      "default": "The award-winning All-in-One Carry-On, designed to be more than a rolling box to store your things in."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Explore The NOBL Carry-On Pro"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "warranty_heading",
+      "label": "Warranty Text Heading",
+      "default": "Backed by a Lifetime Warranty"
+    },
+    {
+      "type": "textarea",
+      "id": "warranty_text",
+      "label": "Warranty Text",
+      "default": "NOBL covers functional repairs for life. Wheels, handles, latches, all protected."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final Recommendation",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

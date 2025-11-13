@@ -1,0 +1,48 @@
+{% schema %}
+{
+  "name": "Heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT FLYERS ARE SAYING ABOUT NOBL"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "From airport chaos to carry-on calm – here’s how it holds up in the real world."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+<div id="scroll-review" class="flyer-testimonials-header" style="color: {{ section.settings.text_color }}; text-align: {{ section.settings.text_align }};">
+  <div class="container_1408">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+</div>

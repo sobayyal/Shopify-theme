@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "header-group.json",
+  "context": {
+    "market": "uae"
+  },
+  "sections": {
+    "countdown_condensed_AKFEkR": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    },
+    "announcement-bar": {
+      "disabled": true,
+      "settings": {
+        "background": "#054b48"
+      },
+      "blocks": {
+        "message_NQW7Ga": {
+          "disabled": false,
+          "settings": {
+            "text": "Black Friday Sale Up To 46% OFF"
+          }
+        }
+      }
+    },
+    "header": {
+      "settings": {
+        "menu": "main-menu-new-v2",
+        "sidebar_menu": "main-menu-new-v2"
+      },
+      "blocks": {
+        "mega_menu_Fj6CPf": {
+          "settings": {
+            "custom_titles_pro": "Check-In, Aluminum"
+          }
+        },
+        "mega_menu_EVMjYQ": {
+          "settings": {
+            "custom_titles_pro": "Weekender Bag, Fold-n-Go Duffel ,Fold-n-Go Trolley,"
+          }
+        },
+        "mega_menu_fFrcjA": {
+          "settings": {
+            "custom_titles_pro": "Packing Cubes, Water Bottles,Toiletry Bag"
+          }
+        },
+        "mega_menu_N9DdeH": {
+          "settings": {
+            "custom_titles_pro": "Carry-On + Check-In, Complete Set, Carry Smart Set, Travel Essentials"
+          }
+        },
+        "mobile_collection_Uhp4m8": {
+          "disabled": true,
+          "settings": {}
+        },
+        "mobile_collection_mQxrwG": {
+          "disabled": true,
+          "settings": {}
+        }
+      }
+    }
+  }
+}

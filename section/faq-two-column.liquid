@@ -1,0 +1,196 @@
+
+<div class="faq-section">
+  <h2 class="faq-title">{{ section.settings.title }}</h2>
+  
+    <div class="faq-column">
+      <div class="faq-grid">
+    {% assign half = section.blocks.size | divided_by: 2 %}
+    {% for block in section.blocks limit: half %}
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>{{ block.settings.question }}</span> 
+          <span class="faq-icon">
+            <svg class="plus" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.817578 6.10762V4.61465H4.69219V0.713379H6.21182V4.61465H10.0864V6.10762H6.21182V10H4.69219V6.10762H0.817578Z" fill="black"/>
+            </svg>
+            <svg class="minus" width="5" height="2" viewBox="0 0 5 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.0220001 1.822V0.562H4.964V1.822H0.0220001Z" fill="black"/>
+            </svg>
+          </span>
+        </div>
+        <div class="faq-answer" style="max-height: 0px;">{{ block.settings.answer }}</div>
+      </div>
+    {% endfor %}
+              </div>
+
+    <div class="faq-grid">
+    {% assign half = section.blocks.size | divided_by: 2 %}
+    {% for block in section.blocks offset: half %}
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>{{ block.settings.question }}</span> 
+          <span class="faq-icon">
+            <svg class="plus" width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.817578 6.10762V4.61465H4.69219V0.713379H6.21182V4.61465H10.0864V6.10762H6.21182V10H4.69219V6.10762H0.817578Z" fill="black"/>
+            </svg>
+            <svg class="minus" width="5" height="2" viewBox="0 0 5 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.0220001 1.822V0.562H4.964V1.822H0.0220001Z" fill="black"/>
+            </svg>
+          </span>
+        </div>
+        <div class="faq-answer" style="max-height: 0px;">{{ block.settings.answer }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+    
+  </div>
+                
+ {% if section.settings.button_label and section.settings.button_link %}
+   <div class="faq-btn">
+        <a href="{{ section.settings.button_link }}" class="button btn-full">
+          {{ section.settings.button_label }}
+        </a>
+   </div>
+      {% endif %}
+</div>
+
+<script>
+const faqItems = document.querySelectorAll('.faq-item');
+
+// Smooth toggle function with height animation and icon toggle
+const toggleFAQ = (item) => {
+  const question = item.querySelector('.faq-question');
+  const answer = item.querySelector('.faq-answer');
+  const plusIcon = question.querySelector('.plus');
+  const minusIcon = question.querySelector('.minus');
+  const isActive = item.classList.contains('active');
+
+  if (isActive) {
+    answer.style.maxHeight = '0'; // Collapse to 0 height
+    item.classList.remove('active');
+    plusIcon.style.display = 'block'; // Show plus icon
+    minusIcon.style.display = 'none'; // Hide minus icon
+  } else {
+    // Close all other FAQs
+    faqItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+        otherItem.querySelector('.plus').style.display = 'block';
+        otherItem.querySelector('.minus').style.display = 'none';
+      }
+    });
+    // Open the clicked FAQ
+    answer.style.maxHeight = `${answer.scrollHeight}px`; // Set to natural height
+    item.classList.add('active');
+    plusIcon.style.display = 'none'; // Hide plus icon
+    minusIcon.style.display = 'block'; // Show minus icon
+  }
+};
+
+// Initialize: Open first FAQ item on page load with smooth transition
+window.addEventListener('load', () => {
+  if (faqItems.length > 0) {
+    // const firstItem = faqItems[0];
+    // const firstAnswer = firstItem.querySelector('.faq-answer');
+    // const firstPlus = firstItem.querySelector('.plus');
+    // const firstMinus = firstItem.querySelector('.minus');
+    // firstItem.classList.add('active');
+    // firstAnswer.style.maxHeight = `${firstAnswer.scrollHeight}px`;
+    // firstPlus.style.display = 'none';
+    // firstMinus.style.display = 'block';
+  }
+});
+
+// Add click event listeners to .faq-question
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default behavior
+    toggleFAQ(item);
+  });
+});
+
+// Handle window resize to adjust heights of open FAQs
+window.addEventListener('resize', () => {
+  faqItems.forEach(item => {
+    const answer = item.querySelector('.faq-answer');
+    if (item.classList.contains('active')) {
+      answer.style.maxHeight = `${answer.scrollHeight}px`;
+    }
+  });
+});
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Two Column FAQ",
+  "class": "faq-two",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "FAQ Section Title",
+      "default": "Common Questions Women Asked While Testing Flo Pilates"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Explore The NOBL Carry-On Pro"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is Flo Pilates suitable for beginners?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Absolutely! Flo Pilates is designed to be beginner-friendly while still offering challenges for more experienced users.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Two Column FAQ",
+      "category": "FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Flo Pilates suitable for beginners?",
+            "answer": "<p>Absolutely! Flo Pilates is designed to be beginner-friendly while still offering challenges for more experienced users.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "I've tried fitness programs and always quit. What's different here?",
+            "answer": "<p>Our program focuses on gentle progression, community support, and short daily sessions that build consistency.</p>",
+          
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

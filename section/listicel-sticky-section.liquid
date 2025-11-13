@@ -1,0 +1,120 @@
+<div class="tenReasons-atc-wrapper" id="bottomStickyATC">
+    <div class="tenReasons-atc-content-wrapper">
+      <a class="tenReasons-product-atc" href="/pages/save-56-build-your-bundle">
+        <a href="{{ section.settings.promo_button_link }}" class="custom-btn sticky-section-button">
+          {{ section.settings.promo_button_text }}
+          <span class="btn-icon"><img src="{{ section.settings.button_icon | img_url: 'small' }}" alt="Button Icon"></span>
+      </a>
+      </a>
+      <div class="tenReasons-atc-benefits-wrapper">
+        <div class="tenReasons-atc-benefits-item">
+          <img src="https://cdn.shopify.com/s/files/1/0335/1622/4645/files/fast.png?v=1713282476">
+          <div class="tenReasons-atc-benefits-item-text">Free Shipping</div>
+        </div>
+        <div class="tenReasons-atc-benefits-item">
+          <img src="https://cdn.shopify.com/s/files/1/0335/1622/4645/files/money.png?v=1713282480">
+          <div class="tenReasons-atc-benefits-item-text">100% Money Back Guarantee<span class="double-dagger">‡</span></div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+<style>
+  .custom-btn.sticky-section-button{
+    width:100% !important;
+  }
+   @media (min-width: 769px) {
+    .tenReasons-atc-content-wrapper {
+        width: 500px;
+    }
+}
+
+.tenReasons-atc-content-wrapper {
+    margin: 0 1rem;
+    width: 100%;
+    max-width: 500px;
+}
+  @media (min-width: 769px) {
+    .tenReasons-atc-wrapper {
+        padding: 10px;
+    }
+}
+  .tenReasons-atc-benefits-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: .5rem;
+    padding: 0 5px;
+}
+  .tenReasons-atc-benefits-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+  .tenReasons-atc-benefits-item img {
+    width: 20px;
+    height: 20px;
+}
+  .tenReasons-atc-benefits-item-text {
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: 700;
+}
+  .double-dagger {
+    font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+    display: inline-block;
+}
+
+.tenReasons-atc-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0);
+    padding: 1rem;
+    transition: transform .2s;
+    bottom: 0;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    background: #fff;
+    z-index: 999;
+    box-shadow: 0 -4px 4px #0000000f;
+    width: 100%;
+}
+</style>
+{% schema %}
+  {
+    "name": "Listicels Sticky Section",
+     "tag": "section",
+     "class": "listicles-stickey-section",
+    "settings": [
+      
+      {
+      "type": "image_picker",
+      "id": "button_icon",
+      "label": "Button Icon"
+    },
+      {
+      "type": "url",
+      "id": "promo_button_link",
+      "label": "Button Link"
+    },
+      {
+      "type": "text",
+      "id": "promo_button_text",
+      "label": "Button Text",
+      "default": "Select Scents"
+    },
+    ],
+    "presets": [
+    {
+      "name": "Listicels Sticky Section",
+      "category": "Custom"
+    }
+  ]
+  }
+{% endschema %}

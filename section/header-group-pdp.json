@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message-1": {
+          "type": "message",
+          "settings": {
+            "text": "Spring Sale Up to $400 Off  |  <a href=\"#scroll-main-product\" title=\"#scroll-main-product\"><strong>Shop Now</strong></a>",
+            "message_url": ""
+          }
+        },
+        "message_jd7JyY": {
+          "type": "message",
+          "settings": {
+            "text": "Spring Sale Up to $400 Off  |  <a href=\"#scroll-main-product\" title=\"#scroll-main-product\"><strong>Shop Now</strong></a>",
+            "message_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "message-1",
+        "message_jd7JyY"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky": true,
+        "autoplay": true,
+        "cycle_speed": 5,
+        "desktop_font_size": 15,
+        "mobile_font_size": 12,
+        "background": "#054b48",
+        "text_color": "#ffffff"
+      }
+    },
+    "countdown_condensed_Y6EUff": {
+      "type": "countdown-condensed",
+      "blocks": {
+        "content_KgrAVL": {
+          "type": "content",
+          "settings": {
+            "content": "Black Friday Sale - 58% OFF",
+            "link_url": "shopify://collections/our-best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "content_KgrAVL"
+      ],
+      "settings": {
+        "autoplay": true,
+        "cycle_speed": 5,
+        "link_text": "",
+        "link_url": "shopify://collections/our-best-sellers",
+        "expiration_date": "2025-08-7 00:00:00",
+        "expiration_behavior": "loop",
+        "loop_count": 0,
+        "desktop_justification": "space-between",
+        "background": "#000000",
+        "text_color": "#ffffff"
+      }
+    },
+    "header": {
+      "type": "custom_header",
+      "settings": {
+        "enable_sticky": true,
+        "show_separation_border": true,
+        "reduce_padding": true,
+        "logo": "shopify://shop_images/Nobl_Logos_1.svg",
+        "logo_max_width": 85,
+        "logo_mobile_max_width": 85,
+        "menu": "pdp",
+        "sidebar_menu": "pdp",
+        "menu_open_trigger": "hover",
+        "enable_search": true,
+        "sidebar_text_font": "heading",
+        "sidebar_show_dividers": true,
+        "layout": "logo_left_navigation_inline",
+        "show_icons": true,
+        "show_country_selector": true,
+        "show_country_name": false,
+        "show_country_flag": true,
+        "show_locale_selector": false,
+        "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify://shop_images/Nobl_Logos_1.png"
+      }
+    },
+    "20c19c42-3c56-4af3-9070-d8e77e173e46": {
+      "type": "text-with-icons-header",
+      "blocks": {
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-0": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-money",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>30-DAY SUCTION GUARANTEE</strong>",
+            "content": ""
+          }
+        },
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-1": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-delivery-truck",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>FREE SHIPPING  $60+</strong>",
+            "content": ""
+          }
+        },
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-2": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-love",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>100.000+ HAPPY CUSTOMERS</strong>",
+            "content": ""
+          }
+        },
+        "f0e3e894-bc1c-44fb-a487-8a35fc626b6d": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-star",
+            "icon_width": 20,
+            "mobile_icon_width": 12,
+            "title": "<strong>+1000 5-STAR REVIEWS</strong>",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-0",
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-1",
+        "sections--16046406992022__20c19c42-3c56-4af3-9070-d8e77e173e46-16886073378209f58e-2",
+        "f0e3e894-bc1c-44fb-a487-8a35fc626b6d"
+      ],
+      "disabled": true,
+      "settings": {
+        "separate_section_with_border": false,
+        "stack_on_mobile": true,
+        "icon_color": "",
+        "text_color": "",
+        "text_alignment": "start"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "countdown_condensed_Y6EUff",
+    "header",
+    "20c19c42-3c56-4af3-9070-d8e77e173e46"
+  ]
+}

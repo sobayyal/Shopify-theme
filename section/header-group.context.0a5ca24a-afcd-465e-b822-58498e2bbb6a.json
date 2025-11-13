@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "header-group.json",
+  "context": {
+    "market": "0a5ca24a-afcd-465e-b822-58498e2bbb6a"
+  },
+  "sections": {
+    "countdown_condensed_AKFEkR": {
+      "disabled": false,
+      "settings": {
+        "expiration_date": "2025-08-07 00:00:00"
+      },
+      "blocks": {}
+    },
+    "announcement-bar": {
+      "disabled": true,
+      "settings": {
+        "background": "#000000"
+      },
+      "blocks": {
+        "message_NQW7Ga": {
+          "settings": {
+            "text": "Nobl Day Sale Up To 58% OFF"
+          }
+        }
+      }
+    }
+  }
+}
